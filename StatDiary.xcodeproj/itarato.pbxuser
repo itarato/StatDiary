@@ -3,16 +3,16 @@
 	1D3623240D0F684500981E51 /* StatDiaryAppDelegate.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {686, 761}}";
-			sepNavSelRange = "{312, 0}";
-			sepNavVisRange = "{0, 470}";
+			sepNavSelRange = "{197, 0}";
+			sepNavVisRange = "{0, 505}";
 			sepNavWindowFrame = "{{71, 74}, {740, 778}}";
 		};
 	};
 	1D3623250D0F684500981E51 /* StatDiaryAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1965, 1344}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{3, 1471}";
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 1248}}";
+			sepNavSelRange = "{324, 0}";
+			sepNavVisRange = "{0, 1681}";
 			sepNavWindowFrame = "{{48, 95}, {740, 778}}";
 		};
 	};
@@ -114,9 +114,16 @@
 	};
 	4733D1C7139D3EE9006941EC /* ApplicationViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1139, 1024}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1139, 976}}";
+			sepNavSelRange = "{890, 0}";
+			sepNavVisRange = "{147, 1352}";
+		};
+	};
+	4733D1EE139D465E006941EC /* LoginViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {686, 761}}";
 			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 741}";
+			sepNavVisRange = "{0, 225}";
 		};
 	};
 }
