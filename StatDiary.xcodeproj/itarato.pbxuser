@@ -1,0 +1,122 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* StatDiaryAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {686, 761}}";
+			sepNavSelRange = "{312, 0}";
+			sepNavVisRange = "{0, 470}";
+			sepNavWindowFrame = "{{71, 74}, {740, 778}}";
+		};
+	};
+	1D3623250D0F684500981E51 /* StatDiaryAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 1344}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{3, 1471}";
+			sepNavWindowFrame = "{{48, 95}, {740, 778}}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* StatDiary */ = {
+		activeExec = 0;
+		executables = (
+			47305789139BDA8F00F6A518 /* StatDiary */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 47305789139BDA8F00F6A518 /* StatDiary */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* StatDiary */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* StatDiary */,
+		);
+		codeSenseManager = 473057A2139BDAA600F6A518 /* Code sense */;
+		executables = (
+			47305789139BDA8F00F6A518 /* StatDiary */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					307,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 329072064;
+			PBXWorkspaceStateSaveDate = 329072064;
+		};
+		sourceControlManager = 473057A1139BDAA600F6A518 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	47305789139BDA8F00F6A518 /* StatDiary */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = StatDiary;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	473057A1139BDAA600F6A518 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	473057A2139BDAA600F6A518 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	4733D1C6139D3EE9006941EC /* ApplicationViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {686, 761}}";
+			sepNavSelRange = "{169, 0}";
+			sepNavVisRange = "{0, 236}";
+		};
+	};
+	4733D1C7139D3EE9006941EC /* ApplicationViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1139, 1024}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 741}";
+		};
+	};
+}
