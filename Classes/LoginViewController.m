@@ -61,5 +61,9 @@
     [super dealloc];
 }
 
+- (void)onPressLoginButton:(id)sender {
+	NSLog(@"press");
+}
+
 
 @end

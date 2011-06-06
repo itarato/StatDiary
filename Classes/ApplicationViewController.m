@@ -7,9 +7,11 @@
 //
 
 #import "ApplicationViewController.h"
-
+#import "LoginViewController.h"
 
 @implementation ApplicationViewController
+
+@synthesize loginViewController;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -28,12 +30,14 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+	[self.view addSubview:loginViewController.view];
     [super viewDidLoad];
 }
-*/
+
 
 /*
 // Override to allow orientations other than the default portrait orientation.
