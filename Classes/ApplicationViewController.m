@@ -7,22 +7,24 @@
 //
 
 #import "ApplicationViewController.h"
+#import "SplashViewController.h"
 #import "LoginViewController.h"
 
 @implementation ApplicationViewController
 
+@synthesize splashViewController;
 @synthesize loginViewController;
 
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
+
+- (id) initWithCoder:(NSCoder *)aDecoder {
+	if ((self = [super initWithCoder:aDecoder])) {
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSuccessConnection:) name:@"onSuccessConnection" object:nil];
+	}
+	
+	NSLog(@"init");
+		
+	return self;
 }
-*/
 
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
@@ -33,8 +35,8 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
-	[self.view addSubview:loginViewController.view];
+	splashViewController = [[SplashViewController alloc] initWithNibName:@"SplashView" bundle:nil];
+	[self.view insertSubview:splashViewController.view atIndex:0];
     [super viewDidLoad];
 }
 
@@ -62,8 +64,25 @@
 
 
 - (void)dealloc {
+	[loginViewController release];
+	[splashViewController release];
     [super dealloc];
 }
+
+
+- (void)onSuccessConnection:(NSNotification *)notification {
+	id result = (id)[notification object];
+	sessionID = [result valueForKey:@"sessid"];
+	uid = (int)[[result valueForKey:@"user"] valueForKey:@"uid"];
+	//userName = loginViewController.userNameField.text;
+	//password = loginViewController.passwordField.text;
+	
+	[splashViewController.view removeFromSuperview];
+	loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+	loginViewController.sessionID = sessionID;
+	[self.view insertSubview:loginViewController.view atIndex:0];
+}
+
 
 
 @end

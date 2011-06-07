@@ -1,19 +1,17 @@
     //
-//  LoginViewController.m
+//  SplashViewController.m
 //  StatDiary
 //
-//  Created by Peter Arato on 6/6/11.
+//  Created by Peter Arato on 6/7/11.
 //  Copyright 2011 Pronovix. All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import "SplashViewController.h"
 #import <XMLRPC/XMLRPC.h>
 
-@implementation LoginViewController
+@implementation SplashViewController
 
-@synthesize userNameField;
-@synthesize passwordField;
-@synthesize sessionID;
+@synthesize indicator;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -32,12 +30,20 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:@"http://l/mystat/services/xmlrpc"]];
+	[request setMethod:@"system.connect"];
+	XMLRPCConnectionManager *connectionManager = [XMLRPCConnectionManager sharedManager];
+	[connectionManager spawnConnectionWithXMLRPCRequest:request delegate:self];
+	[request release];
+	
+	[indicator startAnimating];
+	
     [super viewDidLoad];
 }
-*/
+
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -65,15 +71,6 @@
     [super dealloc];
 }
 
-- (void)onPressLoginButton:(id)sender {
-	NSLog(@"press");
-	XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:@"http://l/mystat/services/xmlrpc"]];
-	[request setMethod:@"user.login" withParameters:[NSArray arrayWithObjects:sessionID, @"admin", @"aaa", nil]];
-	XMLRPCConnectionManager *connectionManager = [XMLRPCConnectionManager sharedManager];
-	[connectionManager spawnConnectionWithXMLRPCRequest:request delegate:self];
-	[request release];
-}
-
 
 - (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
 	NSLog(@"didFailWithError");
@@ -84,9 +81,10 @@
 
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
 	if ([response isFault]) {
-		NSLog(@"Login Error: %@", [response object]);
+		NSLog(@"Error");
 	} else {
-		NSLog(@"login success");
+		NSLog(@"success");
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"onSuccessConnection" object:[response object]];
 		NSLog(@"%@", [response object]);
 	}
 }
@@ -102,5 +100,7 @@
 - (BOOL)request:(XMLRPCRequest *)request canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
 	return NO;
 }
+
+
 
 @end

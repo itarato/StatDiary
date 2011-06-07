@@ -16,6 +16,17 @@
 		4733D1C8139D3EE9006941EC /* ApplicationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D1C7139D3EE9006941EC /* ApplicationViewController.m */; };
 		4733D1F0139D465E006941EC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D1EF139D465E006941EC /* LoginViewController.m */; };
 		4733D1F2139D466B006941EC /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4733D1F1139D466B006941EC /* LoginView.xib */; };
+		4733D263139D7363006941EC /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D250139D7363006941EC /* NSDataAdditions.m */; };
+		4733D264139D7363006941EC /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D252139D7363006941EC /* NSStringAdditions.m */; };
+		4733D265139D7363006941EC /* XMLRPCConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D256139D7363006941EC /* XMLRPCConnection.m */; };
+		4733D266139D7363006941EC /* XMLRPCConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D258139D7363006941EC /* XMLRPCConnectionManager.m */; };
+		4733D267139D7363006941EC /* XMLRPCEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D25A139D7363006941EC /* XMLRPCEncoder.m */; };
+		4733D268139D7363006941EC /* XMLRPCEventBasedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D25C139D7363006941EC /* XMLRPCEventBasedParser.m */; };
+		4733D269139D7363006941EC /* XMLRPCEventBasedParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D25E139D7363006941EC /* XMLRPCEventBasedParserDelegate.m */; };
+		4733D26A139D7363006941EC /* XMLRPCRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D260139D7363006941EC /* XMLRPCRequest.m */; };
+		4733D26B139D7363006941EC /* XMLRPCResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D262139D7363006941EC /* XMLRPCResponse.m */; };
+		477D2766139E88310044F9BA /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477D2765139E88310044F9BA /* SplashViewController.m */; };
+		477D2768139E88480044F9BA /* SplashView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 477D2767139E88480044F9BA /* SplashView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +44,29 @@
 		4733D1EE139D465E006941EC /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		4733D1EF139D465E006941EC /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		4733D1F1139D466B006941EC /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
+		4733D24F139D7363006941EC /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
+		4733D250139D7363006941EC /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
+		4733D251139D7363006941EC /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
+		4733D252139D7363006941EC /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
+		4733D253139D7363006941EC /* XMLRPCConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLRPCConnectionDelegate.h; sourceTree = "<group>"; };
+		4733D254139D7363006941EC /* XMLRPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLRPC.h; sourceTree = "<group>"; };
+		4733D255139D7363006941EC /* XMLRPCConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLRPCConnection.h; sourceTree = "<group>"; };
+		4733D256139D7363006941EC /* XMLRPCConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLRPCConnection.m; sourceTree = "<group>"; };
+		4733D257139D7363006941EC /* XMLRPCConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLRPCConnectionManager.h; sourceTree = "<group>"; };
+		4733D258139D7363006941EC /* XMLRPCConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLRPCConnectionManager.m; sourceTree = "<group>"; };
+		4733D259139D7363006941EC /* XMLRPCEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLRPCEncoder.h; sourceTree = "<group>"; };
+		4733D25A139D7363006941EC /* XMLRPCEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLRPCEncoder.m; sourceTree = "<group>"; };
+		4733D25B139D7363006941EC /* XMLRPCEventBasedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLRPCEventBasedParser.h; sourceTree = "<group>"; };
+		4733D25C139D7363006941EC /* XMLRPCEventBasedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLRPCEventBasedParser.m; sourceTree = "<group>"; };
+		4733D25D139D7363006941EC /* XMLRPCEventBasedParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLRPCEventBasedParserDelegate.h; sourceTree = "<group>"; };
+		4733D25E139D7363006941EC /* XMLRPCEventBasedParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLRPCEventBasedParserDelegate.m; sourceTree = "<group>"; };
+		4733D25F139D7363006941EC /* XMLRPCRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLRPCRequest.h; sourceTree = "<group>"; };
+		4733D260139D7363006941EC /* XMLRPCRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLRPCRequest.m; sourceTree = "<group>"; };
+		4733D261139D7363006941EC /* XMLRPCResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLRPCResponse.h; sourceTree = "<group>"; };
+		4733D262139D7363006941EC /* XMLRPCResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLRPCResponse.m; sourceTree = "<group>"; };
+		477D2764139E88310044F9BA /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		477D2765139E88310044F9BA /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
+		477D2767139E88480044F9BA /* SplashView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashView.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* StatDiary-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "StatDiary-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,12 +87,15 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4733D24D139D7347006941EC /* XMLRPC */,
 				1D3623240D0F684500981E51 /* StatDiaryAppDelegate.h */,
 				1D3623250D0F684500981E51 /* StatDiaryAppDelegate.m */,
 				4733D1C6139D3EE9006941EC /* ApplicationViewController.h */,
 				4733D1C7139D3EE9006941EC /* ApplicationViewController.m */,
 				4733D1EE139D465E006941EC /* LoginViewController.h */,
 				4733D1EF139D465E006941EC /* LoginViewController.m */,
+				477D2764139E88310044F9BA /* SplashViewController.h */,
+				477D2765139E88310044F9BA /* SplashViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -98,6 +135,7 @@
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* StatDiary-Info.plist */,
 				4733D1F1139D466B006941EC /* LoginView.xib */,
+				477D2767139E88480044F9BA /* SplashView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -110,6 +148,33 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4733D24D139D7347006941EC /* XMLRPC */ = {
+			isa = PBXGroup;
+			children = (
+				4733D24F139D7363006941EC /* NSDataAdditions.h */,
+				4733D250139D7363006941EC /* NSDataAdditions.m */,
+				4733D251139D7363006941EC /* NSStringAdditions.h */,
+				4733D252139D7363006941EC /* NSStringAdditions.m */,
+				4733D253139D7363006941EC /* XMLRPCConnectionDelegate.h */,
+				4733D254139D7363006941EC /* XMLRPC.h */,
+				4733D255139D7363006941EC /* XMLRPCConnection.h */,
+				4733D256139D7363006941EC /* XMLRPCConnection.m */,
+				4733D257139D7363006941EC /* XMLRPCConnectionManager.h */,
+				4733D258139D7363006941EC /* XMLRPCConnectionManager.m */,
+				4733D259139D7363006941EC /* XMLRPCEncoder.h */,
+				4733D25A139D7363006941EC /* XMLRPCEncoder.m */,
+				4733D25B139D7363006941EC /* XMLRPCEventBasedParser.h */,
+				4733D25C139D7363006941EC /* XMLRPCEventBasedParser.m */,
+				4733D25D139D7363006941EC /* XMLRPCEventBasedParserDelegate.h */,
+				4733D25E139D7363006941EC /* XMLRPCEventBasedParserDelegate.m */,
+				4733D25F139D7363006941EC /* XMLRPCRequest.h */,
+				4733D260139D7363006941EC /* XMLRPCRequest.m */,
+				4733D261139D7363006941EC /* XMLRPCResponse.h */,
+				4733D262139D7363006941EC /* XMLRPCResponse.m */,
+			);
+			name = XMLRPC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +228,7 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				4733D1F2139D466B006941EC /* LoginView.xib in Resources */,
+				477D2768139E88480044F9BA /* SplashView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +243,16 @@
 				1D3623260D0F684500981E51 /* StatDiaryAppDelegate.m in Sources */,
 				4733D1C8139D3EE9006941EC /* ApplicationViewController.m in Sources */,
 				4733D1F0139D465E006941EC /* LoginViewController.m in Sources */,
+				4733D263139D7363006941EC /* NSDataAdditions.m in Sources */,
+				4733D264139D7363006941EC /* NSStringAdditions.m in Sources */,
+				4733D265139D7363006941EC /* XMLRPCConnection.m in Sources */,
+				4733D266139D7363006941EC /* XMLRPCConnectionManager.m in Sources */,
+				4733D267139D7363006941EC /* XMLRPCEncoder.m in Sources */,
+				4733D268139D7363006941EC /* XMLRPCEventBasedParser.m in Sources */,
+				4733D269139D7363006941EC /* XMLRPCEventBasedParserDelegate.m in Sources */,
+				4733D26A139D7363006941EC /* XMLRPCRequest.m in Sources */,
+				4733D26B139D7363006941EC /* XMLRPCResponse.m in Sources */,
+				477D2766139E88310044F9BA /* SplashViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +268,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = StatDiary_Prefix.pch;
+				HEADER_SEARCH_PATHS = "/Users/itarato/Downloads/CHECKOUT/xmlrpc/**";
 				INFOPLIST_FILE = "StatDiary-Info.plist";
 				PRODUCT_NAME = StatDiary;
 			};
@@ -204,6 +281,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = StatDiary_Prefix.pch;
+				HEADER_SEARCH_PATHS = "/Users/itarato/Downloads/CHECKOUT/xmlrpc/**";
 				INFOPLIST_FILE = "StatDiary-Info.plist";
 				PRODUCT_NAME = StatDiary;
 				VALIDATE_PRODUCT = YES;
@@ -218,6 +296,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "/Users/itarato/Downloads/CHECKOUT/xmlrpc/XMLRPC/**";
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
@@ -231,6 +310,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "/Users/itarato/Downloads/CHECKOUT/xmlrpc/XMLRPC/**";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
