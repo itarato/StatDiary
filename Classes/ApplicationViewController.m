@@ -9,16 +9,19 @@
 #import "ApplicationViewController.h"
 #import "SplashViewController.h"
 #import "LoginViewController.h"
+#import "MyDataNavigationController.h"
+#import "Globals.h"
 
 @implementation ApplicationViewController
 
 @synthesize splashViewController;
 @synthesize loginViewController;
-
+@synthesize myDataNavigationController;
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
 	if ((self = [super initWithCoder:aDecoder])) {
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSuccessConnection:) name:@"onSuccessConnection" object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSuccessAuthentication:) name:@"onSuccessAuthentication" object:nil];
 	}
 	
 	NSLog(@"init");
@@ -72,17 +75,27 @@
 
 - (void)onSuccessConnection:(NSNotification *)notification {
 	id result = (id)[notification object];
-	sessionID = [result valueForKey:@"sessid"];
-	uid = (int)[[result valueForKey:@"user"] valueForKey:@"uid"];
-	//userName = loginViewController.userNameField.text;
-	//password = loginViewController.passwordField.text;
+	Globals *globals = [Globals sharedInstance];
+	globals.sessionID = [result valueForKey:@"sessid"];
+	uid = [result valueForKeyPath:@"user.uid"];
 	
 	[splashViewController.view removeFromSuperview];
-	loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
-	loginViewController.sessionID = sessionID;
-	[self.view insertSubview:loginViewController.view atIndex:0];
+	if ([uid intValue] > 0) {
+		myDataNavigationController = [[MyDataNavigationController alloc] init];
+		[self.view insertSubview:myDataNavigationController.view atIndex:0];
+	} else {
+		loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+		loginViewController.sessionID = globals.sessionID;
+		[self.view insertSubview:loginViewController.view atIndex:0];
+	}
 }
 
+
+- (void)onSuccessAuthentication:(NSNotification *)notification {
+	[loginViewController.view removeFromSuperview];
+	myDataNavigationController = [[MyDataNavigationController alloc] init];
+	[self.view insertSubview:myDataNavigationController.view atIndex:0];
+}
 
 
 @end

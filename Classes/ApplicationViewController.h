@@ -10,20 +10,23 @@
 
 @class SplashViewController;
 @class LoginViewController;
+@class MyDataNavigationController;
 
 @interface ApplicationViewController : UIViewController {
 	SplashViewController *splashViewController;
 	LoginViewController *loginViewController;
+	MyDataNavigationController *myDataNavigationController;
 	
-	NSString *sessionID;
 	NSString *userName;
 	NSString *password;
-	int uid;
+	NSNumber *uid;
 }
 
 @property (nonatomic, retain) SplashViewController *splashViewController;
 @property (nonatomic, retain) LoginViewController *loginViewController;
+@property (nonatomic, retain) MyDataNavigationController *myDataNavigationController;
 
 - (void)onSuccessConnection:(NSNotification *)notification;
+- (void)onSuccessAuthentication:(NSNotification *)notification;
 
 @end

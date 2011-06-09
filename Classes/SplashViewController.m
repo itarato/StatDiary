@@ -33,7 +33,7 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:@"http://l/mystat/services/xmlrpc"]];
+	XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
 	[request setMethod:@"system.connect"];
 	XMLRPCConnectionManager *connectionManager = [XMLRPCConnectionManager sharedManager];
 	[connectionManager spawnConnectionWithXMLRPCRequest:request delegate:self];
@@ -84,8 +84,8 @@
 		NSLog(@"Error");
 	} else {
 		NSLog(@"success");
-		[[NSNotificationCenter defaultCenter] postNotificationName:@"onSuccessConnection" object:[response object]];
 		NSLog(@"%@", [response object]);
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"onSuccessConnection" object:[response object]];
 	}
 }
 

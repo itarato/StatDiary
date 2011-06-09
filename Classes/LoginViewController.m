@@ -67,8 +67,8 @@
 
 - (void)onPressLoginButton:(id)sender {
 	NSLog(@"press");
-	XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:@"http://l/mystat/services/xmlrpc"]];
-	[request setMethod:@"user.login" withParameters:[NSArray arrayWithObjects:sessionID, @"admin", @"aaa", nil]];
+	XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
+	[request setMethod:@"user.login" withParameters:[NSArray arrayWithObjects:sessionID, userNameField.text, passwordField.text, nil]];
 	XMLRPCConnectionManager *connectionManager = [XMLRPCConnectionManager sharedManager];
 	[connectionManager spawnConnectionWithXMLRPCRequest:request delegate:self];
 	[request release];
@@ -77,7 +77,7 @@
 
 - (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
 	NSLog(@"didFailWithError");
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network error" message:@"Cannot connect to StatDiary." delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network error" message:@"Cannot connect to StatDiary." delegate:nil cancelButtonTitle:@"Sad panda" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
 }
@@ -88,6 +88,7 @@
 	} else {
 		NSLog(@"login success");
 		NSLog(@"%@", [response object]);
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"onSuccessAuthentication" object:[response object]];
 	}
 }
 
