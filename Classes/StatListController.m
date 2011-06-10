@@ -13,20 +13,24 @@
 
 @implementation StatListController
 
+@synthesize myStats;
 
 #pragma mark -
 #pragma mark Initialization
 
-/*
+
 - (id)initWithStyle:(UITableViewStyle)style {
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
     self = [super initWithStyle:style];
     if (self) {
+		
+		NSLog(@"init table view");
+		myStats = nil;
         // Custom initialization.
     }
     return self;
 }
-*/
+
 
 
 #pragma mark -
@@ -83,7 +87,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 6;
+	NSLog(@"DATA");
+    return (myStats == nil) ? 0 : [myStats count];
 }
 
 
@@ -98,8 +103,8 @@
     }
     
     // Configure the cell...
-	cell.textLabel.text = @"Foo bar";
-    
+	cell.textLabel.text = [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"title"];
+	
     return cell;
 }
 
@@ -217,7 +222,10 @@
 	if ([response isFault]) {
 		NSLog(@"my list error");
 	} else {
-		NSLog(@"got the list: %@", [response object]);
+		//NSLog(@"got the list: %@", [response object]);
+		myStats = [[NSMutableArray alloc] initWithArray:[response object]];
+		NSLog(@"Count: %d", [myStats count]);
+		[self.tableView reloadData];
 	}
 }
 

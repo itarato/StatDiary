@@ -11,8 +11,10 @@
 
 
 @interface StatListController : UITableViewController <XMLRPCConnectionDelegate> {
-
+	NSMutableArray *myStats;
 }
+
+@property (nonatomic, retain) NSMutableArray *myStats;
 
 -(void)reloadStatData;
 
