@@ -9,11 +9,13 @@
 #import "StatListController.h"
 #import <XMLRPC/XMLRPC.h>
 #import "Globals.h"
+#import "StatDetailsViewController.h"
 
 
 @implementation StatListController
 
 @synthesize myStats;
+@synthesize statDetailsViewController;
 
 #pragma mark -
 #pragma mark Initialization
@@ -26,6 +28,7 @@
 		
 		NSLog(@"init table view");
 		myStats = nil;
+		statDetailsViewController = [[StatDetailsViewController alloc] initWithNibName:@"StatDetailsView" bundle:nil];
         // Custom initialization.
     }
     return self;
@@ -39,6 +42,7 @@
 
 - (void)viewDidLoad {
 	[self reloadStatData];
+//	self.view.frame = CGRectMake(0.0f, 40.0f, self.view.frame.size.width, self.view.frame.size.height);
 	
     [super viewDidLoad];
 
@@ -100,6 +104,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     }
     
     // Configure the cell...
@@ -147,6 +152,13 @@
     return YES;
 }
 */
+
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+	NSLog(@"TAP");
+	statDetailsViewController.title = [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"title"];
+	[self.navigationController pushViewController:statDetailsViewController animated:YES];
+}
 
 
 #pragma mark -

@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <XMLRPC/XMLRPCConnectionDelegate.h>
 
+@class StatDetailsViewController;
 
 @interface StatListController : UITableViewController <XMLRPCConnectionDelegate> {
 	NSMutableArray *myStats;
+	StatDetailsViewController *statDetailsViewController;
 }
 
 @property (nonatomic, retain) NSMutableArray *myStats;
+@property (nonatomic, retain) StatDetailsViewController *statDetailsViewController;
 
 -(void)reloadStatData;
 

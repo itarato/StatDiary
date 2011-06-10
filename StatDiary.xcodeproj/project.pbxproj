@@ -29,6 +29,8 @@
 		4733D26B139D7363006941EC /* XMLRPCResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D262139D7363006941EC /* XMLRPCResponse.m */; };
 		477D2766139E88310044F9BA /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477D2765139E88310044F9BA /* SplashViewController.m */; };
 		477D2768139E88480044F9BA /* SplashView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 477D2767139E88480044F9BA /* SplashView.xib */; };
+		4787F45013A2BDD2002B9636 /* StatDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */; };
+		4787F45313A2BDF9002B9636 /* StatDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4787F45213A2BDF9002B9636 /* StatDetailsView.xib */; };
 		47B9461413A1455C001326FC /* Defines.c in Sources */ = {isa = PBXBuildFile; fileRef = 47B9461313A1455C001326FC /* Defines.c */; };
 		47B9465E13A16BA2001326FC /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B9465D13A16BA2001326FC /* Globals.m */; };
 /* End PBXBuildFile section */
@@ -75,6 +77,9 @@
 		477D2764139E88310044F9BA /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		477D2765139E88310044F9BA /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		477D2767139E88480044F9BA /* SplashView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashView.xib; sourceTree = "<group>"; };
+		4787F44E13A2BDD2002B9636 /* StatDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatDetailsViewController.h; sourceTree = "<group>"; };
+		4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatDetailsViewController.m; sourceTree = "<group>"; };
+		4787F45213A2BDF9002B9636 /* StatDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatDetailsView.xib; sourceTree = "<group>"; };
 		47B9461213A1455C001326FC /* Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		47B9461313A1455C001326FC /* Defines.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Defines.c; sourceTree = "<group>"; };
 		47B9465C13A16BA2001326FC /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
@@ -116,6 +121,8 @@
 				47B9461313A1455C001326FC /* Defines.c */,
 				47B9465C13A16BA2001326FC /* Globals.h */,
 				47B9465D13A16BA2001326FC /* Globals.m */,
+				4787F44E13A2BDD2002B9636 /* StatDetailsViewController.h */,
+				4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -156,6 +163,7 @@
 				8D1107310486CEB800E47090 /* StatDiary-Info.plist */,
 				4733D1F1139D466B006941EC /* LoginView.xib */,
 				477D2767139E88480044F9BA /* SplashView.xib */,
+				4787F45213A2BDF9002B9636 /* StatDetailsView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -249,6 +257,7 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				4733D1F2139D466B006941EC /* LoginView.xib in Resources */,
 				477D2768139E88480044F9BA /* SplashView.xib in Resources */,
+				4787F45313A2BDF9002B9636 /* StatDetailsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +286,7 @@
 				4732D624139F43AD00CADBB3 /* StatListController.m in Sources */,
 				47B9461413A1455C001326FC /* Defines.c in Sources */,
 				47B9465E13A16BA2001326FC /* Globals.m in Sources */,
+				4787F45013A2BDD2002B9636 /* StatDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

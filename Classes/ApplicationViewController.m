@@ -40,6 +40,7 @@
 - (void)viewDidLoad {
 	splashViewController = [[SplashViewController alloc] initWithNibName:@"SplashView" bundle:nil];
 	[self.view insertSubview:splashViewController.view atIndex:0];
+	NSLog(@"Y: %d", self.view.frame.origin.y);
     [super viewDidLoad];
 }
 
@@ -83,6 +84,8 @@
 	if ([uid intValue] > 0) {
 		myDataNavigationController = [[MyDataNavigationController alloc] init];
 		[self.view insertSubview:myDataNavigationController.view atIndex:0];
+//		[myDataNavigationController.view setFrame:self.view.bounds];
+//		myDataNavigationController.navigationBar.frame = CGRectMake(0.0f, 0.0f, myDataNavigationController.navigationBar.frame.size.width, myDataNavigationController.navigationBar.frame.size.height);
 	} else {
 		loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
 		loginViewController.sessionID = globals.sessionID;

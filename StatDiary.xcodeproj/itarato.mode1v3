@@ -276,8 +276,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>14</integer>
-									<integer>1</integer>
+									<integer>29</integer>
+									<integer>24</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -331,7 +331,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>4787F44B13A29E21002B9636</string>
+										<string>4787F4E513A2D082002B9636</string>
 										<key>history</key>
 										<array>
 											<string>4733D26E139D7386006941EC</string>
@@ -349,14 +349,15 @@
 											<string>47B9467513A16F05001326FC</string>
 											<string>47B9467613A16F05001326FC</string>
 											<string>47B946B413A17A9A001326FC</string>
-											<string>47B946C713A17CEB001326FC</string>
 											<string>47B946D213A180AA001326FC</string>
-											<string>4799660013A1F1A00049F1AB</string>
 											<string>4799660113A1F1A00049F1AB</string>
 											<string>4799660213A1F1A00049F1AB</string>
-											<string>4799661013A1F2130049F1AB</string>
-											<string>4787F43713A29D48002B9636</string>
-											<string>4787F43813A29D48002B9636</string>
+											<string>4787F46213A2C0D5002B9636</string>
+											<string>4787F4B713A2C9B1002B9636</string>
+											<string>4787F4B813A2C9B1002B9636</string>
+											<string>4787F4D313A2CE24002B9636</string>
+											<string>4787F4DC13A2CEED002B9636</string>
+											<string>4787F4DD13A2CEED002B9636</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -581,7 +582,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>StatListController.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -598,6 +599,8 @@
 							<string>110pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -650,7 +653,7 @@
 			<key>WindowToolGUID</key>
 			<string>47305798139BDAA600F6A518</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -906,7 +909,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {594, 674}}</string>
 								<key>RubberWindowFrame</key>
-								<string>833 46 594 715 0 0 1440 878 </string>
+								<string>811 46 594 715 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
@@ -935,7 +938,7 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>833 46 594 715 0 0 1440 878 </string>
+			<string>811 46 594 715 0 0 1440 878 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
