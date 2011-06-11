@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @class StatListController;
+@class LoginViewController;
 
 @interface MyDataNavigationController : UINavigationController {
 	StatListController *statListController;
+	LoginViewController *loginViewController;
 }
 
 @property (nonatomic, retain) StatListController *statListController;
+@property (nonatomic, retain) LoginViewController *loginViewController;
 
 @end

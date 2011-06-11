@@ -8,10 +8,12 @@
 
 #import "MyDataNavigationController.h"
 #import "StatListController.h"
+#import "LoginViewController.h"
 
 @implementation MyDataNavigationController
 
 @synthesize statListController;
+@synthesize loginViewController;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -40,14 +42,16 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	statListController = [[StatListController alloc] init];
-	statListController.title = @"My Stats";
-	[self pushViewController:statListController animated:NO];
+	loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+	loginViewController.title = @"Login to StatDiary";
+	[self pushViewController:loginViewController animated:NO];
     [super viewDidLoad];
 	
-	CGRect frame = self.view.frame;
-	frame.origin.y = -20.0f;
-	self.view.frame = frame;
+	NSLog(@"Nav ctrl init");
+	
+//	CGRect frame = self.view.frame;
+//	frame.origin.y = -20.0f;
+//	self.view.frame = frame;
 }
 
 

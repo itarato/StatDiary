@@ -8,23 +8,29 @@
 
 #import "LoginViewController.h"
 #import <XMLRPC/XMLRPC.h>
+#import "Globals.h"
+#import "StatListController.h"
+
 
 @implementation LoginViewController
 
 @synthesize userNameField;
 @synthesize passwordField;
-@synthesize sessionID;
+@synthesize statListController;
+@synthesize connectionRequest;
+@synthesize loginRequest;
+
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization.
+		connectionRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
+		loginRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
     }
     return self;
 }
-*/
 
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
@@ -32,20 +38,16 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	[connectionRequest setMethod:@"system.connect"];
+	XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
+	[connManager spawnConnectionWithXMLRPCRequest:connectionRequest delegate:self];
+	
     [super viewDidLoad];
 }
-*/
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -65,30 +67,57 @@
     [super dealloc];
 }
 
+
+#pragma mark --
+#pragma mark Custom actions
+
 - (void)onPressLoginButton:(id)sender {
-	NSLog(@"press");
-	XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
-	[request setMethod:@"user.login" withParameters:[NSArray arrayWithObjects:sessionID, userNameField.text, passwordField.text, nil]];
+	Globals *global = [Globals sharedInstance];
+	[loginRequest setMethod:@"user.login" withParameters:[NSArray arrayWithObjects:global.sessionID, userNameField.text, passwordField.text, nil]];
 	XMLRPCConnectionManager *connectionManager = [XMLRPCConnectionManager sharedManager];
-	[connectionManager spawnConnectionWithXMLRPCRequest:request delegate:self];
-	[request release];
+	[connectionManager spawnConnectionWithXMLRPCRequest:loginRequest delegate:self];
 }
 
 
+- (void) loadStatList {
+	statListController = [[StatListController alloc] init];
+	[self.navigationController pushViewController:statListController animated:YES];
+}
+
+
+#pragma mark --
+#pragma mark XMLRPC delegates
+
 - (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
-	NSLog(@"didFailWithError");
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network error" message:@"Cannot connect to StatDiary." delegate:nil cancelButtonTitle:@"Sad panda" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
 }
 
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
-	if ([response isFault]) {
-		NSLog(@"Login Error: %@", [response object]);
-	} else {
-		NSLog(@"login success");
-		NSLog(@"%@", [response object]);
-		[[NSNotificationCenter defaultCenter] postNotificationName:@"onSuccessAuthentication" object:[response object]];
+	if (request == connectionRequest) {
+		if ([response isFault]) {
+			NSLog(@"Login Error: %@", [response object]);
+		} else {
+			//NSLog(@"login success");
+			//NSLog(@"%@", [response object]);
+			//[[NSNotificationCenter defaultCenter] postNotificationName:@"onSuccessAuthentication" object:[response object]];
+			Globals *globals = [Globals sharedInstance];
+			globals.uid = [[[response object] valueForKey:@"user"] valueForKey:@"uid"];
+			globals.sessionID = [[response object] valueForKey:@"sessid"];
+			
+			// User is already logged in.
+			if ([globals.uid intValue] > 0) {
+				[self loadStatList];
+			}
+		}
+	} else if (request == loginRequest) {
+		if ([response isFault]) {
+			NSLog(@"Login error");
+		} else {
+			NSLog(@"Login success");
+			[self loadStatList];
+		}
 	}
 }
 

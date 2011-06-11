@@ -7,12 +7,12 @@
 //
 
 #import "StatDiaryAppDelegate.h"
-#import "ApplicationViewController.h"
+#import "MyDataNavigationController.h"
 
 @implementation StatDiaryAppDelegate
 
 @synthesize window;
-@synthesize applicationViewController;
+@synthesize myDataNavigationController;
 
 
 #pragma mark -
@@ -21,9 +21,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
     // Override point for customization after application launch.
-    
+	
+	NSLog(@"App init");
+	
     [self.window makeKeyAndVisible];
-	[self.window addSubview:applicationViewController.view];
+	
+	myDataNavigationController = [[MyDataNavigationController alloc] init];
+	[self.window addSubview:myDataNavigationController.view];
     
     return YES;
 }

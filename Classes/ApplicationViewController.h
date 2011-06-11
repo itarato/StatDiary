@@ -8,23 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@class SplashViewController;
-@class LoginViewController;
 @class MyDataNavigationController;
+@class LoginViewController;
+
 
 @interface ApplicationViewController : UIViewController {
-	SplashViewController *splashViewController;
-	LoginViewController *loginViewController;
 	MyDataNavigationController *myDataNavigationController;
+	LoginViewController *loginViewController;
 	
 	NSString *userName;
 	NSString *password;
 	NSNumber *uid;
 }
 
-@property (nonatomic, retain) SplashViewController *splashViewController;
-@property (nonatomic, retain) LoginViewController *loginViewController;
 @property (nonatomic, retain) MyDataNavigationController *myDataNavigationController;
+@property (nonatomic, retain) LoginViewController *loginViewController;
 
 - (void)onSuccessConnection:(NSNotification *)notification;
 - (void)onSuccessAuthentication:(NSNotification *)notification;

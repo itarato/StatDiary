@@ -11,9 +11,11 @@
 
 @interface Globals : NSObject {
 	NSString *sessionID;
+	NSNumber *uid;
 }
 
 @property (nonatomic, retain) NSString *sessionID;
+@property (nonatomic, retain) NSNumber *uid;
 
 + (Globals *) sharedInstance;
 

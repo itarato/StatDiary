@@ -27,7 +27,6 @@
 		4733D269139D7363006941EC /* XMLRPCEventBasedParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D25E139D7363006941EC /* XMLRPCEventBasedParserDelegate.m */; };
 		4733D26A139D7363006941EC /* XMLRPCRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D260139D7363006941EC /* XMLRPCRequest.m */; };
 		4733D26B139D7363006941EC /* XMLRPCResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D262139D7363006941EC /* XMLRPCResponse.m */; };
-		477D2766139E88310044F9BA /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 477D2765139E88310044F9BA /* SplashViewController.m */; };
 		477D2768139E88480044F9BA /* SplashView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 477D2767139E88480044F9BA /* SplashView.xib */; };
 		4787F45013A2BDD2002B9636 /* StatDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */; };
 		4787F45313A2BDF9002B9636 /* StatDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4787F45213A2BDF9002B9636 /* StatDetailsView.xib */; };
@@ -74,8 +73,6 @@
 		4733D260139D7363006941EC /* XMLRPCRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLRPCRequest.m; sourceTree = "<group>"; };
 		4733D261139D7363006941EC /* XMLRPCResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLRPCResponse.h; sourceTree = "<group>"; };
 		4733D262139D7363006941EC /* XMLRPCResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLRPCResponse.m; sourceTree = "<group>"; };
-		477D2764139E88310044F9BA /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
-		477D2765139E88310044F9BA /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		477D2767139E88480044F9BA /* SplashView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashView.xib; sourceTree = "<group>"; };
 		4787F44E13A2BDD2002B9636 /* StatDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatDetailsViewController.h; sourceTree = "<group>"; };
 		4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatDetailsViewController.m; sourceTree = "<group>"; };
@@ -111,18 +108,16 @@
 				4733D1C7139D3EE9006941EC /* ApplicationViewController.m */,
 				4733D1EE139D465E006941EC /* LoginViewController.h */,
 				4733D1EF139D465E006941EC /* LoginViewController.m */,
-				477D2764139E88310044F9BA /* SplashViewController.h */,
-				477D2765139E88310044F9BA /* SplashViewController.m */,
 				4732D61F139F407000CADBB3 /* MyDataNavigationController.h */,
 				4732D620139F407000CADBB3 /* MyDataNavigationController.m */,
 				4732D622139F43AD00CADBB3 /* StatListController.h */,
 				4732D623139F43AD00CADBB3 /* StatListController.m */,
+				4787F44E13A2BDD2002B9636 /* StatDetailsViewController.h */,
+				4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */,
 				47B9461213A1455C001326FC /* Defines.h */,
 				47B9461313A1455C001326FC /* Defines.c */,
 				47B9465C13A16BA2001326FC /* Globals.h */,
 				47B9465D13A16BA2001326FC /* Globals.m */,
-				4787F44E13A2BDD2002B9636 /* StatDetailsViewController.h */,
-				4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -281,7 +276,6 @@
 				4733D269139D7363006941EC /* XMLRPCEventBasedParserDelegate.m in Sources */,
 				4733D26A139D7363006941EC /* XMLRPCRequest.m in Sources */,
 				4733D26B139D7363006941EC /* XMLRPCResponse.m in Sources */,
-				477D2766139E88310044F9BA /* SplashViewController.m in Sources */,
 				4732D621139F407000CADBB3 /* MyDataNavigationController.m in Sources */,
 				4732D624139F43AD00CADBB3 /* StatListController.m in Sources */,
 				47B9461413A1455C001326FC /* Defines.c in Sources */,

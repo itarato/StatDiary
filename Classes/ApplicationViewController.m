@@ -7,16 +7,14 @@
 //
 
 #import "ApplicationViewController.h"
-#import "SplashViewController.h"
-#import "LoginViewController.h"
 #import "MyDataNavigationController.h"
+#import "LoginViewController.h"
 #import "Globals.h"
 
 @implementation ApplicationViewController
 
-@synthesize splashViewController;
-@synthesize loginViewController;
 @synthesize myDataNavigationController;
+@synthesize loginViewController;
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
 	if ((self = [super initWithCoder:aDecoder])) {
@@ -24,34 +22,19 @@
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSuccessAuthentication:) name:@"onSuccessAuthentication" object:nil];
 	}
 	
-	NSLog(@"init");
-		
 	return self;
 }
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	splashViewController = [[SplashViewController alloc] initWithNibName:@"SplashView" bundle:nil];
-	[self.view insertSubview:splashViewController.view atIndex:0];
-	NSLog(@"Y: %d", self.view.frame.origin.y);
+//	loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+//	myDataNavigationController = [[MyDataNavigationController alloc] initWithRootViewController:loginViewController]
+//	[self.view insertSubview: atIndex:0];
+//	NSLog(@"Y: %d", self.view.frame.origin.y);
     [super viewDidLoad];
 }
 
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -69,7 +52,7 @@
 
 - (void)dealloc {
 	[loginViewController release];
-	[splashViewController release];
+//	[splashViewController release];
     [super dealloc];
 }
 
@@ -80,7 +63,7 @@
 	globals.sessionID = [result valueForKey:@"sessid"];
 	uid = [result valueForKeyPath:@"user.uid"];
 	
-	[splashViewController.view removeFromSuperview];
+//	[splashViewController.view removeFromSuperview];
 	if ([uid intValue] > 0) {
 		myDataNavigationController = [[MyDataNavigationController alloc] init];
 		[self.view insertSubview:myDataNavigationController.view atIndex:0];
@@ -88,7 +71,7 @@
 //		myDataNavigationController.navigationBar.frame = CGRectMake(0.0f, 0.0f, myDataNavigationController.navigationBar.frame.size.width, myDataNavigationController.navigationBar.frame.size.height);
 	} else {
 		loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
-		loginViewController.sessionID = globals.sessionID;
+		//loginViewController.sessionID = globals.sessionID;
 		[self.view insertSubview:loginViewController.view atIndex:0];
 	}
 }

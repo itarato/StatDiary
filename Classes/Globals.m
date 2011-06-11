@@ -12,6 +12,8 @@
 @implementation Globals
 
 @synthesize sessionID;
+@synthesize uid;
+
 
 + (Globals *)sharedInstance {
 	static Globals *instance = nil;

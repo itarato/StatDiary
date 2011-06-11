@@ -156,6 +156,7 @@
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
 	NSLog(@"TAP");
+	statDetailsViewController.nid = [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"nid"];
 	statDetailsViewController.title = [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"title"];
 	[self.navigationController pushViewController:statDetailsViewController animated:YES];
 }
