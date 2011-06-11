@@ -43,7 +43,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
-	loginViewController.title = @"Login to StatDiary";
+	loginViewController.title = @"StatDiary";
 	[self pushViewController:loginViewController animated:NO];
     [super viewDidLoad];
 	

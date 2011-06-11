@@ -43,7 +43,6 @@
 - (void)viewDidLoad {
 	[self reloadStatData];
 //	self.view.frame = CGRectMake(0.0f, 40.0f, self.view.frame.size.width, self.view.frame.size.height);
-	
     [super viewDidLoad];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -103,12 +102,16 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     }
     
     // Configure the cell...
 	cell.textLabel.text = [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"title"];
+	cell.detailTextLabel.text = [NSString stringWithFormat:
+								 @"%@ entry, latest %@", 
+								 [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"count"],
+								 [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"latest"]];
 	
     return cell;
 }
@@ -235,7 +238,9 @@
 	if ([response isFault]) {
 		NSLog(@"my list error");
 	} else {
+		//self.navigationController.navigationBar.backItem.title = @"Log out";
 		//NSLog(@"got the list: %@", [response object]);
+//		NSLog(@"Response %@", [response object]);
 		myStats = [[NSMutableArray alloc] initWithArray:[response object]];
 		NSLog(@"Count: %d", [myStats count]);
 		[self.tableView reloadData];

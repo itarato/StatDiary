@@ -131,6 +131,7 @@
 		NSLog(@"Data save error");
 	} else {
 		NSLog(@"Data save success");
+		[self.navigationController popViewControllerAnimated:YES];
 	}
 }
 

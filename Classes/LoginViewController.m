@@ -81,7 +81,9 @@
 
 - (void) loadStatList {
 	statListController = [[StatListController alloc] init];
+	statListController.title = @"My Stats";
 	[self.navigationController pushViewController:statListController animated:YES];
+	self.navigationController.navigationBar.backItem.title = @"Log out";
 }
 
 
