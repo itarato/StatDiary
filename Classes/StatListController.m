@@ -221,6 +221,12 @@
 
 
 - (void)dealloc {
+	[myStats release];
+	[statDetailsViewController release];
+	[loginViewController release];
+	[myListRequest release];
+	[logOutRequest release];
+	[networkIndicator release];
     [super dealloc];
 }
 
@@ -254,6 +260,7 @@
 + (NSString *)elapsedTimeFromTimestamp:(NSNumber *)timestamp {
 	NSDate *now = [[NSDate alloc] init];
 	double secs = [now timeIntervalSince1970] - [timestamp doubleValue];
+	[now release];
 	
 	NSString *text;
 	
@@ -308,9 +315,6 @@
 		if ([response isFault]) {
 			NSLog(@"my list error");
 		} else {
-			//self.navigationController.navigationBar.backItem.title = @"Log out";
-			//NSLog(@"got the list: %@", [response object]);
-	//		NSLog(@"Response %@", [response object]);
 			myStats = [[NSMutableArray alloc] initWithArray:[response object]];
 			NSLog(@"Count: %d", [myStats count]);
 			[self.tableView reloadData];

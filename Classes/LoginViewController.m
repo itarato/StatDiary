@@ -35,12 +35,6 @@
     return self;
 }
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -65,6 +59,7 @@
     // Release any cached data, images, etc. that aren't in use.
 }
 
+
 - (void)viewDidUnload {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -73,6 +68,13 @@
 
 
 - (void)dealloc {
+	[userNameField release];
+	[passwordField release];
+	[loginButton release];
+	[statListController release];
+	[connectionRequest release];
+	[loginRequest release];
+	[networkIndicator release];
     [super dealloc];
 }
 

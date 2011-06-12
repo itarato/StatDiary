@@ -82,6 +82,7 @@
 
 
 - (void)dealloc {
+	[myDataNavigationController release];
     [window release];
     [super dealloc];
 }
