@@ -42,7 +42,7 @@
 				<int key="NSvFlags">274</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBUIImageView" id="482444882">
+					<object class="IBUIImageView" id="650330339">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, -64}, {320, 480}}</string>
@@ -59,7 +59,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{107, 20}, {193, 31}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<object class="NSColor" key="IBUIBackgroundColor" id="899584191">
+						<object class="NSColor" key="IBUIBackgroundColor" id="120321192">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
 						</object>
@@ -97,7 +97,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Entry:</string>
-						<object class="NSColor" key="IBUITextColor" id="756623288">
+						<object class="NSColor" key="IBUITextColor" id="12891506">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwIDAAA</bytes>
 						</object>
@@ -152,7 +152,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{25, 108}, {270, 84}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="IBUIBackgroundColor" ref="899584191"/>
+						<reference key="IBUIBackgroundColor" ref="120321192"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -163,7 +163,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
 					</object>
-					<object class="IBUILabel" id="289813945">
+					<object class="IBUILabel" id="593473295">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 76}, {79, 21}}</string>
@@ -174,7 +174,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Comment:</string>
-						<reference key="IBUITextColor" ref="756623288"/>
+						<reference key="IBUITextColor" ref="12891506"/>
 						<reference key="IBUIHighlightedColor" ref="683098390"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
@@ -255,9 +255,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 							<reference ref="1029928624"/>
 							<reference ref="967055866"/>
 							<reference ref="188898607"/>
-							<reference ref="289813945"/>
+							<reference ref="593473295"/>
 							<reference ref="929795203"/>
-							<reference ref="482444882"/>
+							<reference ref="650330339"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -294,12 +294,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">15</int>
-						<reference key="object" ref="289813945"/>
+						<reference key="object" ref="593473295"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">17</int>
-						<reference key="object" ref="482444882"/>
+						<reference key="object" ref="650330339"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</object>

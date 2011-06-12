@@ -136,6 +136,7 @@
 								 @"%@ entry, latest %@", 
 								 [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"count"],
 								 [StatListController elapsedTimeFromTimestamp:[[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"latest"]]];
+	[cell setBackgroundColor: [UIColor colorWithRed:0.937f green:0.875f blue:0.77f alpha:1.0f]];
 	
     return cell;
 }

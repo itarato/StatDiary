@@ -55,6 +55,10 @@
 	networkIndicator.view.center = CGPointMake(self.view.center.x, 160.0f);
 	networkIndicator.view.hidden = YES;
 	
+	NSDate *now = [NSDate new];
+	[datePicker setDate:now];
+	[now release];
+	
     [super viewDidLoad];
 }
 
@@ -150,6 +154,11 @@
 		NSLog(@"Data save error");
 	} else {
 		NSLog(@"Data save success");
+		[entryField setText:@""];
+		[commentArea setText:@""];
+		NSDate *now = [NSDate new];
+		[datePicker setDate:now];
+		[now release];
 		[self.navigationController popViewControllerAnimated:YES];
 	}
 }
