@@ -16,6 +16,8 @@
 @interface LoginViewController : UIViewController <XMLRPCConnectionDelegate> {
 	IBOutlet UITextField *userNameField;
 	IBOutlet UITextField *passwordField;
+
+	IBOutlet UIButton *loginButton;
 	
 	StatListController *statListController;
 	
@@ -27,6 +29,7 @@
 
 @property (nonatomic, retain) IBOutlet UITextField *userNameField;
 @property (nonatomic, retain) IBOutlet UITextField *passwordField;
+@property (nonatomic, retain) IBOutlet UIButton *loginButton;
 @property (nonatomic, retain) XMLRPCRequest *connectionRequest;
 @property (nonatomic, retain) XMLRPCRequest *loginRequest;
 @property (nonatomic, retain) StatListController *statListController;

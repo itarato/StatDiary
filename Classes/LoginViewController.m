@@ -21,6 +21,7 @@
 @synthesize connectionRequest;
 @synthesize loginRequest;
 @synthesize networkIndicator;
+@synthesize loginButton;
 
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -48,6 +49,10 @@
 	networkIndicator.view.center = CGPointMake(self.view.center.x, 160.0f);
 	
 	[self connectWithDelay];
+	
+	UIImage *loginButtonBgr = [UIImage imageNamed:@"whiteButton.png"];
+	UIImage *loginButtonBgrStretched = [loginButtonBgr stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+	[loginButton setBackgroundImage:loginButtonBgrStretched forState:UIControlStateNormal];
 	
     [super viewDidLoad];
 }
