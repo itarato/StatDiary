@@ -12,6 +12,7 @@
 @class StatDetailsViewController;
 @class LoginViewController;
 @class XMLRPCRequest;
+@class IndicatorViewController;
 
 @interface StatListController : UITableViewController <XMLRPCConnectionDelegate> {
 	NSMutableArray *myStats;
@@ -19,6 +20,7 @@
 	LoginViewController *loginViewController;
 	XMLRPCRequest *myListRequest;
 	XMLRPCRequest *logOutRequest;
+	IndicatorViewController *networkIndicator;
 }
 
 @property (nonatomic, retain) NSMutableArray *myStats;
@@ -26,9 +28,11 @@
 @property (nonatomic, retain) LoginViewController *loginViewController;
 @property (nonatomic, retain) XMLRPCRequest *myListRequest;
 @property (nonatomic, retain) XMLRPCRequest *logOutRequest;
+@property (nonatomic, retain) IndicatorViewController *networkIndicator;
 
 - (void)reloadStatData;
 - (void)onSuccessLogin:(NSNotification *)notification;
 - (void)logout;
++ (NSString *)elapsedTimeFromTimestamp:(NSNumber *)timestamp;
 
 @end

@@ -11,7 +11,7 @@
 #import "Globals.h"
 #import "StatDetailsViewController.h"
 #import "LoginViewController.h"
-
+#import "IndicatorViewController.h"
 
 @implementation StatListController
 
@@ -20,6 +20,7 @@
 @synthesize loginViewController;
 @synthesize myListRequest;
 @synthesize logOutRequest;
+@synthesize networkIndicator;
 
 
 #pragma mark -
@@ -47,9 +48,6 @@
 
 
 - (void)viewDidLoad {
-//	[self reloadStatData];
-//	self.view.frame = CGRectMake(0.0f, 40.0f, self.view.frame.size.width, self.view.frame.size.height);
-	
 	loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
 	[self presentModalViewController:loginViewController animated:YES];
 	
@@ -57,18 +55,22 @@
 	
 	UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
 	UIBarButtonItem *logOutBarItem = [[UIBarButtonItem alloc] initWithTitle:@"Log out" style:UIBarButtonItemStyleBordered target:self action:@selector(logout)];
-	NSArray *items = [NSArray arrayWithObjects:space, logOutBarItem, space, nil];
+	UIBarButtonItem *refreshBarItem = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStyleBordered target:self action:@selector(reloadStatData)];
+	NSArray *items = [NSArray arrayWithObjects:space, logOutBarItem, space, refreshBarItem, space, nil];
 	self.toolbarItems = items;
 	[space release];
 	[logOutBarItem release];
+	[refreshBarItem release];
 	
 	myListRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
 	logOutRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
 	
+	networkIndicator = [[IndicatorViewController alloc] init];
+	[self.view addSubview:networkIndicator.view];
+	networkIndicator.view.center = CGPointMake(self.view.center.x, 160.0f);
+	networkIndicator.view.hidden = YES;
+	
     [super viewDidLoad];
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 
@@ -133,7 +135,7 @@
 	cell.detailTextLabel.text = [NSString stringWithFormat:
 								 @"%@ entry, latest %@", 
 								 [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"count"],
-								 [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"latest"]];
+								 [StatListController elapsedTimeFromTimestamp:[[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"latest"]]];
 	
     return cell;
 }
@@ -226,6 +228,7 @@
 #pragma mark Custom actions
 
 - (void)reloadStatData {
+	networkIndicator.view.hidden = NO;
 	Globals *globals = [Globals sharedInstance];
 	[myListRequest setMethod:@"mystat.myList" withParameter:globals.sessionID];
 	XMLRPCConnectionManager *connectionManager = [XMLRPCConnectionManager sharedManager];
@@ -239,10 +242,40 @@
 
 
 - (void)logout {
+	networkIndicator.view.hidden = NO;
 	Globals *global = [Globals sharedInstance];
 	[logOutRequest setMethod:@"user.logout" withParameter:global.sessionID];
 	XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
 	[connManager spawnConnectionWithXMLRPCRequest:logOutRequest delegate:self];
+}
+
+
++ (NSString *)elapsedTimeFromTimestamp:(NSNumber *)timestamp {
+	NSDate *now = [[NSDate alloc] init];
+	double secs = [now timeIntervalSince1970] - [timestamp doubleValue];
+	
+	NSString *text;
+	
+	if (secs < 0) {
+		text = @"in the future";
+		secs *= -1.0f;
+	} else {
+		text = @"ago";
+	}
+	
+	if ([timestamp intValue] == 0) {
+		return @"never";
+	} else if (secs < 1) {
+		return @"now";
+	} else if (secs < 120) {
+		return [NSString stringWithFormat:@"%d seconds %@", secs, text];
+	} else if (secs <  7200) {
+		return [NSString stringWithFormat:@"%0.0f minutes %@", floor(secs / 60.0f), text];
+	} else if (secs < 172800) {
+		return [NSString stringWithFormat:@"%0.0f hours %@", floor(secs / 3600.0f), text];
+	} else {
+		return [NSString stringWithFormat:@"%0.0f days %@", floor(secs / 86400.0f), text];
+	}
 }
 
 
@@ -260,6 +293,7 @@
 
 - (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
 	NSLog(@"list request error");
+	networkIndicator.view.hidden = YES;
 }
 
 
@@ -268,6 +302,7 @@
 
 
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
+	networkIndicator.view.hidden = YES;
 	if (request == myListRequest) {
 		if ([response isFault]) {
 			NSLog(@"my list error");

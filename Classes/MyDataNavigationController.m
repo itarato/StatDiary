@@ -38,6 +38,7 @@
 	statListController = [[StatListController alloc] init];
 	statListController.title = @"My Stats";
 	[self pushViewController:statListController animated:NO];
+	
     [super viewDidLoad];
 	
 

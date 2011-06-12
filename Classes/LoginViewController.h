@@ -11,6 +11,7 @@
 
 @class XMLRPCRequest;
 @class StatListController;
+@class IndicatorViewController;
 
 @interface LoginViewController : UIViewController <XMLRPCConnectionDelegate> {
 	IBOutlet UITextField *userNameField;
@@ -20,6 +21,8 @@
 	
 	XMLRPCRequest *connectionRequest;
 	XMLRPCRequest *loginRequest;
+	
+	IndicatorViewController *networkIndicator;
 }
 
 @property (nonatomic, retain) IBOutlet UITextField *userNameField;
@@ -27,6 +30,7 @@
 @property (nonatomic, retain) XMLRPCRequest *connectionRequest;
 @property (nonatomic, retain) XMLRPCRequest *loginRequest;
 @property (nonatomic, retain) StatListController *statListController;
+@property (nonatomic, retain) IndicatorViewController *networkIndicator;
 
 - (IBAction)onPressLoginButton:(id)sender;
 - (void)loadStatList;

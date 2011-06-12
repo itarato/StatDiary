@@ -9,13 +9,17 @@
 #import "StatDetailsViewController.h"
 #import <XMLRPC/XMLRPC.h>
 #import "Globals.h"
+#import "IndicatorViewController.h"
+
 
 @implementation StatDetailsViewController
+
 
 @synthesize nid;
 @synthesize entryField;
 @synthesize datePicker;
 @synthesize commentArea;
+@synthesize networkIndicator;
 
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -45,6 +49,11 @@
 								   initWithTitle:@"Submit" style:UIBarButtonItemStyleDone target:self action:@selector(pressSubmitButton)];
 	self.navigationItem.rightBarButtonItem = saveButton;
 	[saveButton release];
+	
+	networkIndicator = [[IndicatorViewController alloc] init];
+	[self.view addSubview:networkIndicator.view];
+	networkIndicator.view.center = CGPointMake(self.view.center.x, 160.0f);
+	networkIndicator.view.hidden = YES;
 	
     [super viewDidLoad];
 }
@@ -97,6 +106,7 @@
 	NSLog(@"Date: %0.2f", [datePicker.date timeIntervalSince1970]);
 	NSLog(@"Comment: %@", commentArea.text);
 	
+	networkIndicator.view.hidden = NO;
 	XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
 	[request setMethod:@"mystat.submitData" withParameters:[NSArray arrayWithObjects:
 															global.sessionID,
@@ -126,6 +136,7 @@
 
 
 - (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
+	networkIndicator.view.hidden = YES;
 }
 
 
@@ -134,6 +145,7 @@
 
 
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
+	networkIndicator.view.hidden = YES;
 	if ([response isFault]) {
 		NSLog(@"Data save error");
 	} else {

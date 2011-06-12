@@ -15,7 +15,6 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		4732D621139F407000CADBB3 /* MyDataNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4732D620139F407000CADBB3 /* MyDataNavigationController.m */; };
 		4732D624139F43AD00CADBB3 /* StatListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4732D623139F43AD00CADBB3 /* StatListController.m */; };
-		4733D1C8139D3EE9006941EC /* ApplicationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D1C7139D3EE9006941EC /* ApplicationViewController.m */; };
 		4733D1F0139D465E006941EC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D1EF139D465E006941EC /* LoginViewController.m */; };
 		4733D1F2139D466B006941EC /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4733D1F1139D466B006941EC /* LoginView.xib */; };
 		4733D263139D7363006941EC /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D250139D7363006941EC /* NSDataAdditions.m */; };
@@ -27,7 +26,9 @@
 		4733D269139D7363006941EC /* XMLRPCEventBasedParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D25E139D7363006941EC /* XMLRPCEventBasedParserDelegate.m */; };
 		4733D26A139D7363006941EC /* XMLRPCRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D260139D7363006941EC /* XMLRPCRequest.m */; };
 		4733D26B139D7363006941EC /* XMLRPCResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D262139D7363006941EC /* XMLRPCResponse.m */; };
-		477D2768139E88480044F9BA /* SplashView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 477D2767139E88480044F9BA /* SplashView.xib */; };
+		47807F0913A4F112004078EB /* IndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47807F0813A4F112004078EB /* IndicatorViewController.m */; };
+		47807F0B13A4F121004078EB /* IndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47807F0A13A4F121004078EB /* IndicatorView.xib */; };
+		47807F0F13A4F1BB004078EB /* IndicatorBgr.png in Resources */ = {isa = PBXBuildFile; fileRef = 47807F0E13A4F1BB004078EB /* IndicatorBgr.png */; };
 		4787F45013A2BDD2002B9636 /* StatDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */; };
 		4787F45313A2BDF9002B9636 /* StatDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4787F45213A2BDF9002B9636 /* StatDetailsView.xib */; };
 		47B9461413A1455C001326FC /* Defines.c in Sources */ = {isa = PBXBuildFile; fileRef = 47B9461313A1455C001326FC /* Defines.c */; };
@@ -48,8 +49,6 @@
 		4732D620139F407000CADBB3 /* MyDataNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataNavigationController.m; sourceTree = "<group>"; };
 		4732D622139F43AD00CADBB3 /* StatListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatListController.h; sourceTree = "<group>"; };
 		4732D623139F43AD00CADBB3 /* StatListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatListController.m; sourceTree = "<group>"; };
-		4733D1C6139D3EE9006941EC /* ApplicationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationViewController.h; sourceTree = "<group>"; };
-		4733D1C7139D3EE9006941EC /* ApplicationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationViewController.m; sourceTree = "<group>"; };
 		4733D1EE139D465E006941EC /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		4733D1EF139D465E006941EC /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		4733D1F1139D466B006941EC /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
@@ -73,7 +72,10 @@
 		4733D260139D7363006941EC /* XMLRPCRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLRPCRequest.m; sourceTree = "<group>"; };
 		4733D261139D7363006941EC /* XMLRPCResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLRPCResponse.h; sourceTree = "<group>"; };
 		4733D262139D7363006941EC /* XMLRPCResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLRPCResponse.m; sourceTree = "<group>"; };
-		477D2767139E88480044F9BA /* SplashView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashView.xib; sourceTree = "<group>"; };
+		47807F0713A4F112004078EB /* IndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorViewController.h; sourceTree = "<group>"; };
+		47807F0813A4F112004078EB /* IndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndicatorViewController.m; sourceTree = "<group>"; };
+		47807F0A13A4F121004078EB /* IndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndicatorView.xib; sourceTree = "<group>"; };
+		47807F0E13A4F1BB004078EB /* IndicatorBgr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IndicatorBgr.png; sourceTree = "<group>"; };
 		4787F44E13A2BDD2002B9636 /* StatDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatDetailsViewController.h; sourceTree = "<group>"; };
 		4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatDetailsViewController.m; sourceTree = "<group>"; };
 		4787F45213A2BDF9002B9636 /* StatDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatDetailsView.xib; sourceTree = "<group>"; };
@@ -104,8 +106,6 @@
 				4733D24D139D7347006941EC /* XMLRPC */,
 				1D3623240D0F684500981E51 /* StatDiaryAppDelegate.h */,
 				1D3623250D0F684500981E51 /* StatDiaryAppDelegate.m */,
-				4733D1C6139D3EE9006941EC /* ApplicationViewController.h */,
-				4733D1C7139D3EE9006941EC /* ApplicationViewController.m */,
 				4733D1EE139D465E006941EC /* LoginViewController.h */,
 				4733D1EF139D465E006941EC /* LoginViewController.m */,
 				4732D61F139F407000CADBB3 /* MyDataNavigationController.h */,
@@ -118,6 +118,8 @@
 				47B9461313A1455C001326FC /* Defines.c */,
 				47B9465C13A16BA2001326FC /* Globals.h */,
 				47B9465D13A16BA2001326FC /* Globals.m */,
+				47807F0713A4F112004078EB /* IndicatorViewController.h */,
+				47807F0813A4F112004078EB /* IndicatorViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -154,11 +156,12 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				47807F0E13A4F1BB004078EB /* IndicatorBgr.png */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* StatDiary-Info.plist */,
 				4733D1F1139D466B006941EC /* LoginView.xib */,
-				477D2767139E88480044F9BA /* SplashView.xib */,
 				4787F45213A2BDF9002B9636 /* StatDetailsView.xib */,
+				47807F0A13A4F121004078EB /* IndicatorView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -251,8 +254,9 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				4733D1F2139D466B006941EC /* LoginView.xib in Resources */,
-				477D2768139E88480044F9BA /* SplashView.xib in Resources */,
 				4787F45313A2BDF9002B9636 /* StatDetailsView.xib in Resources */,
+				47807F0B13A4F121004078EB /* IndicatorView.xib in Resources */,
+				47807F0F13A4F1BB004078EB /* IndicatorBgr.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +269,6 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* StatDiaryAppDelegate.m in Sources */,
-				4733D1C8139D3EE9006941EC /* ApplicationViewController.m in Sources */,
 				4733D1F0139D465E006941EC /* LoginViewController.m in Sources */,
 				4733D263139D7363006941EC /* NSDataAdditions.m in Sources */,
 				4733D264139D7363006941EC /* NSStringAdditions.m in Sources */,
@@ -281,6 +284,7 @@
 				47B9461413A1455C001326FC /* Defines.c in Sources */,
 				47B9465E13A16BA2001326FC /* Globals.m in Sources */,
 				4787F45013A2BDD2002B9636 /* StatDetailsViewController.m in Sources */,
+				47807F0913A4F112004078EB /* IndicatorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

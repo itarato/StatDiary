@@ -10,6 +10,7 @@
 #import <XMLRPC/XMLRPC.h>
 #import "Globals.h"
 #import "StatListController.h"
+#import "IndicatorViewController.h"
 
 
 @implementation LoginViewController
@@ -19,6 +20,7 @@
 @synthesize statListController;
 @synthesize connectionRequest;
 @synthesize loginRequest;
+@synthesize networkIndicator;
 
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -41,6 +43,10 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	networkIndicator = [[IndicatorViewController alloc] init];
+	[self.view addSubview:networkIndicator.view];
+	networkIndicator.view.center = CGPointMake(self.view.center.x, 160.0f);
+	
 	[self connectWithDelay];
 	
     [super viewDidLoad];
@@ -70,6 +76,7 @@
 #pragma mark Custom actions
 
 - (void)onPressLoginButton:(id)sender {
+	networkIndicator.view.hidden = NO;
 	Globals *global = [Globals sharedInstance];
 	[loginRequest setMethod:@"user.login" withParameters:[NSArray arrayWithObjects:global.sessionID, userNameField.text, passwordField.text, nil]];
 	XMLRPCConnectionManager *connectionManager = [XMLRPCConnectionManager sharedManager];
@@ -85,6 +92,7 @@
 
 
 - (void)connect {
+	networkIndicator.view.hidden = NO;
 	[connectionRequest setMethod:@"system.connect"];
 	XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
 	[connManager spawnConnectionWithXMLRPCRequest:connectionRequest delegate:self];
@@ -99,6 +107,7 @@
 #pragma mark XMLRPC delegates
 
 - (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
+	networkIndicator.view.hidden = YES;
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network error" message:@"Cannot connect to StatDiary." delegate:nil cancelButtonTitle:@"Sad panda" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
@@ -106,6 +115,7 @@
 
 
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
+	networkIndicator.view.hidden = YES;
 	if (request == connectionRequest) {
 		if ([response isFault]) {
 			NSLog(@"Login Error: %@", [response object]);
