@@ -39,6 +39,13 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	commentArea.delegate = self;
+	//[self.navigationController setToolbarHidden:YES animated:YES];
+	
+	UIBarButtonItem *saveButton = [[UIBarButtonItem alloc]
+								   initWithTitle:@"Submit" style:UIBarButtonItemStyleDone target:self action:@selector(pressSubmitButton)];
+	self.navigationItem.rightBarButtonItem = saveButton;
+	[saveButton release];
+	
     [super viewDidLoad];
 }
 
@@ -74,7 +81,7 @@
 #pragma mark Action handler
 
 
-- (void)pressSubmitButton:(id)sender {
+- (void)pressSubmitButton {
 	if ([entryField.text length] == 0) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"Missing data entry" delegate:nil cancelButtonTitle:@"Correct" otherButtonTitles:nil];
 		[alert show];

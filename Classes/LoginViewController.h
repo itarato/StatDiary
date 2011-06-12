@@ -28,7 +28,9 @@
 @property (nonatomic, retain) XMLRPCRequest *loginRequest;
 @property (nonatomic, retain) StatListController *statListController;
 
-- (IBAction) onPressLoginButton:(id)sender;
-- (void) loadStatList;
+- (IBAction)onPressLoginButton:(id)sender;
+- (void)loadStatList;
+- (void)connect;
+- (void)connectWithDelay;
 
 @end

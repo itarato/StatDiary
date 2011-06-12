@@ -41,9 +41,7 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	[connectionRequest setMethod:@"system.connect"];
-	XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
-	[connManager spawnConnectionWithXMLRPCRequest:connectionRequest delegate:self];
+	[self connectWithDelay];
 	
     [super viewDidLoad];
 }
@@ -80,12 +78,22 @@
 
 
 - (void) loadStatList {
-	statListController = [[StatListController alloc] init];
-	statListController.title = @"My Stats";
-	[self.navigationController pushViewController:statListController animated:YES];
-	self.navigationController.navigationBar.backItem.title = @"Log out";
+	NSLog(@"dismiss");
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"onSuccessLogin" object:nil];
+	[self dismissModalViewControllerAnimated:YES];
 }
 
+
+- (void)connect {
+	[connectionRequest setMethod:@"system.connect"];
+	XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
+	[connManager spawnConnectionWithXMLRPCRequest:connectionRequest delegate:self];
+}
+
+
+- (void)connectWithDelay {
+	[self performSelector:@selector(connect) withObject:self afterDelay:0.6f];
+}
 
 #pragma mark --
 #pragma mark XMLRPC delegates
@@ -96,13 +104,14 @@
 	[alert release];
 }
 
+
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
 	if (request == connectionRequest) {
 		if ([response isFault]) {
 			NSLog(@"Login Error: %@", [response object]);
 		} else {
-			//NSLog(@"login success");
-			//NSLog(@"%@", [response object]);
+			NSLog(@"login success");
+			NSLog(@"CONNECT %@", [response object]);
 			//[[NSNotificationCenter defaultCenter] postNotificationName:@"onSuccessAuthentication" object:[response object]];
 			Globals *globals = [Globals sharedInstance];
 			globals.uid = [[[response object] valueForKey:@"user"] valueForKey:@"uid"];
@@ -110,12 +119,13 @@
 			
 			// User is already logged in.
 			if ([globals.uid intValue] > 0) {
+				NSLog(@"LOAD LIST");
 				[self loadStatList];
 			}
 		}
 	} else if (request == loginRequest) {
 		if ([response isFault]) {
-			NSLog(@"Login error");
+			NSLog(@"Login error: %@", [response object]);
 		} else {
 			NSLog(@"Login success");
 			[self loadStatList];

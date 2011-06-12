@@ -11,7 +11,7 @@
 @class StatListController;
 @class LoginViewController;
 
-@interface MyDataNavigationController : UINavigationController {
+@interface MyDataNavigationController : UINavigationController <UINavigationControllerDelegate> {
 	StatListController *statListController;
 	LoginViewController *loginViewController;
 }

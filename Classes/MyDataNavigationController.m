@@ -10,28 +10,21 @@
 #import "StatListController.h"
 #import "LoginViewController.h"
 
+
 @implementation MyDataNavigationController
+
 
 @synthesize statListController;
 @synthesize loginViewController;
 
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
 
-//- (id)init {
-//	if ((self = [super init])) {
-//	}
-//	
-//	return self;
-//}
+- (id)init {
+	if ((self = [super init])) {
+		self.delegate = self;
+	}
+	
+	return self;
+}
 
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
@@ -42,16 +35,19 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
-	loginViewController.title = @"StatDiary";
-	[self pushViewController:loginViewController animated:NO];
+	statListController = [[StatListController alloc] init];
+	statListController.title = @"My Stats";
+	[self pushViewController:statListController animated:NO];
     [super viewDidLoad];
 	
-	NSLog(@"Nav ctrl init");
+
+//	UINavigationItem *logOutNavItem = [[UINavigationItem alloc] initWithTitle:@"Log out"];
 	
-//	CGRect frame = self.view.frame;
-//	frame.origin.y = -20.0f;
-//	self.view.frame = frame;
+//	UIBarButtonItem *logOutButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBar target:<#(id)target#> action:<#(SEL)action#>
+//	self.navigationItem.leftBarButtonItem = logOutNavItem;
+	//[self.navigationBar pushNavigationItem:logOutNavItem animated:YES];
+	
+	NSLog(@"Nav ctrl init");
 }
 
 
@@ -81,5 +77,9 @@
     [super dealloc];
 }
 
+
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+	[self setToolbarHidden:(viewController != statListController) animated:YES];
+}
 
 @end

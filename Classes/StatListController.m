@@ -10,12 +10,17 @@
 #import <XMLRPC/XMLRPC.h>
 #import "Globals.h"
 #import "StatDetailsViewController.h"
+#import "LoginViewController.h"
 
 
 @implementation StatListController
 
 @synthesize myStats;
 @synthesize statDetailsViewController;
+@synthesize loginViewController;
+@synthesize myListRequest;
+@synthesize logOutRequest;
+
 
 #pragma mark -
 #pragma mark Initialization
@@ -29,6 +34,7 @@
 		NSLog(@"init table view");
 		myStats = nil;
 		statDetailsViewController = [[StatDetailsViewController alloc] initWithNibName:@"StatDetailsView" bundle:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSuccessLogin:) name:@"onSuccessLogin" object:nil];
         // Custom initialization.
     }
     return self;
@@ -41,8 +47,24 @@
 
 
 - (void)viewDidLoad {
-	[self reloadStatData];
+//	[self reloadStatData];
 //	self.view.frame = CGRectMake(0.0f, 40.0f, self.view.frame.size.width, self.view.frame.size.height);
+	
+	loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+	[self presentModalViewController:loginViewController animated:YES];
+	
+	[self.navigationController setToolbarHidden:NO animated:YES];
+	
+	UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+	UIBarButtonItem *logOutBarItem = [[UIBarButtonItem alloc] initWithTitle:@"Log out" style:UIBarButtonItemStyleBordered target:self action:@selector(logout)];
+	NSArray *items = [NSArray arrayWithObjects:space, logOutBarItem, space, nil];
+	self.toolbarItems = items;
+	[space release];
+	[logOutBarItem release];
+	
+	myListRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
+	logOutRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
+	
     [super viewDidLoad];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -158,7 +180,6 @@
 
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-	NSLog(@"TAP");
 	statDetailsViewController.nid = [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"nid"];
 	statDetailsViewController.title = [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"title"];
 	[self.navigationController pushViewController:statDetailsViewController animated:YES];
@@ -205,13 +226,25 @@
 #pragma mark Custom actions
 
 - (void)reloadStatData {
-	XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
 	Globals *globals = [Globals sharedInstance];
-	[request setMethod:@"mystat.myList" withParameter:globals.sessionID];
+	[myListRequest setMethod:@"mystat.myList" withParameter:globals.sessionID];
 	XMLRPCConnectionManager *connectionManager = [XMLRPCConnectionManager sharedManager];
-	[connectionManager spawnConnectionWithXMLRPCRequest:request delegate:self];
-	[request release];
+	[connectionManager spawnConnectionWithXMLRPCRequest:myListRequest delegate:self];
 }
+
+
+- (void)onSuccessLogin:(NSNotification *)notification {
+	[self reloadStatData];
+}
+
+
+- (void)logout {
+	Globals *global = [Globals sharedInstance];
+	[logOutRequest setMethod:@"user.logout" withParameter:global.sessionID];
+	XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
+	[connManager spawnConnectionWithXMLRPCRequest:logOutRequest delegate:self];
+}
+
 
 #pragma mark --
 #pragma mark XMLRPC delegated methods
@@ -235,16 +268,28 @@
 
 
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
-	if ([response isFault]) {
-		NSLog(@"my list error");
-	} else {
-		//self.navigationController.navigationBar.backItem.title = @"Log out";
-		//NSLog(@"got the list: %@", [response object]);
-//		NSLog(@"Response %@", [response object]);
-		myStats = [[NSMutableArray alloc] initWithArray:[response object]];
-		NSLog(@"Count: %d", [myStats count]);
-		[self.tableView reloadData];
+	if (request == myListRequest) {
+		if ([response isFault]) {
+			NSLog(@"my list error");
+		} else {
+			//self.navigationController.navigationBar.backItem.title = @"Log out";
+			//NSLog(@"got the list: %@", [response object]);
+	//		NSLog(@"Response %@", [response object]);
+			myStats = [[NSMutableArray alloc] initWithArray:[response object]];
+			NSLog(@"Count: %d", [myStats count]);
+			[self.tableView reloadData];
+		}
+	} else if (request == logOutRequest) {
+		if ([response isFault]) {
+			NSLog(@"logout error: %@", [response object]);
+		} else {
+			NSLog(@"Logout success");
+			NSLog(@"Logout: %@", [response object]);
+			[self presentModalViewController:loginViewController animated:YES];
+			[loginViewController connectWithDelay];
+		}
 	}
+
 }
 
 @end

@@ -22,7 +22,7 @@
 @property (nonatomic, retain) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic, retain) IBOutlet UITextView *commentArea;
 
-- (IBAction)pressSubmitButton:(id)sender;
+- (IBAction)pressSubmitButton;
 - (IBAction)onPressExitKeyOnEntryField:(id)sender;
 
 @end

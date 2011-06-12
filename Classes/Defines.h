@@ -8,5 +8,5 @@
  */
 
 #ifndef STATDIARY_XMLRPC_GATEWAY
-#define STATDIARY_XMLRPC_GATEWAY @"http://l/statdiary/services/xmlrpc"
+#define STATDIARY_XMLRPC_GATEWAY @"http://192.168.1.102/statdiary/services/xmlrpc"
 #endif
