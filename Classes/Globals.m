@@ -25,4 +25,10 @@
 	return instance;
 }
 
++ (void)alertNetworkError {
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network error" message:@"Try to save it later" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+}
+
 @end

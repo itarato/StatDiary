@@ -31,8 +31,8 @@
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
     self = [super initWithStyle:style];
     if (self) {
+		NSLog(@"StatListController init");
 		
-		NSLog(@"init table view");
 		myStats = nil;
 		statDetailsViewController = [[StatDetailsViewController alloc] initWithNibName:@"StatDetailsView" bundle:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSuccessLogin:) name:@"onSuccessLogin" object:nil];
@@ -48,6 +48,7 @@
 
 
 - (void)viewDidLoad {
+	NSLog(@"StatListController view did load");
 	loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
 	[self presentModalViewController:loginViewController animated:YES];
 	
@@ -114,7 +115,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-	NSLog(@"DATA");
     return (myStats == nil) ? 0 : [myStats count];
 }
 
@@ -276,7 +276,7 @@
 	} else if (secs < 1) {
 		return @"now";
 	} else if (secs < 120) {
-		return [NSString stringWithFormat:@"%d seconds %@", secs, text];
+		return [NSString stringWithFormat:@"%d seconds %@", (int)secs, text];
 	} else if (secs <  7200) {
 		return [NSString stringWithFormat:@"%0.0f minutes %@", floor(secs / 60.0f), text];
 	} else if (secs < 172800) {
@@ -300,7 +300,8 @@
 
 
 - (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
-	NSLog(@"list request error");
+	NSLog(@"StatListController request error");
+	[Globals alertNetworkError];
 	networkIndicator.view.hidden = YES;
 }
 
@@ -313,23 +314,28 @@
 	networkIndicator.view.hidden = YES;
 	if (request == myListRequest) {
 		if ([response isFault]) {
-			NSLog(@"my list error");
+			NSLog(@"List request fail");
+			[Globals alertNetworkError];
 		} else {
+			NSLog(@"List request success");
 			myStats = [[NSMutableArray alloc] initWithArray:[response object]];
-			NSLog(@"Count: %d", [myStats count]);
 			[self.tableView reloadData];
 		}
 	} else if (request == logOutRequest) {
 		if ([response isFault]) {
-			NSLog(@"logout error: %@", [response object]);
+			NSLog(@"Logout request fail");
+			[Globals alertNetworkError];
 		} else {
-			NSLog(@"Logout success");
-			NSLog(@"Logout: %@", [response object]);
+			NSLog(@"Logout request success");
+			
+			[loginViewController setKeepMeSignedIn:NO];
+			[loginViewController.keepMeLoggedInSwitch setOn:NO animated:NO];
+			
 			[self presentModalViewController:loginViewController animated:YES];
 			[loginViewController connectWithDelay];
 		}
 	}
-
+	NSLog(@"Response: %@", [response object]);
 }
 
 @end

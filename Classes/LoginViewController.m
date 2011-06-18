@@ -22,6 +22,7 @@
 @synthesize loginRequest;
 @synthesize networkIndicator;
 @synthesize loginButton;
+@synthesize keepMeLoggedInSwitch;
 
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -29,6 +30,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization.
+		NSLog(@"LoginViewController init.");
 		connectionRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
 		loginRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
     }
@@ -38,6 +40,10 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	NSLog(@"LoginViewController load view");
+	
+	[self.keepMeLoggedInSwitch setOn:[self getKeepMeSignedIn] animated:NO];
+	
 	networkIndicator = [[IndicatorViewController alloc] init];
 	[self.view addSubview:networkIndicator.view];
 	networkIndicator.view.center = CGPointMake(self.view.center.x, 160.0f);
@@ -83,22 +89,34 @@
 #pragma mark Custom actions
 
 - (void)onPressLoginButton:(id)sender {
+	NSLog(@"Login button pressed");
+	
 	networkIndicator.view.hidden = NO;
 	Globals *global = [Globals sharedInstance];
 	[loginRequest setMethod:@"user.login" withParameters:[NSArray arrayWithObjects:global.sessionID, userNameField.text, passwordField.text, nil]];
 	XMLRPCConnectionManager *connectionManager = [XMLRPCConnectionManager sharedManager];
 	[connectionManager spawnConnectionWithXMLRPCRequest:loginRequest delegate:self];
+	
+	if ([self getKeepMeSignedIn]) {
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		[defaults setObject:userNameField.text forKey:KEEP_ME_LOGGED_IN_USERNAME];
+		[defaults setObject:passwordField.text forKey:KEEP_ME_LOGGED_IN_PASSWORD];
+		[defaults synchronize];
+	}
 }
 
 
 - (void) loadStatList {
-	NSLog(@"dismiss");
+	NSLog(@"Load stat list");
+	
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"onSuccessLogin" object:nil];
 	[self dismissModalViewControllerAnimated:YES];
 }
 
 
 - (void)connect {
+	NSLog(@"Connect to Drupal");
+	
 	networkIndicator.view.hidden = NO;
 	[connectionRequest setMethod:@"system.connect"];
 	XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
@@ -110,14 +128,39 @@
 	[self performSelector:@selector(connect) withObject:self afterDelay:0.6f];
 }
 
+
+- (BOOL)getKeepMeSignedIn {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSInteger value = [defaults integerForKey:KEEP_ME_LOGGED_IN];
+	return value != KEEP_ME_LOGGED_IN_NO;
+}
+
+
+- (void)setKeepMeSignedIn:(BOOL)value {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setInteger:(value ? KEEP_ME_LOGGED_IN_YES : KEEP_ME_LOGGED_IN_NO) forKey:KEEP_ME_LOGGED_IN];
+	if (!value) {
+		[defaults removeObjectForKey:KEEP_ME_LOGGED_IN_USERNAME];
+		[defaults removeObjectForKey:KEEP_ME_LOGGED_IN_PASSWORD];
+	}
+	
+	[defaults synchronize];
+}
+
+
+- (void)changeKeepMeLoggedInSwitch:(id)sender {
+	[self setKeepMeSignedIn:keepMeLoggedInSwitch.on];
+}
+
+
 #pragma mark --
 #pragma mark XMLRPC delegates
 
 - (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
+	NSLog(@"LoginViewController request error");
+	
 	networkIndicator.view.hidden = YES;
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network error" message:@"Cannot connect to StatDiary." delegate:nil cancelButtonTitle:@"Sad panda" otherButtonTitles:nil];
-	[alert show];
-	[alert release];
+	[Globals alertNetworkError];
 }
 
 
@@ -125,37 +168,52 @@
 	networkIndicator.view.hidden = YES;
 	if (request == connectionRequest) {
 		if ([response isFault]) {
-			NSLog(@"Login Error: %@", [response object]);
+			NSLog(@"Connection request fail");
+			[Globals alertNetworkError];
 		} else {
-			NSLog(@"login success");
-			NSLog(@"CONNECT %@", [response object]);
-			//[[NSNotificationCenter defaultCenter] postNotificationName:@"onSuccessAuthentication" object:[response object]];
+			NSLog(@"Connection request success");
+			
 			Globals *globals = [Globals sharedInstance];
 			globals.uid = [[[response object] valueForKey:@"user"] valueForKey:@"uid"];
 			globals.sessionID = [[response object] valueForKey:@"sessid"];
 			
 			// User is already logged in.
 			if ([globals.uid intValue] > 0) {
-				NSLog(@"LOAD LIST");
 				[self loadStatList];
+			} else if ([self getKeepMeSignedIn]) {
+				NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+				NSString *username = [defaults stringForKey:KEEP_ME_LOGGED_IN_USERNAME];
+				NSString *password = [defaults stringForKey:KEEP_ME_LOGGED_IN_PASSWORD];
+				if (username != nil && password != nil) {
+					userNameField.text = username;
+					passwordField.text = password;
+					[self onPressLoginButton:loginButton];
+				}
 			}
 		}
 	} else if (request == loginRequest) {
 		if ([response isFault]) {
-			NSLog(@"Login error: %@", [response object]);
+			NSLog(@"Login request fail");
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login error" 
+															message:@"Please, check your name and password" 
+														   delegate:nil 
+												  cancelButtonTitle:@"Correct" 
+												  otherButtonTitles:nil];
+			[alert show];
+			[alert release];
 		} else {
-			NSLog(@"Login success");
+			NSLog(@"Login request success");
 			[self loadStatList];
 		}
 	}
+	
+	NSLog(@"Request: %@", [response object]);
 }
 
 - (void)request:(XMLRPCRequest *)request didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-	NSLog(@"didCancelAuthenticationChallenge");
 }
 
 - (void)request:(XMLRPCRequest *)request didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-	NSLog(@"didReceiveAuthenticationChallenge");
 }
 
 - (BOOL)request:(XMLRPCRequest *)request canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {

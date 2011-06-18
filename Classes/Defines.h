@@ -7,6 +7,13 @@
  *
  */
 
-#ifndef STATDIARY_XMLRPC_GATEWAY
-#define STATDIARY_XMLRPC_GATEWAY @"http://192.168.1.102/statdiary/services/xmlrpc"
+#define DEV_ENV
+//#define LIVE_ENV
+
+#ifdef DEV_ENV
+#define STATDIARY_XMLRPC_GATEWAY @"http://l/statdiary/services/xmlrpc"
+#endif
+
+#ifdef LIVE_ENV
+#define STATDIARY_XMLRPC_GATEWAY @"http://statdiary.info/services/xmlrpc"
 #endif

@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <XMLRPC/XMLRPCConnectionDelegate.h>
 
+
+#define KEEP_ME_LOGGED_IN_YES 1
+#define KEEP_ME_LOGGED_IN_NO 2
+#define KEEP_ME_LOGGED_IN_USERNAME @"keepMeLoggedInUserName"
+#define KEEP_ME_LOGGED_IN_PASSWORD @"keepMeLoggedInPassword"
+#define KEEP_ME_LOGGED_IN @"keepMeLoggedIn"
+
 @class XMLRPCRequest;
 @class StatListController;
 @class IndicatorViewController;
@@ -16,7 +23,7 @@
 @interface LoginViewController : UIViewController <XMLRPCConnectionDelegate> {
 	IBOutlet UITextField *userNameField;
 	IBOutlet UITextField *passwordField;
-
+	IBOutlet UISwitch *keepMeLoggedInSwitch;
 	IBOutlet UIButton *loginButton;
 	
 	StatListController *statListController;
@@ -34,10 +41,14 @@
 @property (nonatomic, retain) XMLRPCRequest *loginRequest;
 @property (nonatomic, retain) StatListController *statListController;
 @property (nonatomic, retain) IndicatorViewController *networkIndicator;
+@property (nonatomic, retain) IBOutlet UISwitch *keepMeLoggedInSwitch;
 
 - (IBAction)onPressLoginButton:(id)sender;
 - (void)loadStatList;
 - (void)connect;
 - (void)connectWithDelay;
+- (BOOL)getKeepMeSignedIn;
+- (void)setKeepMeSignedIn:(BOOL)value;
+- (void)changeKeepMeLoggedInSwitch:(id)sender;
 
 @end

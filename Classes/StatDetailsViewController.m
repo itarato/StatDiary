@@ -151,9 +151,11 @@
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
 	networkIndicator.view.hidden = YES;
 	if ([response isFault]) {
-		NSLog(@"Data save error");
+		NSLog(@"Save request fail");
+		[Globals alertNetworkError];
 	} else {
-		NSLog(@"Data save success");
+		NSLog(@"Save request success");
+		
 		[entryField setText:@""];
 		[commentArea setText:@""];
 		NSDate *now = [NSDate new];

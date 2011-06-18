@@ -17,6 +17,8 @@
 @property (nonatomic, retain) NSString *sessionID;
 @property (nonatomic, retain) NSNumber *uid;
 
-+ (Globals *) sharedInstance;
++ (Globals *)sharedInstance;
+
++ (void)alertNetworkError;
 
 @end
