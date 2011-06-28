@@ -11,6 +11,7 @@
 #import "Globals.h"
 #import "StatDetailsViewController.h"
 #import "LoginViewController.h"
+#import "RegistrationViewController.h"
 #import "IndicatorViewController.h"
 
 @implementation StatListController
@@ -18,9 +19,11 @@
 @synthesize myStats;
 @synthesize statDetailsViewController;
 @synthesize loginViewController;
+@synthesize registrationViewController;
 @synthesize myListRequest;
 @synthesize logOutRequest;
 @synthesize networkIndicator;
+@synthesize accountController;
 
 
 #pragma mark -
@@ -50,7 +53,13 @@
 - (void)viewDidLoad {
 	NSLog(@"StatListController view did load");
 	loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
-	[self presentModalViewController:loginViewController animated:YES];
+	registrationViewController = [[RegistrationViewController alloc] initWithNibName:@"RegistrationView" bundle:nil];
+	//[self presentModalViewController:loginViewController animated:YES];
+	accountController = [[UITabBarController alloc] init];
+	NSArray *tabViews = [NSArray arrayWithObjects:loginViewController, registrationViewController, nil];
+	accountController.viewControllers = tabViews;
+	accountController.view.backgroundColor = [UIColor yellowColor];
+	[self presentModalViewController:accountController animated:YES];
 	
 	[self.navigationController setToolbarHidden:NO animated:YES];
 	
@@ -331,7 +340,7 @@
 			[loginViewController setKeepMeSignedIn:NO];
 			[loginViewController.keepMeLoggedInSwitch setOn:NO animated:NO];
 			
-			[self presentModalViewController:loginViewController animated:YES];
+			[self presentModalViewController:accountController animated:YES];
 			[loginViewController connectWithDelay];
 		}
 	}

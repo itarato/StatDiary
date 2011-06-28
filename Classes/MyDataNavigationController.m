@@ -15,7 +15,8 @@
 
 
 @synthesize statListController;
-@synthesize loginViewController;
+//@synthesize loginViewController;
+//@synthesize accountController;
 
 
 - (id)init {
@@ -53,7 +54,7 @@
 
 - (void)dealloc {
 	[statListController release];
-	[loginViewController release];
+	//[loginViewController release];
     [super dealloc];
 }
 

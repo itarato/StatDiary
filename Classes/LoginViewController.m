@@ -33,6 +33,11 @@
 		NSLog(@"LoginViewController init.");
 		connectionRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
 		loginRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
+		
+		UIImage *tabBarIcon = [UIImage imageNamed:@"54-lock"];
+		UITabBarItem *vTabBarItem = [[UITabBarItem alloc] initWithTitle:@"Login" image:tabBarIcon tag:0];
+		self.tabBarItem = vTabBarItem;
+		[vTabBarItem release];
     }
     return self;
 }
@@ -151,6 +156,9 @@
 - (void)changeKeepMeLoggedInSwitch:(id)sender {
 	[self setKeepMeSignedIn:keepMeLoggedInSwitch.on];
 }
+
+
+- (void)onPressDoneKey:(id)sender {}
 
 
 #pragma mark --

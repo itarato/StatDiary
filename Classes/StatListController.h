@@ -11,6 +11,7 @@
 
 @class StatDetailsViewController;
 @class LoginViewController;
+@class RegistrationViewController;
 @class XMLRPCRequest;
 @class IndicatorViewController;
 
@@ -18,17 +19,21 @@
 	NSMutableArray *myStats;
 	StatDetailsViewController *statDetailsViewController;
 	LoginViewController *loginViewController;
+	RegistrationViewController *registrationViewController;
 	XMLRPCRequest *myListRequest;
 	XMLRPCRequest *logOutRequest;
 	IndicatorViewController *networkIndicator;
+	UITabBarController *accountController;
 }
 
 @property (nonatomic, retain) NSMutableArray *myStats;
 @property (nonatomic, retain) StatDetailsViewController *statDetailsViewController;
 @property (nonatomic, retain) LoginViewController *loginViewController;
+@property (nonatomic, retain) RegistrationViewController *registrationViewController;
 @property (nonatomic, retain) XMLRPCRequest *myListRequest;
 @property (nonatomic, retain) XMLRPCRequest *logOutRequest;
 @property (nonatomic, retain) IndicatorViewController *networkIndicator;
+@property (nonatomic, retain) UITabBarController *accountController;
 
 - (void)reloadStatData;
 - (void)onSuccessLogin:(NSNotification *)notification;

@@ -13,6 +13,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		4729D29A13ACAF8D00AE24F3 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4729D29913ACAF8D00AE24F3 /* AccountViewController.m */; };
 		4732D621139F407000CADBB3 /* MyDataNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4732D620139F407000CADBB3 /* MyDataNavigationController.m */; };
 		4732D624139F43AD00CADBB3 /* StatListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4732D623139F43AD00CADBB3 /* StatListController.m */; };
 		4733D1F0139D465E006941EC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D1EF139D465E006941EC /* LoginViewController.m */; };
@@ -53,6 +54,8 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* StatDiary_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatDiary_Prefix.pch; sourceTree = "<group>"; };
+		4729D29813ACAF8D00AE24F3 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		4729D29913ACAF8D00AE24F3 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		4732D61F139F407000CADBB3 /* MyDataNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDataNavigationController.h; sourceTree = "<group>"; };
 		4732D620139F407000CADBB3 /* MyDataNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataNavigationController.m; sourceTree = "<group>"; };
 		4732D622139F43AD00CADBB3 /* StatListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatListController.h; sourceTree = "<group>"; };
@@ -138,6 +141,8 @@
 				47807F0813A4F112004078EB /* IndicatorViewController.m */,
 				4738B52613AB2B0800BD5B67 /* RegistrationViewController.h */,
 				4738B52713AB2B0800BD5B67 /* RegistrationViewController.m */,
+				4729D29813ACAF8D00AE24F3 /* AccountViewController.h */,
+				4729D29913ACAF8D00AE24F3 /* AccountViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -319,6 +324,7 @@
 				4787F45013A2BDD2002B9636 /* StatDetailsViewController.m in Sources */,
 				47807F0913A4F112004078EB /* IndicatorViewController.m in Sources */,
 				4738B52813AB2B0800BD5B67 /* RegistrationViewController.m in Sources */,
+				4729D29A13ACAF8D00AE24F3 /* AccountViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

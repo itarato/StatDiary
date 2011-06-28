@@ -50,5 +50,6 @@
 - (BOOL)getKeepMeSignedIn;
 - (void)setKeepMeSignedIn:(BOOL)value;
 - (void)changeKeepMeLoggedInSwitch:(id)sender;
+- (IBAction)onPressDoneKey:(id)sender;
 
 @end
