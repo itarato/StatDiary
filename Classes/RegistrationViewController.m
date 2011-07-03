@@ -8,6 +8,7 @@
 
 #import "RegistrationViewController.h"
 #import <XMLRPC/XMLRPC.h>
+#import "Globals.h"
 
 
 @implementation RegistrationViewController
@@ -17,6 +18,7 @@
 @synthesize passwordRetypeField;
 @synthesize emailField;
 @synthesize registerButton;
+@synthesize networkIndicator;
 
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -47,6 +49,11 @@
 	[registerButton setBackgroundImage:buttonStretchedBrgImage forState:UIControlStateNormal];
 	
     defaultCenter = self.view.center;
+    
+    networkIndicator = [[IndicatorViewController alloc] init];
+    [self.view addSubview:networkIndicator.view];
+    networkIndicator.view.center = CGPointMake(self.view.center.x, 140.0f);
+    networkIndicator.view.hidden = YES;
     
     [super viewDidLoad];
 }
@@ -92,6 +99,8 @@
 
 
 - (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
+    [Globals alertNetworkError];
+    networkIndicator.view.hidden = YES;
 }
 
 
@@ -100,18 +109,16 @@
 
 
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
-}
-
-
-#pragma mark --
-#pragma mark Scroll view delegates
-
-
-- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
-	return YES;
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    networkIndicator.view.hidden = YES;
+    if ([response isFault]) {
+        NSLog(@"Register request error");
+        [Globals alertNetworkError];
+    } else {
+        NSLog(@"Register request success");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"registrationIsComplete" object:response];
+        NSLog(@"subscribe fired");
+    }
+    NSLog(@"Register response: %@", [response object]);
 }
 
 
@@ -137,6 +144,22 @@
     [UIView setAnimationDuration:0.3f];
     self.view.center = toPoint;
     [UIView commitAnimations];
+}
+
+
+- (void)onPressRegisterButton:(id)sender {
+    XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
+    Globals *globals = [Globals sharedInstance];
+    [request setMethod:@"mystat.userRegister" withParameters:[NSArray arrayWithObjects:
+                                                              globals.sessionID, 
+                                                              userNameField.text,
+                                                              emailField.text,
+                                                              passwordField.text,
+                                                              nil]];
+    XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
+    [connManager spawnConnectionWithXMLRPCRequest:request delegate:self];
+    [request release];
+    networkIndicator.view.hidden = NO;
 }
         
 

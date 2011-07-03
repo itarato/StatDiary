@@ -161,6 +161,7 @@
 		NSDate *now = [NSDate new];
 		[datePicker setDate:now];
 		[now release];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:response];
 		[self.navigationController popViewControllerAnimated:YES];
 	}
 }

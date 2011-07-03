@@ -10,20 +10,19 @@
 #import <XMLRPC/XMLRPC.h>
 #import "Globals.h"
 #import "StatDetailsViewController.h"
-#import "LoginViewController.h"
-#import "RegistrationViewController.h"
 #import "IndicatorViewController.h"
+#import "AccountTabController.h"
+#import "LoginViewController.h"
 
 @implementation StatListController
 
 @synthesize myStats;
 @synthesize statDetailsViewController;
-@synthesize loginViewController;
-@synthesize registrationViewController;
 @synthesize myListRequest;
 @synthesize logOutRequest;
 @synthesize networkIndicator;
 @synthesize accountController;
+@synthesize createStatViewController;
 
 
 #pragma mark -
@@ -39,6 +38,7 @@
 		myStats = nil;
 		statDetailsViewController = [[StatDetailsViewController alloc] initWithNibName:@"StatDetailsView" bundle:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSuccessLogin:) name:@"onSuccessLogin" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRefreshRequest:) name:@"refreshStatList" object:nil];
         // Custom initialization.
     }
     return self;
@@ -51,14 +51,8 @@
 
 
 - (void)viewDidLoad {
-	NSLog(@"StatListController view did load");
-	loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
-	registrationViewController = [[RegistrationViewController alloc] initWithNibName:@"RegistrationView" bundle:nil];
-	//[self presentModalViewController:loginViewController animated:YES];
-	accountController = [[UITabBarController alloc] init];
-	NSArray *tabViews = [NSArray arrayWithObjects:loginViewController, registrationViewController, nil];
-	accountController.viewControllers = tabViews;
-	accountController.view.backgroundColor = [UIColor yellowColor];
+	NSLog(@"StatListController view did load");    
+	accountController = [[AccountTabController alloc] init];
 	[self presentModalViewController:accountController animated:YES];
 	
 	[self.navigationController setToolbarHidden:NO animated:YES];
@@ -71,6 +65,10 @@
 	[space release];
 	[logOutBarItem release];
 	[refreshBarItem release];
+    
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onPressAddStatButton)];
+    self.navigationItem.rightBarButtonItem = addButton;
+    [addButton release];
 	
 	myListRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
 	logOutRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
@@ -79,6 +77,8 @@
 	[self.view addSubview:networkIndicator.view];
 	networkIndicator.view.center = CGPointMake(self.view.center.x, 160.0f);
 	networkIndicator.view.hidden = YES;
+    
+    createStatViewController = [[CreateStatViewController alloc] initWithNibName:@"CreateStatView" bundle:nil];
 	
     [super viewDidLoad];
 }
@@ -232,7 +232,6 @@
 - (void)dealloc {
 	[myStats release];
 	[statDetailsViewController release];
-	[loginViewController release];
 	[myListRequest release];
 	[logOutRequest release];
 	[networkIndicator release];
@@ -296,6 +295,16 @@
 }
 
 
+- (void)onPressAddStatButton {
+    [self presentModalViewController:createStatViewController animated:YES];
+}
+
+
+- (void)onRefreshRequest:(NSNotification *)notification {
+    [self reloadStatData];
+}
+
+
 #pragma mark --
 #pragma mark XMLRPC delegated methods
 
@@ -337,11 +346,11 @@
 		} else {
 			NSLog(@"Logout request success");
 			
-			[loginViewController setKeepMeSignedIn:NO];
-			[loginViewController.keepMeLoggedInSwitch setOn:NO animated:NO];
+			[accountController.loginViewController setKeepMeSignedIn:NO];
+			[accountController.loginViewController.keepMeLoggedInSwitch setOn:NO animated:NO];
 			
 			[self presentModalViewController:accountController animated:YES];
-			[loginViewController connectWithDelay];
+			[accountController.loginViewController connectWithDelay];
 		}
 	}
 	NSLog(@"Response: %@", [response object]);

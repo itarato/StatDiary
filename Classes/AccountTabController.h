@@ -1,8 +1,8 @@
 //
-//  AccountViewController.h
+//  AccountTabController.h
 //  StatDiary
 //
-//  Created by Peter Arato on 6/18/11.
+//  Created by Peter Arato on 7/2/11.
 //  Copyright 2011 Pronovix. All rights reserved.
 //
 
@@ -11,12 +11,14 @@
 @class LoginViewController;
 @class RegistrationViewController;
 
-@interface AccountViewController : UITabBarController {
+@interface AccountTabController : UITabBarController {
 	LoginViewController *loginViewController;
 	RegistrationViewController *registrationViewController;
 }
 
 @property (nonatomic, retain) LoginViewController *loginViewController;
 @property (nonatomic, retain) RegistrationViewController *registrationViewController;
+
+- (void)onRegistrationIsComplete:(NSNotification *)notification;
 
 @end

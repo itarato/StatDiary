@@ -21,7 +21,7 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/LoginViewController.m"
-         timestampString = "330986538.048285"
+         timestampString = "331320890.002928"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "180"
@@ -45,7 +45,7 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/StatListController.m"
-         timestampString = "329940299.697626"
+         timestampString = "331424326.002233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "148"
@@ -57,7 +57,7 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/LoginViewController.m"
-         timestampString = "330986538.048285"
+         timestampString = "331320890.002928"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "189"
@@ -74,6 +74,20 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "18"
          endingLineNumber = "18">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/RegistrationViewController.m"
+         timestampString = "331412759.088424"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "149"
+         endingLineNumber = "149"
+         landmarkName = "-onPressRegisterButton:"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
