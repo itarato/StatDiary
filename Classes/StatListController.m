@@ -127,7 +127,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return (myStats == nil) ? 0 : [myStats count];
+    NSInteger count = (myStats == nil) ? 0 : [myStats count];
+    if (count == 0) {
+        [self presentModalViewController:createStatViewController animated:YES];
+    }
+    return count;
 }
 
 

@@ -45,11 +45,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/StatListController.m"
-         timestampString = "331511951.412685"
+         timestampString = "331512117.641332"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "151"
-         endingLineNumber = "151">
+         startingLineNumber = "155"
+         endingLineNumber = "155">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
