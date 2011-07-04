@@ -156,7 +156,7 @@
 			<string>NSArray</string>
 		</dict>
 		<true/>
-		<string>{{0, 33}, {1440, 845}}</string>
+		<string>{{0, 31}, {1440, 847}}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -316,7 +316,7 @@
 		<string>DVTIdentifier</string>
 		<string>DVTViewMagnitude</string>
 		<string></string>
-		<real>442</real>
+		<real>444</real>
 		<dict>
 			<key>$classes</key>
 			<array>
@@ -1595,7 +1595,7 @@
 		<string>IDESCMStatusFilteringEnabled</string>
 		<string>IDESelectedObjects</string>
 		<string>IDEExpandedItemsSet</string>
-		<string>{{0, 0}, {359, 725}}</string>
+		<string>{{0, 0}, {359, 727}}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -2578,7 +2578,7 @@
 		<string>PrimaryDocumentVisibleCharacterRange</string>
 		<string>HideAllIssues</string>
 		<string>PrimaryDocumentSelectedCharacterRange</string>
-		<real>331424448.593431</real>
+		<real>331498156.29185301</real>
 		<string>{3690, 1392}</string>
 		<string>{4735, 0}</string>
 		<string>-request:didReceiveResponse:</string>
@@ -2624,7 +2624,7 @@
 				</dict>
 			</array>
 		</dict>
-		<string>{{0, 0}, {1065, 769}}</string>
+		<string>{{0, 0}, {1065, 771}}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -11150,7 +11150,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>331424448.59109801</real>
+		<real>331498156.24112803</real>
 		<string>{3690, 1392}</string>
 		<string>{4735, 0}</string>
 		<dict>
@@ -13564,7 +13564,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Today at 11:20 PM</string>
+		<string>Yesterday at 11:20 PM</string>
 		<integer>106</integer>
 		<dict>
 			<key>$class</key>
