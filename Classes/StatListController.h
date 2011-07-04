@@ -22,6 +22,7 @@
 	StatDetailsViewController *statDetailsViewController;
 	XMLRPCRequest *myListRequest;
 	XMLRPCRequest *logOutRequest;
+    XMLRPCRequest *deleteRequest;
 	IndicatorViewController *networkIndicator;
 	AccountTabController *accountController;
     CreateStatViewController *createStatViewController;
@@ -31,6 +32,7 @@
 @property (nonatomic, retain) StatDetailsViewController *statDetailsViewController;
 @property (nonatomic, retain) XMLRPCRequest *myListRequest;
 @property (nonatomic, retain) XMLRPCRequest *logOutRequest;
+@property (nonatomic, retain) XMLRPCRequest *deleteRequest;
 @property (nonatomic, retain) IndicatorViewController *networkIndicator;
 @property (nonatomic, retain) AccountTabController *accountController;
 @property (nonatomic, retain) CreateStatViewController *createStatViewController;

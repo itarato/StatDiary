@@ -115,8 +115,16 @@
         [Globals alertNetworkError];
     } else {
         NSLog(@"Register request success");
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"registrationIsComplete" object:response];
-        NSLog(@"subscribe fired");
+        
+        NSString *responseMessage = (NSString *)[response object];
+        if ([responseMessage isEqualToString:@"ok"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"registrationIsComplete" object:response];
+        } else {
+            NSLog(@"Register error: %@", responseMessage);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Registration error" message:responseMessage delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        }
     }
     NSLog(@"Register response: %@", [response object]);
 }

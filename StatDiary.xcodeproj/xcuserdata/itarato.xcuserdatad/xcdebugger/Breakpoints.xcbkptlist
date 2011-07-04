@@ -45,11 +45,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/StatListController.m"
-         timestampString = "331424326.002233"
+         timestampString = "331511951.412685"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "148"
-         endingLineNumber = "148">
+         startingLineNumber = "151"
+         endingLineNumber = "151">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -81,11 +81,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/RegistrationViewController.m"
-         timestampString = "331412759.088424"
+         timestampString = "331500589.400447"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "149"
-         endingLineNumber = "149"
+         startingLineNumber = "157"
+         endingLineNumber = "157"
          landmarkName = "-onPressRegisterButton:"
          landmarkType = "5">
       </FileBreakpoint>

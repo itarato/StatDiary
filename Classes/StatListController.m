@@ -14,7 +14,9 @@
 #import "AccountTabController.h"
 #import "LoginViewController.h"
 
+
 @implementation StatListController
+
 
 @synthesize myStats;
 @synthesize statDetailsViewController;
@@ -23,6 +25,7 @@
 @synthesize networkIndicator;
 @synthesize accountController;
 @synthesize createStatViewController;
+@synthesize deleteRequest;
 
 
 #pragma mark -
@@ -213,6 +216,24 @@
 }
 
 
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"Delete";
+}
+
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    networkIndicator.view.hidden = NO;
+    deleteRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
+    Globals *global = [Globals sharedInstance];
+    [deleteRequest setMethod:@"node.delete" withParameters:[NSArray arrayWithObjects:
+                                                            global.sessionID, 
+                                                            [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"nid"],
+                                                            nil]];
+    XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
+    [connManager spawnConnectionWithXMLRPCRequest:deleteRequest delegate:self];
+}
+
+
 #pragma mark -
 #pragma mark Memory management
 
@@ -352,7 +373,15 @@
 			[self presentModalViewController:accountController animated:YES];
 			[accountController.loginViewController connectWithDelay];
 		}
-	}
+	} else if (request == deleteRequest) {
+        if ([response isFault]) {
+            [Globals alertNetworkError];
+            NSLog(@"Delete request error");
+        } else {
+            NSLog(@"Delete request success");
+            [self reloadStatData];
+        }
+    }
 	NSLog(@"Response: %@", [response object]);
 }
 

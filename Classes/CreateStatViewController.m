@@ -115,6 +115,13 @@
 #pragma mark Custom actions
 
 - (void)onPressCreateButton:(id)sender {
+    if ([titleField.text length] == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title error" message:@"Title field is empty." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+        return;
+    }
+    
     networkIndicator.view.hidden = NO;
     
     XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];

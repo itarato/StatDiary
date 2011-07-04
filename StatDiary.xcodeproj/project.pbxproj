@@ -31,7 +31,6 @@
 		4738B52413AB29C900BD5B67 /* 54-lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 4738B52313AB29C900BD5B67 /* 54-lock.png */; };
 		4738B52813AB2B0800BD5B67 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4738B52713AB2B0800BD5B67 /* RegistrationViewController.m */; };
 		4738B52A13AB2B1E00BD5B67 /* RegistrationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4738B52913AB2B1E00BD5B67 /* RegistrationView.xib */; };
-		474B709C13AA937600B8F0AB /* bgr_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 474B709B13AA937600B8F0AB /* bgr_login.png */; };
 		47807F0913A4F112004078EB /* IndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47807F0813A4F112004078EB /* IndicatorViewController.m */; };
 		47807F0B13A4F121004078EB /* IndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47807F0A13A4F121004078EB /* IndicatorView.xib */; };
 		47807F0F13A4F1BB004078EB /* IndicatorBgr.png in Resources */ = {isa = PBXBuildFile; fileRef = 47807F0E13A4F1BB004078EB /* IndicatorBgr.png */; };
@@ -44,6 +43,9 @@
 		47B383D013C0FCFD00D34E27 /* CreateStatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B383CF13C0FCFD00D34E27 /* CreateStatViewController.m */; };
 		47B383D213C0FD1800D34E27 /* CreateStatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B383D113C0FD1800D34E27 /* CreateStatView.xib */; };
 		47B9465E13A16BA2001326FC /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B9465D13A16BA2001326FC /* Globals.m */; };
+		47F81CA613C25028004DAB24 /* bgr_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 47F81CA513C25028004DAB24 /* bgr_add.png */; };
+		47F81CA813C25413004DAB24 /* bgr_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 47F81CA713C25413004DAB24 /* bgr_login.png */; };
+		47F81CAA13C2595F004DAB24 /* bgr_reg.png in Resources */ = {isa = PBXBuildFile; fileRef = 47F81CA913C2595F004DAB24 /* bgr_reg.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,7 +91,6 @@
 		4738B52613AB2B0800BD5B67 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		4738B52713AB2B0800BD5B67 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		4738B52913AB2B1E00BD5B67 /* RegistrationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationView.xib; sourceTree = "<group>"; };
-		474B709B13AA937600B8F0AB /* bgr_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgr_login.png; sourceTree = "<group>"; };
 		47807F0713A4F112004078EB /* IndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorViewController.h; sourceTree = "<group>"; };
 		47807F0813A4F112004078EB /* IndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndicatorViewController.m; sourceTree = "<group>"; };
 		47807F0A13A4F121004078EB /* IndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndicatorView.xib; sourceTree = "<group>"; };
@@ -108,6 +109,9 @@
 		47B9461213A1455C001326FC /* Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		47B9465C13A16BA2001326FC /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
 		47B9465D13A16BA2001326FC /* Globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Globals.m; sourceTree = "<group>"; };
+		47F81CA513C25028004DAB24 /* bgr_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgr_add.png; sourceTree = "<group>"; };
+		47F81CA713C25413004DAB24 /* bgr_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgr_login.png; sourceTree = "<group>"; };
+		47F81CA913C2595F004DAB24 /* bgr_reg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgr_reg.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* StatDiary-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "StatDiary-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -186,10 +190,12 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				47F81CA913C2595F004DAB24 /* bgr_reg.png */,
+				47F81CA713C25413004DAB24 /* bgr_login.png */,
+				47F81CA513C25028004DAB24 /* bgr_add.png */,
 				4738B52313AB29C900BD5B67 /* 54-lock.png */,
 				4738B52113AB298700BD5B67 /* Icon.png */,
 				4738B51F13AB297700BD5B67 /* 111-user.png */,
-				474B709B13AA937600B8F0AB /* bgr_login.png */,
 				47807FA913A50588004078EB /* whiteButton.png */,
 				47807FA513A50476004078EB /* bgr_entry.png */,
 				47807F8F13A4FA4D004078EB /* bgr.png */,
@@ -299,12 +305,14 @@
 				47807F9013A4FA4D004078EB /* bgr.png in Resources */,
 				47807FA613A50476004078EB /* bgr_entry.png in Resources */,
 				47807FAA13A50588004078EB /* whiteButton.png in Resources */,
-				474B709C13AA937600B8F0AB /* bgr_login.png in Resources */,
 				4738B52013AB297700BD5B67 /* 111-user.png in Resources */,
 				4738B52213AB298700BD5B67 /* Icon.png in Resources */,
 				4738B52413AB29C900BD5B67 /* 54-lock.png in Resources */,
 				4738B52A13AB2B1E00BD5B67 /* RegistrationView.xib in Resources */,
 				47B383D213C0FD1800D34E27 /* CreateStatView.xib in Resources */,
+				47F81CA613C25028004DAB24 /* bgr_add.png in Resources */,
+				47F81CA813C25413004DAB24 /* bgr_login.png in Resources */,
+				47F81CAA13C2595F004DAB24 /* bgr_reg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
