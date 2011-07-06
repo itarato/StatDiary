@@ -33,6 +33,9 @@
 	statListController = [[StatListController alloc] init];
 	statListController.title = @"My Stats";
 	[self pushViewController:statListController animated:NO];
+    
+    self.navigationBar.tintColor = [UIColor darkGrayColor];
+    self.toolbar.tintColor = [UIColor colorWithRed:0.9f green:0.6f blue:0.2f alpha:1.0f];
 	
     [super viewDidLoad];
 }

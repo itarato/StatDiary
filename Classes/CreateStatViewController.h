@@ -21,5 +21,6 @@
 @property (nonatomic, retain) UITextField *titleField;
 
 - (IBAction)onPressCreateButton:(id)sender;
+- (IBAction)onPressBackButton:(id)sender;
 
 @end
