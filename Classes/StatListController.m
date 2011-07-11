@@ -259,7 +259,10 @@
 	[statDetailsViewController release];
 	[myListRequest release];
 	[logOutRequest release];
+    [deleteRequest release];
 	[networkIndicator release];
+    [accountController release];
+    [createStatViewController release];
     [super dealloc];
 }
 

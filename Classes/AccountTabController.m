@@ -34,6 +34,8 @@
 
 - (void)dealloc
 {
+    [loginViewController release];
+    [registrationViewController release];
     [super dealloc];
 }
 

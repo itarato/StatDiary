@@ -86,6 +86,7 @@
 	[connectionRequest release];
 	[loginRequest release];
 	[networkIndicator release];
+    [keepMeLoggedInSwitch release];
     [super dealloc];
 }
 

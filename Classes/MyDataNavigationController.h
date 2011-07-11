@@ -9,16 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @class StatListController;
-@class LoginViewController;
 
 @interface MyDataNavigationController : UINavigationController <UINavigationControllerDelegate> {
 	StatListController *statListController;
-	//LoginViewController *loginViewController;
-	//UITabBarController *accountController;
 }
 
 @property (nonatomic, retain) StatListController *statListController;
-//@property (nonatomic, retain) LoginViewController *loginViewController;
-//@property (nonatomic, retain) UITabBarController *accountController;
 
 @end

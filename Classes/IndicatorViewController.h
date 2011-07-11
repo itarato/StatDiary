@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
-@interface IndicatorViewController : UIViewController {
-
-}
+@interface IndicatorViewController : UIViewController {}
 
 @end

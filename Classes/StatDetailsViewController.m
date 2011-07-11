@@ -86,6 +86,11 @@
 
 
 - (void)dealloc {
+    [nid release];
+    [entryField release];
+    [datePicker release];
+    [commentArea release];
+    [networkIndicator release];
     [super dealloc];
 }
 

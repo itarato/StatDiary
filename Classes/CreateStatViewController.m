@@ -27,6 +27,9 @@
 
 - (void)dealloc
 {
+    [createButton release];
+    [titleField release];
+    [networkIndicator release];
     [super dealloc];
 }
 

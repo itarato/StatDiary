@@ -82,6 +82,12 @@
 
 
 - (void)dealloc {
+    [userNameField release];
+    [passwordField release];
+    [passwordRetypeField release];
+    [emailField release];
+    [registerButton release];
+    [networkIndicator release];
     [super dealloc];
 }
 

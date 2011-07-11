@@ -57,7 +57,6 @@
 
 - (void)dealloc {
 	[statListController release];
-	//[loginViewController release];
     [super dealloc];
 }
 
