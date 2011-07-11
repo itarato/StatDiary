@@ -364,6 +364,12 @@
 			[Globals alertNetworkError];
 		} else {
 			NSLog(@"List request success");
+            
+            if (myStats != nil) {
+                [myStats release];
+                myStats = nil;
+            }
+            
 			myStats = [[NSMutableArray alloc] initWithArray:[response object]];
 			[self.tableView reloadData];
 		}
