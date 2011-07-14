@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import "XMLRPC/XMLRPCConnectionDelegate.h"
 
 
 @interface Globals : NSObject {

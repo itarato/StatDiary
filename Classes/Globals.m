@@ -7,7 +7,6 @@
 //
 
 #import "Globals.h"
-//#import "XMLRPC/XMLRPC.h"
 
 
 @implementation Globals
@@ -28,7 +27,7 @@
 
 
 + (void)alertNetworkError {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network error" message:@"Try to save it later" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network error" message:@"Check your network connection status" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
 }
@@ -38,30 +37,5 @@
     
 }
 
-//#pragma mark XMLRPC delegates
-//
-//- (BOOL)request:(XMLRPCRequest *)request canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
-//    return NO;
-//}
-//
-//
-//- (void)request:(XMLRPCRequest *)request didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-//    
-//}
-//
-//
-//- (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
-//    
-//}
-//
-//
-//- (void)request:(XMLRPCRequest *)request didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-//    
-//}
-//
-//
-//- (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
-//    
-//}
 
 @end

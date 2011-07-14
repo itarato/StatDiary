@@ -166,10 +166,13 @@
 #pragma mark XMLRPC delegates
 
 - (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
-	NSLog(@"LoginViewController request error");
+	NSLog(@"LoginViewController didFailWithError");
 	
 	networkIndicator.view.hidden = YES;
-	[Globals alertNetworkError];
+  
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection error" message:@"App cannot reach the service. Press 'Reconnect' for another try." delegate:self cancelButtonTitle:@"Reconnect" otherButtonTitles:nil];
+  [alert show];
+  [alert release];
 }
 
 
@@ -227,6 +230,13 @@
 
 - (BOOL)request:(XMLRPCRequest *)request canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
 	return NO;
+}
+
+
+#pragma mark UIAlertView delegates
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  [self connect];
 }
 
 @end

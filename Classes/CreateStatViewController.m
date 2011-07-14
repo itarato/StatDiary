@@ -103,16 +103,18 @@
 
 
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
-    networkIndicator.view.hidden = YES;
-    
-    if ([response isFault]) {
-        NSLog(@"Create request fail");
-        [Globals alertNetworkError];
-    } else {
-        NSLog(@"Create request success");
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:response];
-        [self dismissModalViewControllerAnimated:YES];
-    }
+  networkIndicator.view.hidden = YES;
+  
+  if ([response isFault]) {
+      NSLog(@"Create request fail");
+      [Globals alertNetworkError];
+  } else {
+      NSLog(@"Create request success");
+      [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:response];
+      [self dismissModalViewControllerAnimated:YES];
+  }
+  
+  NSLog(@"Response: %@", [response object]);
 }
 
 #pragma mark Custom actions
@@ -139,6 +141,9 @@
 - (void)onPressBackButton:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
 }
+
+
+- (void)onPressDoneKey:(id)sender {}
 
 
 @end

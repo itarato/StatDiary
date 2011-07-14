@@ -33,18 +33,17 @@
 
 
 - (id)initWithStyle:(UITableViewStyle)style {
-    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-    self = [super initWithStyle:style];
-    if (self) {
+  // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
+  self = [super initWithStyle:style];
+  if (self) {
 		NSLog(@"StatListController init");
 		
 		myStats = nil;
 		statDetailsViewController = [[StatDetailsViewController alloc] initWithNibName:@"StatDetailsView" bundle:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSuccessLogin:) name:@"onSuccessLogin" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRefreshRequest:) name:@"refreshStatList" object:nil];
-        // Custom initialization.
-    }
-    return self;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRefreshRequest:) name:@"refreshStatList" object:nil];
+  }
+  return self;
 }
 
 
@@ -69,9 +68,9 @@
 	[logOutBarItem release];
 	[refreshBarItem release];
     
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onPressAddStatButton)];
-    self.navigationItem.rightBarButtonItem = addButton;
-    [addButton release];
+  UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onPressAddStatButton)];
+  self.navigationItem.rightBarButtonItem = addButton;
+  [addButton release];
 	
 	myListRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
 	logOutRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
@@ -81,9 +80,9 @@
 	networkIndicator.view.center = CGPointMake(self.view.center.x, 160.0f);
 	networkIndicator.view.hidden = YES;
     
-    createStatViewController = [[CreateStatViewController alloc] initWithNibName:@"CreateStatView" bundle:nil];
+  createStatViewController = [[CreateStatViewController alloc] initWithNibName:@"CreateStatView" bundle:nil];
 	
-    [super viewDidLoad];
+  [super viewDidLoad];
 }
 
 
@@ -126,27 +125,27 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    NSInteger count = (myStats == nil) ? 0 : [myStats count];
-    if (count == 0) {
-        [self presentModalViewController:createStatViewController animated:YES];
-    }
-    return count;
+  // Return the number of rows in the section.
+  NSInteger count = (myStats == nil) ? 0 : [myStats count];
+  if (count == 0) {
+      [self presentModalViewController:createStatViewController animated:YES];
+  }
+  return count;
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-		cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-    }
-    
-    // Configure the cell...
+  static NSString *CellIdentifier = @"Cell";
+  
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  if (cell == nil) {
+      cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+  cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+  }
+  
+  // Configure the cell...
 	cell.textLabel.text = [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"title"];
 	cell.detailTextLabel.text = [NSString stringWithFormat:
 								 @"%@ entry, latest %@", 
@@ -154,7 +153,7 @@
 								 [StatListController elapsedTimeFromTimestamp:[[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"latest"]]];
 	[cell setBackgroundColor: [UIColor colorWithRed:0.937f green:0.875f blue:0.77f alpha:1.0f]];
 	
-    return cell;
+  return cell;
 }
 
 
@@ -259,11 +258,11 @@
 	[statDetailsViewController release];
 	[myListRequest release];
 	[logOutRequest release];
-    [deleteRequest release];
+  [deleteRequest release];
 	[networkIndicator release];
-    [accountController release];
-    [createStatViewController release];
-    [super dealloc];
+  [accountController release];
+  [createStatViewController release];
+  [super dealloc];
 }
 
 
@@ -358,43 +357,44 @@
 
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
 	networkIndicator.view.hidden = YES;
-	if (request == myListRequest) {
-		if ([response isFault]) {
-			NSLog(@"List request fail");
-			[Globals alertNetworkError];
-		} else {
-			NSLog(@"List request success");
-            
-            if (myStats != nil) {
-                [myStats release];
-                myStats = nil;
-            }
-            
-			myStats = [[NSMutableArray alloc] initWithArray:[response object]];
-			[self.tableView reloadData];
-		}
-	} else if (request == logOutRequest) {
-		if ([response isFault]) {
-			NSLog(@"Logout request fail");
-			[Globals alertNetworkError];
-		} else {
-			NSLog(@"Logout request success");
-			
-			[accountController.loginViewController setKeepMeSignedIn:NO];
-			[accountController.loginViewController.keepMeLoggedInSwitch setOn:NO animated:NO];
-			
-			[self presentModalViewController:accountController animated:YES];
-			[accountController.loginViewController connectWithDelay];
-		}
-	} else if (request == deleteRequest) {
-        if ([response isFault]) {
-            [Globals alertNetworkError];
-            NSLog(@"Delete request error");
-        } else {
-            NSLog(@"Delete request success");
-            [self reloadStatData];
-        }
+  
+  if ([response isFault]) { // Fault response -> Exception
+    NSLog(@"StatList request fault");
+    @try {
+      NSString *faultMsg = (NSString *)[[response object] valueForKey:@"faultString"];
+      if ([faultMsg isEqualToString:@"Access denied"]) {
+        [self presentModalViewController:accountController animated:YES];
+      }
     }
+    @catch (NSException *exception) {
+      // Unexpected error.
+    }
+    @finally {}
+  } else { // Successful response
+    if (request == myListRequest) {
+      NSLog(@"List request success");
+            
+      if (myStats != nil) {
+          [myStats release];
+          myStats = nil;
+      }
+            
+      myStats = [[NSMutableArray alloc] initWithArray:[response object]];
+      [self.tableView reloadData];
+    } else if (request == logOutRequest) {
+      NSLog(@"Logout request success");
+      
+      [accountController.loginViewController setKeepMeSignedIn:NO];
+      [accountController.loginViewController.keepMeLoggedInSwitch setOn:NO animated:NO];
+      
+      [self presentModalViewController:accountController animated:YES];
+      [accountController.loginViewController connectWithDelay];
+    } else if (request == deleteRequest) {
+      NSLog(@"Delete request success");
+      [self reloadStatData];
+    }
+  }
+  
 	NSLog(@"Response: %@", [response object]);
 }
 

@@ -7,8 +7,8 @@
  *
  */
 
-//#define DEV_ENV
-#define LIVE_ENV
+#define DEV_ENV
+//#define LIVE_ENV
 
 #ifdef DEV_ENV
 #define STATDIARY_XMLRPC_GATEWAY @"http://192.168.0.2/statdiary/services/xmlrpc"
