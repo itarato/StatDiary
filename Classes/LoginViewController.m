@@ -27,8 +27,8 @@
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+  if (self) {
         // Custom initialization.
 		NSLog(@"LoginViewController init.");
 		connectionRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
@@ -38,8 +38,8 @@
 		UITabBarItem *vTabBarItem = [[UITabBarItem alloc] initWithTitle:@"Login" image:tabBarIcon tag:0];
 		self.tabBarItem = vTabBarItem;
 		[vTabBarItem release];
-    }
-    return self;
+  }
+  return self;
 }
 
 
@@ -59,7 +59,7 @@
 	UIImage *loginButtonBgrStretched = [loginButtonBgr stretchableImageWithLeftCapWidth:12 topCapHeight:0];
 	[loginButton setBackgroundImage:loginButtonBgrStretched forState:UIControlStateNormal];
 	
-    [super viewDidLoad];
+  [super viewDidLoad];
 }
 
 
@@ -86,8 +86,8 @@
 	[connectionRequest release];
 	[loginRequest release];
 	[networkIndicator release];
-    [keepMeLoggedInSwitch release];
-    [super dealloc];
+  [keepMeLoggedInSwitch release];
+  [super dealloc];
 }
 
 
@@ -237,6 +237,17 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
   [self connect];
+}
+
+
+#pragma mark Static methods
+
++ (void)popUpLoginOn:(UIViewController *)viewController {
+  LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+  
+  [viewController presentModalViewController:lvc animated:YES];
+  
+  [lvc release];
 }
 
 @end

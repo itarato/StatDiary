@@ -15,7 +15,6 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		4708DABF13C4E7C700071A30 /* bgr_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 4708DABB13C4E7C700071A30 /* bgr_add.png */; };
 		4708DAC013C4E7C700071A30 /* bgr_entry.png in Resources */ = {isa = PBXBuildFile; fileRef = 4708DABC13C4E7C700071A30 /* bgr_entry.png */; };
-		4708DAC113C4E7C700071A30 /* bgr_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 4708DABD13C4E7C700071A30 /* bgr_login.png */; };
 		4708DAC213C4E7C700071A30 /* bgr_reg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4708DABE13C4E7C700071A30 /* bgr_reg.png */; };
 		4732D621139F407000CADBB3 /* MyDataNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4732D620139F407000CADBB3 /* MyDataNavigationController.m */; };
 		4732D624139F43AD00CADBB3 /* StatListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4732D623139F43AD00CADBB3 /* StatListController.m */; };
@@ -35,6 +34,7 @@
 		4738B52413AB29C900BD5B67 /* 54-lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 4738B52313AB29C900BD5B67 /* 54-lock.png */; };
 		4738B52813AB2B0800BD5B67 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4738B52713AB2B0800BD5B67 /* RegistrationViewController.m */; };
 		4738B52A13AB2B1E00BD5B67 /* RegistrationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4738B52913AB2B1E00BD5B67 /* RegistrationView.xib */; };
+		474006E213CF9A4300ABDDC8 /* bgr_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 474006E113CF9A4300ABDDC8 /* bgr_login.png */; };
 		47807F0913A4F112004078EB /* IndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47807F0813A4F112004078EB /* IndicatorViewController.m */; };
 		47807F0B13A4F121004078EB /* IndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47807F0A13A4F121004078EB /* IndicatorView.xib */; };
 		47807F0F13A4F1BB004078EB /* IndicatorBgr.png in Resources */ = {isa = PBXBuildFile; fileRef = 47807F0E13A4F1BB004078EB /* IndicatorBgr.png */; };
@@ -59,7 +59,6 @@
 		32CA4F630368D1EE00C91783 /* StatDiary_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatDiary_Prefix.pch; sourceTree = "<group>"; };
 		4708DABB13C4E7C700071A30 /* bgr_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgr_add.png; sourceTree = "<group>"; };
 		4708DABC13C4E7C700071A30 /* bgr_entry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgr_entry.png; sourceTree = "<group>"; };
-		4708DABD13C4E7C700071A30 /* bgr_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgr_login.png; sourceTree = "<group>"; };
 		4708DABE13C4E7C700071A30 /* bgr_reg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgr_reg.png; sourceTree = "<group>"; };
 		4732D61F139F407000CADBB3 /* MyDataNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDataNavigationController.h; sourceTree = "<group>"; };
 		4732D620139F407000CADBB3 /* MyDataNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataNavigationController.m; sourceTree = "<group>"; };
@@ -94,6 +93,7 @@
 		4738B52613AB2B0800BD5B67 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		4738B52713AB2B0800BD5B67 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		4738B52913AB2B1E00BD5B67 /* RegistrationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationView.xib; sourceTree = "<group>"; };
+		474006E113CF9A4300ABDDC8 /* bgr_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgr_login.png; sourceTree = "<group>"; };
 		47807F0713A4F112004078EB /* IndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorViewController.h; sourceTree = "<group>"; };
 		47807F0813A4F112004078EB /* IndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndicatorViewController.m; sourceTree = "<group>"; };
 		47807F0A13A4F121004078EB /* IndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndicatorView.xib; sourceTree = "<group>"; };
@@ -188,9 +188,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				474006E113CF9A4300ABDDC8 /* bgr_login.png */,
 				4708DABB13C4E7C700071A30 /* bgr_add.png */,
 				4708DABC13C4E7C700071A30 /* bgr_entry.png */,
-				4708DABD13C4E7C700071A30 /* bgr_login.png */,
 				4708DABE13C4E7C700071A30 /* bgr_reg.png */,
 				4738B52313AB29C900BD5B67 /* 54-lock.png */,
 				4738B52113AB298700BD5B67 /* Icon.png */,
@@ -307,8 +307,8 @@
 				47B383D213C0FD1800D34E27 /* CreateStatView.xib in Resources */,
 				4708DABF13C4E7C700071A30 /* bgr_add.png in Resources */,
 				4708DAC013C4E7C700071A30 /* bgr_entry.png in Resources */,
-				4708DAC113C4E7C700071A30 /* bgr_login.png in Resources */,
 				4708DAC213C4E7C700071A30 /* bgr_reg.png in Resources */,
+				474006E213CF9A4300ABDDC8 /* bgr_login.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

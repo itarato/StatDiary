@@ -10,6 +10,7 @@
 #import <XMLRPC/XMLRPC.h>
 #import "Globals.h"
 #import "IndicatorViewController.h"
+#import "LoginViewController.h"
 
 
 @implementation StatDetailsViewController
@@ -157,7 +158,7 @@
 	networkIndicator.view.hidden = YES;
 	if ([response isFault]) {
 		NSLog(@"Save request fail");
-		[Globals alertNetworkError];
+		[LoginViewController popUpLoginOn:self];
 	} else {
 		NSLog(@"Save request success");
 		

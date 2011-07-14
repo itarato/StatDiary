@@ -9,6 +9,7 @@
 #import "CreateStatViewController.h"
 #import "XMLRPC/XMLRPC.h"
 #import "Globals.h"
+#import "LoginViewController.h"
 
 
 @implementation CreateStatViewController
@@ -106,8 +107,8 @@
   networkIndicator.view.hidden = YES;
   
   if ([response isFault]) {
-      NSLog(@"Create request fail");
-      [Globals alertNetworkError];
+    NSLog(@"Create request fail");
+    [LoginViewController popUpLoginOn:self];
   } else {
       NSLog(@"Create request success");
       [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:response];

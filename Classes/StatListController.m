@@ -358,20 +358,10 @@
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
 	networkIndicator.view.hidden = YES;
   
-  if ([response isFault]) { // Fault response -> Exception
-    NSLog(@"StatList request fault");
-    @try {
-      NSString *faultMsg = (NSString *)[[response object] valueForKey:@"faultString"];
-      if ([faultMsg isEqualToString:@"Access denied"]) {
-        [self presentModalViewController:accountController animated:YES];
-      }
-    }
-    @catch (NSException *exception) {
-      // Unexpected error.
-    }
-    @finally {}
-  } else { // Successful response
-    if (request == myListRequest) {
+  if (request == myListRequest) {
+    if ([response isFault]) { // Fault response -> Exception
+      [LoginViewController popUpLoginOn:self];
+    } else {
       NSLog(@"List request success");
             
       if (myStats != nil) {
@@ -381,15 +371,19 @@
             
       myStats = [[NSMutableArray alloc] initWithArray:[response object]];
       [self.tableView reloadData];
-    } else if (request == logOutRequest) {
-      NSLog(@"Logout request success");
-      
-      [accountController.loginViewController setKeepMeSignedIn:NO];
-      [accountController.loginViewController.keepMeLoggedInSwitch setOn:NO animated:NO];
-      
-      [self presentModalViewController:accountController animated:YES];
-      [accountController.loginViewController connectWithDelay];
-    } else if (request == deleteRequest) {
+    }
+  } else if (request == logOutRequest) {
+    NSLog(@"Logout request success (or not)");
+    
+    [accountController.loginViewController setKeepMeSignedIn:NO];
+    [accountController.loginViewController.keepMeLoggedInSwitch setOn:NO animated:NO];
+    
+    [self presentModalViewController:accountController animated:YES];
+    [accountController.loginViewController connectWithDelay];
+  } else if (request == deleteRequest) {
+    if ([response isFault]) { // Fault response -> Exception
+      [LoginViewController popUpLoginOn:self];
+    } else {
       NSLog(@"Delete request success");
       [self reloadStatData];
     }

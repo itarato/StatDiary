@@ -52,4 +52,6 @@
 - (void)changeKeepMeLoggedInSwitch:(id)sender;
 - (IBAction)onPressDoneKey:(id)sender;
 
++ (void)popUpLoginOn:(UIViewController *)viewController;
+
 @end
