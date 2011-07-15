@@ -120,12 +120,21 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
+  NSInteger count = (myStats == nil) ? 0 : [myStats count];
+  if (count == 0) {
+    [self presentModalViewController:createStatViewController animated:YES];
+  }
+  return count;
+  
     return 1;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   // Return the number of rows in the section.
+  
+  return 1;
+  
   NSInteger count = (myStats == nil) ? 0 : [myStats count];
   if (count == 0) {
       [self presentModalViewController:createStatViewController animated:YES];
@@ -146,12 +155,12 @@
   }
   
   // Configure the cell...
-	cell.textLabel.text = [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"title"];
+	cell.textLabel.text = [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"title"];
 	cell.detailTextLabel.text = [NSString stringWithFormat:
 								 @"%@ entry, latest %@", 
-								 [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"count"],
-								 [StatListController elapsedTimeFromTimestamp:[[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"latest"]]];
-	[cell setBackgroundColor: [UIColor colorWithRed:0.937f green:0.875f blue:0.77f alpha:1.0f]];
+								 [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"count"],
+								 [StatListController elapsedTimeFromTimestamp:[[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"latest"]]];
+	//[cell setBackgroundColor: [UIColor colorWithRed:0.937f green:0.875f blue:0.77f alpha:1.0f]];
 	
   return cell;
 }
@@ -198,8 +207,8 @@
 
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-	statDetailsViewController.nid = [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"nid"];
-	statDetailsViewController.title = [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"title"];
+	statDetailsViewController.nid = [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"nid"];
+	statDetailsViewController.title = [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"title"];
 	[self.navigationController pushViewController:statDetailsViewController animated:YES];
 }
 
@@ -230,7 +239,7 @@
     Globals *global = [Globals sharedInstance];
     [deleteRequest setMethod:@"node.delete" withParameters:[NSArray arrayWithObjects:
                                                             global.sessionID, 
-                                                            [[myStats objectAtIndex:[indexPath indexAtPosition:1]] valueForKey:@"nid"],
+                                                            [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"nid"],
                                                             nil]];
     XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
     [connManager spawnConnectionWithXMLRPCRequest:deleteRequest delegate:self];

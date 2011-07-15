@@ -30,7 +30,7 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	statListController = [[StatListController alloc] init];
+	statListController = [[StatListController alloc] initWithStyle:UITableViewStyleGrouped];
 	statListController.title = @"My Stats";
 	[self pushViewController:statListController animated:NO];
     

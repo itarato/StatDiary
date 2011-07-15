@@ -110,9 +110,10 @@
     NSLog(@"Create request fail");
     [LoginViewController popUpLoginOn:self];
   } else {
-      NSLog(@"Create request success");
-      [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:response];
-      [self dismissModalViewControllerAnimated:YES];
+    NSLog(@"Create request success");
+    titleField.text = @"";
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:response];
+    [self dismissModalViewControllerAnimated:YES];
   }
   
   NSLog(@"Response: %@", [response object]);
