@@ -11,7 +11,7 @@
 @class LoginViewController;
 @class RegistrationViewController;
 
-@interface AccountTabController : UITabBarController {
+@interface WelcomeViewController : UITabBarController {
 	LoginViewController *loginViewController;
 	RegistrationViewController *registrationViewController;
 }

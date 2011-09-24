@@ -23,12 +23,14 @@
 @synthesize networkIndicator;
 @synthesize loginButton;
 @synthesize keepMeLoggedInSwitch;
+@synthesize userNameCell, passwordCell, keppMeLoggedInCell;
+@synthesize loginFormTable;
 
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) {
+	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+	if (self) {
         // Custom initialization.
 		NSLog(@"LoginViewController init.");
 		connectionRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
@@ -38,8 +40,9 @@
 		UITabBarItem *vTabBarItem = [[UITabBarItem alloc] initWithTitle:@"Login" image:tabBarIcon tag:0];
 		self.tabBarItem = vTabBarItem;
 		[vTabBarItem release];
-  }
-  return self;
+		loginFormTable = [[UITableView alloc] init];
+	}
+	return self;
 }
 
 
@@ -230,6 +233,27 @@
 
 - (BOOL)request:(XMLRPCRequest *)request canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
 	return NO;
+}
+
+
+#pragma mark UITableView delegate methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+  return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  if (indexPath.row == 0) {
+    return userNameCell;
+  } else if (indexPath.row == 1) {
+    return passwordCell;
+  } else {
+    return keepMeLoggedInCell;
+  }
 }
 
 

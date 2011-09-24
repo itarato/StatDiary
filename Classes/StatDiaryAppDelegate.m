@@ -18,18 +18,17 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	// Override point for customization after application launch.
 	
 	NSLog(@"App init");
 	
-    [self.window makeKeyAndVisible];
+	[self.window makeKeyAndVisible];
 	
 	myDataNavigationController = [[MyDataNavigationController alloc] init];
 	[self.window addSubview:myDataNavigationController.view];
     
-    return YES;
+	return YES;
 }
 
 

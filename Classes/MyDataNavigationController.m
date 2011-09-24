@@ -15,8 +15,6 @@
 
 
 @synthesize statListController;
-//@synthesize loginViewController;
-//@synthesize accountController;
 
 
 - (id)init {

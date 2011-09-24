@@ -11,7 +11,7 @@
 #import "Globals.h"
 #import "StatDetailsViewController.h"
 #import "IndicatorViewController.h"
-#import "AccountTabController.h"
+#import "WelcomeViewController.h"
 #import "LoginViewController.h"
 
 
@@ -42,6 +42,8 @@
 		statDetailsViewController = [[StatDetailsViewController alloc] initWithNibName:@"StatDetailsView" bundle:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSuccessLogin:) name:@"onSuccessLogin" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRefreshRequest:) name:@"refreshStatList" object:nil];
+    
+    createStatViewController = [[CreateStatViewController alloc] initWithNibName:@"CreateStatView" bundle:nil];
   }
   return self;
 }
@@ -54,7 +56,7 @@
 
 - (void)viewDidLoad {
 	NSLog(@"StatListController view did load");    
-	accountController = [[AccountTabController alloc] init];
+	accountController = [[WelcomeViewController alloc] init];
 	[self presentModalViewController:accountController animated:YES];
 	
 	[self.navigationController setToolbarHidden:NO animated:YES];
@@ -79,8 +81,6 @@
 	[self.view addSubview:networkIndicator.view];
 	networkIndicator.view.center = CGPointMake(self.view.center.x, 160.0f);
 	networkIndicator.view.hidden = YES;
-    
-  createStatViewController = [[CreateStatViewController alloc] initWithNibName:@"CreateStatView" bundle:nil];
 	
   [super viewDidLoad];
 }
@@ -119,27 +119,19 @@
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
+  // Return the number of sections.
+  
   NSInteger count = (myStats == nil) ? 0 : [myStats count];
-  if (count == 0) {
+  if (count == 0 && [createStatViewController isViewLoaded]) {
     [self presentModalViewController:createStatViewController animated:YES];
   }
   return count;
-  
-    return 1;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   // Return the number of rows in the section.
-  
   return 1;
-  
-  NSInteger count = (myStats == nil) ? 0 : [myStats count];
-  if (count == 0) {
-      [self presentModalViewController:createStatViewController animated:YES];
-  }
-  return count;
 }
 
 

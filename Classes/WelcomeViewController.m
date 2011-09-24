@@ -6,12 +6,12 @@
 //  Copyright 2011 Pronovix. All rights reserved.
 //
 
-#import "AccountTabController.h"
+#import "WelcomeViewController.h"
 #import "LoginViewController.h"
 #import "RegistrationViewController.h"
 
 
-@implementation AccountTabController
+@implementation WelcomeViewController
 
 @synthesize loginViewController;
 @synthesize registrationViewController;

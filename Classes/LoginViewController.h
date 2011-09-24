@@ -25,6 +25,11 @@
 	IBOutlet UITextField *passwordField;
 	IBOutlet UISwitch *keepMeLoggedInSwitch;
 	IBOutlet UIButton *loginButton;
+  
+	IBOutlet UITableView *loginFormTable;
+	IBOutlet UITableViewCell *userNameCell;
+	IBOutlet UITableViewCell *passwordCell;
+	IBOutlet UITableViewCell *keepMeLoggedInCell;
 	
 	StatListController *statListController;
 	
@@ -42,6 +47,10 @@
 @property (nonatomic, retain) StatListController *statListController;
 @property (nonatomic, retain) IndicatorViewController *networkIndicator;
 @property (nonatomic, retain) IBOutlet UISwitch *keepMeLoggedInSwitch;
+@property (nonatomic, retain) UITableViewCell *userNameCell;
+@property (nonatomic, retain) UITableViewCell *passwordCell;
+@property (nonatomic, retain) UITableViewCell *keppMeLoggedInCell;
+@property (nonatomic, retain) UITableView *loginFormTable;
 
 - (IBAction)onPressLoginButton:(id)sender;
 - (void)loadStatList;

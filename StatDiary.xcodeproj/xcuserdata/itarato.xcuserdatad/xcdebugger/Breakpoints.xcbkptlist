@@ -33,11 +33,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/StatListController.m"
-         timestampString = "332447066.470905"
+         timestampString = "332455808.352676"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "163"
-         endingLineNumber = "163">
+         startingLineNumber = "155"
+         endingLineNumber = "155"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -63,6 +65,20 @@
          startingLineNumber = "163"
          endingLineNumber = "163"
          landmarkName = "-onPressRegisterButton:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/LoginViewController.m"
+         timestampString = "338416950.849416"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
+         landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
