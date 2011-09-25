@@ -26,7 +26,6 @@
 	IBOutlet UISwitch *keepMeLoggedInSwitch;
 	IBOutlet UIButton *loginButton;
   
-	IBOutlet UITableView *loginFormTable;
 	IBOutlet UITableViewCell *userNameCell;
 	IBOutlet UITableViewCell *passwordCell;
 	IBOutlet UITableViewCell *keepMeLoggedInCell;
@@ -50,7 +49,6 @@
 @property (nonatomic, retain) UITableViewCell *userNameCell;
 @property (nonatomic, retain) UITableViewCell *passwordCell;
 @property (nonatomic, retain) UITableViewCell *keppMeLoggedInCell;
-@property (nonatomic, retain) UITableView *loginFormTable;
 
 - (IBAction)onPressLoginButton:(id)sender;
 - (void)loadStatList;

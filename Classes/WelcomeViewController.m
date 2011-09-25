@@ -94,7 +94,11 @@
 
 
 - (void)pressRegisterButton:(id)sender {
+	if (registrationViewController == nil) {
+		registrationViewController = [[RegistrationViewController alloc] initWithNibName:@"RegistrationView" bundle:nil];
+	}
 	
+	[self.navigationController pushViewController:registrationViewController animated:YES];
 }
 
 @end

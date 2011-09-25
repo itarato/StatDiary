@@ -16,21 +16,19 @@
 	IBOutlet UITextField *passwordField;
 	IBOutlet UITextField *passwordRetypeField;
 	IBOutlet UITextField *emailField;
-	IBOutlet UIButton    *registerButton;
     CGPoint defaultCenter;
     IndicatorViewController *networkIndicator;
 	
 	IBOutlet UITableViewCell *userNameCell;
 	IBOutlet UITableViewCell *emailCell;
 	IBOutlet UITableViewCell *passwordCell;
-	IBOutlet UITableViewCell *passworkRetypeCell;
+	IBOutlet UITableViewCell *passwordRetypeCell;
 }
 
 @property (nonatomic, retain) IBOutlet UITextField *userNameField;
 @property (nonatomic, retain) IBOutlet UITextField *passwordField;
 @property (nonatomic, retain) IBOutlet UITextField *passwordRetypeField;
 @property (nonatomic, retain) IBOutlet UITextField *emailField;
-@property (nonatomic, retain) IBOutlet UIButton *registerButton;
 @property (nonatomic, retain) IndicatorViewController *networkIndicator;
 @property (nonatomic, retain) UITableViewCell *userNameCell;
 @property (nonatomic, retain) UITableViewCell *emailCell;

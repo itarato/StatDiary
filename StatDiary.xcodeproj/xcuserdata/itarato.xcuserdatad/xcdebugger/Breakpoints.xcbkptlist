@@ -59,11 +59,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/RegistrationViewController.m"
-         timestampString = "332060365.978199"
+         timestampString = "338669136.859245"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "163"
-         endingLineNumber = "163"
+         startingLineNumber = "152"
+         endingLineNumber = "152"
          landmarkName = "@implementation RegistrationViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -73,7 +73,7 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/LoginViewController.m"
-         timestampString = "338637572.50257"
+         timestampString = "338669080.753687"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "45"

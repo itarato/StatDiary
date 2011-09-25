@@ -17,20 +17,25 @@
 @synthesize passwordField;
 @synthesize passwordRetypeField;
 @synthesize emailField;
-@synthesize registerButton;
 @synthesize networkIndicator;
 @synthesize userNameCell, emailCell, passwordCell, passwordRetypeCell;
+
+
+- (void)dealloc {
+    [userNameField release];
+    [passwordField release];
+    [passwordRetypeField release];
+    [emailField release];
+    [networkIndicator release];
+    [super dealloc];
+}
 
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-		UIImage *tabBarIcon = [UIImage imageNamed:@"111-user.png"];
-		UITabBarItem *vTabBarItem = [[UITabBarItem alloc] initWithTitle:@"Register" image:tabBarIcon tag:1];
-		self.tabBarItem = vTabBarItem;
-		[vTabBarItem release];
-        // Custom initialization.
+		self.title = @"Register";
     }
     return self;
 }
@@ -45,12 +50,6 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	UIImage *buttonBgrImage = [UIImage imageNamed:@"whiteButton.png"];
-	UIImage *buttonStretchedBrgImage = [buttonBgrImage stretchableImageWithLeftCapWidth:12 topCapHeight:0];
-	[registerButton setBackgroundImage:buttonStretchedBrgImage forState:UIControlStateNormal];
-	
-    defaultCenter = self.view.center;
-    
     networkIndicator = [[IndicatorViewController alloc] init];
     [self.view addSubview:networkIndicator.view];
     networkIndicator.view.center = CGPointMake(self.view.center.x, 140.0f);
@@ -79,17 +78,6 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-}
-
-
-- (void)dealloc {
-    [userNameField release];
-    [passwordField release];
-    [passwordRetypeField release];
-    [emailField release];
-    [registerButton release];
-    [networkIndicator release];
-    [super dealloc];
 }
 
 
@@ -139,27 +127,27 @@
 
 #pragma mark Custom function
 
-- (void)onEnterTextField:(id)sender {
-    if (((UITextField *)sender).center.y > 150.0f) {
-        [self swipeViewTo:CGPointMake(self.view.center.x, defaultCenter.y - ((UITextField *)sender).center.y + 120.0f)];
-    } else {
-        [self swipeViewTo:defaultCenter];
-    }
-}
+//- (void)onEnterTextField:(id)sender {
+//    if (((UITextField *)sender).center.y > 150.0f) {
+//        [self swipeViewTo:CGPointMake(self.view.center.x, defaultCenter.y - ((UITextField *)sender).center.y + 120.0f)];
+//    } else {
+//        [self swipeViewTo:defaultCenter];
+//    }
+//}
 
 
-- (void)onPressExitOnTextField:(id)sender {
-    [self swipeViewTo:defaultCenter];
-}
+//- (void)onPressExitOnTextField:(id)sender {
+//    [self swipeViewTo:defaultCenter];
+//}
         
 
-- (void)swipeViewTo:(CGPoint)toPoint {
-    [UIView beginAnimations:@"swipe" context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:0.3f];
-    self.view.center = toPoint;
-    [UIView commitAnimations];
-}
+//- (void)swipeViewTo:(CGPoint)toPoint {
+//    [UIView beginAnimations:@"swipe" context:nil];
+//    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//    [UIView setAnimationDuration:0.3f];
+//    self.view.center = toPoint;
+//    [UIView commitAnimations];
+//}
 
 
 - (void)onPressRegisterButton:(id)sender {
@@ -175,6 +163,30 @@
     [connManager spawnConnectionWithXMLRPCRequest:request delegate:self];
     [request release];
     networkIndicator.view.hidden = NO;
+}
+
+
+#pragma mark UITableView delegates
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+	return 1;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (indexPath.row == 0) {
+		return userNameCell;
+	} else if (indexPath.row == 1) {
+		return emailCell;
+	} else if (indexPath.row == 2) {
+		return passwordCell;
+	} else {
+		return passwordRetypeCell;
+	}
 }
         
 
