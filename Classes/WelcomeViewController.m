@@ -19,12 +19,12 @@
 - (id)init {
     self = [super init];
     if (self) {
-        loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
-        registrationViewController = [[RegistrationViewController alloc] initWithNibName:@"RegistrationView" bundle:nil];
+//        loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+//        registrationViewController = [[RegistrationViewController alloc] initWithNibName:@"RegistrationView" bundle:nil];
         
-        NSArray *tabViews = [NSArray arrayWithObjects:loginViewController, registrationViewController, nil];
-        self.viewControllers = tabViews;
-        self.view.backgroundColor = [UIColor yellowColor];
+//        NSArray *tabViews = [NSArray arrayWithObjects:loginViewController, registrationViewController, nil];
+//        self.viewControllers = tabViews;
+//        self.view.backgroundColor = [UIColor yellowColor];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRegistrationIsComplete:) name:@"registrationIsComplete" object:nil];
     }
@@ -34,8 +34,8 @@
 
 - (void)dealloc
 {
-    [loginViewController release];
-    [registrationViewController release];
+//    [loginViewController release];
+//    [registrationViewController release];
     [super dealloc];
 }
 
@@ -78,7 +78,23 @@
 }
 
 - (void)onRegistrationIsComplete:(NSNotification *)notification {
-    [self.loginViewController connect];
+//    [self.loginViewController connect];
+}
+
+
+#pragma mark UI actions
+
+- (void)pressLoginButton:(id)sender {
+	if (loginViewController == nil) {
+		loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+	}
+	
+	[self.navigationController pushViewController:loginViewController animated:YES];
+}
+
+
+- (void)pressRegisterButton:(id)sender {
+	
 }
 
 @end

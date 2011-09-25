@@ -376,11 +376,11 @@
   } else if (request == logOutRequest) {
     NSLog(@"Logout request success (or not)");
     
-    [accountController.loginViewController setKeepMeSignedIn:NO];
-    [accountController.loginViewController.keepMeLoggedInSwitch setOn:NO animated:NO];
+//    [accountController.loginViewController setKeepMeSignedIn:NO];
+//    [accountController.loginViewController.keepMeLoggedInSwitch setOn:NO animated:NO];
     
     [self presentModalViewController:accountController animated:YES];
-    [accountController.loginViewController connectWithDelay];
+//    [accountController.loginViewController connectWithDelay];
   } else if (request == deleteRequest) {
     if ([response isFault]) { // Fault response -> Exception
       [LoginViewController popUpLoginOn:self];

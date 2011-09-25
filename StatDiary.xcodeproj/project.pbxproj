@@ -41,6 +41,7 @@
 		4787ACFA13BF89BC0074CBDA /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787ACF913BF89BC0074CBDA /* WelcomeViewController.m */; };
 		4787F45013A2BDD2002B9636 /* StatDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */; };
 		4787F45313A2BDF9002B9636 /* StatDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4787F45213A2BDF9002B9636 /* StatDetailsView.xib */; };
+		4788E611142F7D4F00060AA9 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4788E610142F7D4F00060AA9 /* LoginView.xib */; };
 		47B383D013C0FCFD00D34E27 /* CreateStatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B383CF13C0FCFD00D34E27 /* CreateStatViewController.m */; };
 		47B383D213C0FD1800D34E27 /* CreateStatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B383D113C0FD1800D34E27 /* CreateStatView.xib */; };
 		47B9465E13A16BA2001326FC /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B9465D13A16BA2001326FC /* Globals.m */; };
@@ -104,11 +105,12 @@
 		47807F0A13A4F121004078EB /* IndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndicatorView.xib; sourceTree = "<group>"; };
 		47807F0E13A4F1BB004078EB /* IndicatorBgr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IndicatorBgr.png; sourceTree = "<group>"; };
 		47807FA913A50588004078EB /* whiteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteButton.png; sourceTree = "<group>"; };
-		4787ACF813BF89BC0074CBDA /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		4787ACF813BF89BC0074CBDA /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		4787ACF913BF89BC0074CBDA /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		4787F44E13A2BDD2002B9636 /* StatDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatDetailsViewController.h; sourceTree = "<group>"; };
 		4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatDetailsViewController.m; sourceTree = "<group>"; };
 		4787F45213A2BDF9002B9636 /* StatDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatDetailsView.xib; sourceTree = "<group>"; };
+		4788E610142F7D4F00060AA9 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginView.xib; path = Classes/LoginView.xib; sourceTree = "<group>"; };
 		47B383CE13C0FCFD00D34E27 /* CreateStatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateStatViewController.h; sourceTree = "<group>"; };
 		47B383CF13C0FCFD00D34E27 /* CreateStatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStatViewController.m; sourceTree = "<group>"; };
 		47B383D113C0FD1800D34E27 /* CreateStatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateStatView.xib; sourceTree = "<group>"; };
@@ -215,8 +217,9 @@
 				4738B51F13AB297700BD5B67 /* 111-user.png */,
 				47807FA913A50588004078EB /* whiteButton.png */,
 				47807F0E13A4F1BB004078EB /* IndicatorBgr.png */,
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* StatDiary-Info.plist */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				4788E610142F7D4F00060AA9 /* LoginView.xib */,
 				4733D1F1139D466B006941EC /* WelcomeView.xib */,
 				4787F45213A2BDF9002B9636 /* StatDetailsView.xib */,
 				47807F0A13A4F121004078EB /* IndicatorView.xib */,
@@ -333,6 +336,7 @@
 				47C8D3BD13D0CE2800F22557 /* Icon.png in Resources */,
 				47C8D3BE13D0CE2800F22557 /* Icon@2x.png in Resources */,
 				47C8D3BF13D0CE2800F22557 /* iTunesArtwork.png in Resources */,
+				4788E611142F7D4F00060AA9 /* LoginView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

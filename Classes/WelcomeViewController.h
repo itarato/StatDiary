@@ -11,7 +11,7 @@
 @class LoginViewController;
 @class RegistrationViewController;
 
-@interface WelcomeViewController : UITabBarController {
+@interface WelcomeViewController : UIViewController {
 	LoginViewController *loginViewController;
 	RegistrationViewController *registrationViewController;
 }
@@ -20,5 +20,7 @@
 @property (nonatomic, retain) RegistrationViewController *registrationViewController;
 
 - (void)onRegistrationIsComplete:(NSNotification *)notification;
+- (IBAction)pressLoginButton:(id)sender;
+- (IBAction)pressRegisterButton:(id)sender;
 
 @end

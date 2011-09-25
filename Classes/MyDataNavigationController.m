@@ -14,7 +14,14 @@
 @implementation MyDataNavigationController
 
 
-@synthesize statListController;
+@synthesize statListController, welcomeViewController;
+
+
+- (void)dealloc {
+	[statListController release];
+	[welcomeViewController release];
+    [super dealloc];
+}
 
 
 - (id)init {
@@ -28,9 +35,13 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	statListController = [[StatListController alloc] initWithStyle:UITableViewStyleGrouped];
-	statListController.title = @"My Stats";
-	[self pushViewController:statListController animated:NO];
+//	statListController = [[StatListController alloc] initWithStyle:UITableViewStyleGrouped];
+//	statListController.title = @"My Stats";
+	welcomeViewController = [[WelcomeViewController alloc] initWithNibName:@"WelcomeView" bundle:nil];
+	welcomeViewController.title = @"Welcome";
+	
+//	[self pushViewController:statListController animated:NO];
+	[self pushViewController:welcomeViewController animated:NO];
     
     self.navigationBar.tintColor = [UIColor darkGrayColor];
     self.toolbar.tintColor = [UIColor colorWithRed:0.9f green:0.6f blue:0.2f alpha:1.0f];
@@ -50,12 +61,6 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-}
-
-
-- (void)dealloc {
-	[statListController release];
-    [super dealloc];
 }
 
 

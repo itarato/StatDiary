@@ -20,7 +20,7 @@
 @class StatListController;
 @class IndicatorViewController;
 
-@interface LoginViewController : UIViewController <XMLRPCConnectionDelegate, UIAlertViewDelegate> {
+@interface LoginViewController : UITableViewController <XMLRPCConnectionDelegate, UIAlertViewDelegate> {
 	IBOutlet UITextField *userNameField;
 	IBOutlet UITextField *passwordField;
 	IBOutlet UISwitch *keepMeLoggedInSwitch;
