@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XMLRPC/XMLRPCConnectionDelegate.h>
-#import "WelcomeViewController.h"
+#import "AccountNavigationController.h"
 #import "CreateStatViewController.h"
 
 
@@ -24,7 +24,7 @@
 	XMLRPCRequest *logOutRequest;
     XMLRPCRequest *deleteRequest;
 	IndicatorViewController *networkIndicator;
-	WelcomeViewController *accountController;
+	AccountNavigationController *accountController;
     CreateStatViewController *createStatViewController;
 }
 
@@ -34,7 +34,7 @@
 @property (nonatomic, retain) XMLRPCRequest *logOutRequest;
 @property (nonatomic, retain) XMLRPCRequest *deleteRequest;
 @property (nonatomic, retain) IndicatorViewController *networkIndicator;
-@property (nonatomic, retain) WelcomeViewController *accountController;
+@property (nonatomic, retain) AccountNavigationController *accountController;
 @property (nonatomic, retain) CreateStatViewController *createStatViewController;
 
 - (void)reloadStatData;

@@ -7,18 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StatListController.h"
+#import "AccountNavigationController.h"
 
 
-@class StatListController;
-@class WelcomeViewController;
-
-
-@interface MyDataNavigationController : UINavigationController <UINavigationControllerDelegate> {
+@interface StatNavigationController : UINavigationController {
 	StatListController *statListController;
-	WelcomeViewController *welcomeViewController;
+	AccountNavigationController *accountNavigationController;
 }
 
+
 @property (nonatomic, retain) StatListController *statListController;
-@property (nonatomic, retain) WelcomeViewController *welcomeViewController;
+@property (nonatomic, retain) AccountNavigationController *accountNavigationController;
+
 
 @end

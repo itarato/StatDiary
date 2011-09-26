@@ -9,35 +9,46 @@
 #import "WelcomeViewController.h"
 #import "LoginViewController.h"
 #import "RegistrationViewController.h"
+#import "IndicatorViewController.h"
+#import <XMLRPC/XMLRPC.h>
+#import "Globals.h"
+#import "StatListController.h"
 
 
 @implementation WelcomeViewController
 
+
 @synthesize loginViewController;
 @synthesize registrationViewController;
+@synthesize connectionRequest;
+@synthesize networkIndicator;
+@synthesize statListController;
 
-- (id)init {
-    self = [super init];
+
+- (void)dealloc
+{
+	[connectionRequest release];
+	[loginViewController release];
+	[networkIndicator release];
+	[registrationViewController release];
+	[statListController release];
+    [super dealloc];
+}
+
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-//        loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
-//        registrationViewController = [[RegistrationViewController alloc] initWithNibName:@"RegistrationView" bundle:nil];
-        
-//        NSArray *tabViews = [NSArray arrayWithObjects:loginViewController, registrationViewController, nil];
-//        self.viewControllers = tabViews;
-//        self.view.backgroundColor = [UIColor yellowColor];
-        
+		connectionRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
+		
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRegistrationIsComplete:) name:@"registrationIsComplete" object:nil];
+		
+		self.title = @"StatDiary";
     }
     
     return self;
 }
 
-- (void)dealloc
-{
-//    [loginViewController release];
-//    [registrationViewController release];
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -46,6 +57,7 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
+
 
 #pragma mark - View lifecycle
 
@@ -56,13 +68,18 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
-{
+{		
+	networkIndicator = [[IndicatorViewController alloc] init];
+	[self.view addSubview:networkIndicator.view];
+	networkIndicator.view.center = CGPointMake(self.view.center.x, 160.0f);
+	
+	[self connectWithDelay];
     [super viewDidLoad];
 }
-*/
+
 
 - (void)viewDidUnload
 {
@@ -85,11 +102,7 @@
 #pragma mark UI actions
 
 - (void)pressLoginButton:(id)sender {
-	if (loginViewController == nil) {
-		loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
-	}
-	
-	[self.navigationController pushViewController:loginViewController animated:YES];
+	[self openLoginView];
 }
 
 
@@ -99,6 +112,89 @@
 	}
 	
 	[self.navigationController pushViewController:registrationViewController animated:YES];
+}
+
+
+#pragma mark Custom actions
+
+- (void)connect {
+	NSLog(@"Connect to Drupal");
+	
+	networkIndicator.view.hidden = NO;
+	[connectionRequest setMethod:@"system.connect"];
+	XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
+	[connManager spawnConnectionWithXMLRPCRequest:connectionRequest delegate:self];
+}
+
+
+- (void)connectWithDelay {
+	[self performSelector:@selector(connect) withObject:self afterDelay:0.6f];
+}
+
+
+- (void)openLoginView {
+	if (loginViewController == nil) {
+		loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+	}
+	
+	[self.navigationController pushViewController:loginViewController animated:YES];
+}
+
+
+#pragma mark XMLRPC delegates
+
+- (BOOL)request:(XMLRPCRequest *)request canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
+	return NO;
+}
+
+
+- (void)request:(XMLRPCRequest *)request didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {}
+
+
+- (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
+	NSLog(@"Request error in WelcomeVC");
+}
+
+- (void)request:(XMLRPCRequest *)request didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {}
+
+- (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
+	NSLog(@"Connect request: %@", [response object]);
+	networkIndicator.view.hidden = YES;
+	if (request == connectionRequest) {
+		if ([response isFault]) {
+			NSLog(@"Connection request fail");
+			[Globals alertNetworkError];
+		} else {
+			NSLog(@"Connection request success");
+			
+			Globals *globals = [Globals sharedInstance];
+			globals.uid = [[[response object] valueForKey:@"user"] valueForKey:@"uid"];
+			globals.sessionID = [[response object] valueForKey:@"sessid"];
+			
+			// User is already logged in.
+			if ([globals.uid intValue] > 0) {
+//				[loginViewController loadStatList];
+//				if (statListController == nil) {
+//					statListController = [[StatListController alloc] initWithStyle:UITableViewStyleGrouped];
+//				}
+//				[self.navigationController pushViewController:statListController animated:YES];
+				[self dismissModalViewControllerAnimated:YES];
+				[[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:nil];
+			} else {
+//				[self openLoginView];
+			}
+//			if ([loginViewController getKeepMeSignedIn]) {
+//				NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//				NSString *username = [defaults stringForKey:KEEP_ME_LOGGED_IN_USERNAME];
+//				NSString *password = [defaults stringForKey:KEEP_ME_LOGGED_IN_PASSWORD];
+//				if (username != nil && password != nil) {
+//					loginViewController.userNameField.text = username;
+//					loginViewController.passwordField.text = password;
+//					[loginViewController onPressLoginButton:nil];
+//				}
+//			}
+		}
+	}
 }
 
 @end

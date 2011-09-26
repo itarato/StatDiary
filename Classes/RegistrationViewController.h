@@ -35,9 +35,9 @@
 @property (nonatomic, retain) UITableViewCell *passwordCell;
 @property (nonatomic, retain) UITableViewCell *passwordRetypeCell;
 
-- (IBAction)onEnterTextField:(id)sender;
-- (IBAction)onPressExitOnTextField:(id)sender;
-- (void)swipeViewTo:(CGPoint)toPoint;
+//- (IBAction)onEnterTextField:(id)sender;
+//- (IBAction)onPressExitOnTextField:(id)sender;
+//- (void)swipeViewTo:(CGPoint)toPoint;
 - (IBAction)onPressRegisterButton:(id)sender;
 
 @end

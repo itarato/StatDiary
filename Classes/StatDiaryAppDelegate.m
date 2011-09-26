@@ -7,16 +7,16 @@
 //
 
 #import "StatDiaryAppDelegate.h"
-#import "MyDataNavigationController.h"
+#import "StatNavigationController.h"
 
 @implementation StatDiaryAppDelegate
 
 @synthesize window;
-@synthesize myDataNavigationController;
+@synthesize statNavigationController;
 
 
 - (void)dealloc {
-	[myDataNavigationController release];
+	[statNavigationController release];
     [window release];
     [super dealloc];
 }
@@ -31,8 +31,8 @@
 	
 	[self.window makeKeyAndVisible];
 	
-	myDataNavigationController = [[MyDataNavigationController alloc] init];
-	[self.window addSubview:myDataNavigationController.view];
+	statNavigationController = [[StatNavigationController alloc] init];
+	[self.window addSubview:statNavigationController.view];
     
 	return YES;
 }

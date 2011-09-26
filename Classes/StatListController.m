@@ -33,19 +33,21 @@
 
 
 - (id)initWithStyle:(UITableViewStyle)style {
-  // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-  self = [super initWithStyle:style];
-  if (self) {
+	// Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
+	self = [super initWithStyle:style];
+	if (self) {
 		NSLog(@"StatListController init");
 		
 		myStats = nil;
 		statDetailsViewController = [[StatDetailsViewController alloc] initWithNibName:@"StatDetailsView" bundle:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSuccessLogin:) name:@"onSuccessLogin" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRefreshRequest:) name:@"refreshStatList" object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRefreshRequest:) name:@"refreshStatList" object:nil];
     
-    createStatViewController = [[CreateStatViewController alloc] initWithNibName:@"CreateStatView" bundle:nil];
-  }
-  return self;
+		createStatViewController = [[CreateStatViewController alloc] initWithNibName:@"CreateStatView" bundle:nil];
+		
+		self.title = @"Stat list";
+	}
+	return self;
 }
 
 
@@ -56,7 +58,7 @@
 
 - (void)viewDidLoad {
 	NSLog(@"StatListController view did load");    
-	accountController = [[WelcomeViewController alloc] init];
+	accountController = [[AccountNavigationController alloc] init];
 	[self presentModalViewController:accountController animated:YES];
 	
 	[self.navigationController setToolbarHidden:NO animated:YES];
@@ -70,9 +72,9 @@
 	[logOutBarItem release];
 	[refreshBarItem release];
     
-  UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onPressAddStatButton)];
-  self.navigationItem.rightBarButtonItem = addButton;
-  [addButton release];
+	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onPressAddStatButton)];
+	self.navigationItem.rightBarButtonItem = addButton;
+	[addButton release];
 	
 	myListRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
 	logOutRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
@@ -82,7 +84,7 @@
 	networkIndicator.view.center = CGPointMake(self.view.center.x, 160.0f);
 	networkIndicator.view.hidden = YES;
 	
-  [super viewDidLoad];
+	[super viewDidLoad];
 }
 
 
@@ -217,6 +219,7 @@
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
     */
+	[self tableView:tableView accessoryButtonTappedForRowWithIndexPath:indexPath];
 }
 
 
@@ -259,11 +262,11 @@
 	[statDetailsViewController release];
 	[myListRequest release];
 	[logOutRequest release];
-  [deleteRequest release];
+	[deleteRequest release];
 	[networkIndicator release];
-  [accountController release];
-  [createStatViewController release];
-  [super dealloc];
+	[accountController release];
+	[createStatViewController release];
+	[super dealloc];
 }
 
 

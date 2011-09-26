@@ -10,54 +10,45 @@
 #import <XMLRPC/XMLRPCConnectionDelegate.h>
 
 
-#define KEEP_ME_LOGGED_IN_YES 1
-#define KEEP_ME_LOGGED_IN_NO 2
-#define KEEP_ME_LOGGED_IN_USERNAME @"keepMeLoggedInUserName"
-#define KEEP_ME_LOGGED_IN_PASSWORD @"keepMeLoggedInPassword"
-#define KEEP_ME_LOGGED_IN @"keepMeLoggedIn"
+//#define KEEP_ME_LOGGED_IN_YES 1
+//#define KEEP_ME_LOGGED_IN_NO 2
+#define LOGGED_IN_USERNAME @"keepMeLoggedInUserName"
+#define LOGGED_IN_PASSWORD @"keepMeLoggedInPassword"
+//#define KEEP_ME_LOGGED_IN @"keepMeLoggedIn"
 
 @class XMLRPCRequest;
 @class StatListController;
 @class IndicatorViewController;
 
-@interface LoginViewController : UITableViewController <XMLRPCConnectionDelegate, UIAlertViewDelegate> {
+@interface LoginViewController : UITableViewController <XMLRPCConnectionDelegate, UIAlertViewDelegate, UITextFieldDelegate> {
 	IBOutlet UITextField *userNameField;
 	IBOutlet UITextField *passwordField;
-	IBOutlet UISwitch *keepMeLoggedInSwitch;
-	IBOutlet UIButton *loginButton;
-  
+//	IBOutlet UISwitch *keepMeLoggedInSwitch;
 	IBOutlet UITableViewCell *userNameCell;
 	IBOutlet UITableViewCell *passwordCell;
-	IBOutlet UITableViewCell *keepMeLoggedInCell;
-	
-	StatListController *statListController;
-	
-	XMLRPCRequest *connectionRequest;
+//	IBOutlet UITableViewCell *keepMeLoggedInCell;
+//	StatListController *statListController;
 	XMLRPCRequest *loginRequest;
-	
 	IndicatorViewController *networkIndicator;
 }
 
 @property (nonatomic, retain) IBOutlet UITextField *userNameField;
 @property (nonatomic, retain) IBOutlet UITextField *passwordField;
-@property (nonatomic, retain) IBOutlet UIButton *loginButton;
-@property (nonatomic, retain) XMLRPCRequest *connectionRequest;
+//@property (nonatomic, retain) IBOutlet UISwitch *keepMeLoggedInSwitch;
 @property (nonatomic, retain) XMLRPCRequest *loginRequest;
-@property (nonatomic, retain) StatListController *statListController;
+//@property (nonatomic, retain) StatListController *statListController;
 @property (nonatomic, retain) IndicatorViewController *networkIndicator;
-@property (nonatomic, retain) IBOutlet UISwitch *keepMeLoggedInSwitch;
 @property (nonatomic, retain) UITableViewCell *userNameCell;
 @property (nonatomic, retain) UITableViewCell *passwordCell;
-@property (nonatomic, retain) UITableViewCell *keppMeLoggedInCell;
+//@property (nonatomic, retain) UITableViewCell *keppMeLoggedInCell;
 
-- (IBAction)onPressLoginButton:(id)sender;
+//- (void)onPressLoginButton:(id)sender;
 - (void)loadStatList;
-- (void)connect;
-- (void)connectWithDelay;
-- (BOOL)getKeepMeSignedIn;
-- (void)setKeepMeSignedIn:(BOOL)value;
-- (void)changeKeepMeLoggedInSwitch:(id)sender;
-- (IBAction)onPressDoneKey:(id)sender;
+//- (BOOL)getKeepMeSignedIn;
+//- (void)setKeepMeSignedIn:(BOOL)value;
+//- (void)changeKeepMeLoggedInSwitch:(id)sender;
+
+//- (IBAction)pressReturnKey:(id)sender;
 
 + (void)popUpLoginOn:(UIViewController *)viewController;
 

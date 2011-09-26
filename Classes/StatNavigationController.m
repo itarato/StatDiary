@@ -6,27 +6,27 @@
 //  Copyright 2011 Pronovix. All rights reserved.
 //
 
-#import "MyDataNavigationController.h"
+#import "StatNavigationController.h"
 #import "StatListController.h"
 #import "LoginViewController.h"
 
 
-@implementation MyDataNavigationController
+@implementation StatNavigationController
 
 
-@synthesize statListController, welcomeViewController;
+@synthesize statListController;
+@synthesize accountNavigationController;
 
 
 - (void)dealloc {
 	[statListController release];
-	[welcomeViewController release];
     [super dealloc];
 }
 
 
 - (id)init {
 	if ((self = [super init])) {
-		self.delegate = self;
+//		self.delegate = self;
 	}
 	
 	return self;
@@ -35,13 +35,9 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-//	statListController = [[StatListController alloc] initWithStyle:UITableViewStyleGrouped];
-//	statListController.title = @"My Stats";
-	welcomeViewController = [[WelcomeViewController alloc] initWithNibName:@"WelcomeView" bundle:nil];
-	welcomeViewController.title = @"Welcome";
+	statListController = [[StatListController alloc] initWithStyle:UITableViewStyleGrouped];
 	
-//	[self pushViewController:statListController animated:NO];
-	[self pushViewController:welcomeViewController animated:NO];
+	[self pushViewController:statListController animated:NO];
     
     self.navigationBar.tintColor = [UIColor darkGrayColor];
     self.toolbar.tintColor = [UIColor colorWithRed:0.9f green:0.6f blue:0.2f alpha:1.0f];

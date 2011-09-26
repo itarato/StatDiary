@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@class MyDataNavigationController;
+@class StatNavigationController;
 
 @interface StatDiaryAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
-	MyDataNavigationController *myDataNavigationController;
+	StatNavigationController *statNavigationController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet MyDataNavigationController *myDataNavigationController;
+@property (nonatomic, retain) IBOutlet StatNavigationController *statNavigationController;
 
 @end
 
