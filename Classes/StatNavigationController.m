@@ -26,7 +26,7 @@
 
 - (id)init {
 	if ((self = [super init])) {
-//		self.delegate = self;
+		self.delegate = self;
 	}
 	
 	return self;
@@ -61,7 +61,10 @@
 
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+//	NSLog(@"Change");
 	[self setToolbarHidden:(viewController != statListController) animated:YES];
 }
+
+
 
 @end

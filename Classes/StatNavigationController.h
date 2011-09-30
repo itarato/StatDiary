@@ -11,7 +11,7 @@
 #import "AccountNavigationController.h"
 
 
-@interface StatNavigationController : UINavigationController {
+@interface StatNavigationController : UINavigationController <UINavigationControllerDelegate> {
 	StatListController *statListController;
 	AccountNavigationController *accountNavigationController;
 }
