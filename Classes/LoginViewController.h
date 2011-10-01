@@ -50,6 +50,8 @@
 
 //- (IBAction)pressReturnKey:(id)sender;
 
+- (void)login;
+
 + (void)popUpLoginOn:(UIViewController *)viewController;
 
 @end

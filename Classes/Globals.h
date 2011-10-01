@@ -18,9 +18,8 @@
 @property (nonatomic, retain) NSNumber *uid;
 
 + (Globals *)sharedInstance;
-
 + (void)alertNetworkError;
 
-- (void)loginUser:(NSString *)name withPassword:(NSString *)password;
+- (BOOL)isConnected;
 
 @end

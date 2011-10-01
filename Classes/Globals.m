@@ -27,14 +27,14 @@
 
 
 + (void)alertNetworkError {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network error" message:@"Check your network connection status" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network error" message:@"Cannot connect to the service.\nTry it later." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
 }
 
 
-- (void)loginUser:(NSString *)name withPassword:(NSString *)password {
-    
+- (BOOL)isConnected {
+	return self.uid != nil;
 }
 
 

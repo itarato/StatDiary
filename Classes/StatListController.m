@@ -13,6 +13,7 @@
 #import "IndicatorViewController.h"
 #import "WelcomeViewController.h"
 #import "LoginViewController.h"
+#import "AccountNavigationController.h"
 
 
 @implementation StatListController
@@ -23,9 +24,20 @@
 @synthesize myListRequest;
 @synthesize logOutRequest;
 @synthesize networkIndicator;
-@synthesize accountController;
 @synthesize createStatViewController;
 @synthesize deleteRequest;
+
+
+- (void)dealloc {
+	[myStats release];
+	[statDetailsViewController release];
+	[myListRequest release];
+	[logOutRequest release];
+	[deleteRequest release];
+	[networkIndicator release];
+	[createStatViewController release];
+	[super dealloc];
+}
 
 
 #pragma mark -
@@ -40,11 +52,11 @@
 		
 		myStats = nil;
 		statDetailsViewController = [[StatDetailsViewController alloc] initWithNibName:@"StatDetailsView" bundle:nil];
+		createStatViewController  = [[CreateStatViewController alloc] initWithNibName:@"CreateStatView" bundle:nil];
+
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSuccessLogin:) name:@"onSuccessLogin" object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRefreshRequest:) name:@"refreshStatList" object:nil];
-    
-		createStatViewController = [[CreateStatViewController alloc] initWithNibName:@"CreateStatView" bundle:nil];
-		
+    		
 		self.title = @"Stat list";
 	}
 	return self;
@@ -58,10 +70,7 @@
 
 - (void)viewDidLoad {
 	NSLog(@"StatListController view did load");    
-	accountController = [[AccountNavigationController alloc] init];
-	[self presentModalViewController:accountController animated:YES];
-	
-	[self.navigationController setToolbarHidden:NO animated:YES];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"showLogin" object:nil];
 	
 	UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
 	UIBarButtonItem *logOutBarItem = [[UIBarButtonItem alloc] initWithTitle:@"Log out" style:UIBarButtonItemStyleBordered target:self action:@selector(logout)];
@@ -121,13 +130,9 @@
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  // Return the number of sections.
-  
-  NSInteger count = (myStats == nil) ? 0 : [myStats count];
-  if (count == 0 && [createStatViewController isViewLoaded]) {
-    [self presentModalViewController:createStatViewController animated:YES];
-  }
-  return count;
+	// Return the number of sections.
+	NSInteger count = (myStats == nil || [myStats count] == 0) ? 1 : [myStats count];
+	return count;
 }
 
 
@@ -140,23 +145,27 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-  static NSString *CellIdentifier = @"Cell";
+	static NSString *CellIdentifier = @"Cell";
   
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-  if (cell == nil) {
-      cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-  cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-  }
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+		cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+	}
   
-  // Configure the cell...
-	cell.textLabel.text = [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"title"];
-	cell.detailTextLabel.text = [NSString stringWithFormat:
-								 @"%@ entry, latest %@", 
-								 [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"count"],
-								 [StatListController elapsedTimeFromTimestamp:[[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"latest"]]];
-	//[cell setBackgroundColor: [UIColor colorWithRed:0.937f green:0.875f blue:0.77f alpha:1.0f]];
+	if (myStats != nil && [myStats count] > 0) {
+		// Configure the cell...
+		cell.textLabel.text = [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"title"];
+		cell.detailTextLabel.text = [NSString stringWithFormat:
+									 @"%@ entry, latest %@", 
+									 [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"count"],
+									 [StatListController elapsedTimeFromTimestamp:[[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"latest"]]];
+	} else {
+		cell.textLabel.text = @"Create your first stats";
+		cell.detailTextLabel.text = @"";
+	}
 	
-  return cell;
+	return cell;
 }
 
 
@@ -201,9 +210,14 @@
 
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-	statDetailsViewController.nid = [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"nid"];
-	statDetailsViewController.title = [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"title"];
-	[self.navigationController pushViewController:statDetailsViewController animated:YES];
+	if (myStats != nil && [myStats count] > 0) {
+		statDetailsViewController.nid = [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"nid"];
+		statDetailsViewController.title = [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"title"];
+		[self.navigationController pushViewController:statDetailsViewController animated:YES];
+	} else {
+		[self presentModalViewController:createStatViewController animated:YES];
+//		[self.navigationController pushViewController:createStatViewController animated:YES];
+	}
 }
 
 
@@ -211,14 +225,6 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
-    */
 	[self tableView:tableView accessoryButtonTappedForRowWithIndexPath:indexPath];
 }
 
@@ -254,19 +260,6 @@
 - (void)viewDidUnload {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
-}
-
-
-- (void)dealloc {
-	[myStats release];
-	[statDetailsViewController release];
-	[myListRequest release];
-	[logOutRequest release];
-	[deleteRequest release];
-	[networkIndicator release];
-	[accountController release];
-	[createStatViewController release];
-	[super dealloc];
 }
 
 
@@ -361,37 +354,34 @@
 
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
 	networkIndicator.view.hidden = YES;
-  
-  if (request == myListRequest) {
-    if ([response isFault]) { // Fault response -> Exception
-      [LoginViewController popUpLoginOn:self];
-    } else {
-      NSLog(@"List request success");
-            
-      if (myStats != nil) {
-          [myStats release];
-          myStats = nil;
-      }
-            
-      myStats = [[NSMutableArray alloc] initWithArray:[response object]];
-      [self.tableView reloadData];
-    }
-  } else if (request == logOutRequest) {
-    NSLog(@"Logout request success (or not)");
-    
-//    [accountController.loginViewController setKeepMeSignedIn:NO];
-//    [accountController.loginViewController.keepMeLoggedInSwitch setOn:NO animated:NO];
-    
-    [self presentModalViewController:accountController animated:YES];
-//    [accountController.loginViewController connectWithDelay];
-  } else if (request == deleteRequest) {
-    if ([response isFault]) { // Fault response -> Exception
-      [LoginViewController popUpLoginOn:self];
-    } else {
-      NSLog(@"Delete request success");
-      [self reloadStatData];
-    }
-  }
+	  
+	if (request == myListRequest) {
+		if ([response isFault]) { // Fault response -> Exception
+			[LoginViewController popUpLoginOn:self];
+		} else {
+			NSLog(@"List request success");
+				
+			if (myStats != nil) {
+				[myStats release];
+				myStats = nil;
+			}
+				
+			myStats = [[NSMutableArray alloc] initWithArray:[response object]];
+			[self.tableView reloadData];
+		}
+	} else if (request == logOutRequest) {
+		NSLog(@"Logout request success (or not)");
+		
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"showLogin" object:nil];
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"connectWithDelay" object:nil];
+	} else if (request == deleteRequest) {
+		if ([response isFault]) { // Fault response -> Exception
+			[[NSNotificationCenter defaultCenter] postNotificationName:@"showLogin" object:nil];
+		} else {
+			NSLog(@"Delete request success");
+			[self reloadStatData];
+		}
+	}
   
 	NSLog(@"Response: %@", [response object]);
 }

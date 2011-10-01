@@ -104,19 +104,18 @@
 
 
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
-  networkIndicator.view.hidden = YES;
-  
-  if ([response isFault]) {
-    NSLog(@"Create request fail");
-    [LoginViewController popUpLoginOn:self];
-  } else {
-    NSLog(@"Create request success");
-    titleField.text = @"";
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:response];
-    [self dismissModalViewControllerAnimated:YES];
-  }
-  
-  NSLog(@"Response: %@", [response object]);
+	networkIndicator.view.hidden = YES;
+	NSLog(@"Response: %@", [response object]);
+	
+	if ([response isFault]) {
+		NSLog(@"Create request fail");
+		[LoginViewController popUpLoginOn:self];
+	} else {
+		NSLog(@"Create request success");
+		titleField.text = @"";
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:nil];
+		[self dismissModalViewControllerAnimated:YES];
+	}
 }
 
 #pragma mark Custom actions
@@ -141,6 +140,7 @@
 
 
 - (void)onPressBackButton:(id)sender {
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:nil];
     [self dismissModalViewControllerAnimated:YES];
 }
 

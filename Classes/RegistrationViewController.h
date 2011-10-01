@@ -11,7 +11,7 @@
 #import "IndicatorViewController.h"
 
 
-@interface RegistrationViewController : UITableViewController <XMLRPCConnectionDelegate> {
+@interface RegistrationViewController : UITableViewController <XMLRPCConnectionDelegate, UITextFieldDelegate> {
 	IBOutlet UITextField *userNameField;
 	IBOutlet UITextField *passwordField;
 	IBOutlet UITextField *passwordRetypeField;
@@ -25,6 +25,7 @@
 	IBOutlet UITableViewCell *passwordRetypeCell;
 }
 
+
 @property (nonatomic, retain) IBOutlet UITextField *userNameField;
 @property (nonatomic, retain) IBOutlet UITextField *passwordField;
 @property (nonatomic, retain) IBOutlet UITextField *passwordRetypeField;
@@ -35,9 +36,8 @@
 @property (nonatomic, retain) UITableViewCell *passwordCell;
 @property (nonatomic, retain) UITableViewCell *passwordRetypeCell;
 
-//- (IBAction)onEnterTextField:(id)sender;
-//- (IBAction)onPressExitOnTextField:(id)sender;
-//- (void)swipeViewTo:(CGPoint)toPoint;
-- (IBAction)onPressRegisterButton:(id)sender;
+
+- (void)registerUser;
+
 
 @end

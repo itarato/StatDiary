@@ -21,4 +21,7 @@
 @property (nonatomic, retain) AccountNavigationController *accountNavigationController;
 
 
+- (void)showLogin;
+
+
 @end

@@ -27,6 +27,7 @@
 - (id)init {
 	if ((self = [super init])) {
 		self.delegate = self;
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLogin) name:@"showLogin" object:nil];
 	}
 	
 	return self;
@@ -35,6 +36,7 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	accountNavigationController = [[AccountNavigationController alloc] init];
 	statListController = [[StatListController alloc] initWithStyle:UITableViewStyleGrouped];
 	
 	[self pushViewController:statListController animated:NO];
@@ -60,11 +62,17 @@
 }
 
 
+#pragma mark UINavigationVC delegates
+
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-//	NSLog(@"Change");
+	NSLog(@"Nav view show");
 	[self setToolbarHidden:(viewController != statListController) animated:YES];
 }
 
+
+- (void)showLogin {
+	[self presentModalViewController:accountNavigationController animated:YES];
+}
 
 
 @end

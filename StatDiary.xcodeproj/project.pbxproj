@@ -40,8 +40,8 @@
 		4787F45013A2BDD2002B9636 /* StatDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */; };
 		4787F45313A2BDF9002B9636 /* StatDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4787F45213A2BDF9002B9636 /* StatDetailsView.xib */; };
 		4788E611142F7D4F00060AA9 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4788E610142F7D4F00060AA9 /* LoginView.xib */; };
+		47977D5D14366D5F00F55E1B /* XMLRPCRequestExtended.m in Sources */ = {isa = PBXBuildFile; fileRef = 47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */; };
 		47A8C08F14310B97001F588E /* AccountNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A8C08E14310B97001F588E /* AccountNavigationController.m */; };
-		47A8C09114312051001F588E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 47A8C09014312051001F588E /* Default.png */; };
 		47B383D013C0FCFD00D34E27 /* CreateStatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B383CF13C0FCFD00D34E27 /* CreateStatViewController.m */; };
 		47B383D213C0FD1800D34E27 /* CreateStatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B383D113C0FD1800D34E27 /* CreateStatView.xib */; };
 		47B9465E13A16BA2001326FC /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B9465D13A16BA2001326FC /* Globals.m */; };
@@ -109,6 +109,8 @@
 		4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatDetailsViewController.m; sourceTree = "<group>"; };
 		4787F45213A2BDF9002B9636 /* StatDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatDetailsView.xib; sourceTree = "<group>"; };
 		4788E610142F7D4F00060AA9 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginView.xib; path = Classes/LoginView.xib; sourceTree = "<group>"; };
+		47977D5B14366D5F00F55E1B /* XMLRPCRequestExtended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLRPCRequestExtended.h; sourceTree = "<group>"; };
+		47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLRPCRequestExtended.m; sourceTree = "<group>"; };
 		47A8C08D14310B97001F588E /* AccountNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountNavigationController.h; path = ../AccountNavigationController.h; sourceTree = "<group>"; };
 		47A8C08E14310B97001F588E /* AccountNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountNavigationController.m; path = ../AccountNavigationController.m; sourceTree = "<group>"; };
 		47A8C09014312051001F588E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -169,6 +171,8 @@
 				4787ACF913BF89BC0074CBDA /* WelcomeViewController.m */,
 				47B383CE13C0FCFD00D34E27 /* CreateStatViewController.h */,
 				47B383CF13C0FCFD00D34E27 /* CreateStatViewController.m */,
+				47977D5B14366D5F00F55E1B /* XMLRPCRequestExtended.h */,
+				47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -340,7 +344,6 @@
 				47C8D3BE13D0CE2800F22557 /* Icon@2x.png in Resources */,
 				47C8D3BF13D0CE2800F22557 /* iTunesArtwork.png in Resources */,
 				4788E611142F7D4F00060AA9 /* LoginView.xib in Resources */,
-				47A8C09114312051001F588E /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +375,7 @@
 				4787ACFA13BF89BC0074CBDA /* WelcomeViewController.m in Sources */,
 				47B383D013C0FCFD00D34E27 /* CreateStatViewController.m in Sources */,
 				47A8C08F14310B97001F588E /* AccountNavigationController.m in Sources */,
+				47977D5D14366D5F00F55E1B /* XMLRPCRequestExtended.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +393,7 @@
 				GCC_PREFIX_HEADER = StatDiary_Prefix.pch;
 				HEADER_SEARCH_PATHS = "/Users/itarato/Downloads/CHECKOUT/xmlrpc/**";
 				INFOPLIST_FILE = "StatDiary-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = StatDiary;
 			};
 			name = Debug;
@@ -403,7 +407,7 @@
 				GCC_PREFIX_HEADER = StatDiary_Prefix.pch;
 				HEADER_SEARCH_PATHS = "/Users/itarato/Downloads/CHECKOUT/xmlrpc/**";
 				INFOPLIST_FILE = "StatDiary-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = StatDiary;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -418,7 +422,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/Users/itarato/Downloads/CHECKOUT/xmlrpc/XMLRPC/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9EE2DAA7-5891-4C16-AFDA-C33170263957";
 				SDKROOT = iphoneos;
 			};
@@ -433,7 +437,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/Users/itarato/Downloads/CHECKOUT/xmlrpc/XMLRPC/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9EE2DAA7-5891-4C16-AFDA-C33170263957";
 				SDKROOT = iphoneos;

@@ -90,6 +90,20 @@
 }
 
 
+- (void)login {
+	networkIndicator.view.hidden = NO;
+	Globals *global = [Globals sharedInstance];
+	[loginRequest setMethod:@"user.login" withParameters:[NSArray arrayWithObjects:global.sessionID, userNameField.text, passwordField.text, nil]];
+	XMLRPCConnectionManager *connectionManager = [XMLRPCConnectionManager sharedManager];
+	[connectionManager spawnConnectionWithXMLRPCRequest:loginRequest delegate:self];
+	
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setObject:userNameField.text forKey:LOGGED_IN_USERNAME];
+	[defaults setObject:passwordField.text forKey:LOGGED_IN_PASSWORD];
+	[defaults synchronize];
+}
+
+
 //- (BOOL)getKeepMeSignedIn {
 //	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //	NSInteger value = [defaults integerForKey:KEEP_ME_LOGGED_IN];
@@ -133,13 +147,21 @@
 	if (request == loginRequest) {
 		if ([response isFault]) {
 			NSLog(@"Login request fail");
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login error" 
-															message:@"Please, check your name and password" 
-														   delegate:nil 
-												  cancelButtonTitle:@"Ok" 
-												  otherButtonTitles:nil];
-			[alert show];
-			[alert release];
+			NSNumber *faultCode = [[response object] valueForKey:@"faultCode"];
+			if ([faultCode intValue] == 406) {
+			// Already logged in.
+				NSLog(@"Already logged in");
+				[self.navigationController dismissModalViewControllerAnimated:YES];
+			} else {
+			// Wrong account details.
+				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login error" 
+																message:@"Please, check your name and password" 
+															   delegate:nil 
+													  cancelButtonTitle:@"Ok" 
+													  otherButtonTitles:nil];
+				[alert show];
+				[alert release];
+			}
 		} else {
 			NSLog(@"Login request success");
 			[self loadStatList];
@@ -191,16 +213,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	NSLog(@"Return key pressed");
 	
-	networkIndicator.view.hidden = NO;
-	Globals *global = [Globals sharedInstance];
-	[loginRequest setMethod:@"user.login" withParameters:[NSArray arrayWithObjects:global.sessionID, userNameField.text, passwordField.text, nil]];
-	XMLRPCConnectionManager *connectionManager = [XMLRPCConnectionManager sharedManager];
-	[connectionManager spawnConnectionWithXMLRPCRequest:loginRequest delegate:self];
-	
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setObject:userNameField.text forKey:LOGGED_IN_USERNAME];
-	[defaults setObject:passwordField.text forKey:LOGGED_IN_PASSWORD];
-	[defaults synchronize];
+	[self login];
 	
 	return NO;
 }

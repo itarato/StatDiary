@@ -147,6 +147,7 @@
 
 - (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
 	networkIndicator.view.hidden = YES;
+	[Globals alertNetworkError];
 }
 
 
@@ -158,7 +159,7 @@
 	networkIndicator.view.hidden = YES;
 	if ([response isFault]) {
 		NSLog(@"Save request fail");
-		[LoginViewController popUpLoginOn:self];
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"showLogin" object:nil];
 	} else {
 		NSLog(@"Save request success");
 		

@@ -8,13 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <XMLRPC/XMLRPCConnectionDelegate.h>
-#import "AccountNavigationController.h"
 #import "CreateStatViewController.h"
-
-
-@class StatDetailsViewController;
-@class XMLRPCRequest;
-@class IndicatorViewController;
+#import <XMLRPC/XMLRPCRequest.h>
+#import "StatDetailsViewController.h"
+#import "IndicatorViewController.h"
 
 
 @interface StatListController : UITableViewController <XMLRPCConnectionDelegate> {
@@ -24,9 +21,9 @@
 	XMLRPCRequest *logOutRequest;
     XMLRPCRequest *deleteRequest;
 	IndicatorViewController *networkIndicator;
-	AccountNavigationController *accountController;
     CreateStatViewController *createStatViewController;
 }
+
 
 @property (nonatomic, retain) NSMutableArray *myStats;
 @property (nonatomic, retain) StatDetailsViewController *statDetailsViewController;
@@ -34,8 +31,8 @@
 @property (nonatomic, retain) XMLRPCRequest *logOutRequest;
 @property (nonatomic, retain) XMLRPCRequest *deleteRequest;
 @property (nonatomic, retain) IndicatorViewController *networkIndicator;
-@property (nonatomic, retain) AccountNavigationController *accountController;
 @property (nonatomic, retain) CreateStatViewController *createStatViewController;
+
 
 - (void)reloadStatData;
 - (void)onSuccessLogin:(NSNotification *)notification;
@@ -43,6 +40,8 @@
 - (void)onPressAddStatButton;
 - (void)onRefreshRequest:(NSNotification *)notification;
 
+
 + (NSString *)elapsedTimeFromTimestamp:(NSNumber *)timestamp;
+
 
 @end

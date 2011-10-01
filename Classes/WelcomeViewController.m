@@ -13,6 +13,7 @@
 #import <XMLRPC/XMLRPC.h>
 #import "Globals.h"
 #import "StatListController.h"
+#import "XMLRPCRequestExtended.h"
 
 
 @implementation WelcomeViewController
@@ -39,9 +40,10 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-		connectionRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
+		connectionRequest = [[XMLRPCRequestExtended alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
 		
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRegistrationIsComplete:) name:@"registrationIsComplete" object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectWithDelay) name:@"connectWithDelay" object:nil];
 		
 		self.title = @"StatDiary";
     }
@@ -102,16 +104,26 @@
 #pragma mark UI actions
 
 - (void)pressLoginButton:(id)sender {
-	[self openLoginView];
+	if ([[Globals sharedInstance] isConnected]) {
+		[self openLoginView];
+	} else {
+		connectionRequest.successCallback = @selector(pressLoginButton:);
+		[self connect];
+	}
 }
 
 
 - (void)pressRegisterButton:(id)sender {
-	if (registrationViewController == nil) {
-		registrationViewController = [[RegistrationViewController alloc] initWithNibName:@"RegistrationView" bundle:nil];
+	if ([[Globals sharedInstance] isConnected]) {
+		if (registrationViewController == nil) {
+			registrationViewController = [[RegistrationViewController alloc] initWithNibName:@"RegistrationView" bundle:nil];
+		}
+		
+		[self.navigationController pushViewController:registrationViewController animated:YES];
+	} else {
+		connectionRequest.successCallback = @selector(pressRegisterButton:);
+		[self connect];
 	}
-	
-	[self.navigationController pushViewController:registrationViewController animated:YES];
 }
 
 
@@ -153,6 +165,12 @@
 
 - (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
 	NSLog(@"Request error in WelcomeVC");
+	networkIndicator.view.hidden = YES;
+	[Globals alertNetworkError];
+	
+	if (request == connectionRequest) {
+		connectionRequest.successCallback = NULL;
+	}
 }
 
 - (void)request:(XMLRPCRequest *)request didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {}
@@ -160,6 +178,7 @@
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
 	NSLog(@"Connect request: %@", [response object]);
 	networkIndicator.view.hidden = YES;
+	
 	if (request == connectionRequest) {
 		if ([response isFault]) {
 			NSLog(@"Connection request fail");
@@ -171,30 +190,31 @@
 			globals.uid = [[[response object] valueForKey:@"user"] valueForKey:@"uid"];
 			globals.sessionID = [[response object] valueForKey:@"sessid"];
 			
-			// User is already logged in.
 			if ([globals.uid intValue] > 0) {
-//				[loginViewController loadStatList];
-//				if (statListController == nil) {
-//					statListController = [[StatListController alloc] initWithStyle:UITableViewStyleGrouped];
-//				}
-//				[self.navigationController pushViewController:statListController animated:YES];
+			// User is already logged in.
 				[self dismissModalViewControllerAnimated:YES];
 				[[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:nil];
+			} else if (connectionRequest.successCallback != NULL) {
+			// There is a callback.
+				[self performSelector:connectionRequest.successCallback withObject:nil];
 			} else {
-//				[self openLoginView];
+			// Fill the login form is possible.
+				NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+				NSString *username = [defaults stringForKey:LOGGED_IN_USERNAME];
+				NSString *password = [defaults stringForKey:LOGGED_IN_PASSWORD];
+				if (username != nil && password != nil) {
+					loginViewController.userNameField.text = username;
+					loginViewController.passwordField.text = password;
+				}
 			}
-//			if ([loginViewController getKeepMeSignedIn]) {
-//				NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//				NSString *username = [defaults stringForKey:KEEP_ME_LOGGED_IN_USERNAME];
-//				NSString *password = [defaults stringForKey:KEEP_ME_LOGGED_IN_PASSWORD];
-//				if (username != nil && password != nil) {
-//					loginViewController.userNameField.text = username;
-//					loginViewController.passwordField.text = password;
-//					[loginViewController onPressLoginButton:nil];
-//				}
-//			}
 		}
+		connectionRequest.successCallback = NULL;
 	}
 }
+
+
+#pragma mark UIAlertView delegates
+
+
 
 @end

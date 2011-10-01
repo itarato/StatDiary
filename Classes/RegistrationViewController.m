@@ -113,7 +113,8 @@
         
         NSString *responseMessage = (NSString *)[response object];
         if ([responseMessage isEqualToString:@"ok"]) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"registrationIsComplete" object:response];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"registrationIsComplete" object:response];
+			[self.navigationController dismissModalViewControllerAnimated:YES];
         } else {
             NSLog(@"Register error: %@", responseMessage);
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Registration error" message:responseMessage delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
@@ -150,7 +151,7 @@
 //}
 
 
-- (void)onPressRegisterButton:(id)sender {
+- (void)registerUser {
     XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
     Globals *globals = [Globals sharedInstance];
     [request setMethod:@"mystat.userRegister" withParameters:[NSArray arrayWithObjects:
@@ -189,6 +190,13 @@
 	}
 }
         
+
+#pragma mark UITextField delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	[self registerUser];
+	return NO;
+}
 
 
 @end
