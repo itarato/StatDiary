@@ -215,8 +215,7 @@
 		statDetailsViewController.title = [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"title"];
 		[self.navigationController pushViewController:statDetailsViewController animated:YES];
 	} else {
-		[self presentModalViewController:createStatViewController animated:YES];
-//		[self.navigationController pushViewController:createStatViewController animated:YES];
+		[self.navigationController pushViewController:createStatViewController animated:YES];
 	}
 }
 
@@ -320,7 +319,7 @@
 
 
 - (void)onPressAddStatButton {
-    [self presentModalViewController:createStatViewController animated:YES];
+	[self.navigationController pushViewController:createStatViewController animated:YES];
 }
 
 

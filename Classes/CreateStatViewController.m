@@ -22,6 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+		self.title = @"Create stats";
     }
     return self;
 }
@@ -114,7 +115,7 @@
 		NSLog(@"Create request success");
 		titleField.text = @"";
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:nil];
-		[self dismissModalViewControllerAnimated:YES];
+		[self.navigationController popViewControllerAnimated:YES];
 	}
 }
 
@@ -136,12 +137,6 @@
     XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
     [connManager spawnConnectionWithXMLRPCRequest:request delegate:self];
     [request release];
-}
-
-
-- (void)onPressBackButton:(id)sender {
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:nil];
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 
