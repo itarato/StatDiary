@@ -39,6 +39,7 @@
 - (void)logout;
 - (void)onPressAddStatButton;
 - (void)onRefreshRequest:(NSNotification *)notification;
+- (void)preprocessEntries;
 
 
 + (NSString *)elapsedTimeFromTimestamp:(NSNumber *)timestamp;

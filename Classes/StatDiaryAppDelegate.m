@@ -8,6 +8,7 @@
 
 #import "StatDiaryAppDelegate.h"
 #import "StatNavigationController.h"
+#import "Globals.h"
 
 @implementation StatDiaryAppDelegate
 
@@ -33,6 +34,11 @@
 	
 	statNavigationController = [[StatNavigationController alloc] init];
 	[self.window addSubview:statNavigationController.view];
+	
+	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+	 (UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+	
+	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
 	return YES;
 }
@@ -85,5 +91,24 @@
      */
 }
 
+
+#pragma mark Remote notifications
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+	NSLog(@"Registered remote push notifications to %@", deviceToken);
+	NSString *deviceTokenString = [[NSString alloc] initWithFormat:@"%@", deviceToken];
+	[[Globals sharedInstance] setDeviceToken:deviceTokenString];
+	[deviceTokenString release];
+}
+
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+	NSLog(@"Fail to register push notifications: %@", error);
+}
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+	NSLog(@"Silent push notification");
+}
 
 @end

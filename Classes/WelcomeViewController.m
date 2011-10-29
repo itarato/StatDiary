@@ -16,12 +16,20 @@
 #import "XMLRPCRequestExtended.h"
 
 
+@interface WelcomeViewController () 
+
+- (void)sendDeviceInfo;
+
+@end
+
+
 @implementation WelcomeViewController
 
 
 @synthesize loginViewController;
 @synthesize registrationViewController;
 @synthesize connectionRequest;
+@synthesize infoRequest;
 @synthesize networkIndicator;
 @synthesize statListController;
 
@@ -33,6 +41,7 @@
 	[networkIndicator release];
 	[registrationViewController release];
 	[statListController release];
+	[infoRequest release];
     [super dealloc];
 }
 
@@ -41,6 +50,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 		connectionRequest = [[XMLRPCRequestExtended alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
+		infoRequest       = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
 		
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRegistrationIsComplete:) name:@"registrationIsComplete" object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectWithDelay) name:@"connectWithDelay" object:nil];
@@ -153,6 +163,30 @@
 }
 
 
+// Send device info to the server.
+- (void)sendDeviceInfo {
+	if ([[Globals sharedInstance] deviceToken] != nil) {
+		NSLog(@"Params: S: %@ 1: %@ 2: %@ 3: %@ 4: %@", [[Globals sharedInstance] sessionID], 
+			  [[Globals sharedInstance] deviceToken],
+			  [[UIDevice currentDevice] uniqueIdentifier],
+			  @"com.itarato.StatDiary",
+			  @"1.1");
+		
+		NSArray *params = [[NSArray alloc] initWithObjects:
+						   [[Globals sharedInstance] sessionID], 
+						   [[Globals sharedInstance] deviceToken],
+						   [[UIDevice currentDevice] uniqueIdentifier],
+						   @"com.itarato.StatDiary",
+						   @"1.1",
+						   nil];
+		[infoRequest setMethod:@"mystatapp.deviceInfo" withParameters:params];
+		XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
+		[connManager spawnConnectionWithXMLRPCRequest:infoRequest delegate:self];
+		[params release];
+	}
+}
+
+
 #pragma mark XMLRPC delegates
 
 - (BOOL)request:(XMLRPCRequest *)request canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
@@ -190,6 +224,8 @@
 			globals.uid = [[[response object] valueForKey:@"user"] valueForKey:@"uid"];
 			globals.sessionID = [[response object] valueForKey:@"sessid"];
 			
+			[self sendDeviceInfo];
+			
 			if ([globals.uid intValue] > 0) {
 			// User is already logged in.
 				[self dismissModalViewControllerAnimated:YES];
@@ -209,12 +245,10 @@
 			}
 		}
 		connectionRequest.successCallback = NULL;
+	} else if (request == infoRequest) {
+		// Do nothing - do not care.
 	}
 }
-
-
-#pragma mark UIAlertView delegates
-
 
 
 @end

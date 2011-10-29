@@ -24,14 +24,18 @@
 	StatListController *statListController;
 	
 	XMLRPCRequestExtended *connectionRequest;
+	XMLRPCRequest *infoRequest;
 	IndicatorViewController *networkIndicator;
 }
+
 
 @property (nonatomic, retain) LoginViewController *loginViewController;
 @property (nonatomic, retain) RegistrationViewController *registrationViewController;
 @property (nonatomic, retain) StatListController *statListController;
 @property (nonatomic, retain) XMLRPCRequestExtended *connectionRequest;
 @property (nonatomic, retain) IndicatorViewController *networkIndicator;
+@property (nonatomic, retain) XMLRPCRequest *infoRequest;
+
 
 - (void)onRegistrationIsComplete:(NSNotification *)notification;
 - (IBAction)pressLoginButton:(id)sender;
@@ -39,5 +43,6 @@
 - (void)connect;
 - (void)connectWithDelay;
 - (void)openLoginView;
+
 
 @end

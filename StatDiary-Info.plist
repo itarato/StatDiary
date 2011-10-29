@@ -16,7 +16,7 @@
 		<string>Icon.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>com.itarato.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.itarato.StatDiary</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

@@ -13,6 +13,7 @@
 
 @synthesize sessionID;
 @synthesize uid;
+@synthesize deviceToken;
 
 
 + (Globals *)sharedInstance {

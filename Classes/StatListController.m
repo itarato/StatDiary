@@ -328,6 +328,50 @@
 }
 
 
+- (void)preprocessEntries {
+	[[UIApplication sharedApplication] cancelAllLocalNotifications];
+	
+	if (myStats && [myStats count] > 0) {
+		NSDate *now = [[NSDate alloc] init];
+		double now_sec = [now timeIntervalSince1970];
+		[now release];
+		int badge = 0;
+		NSMutableArray *laterBadges = [[NSMutableArray alloc] init];
+		for (id stat in myStats) {
+			NSNumber *interval = [[stat valueForKey:@"config"] valueForKey:@"interval"];
+			NSNumber *latest = [stat valueForKey:@"latest"];
+			if ([latest doubleValue] + [interval doubleValue] <= now_sec) {
+				badge++;
+			} else {
+				[laterBadges addObject:[NSNumber numberWithDouble:[latest doubleValue] + [interval doubleValue]]];
+			}
+		}
+		
+		// Order times.
+		[laterBadges sortUsingComparator:^NSComparisonResult(id time1, id time2) {
+			return [(NSNumber *)time1 intValue] > [(NSNumber *)time2 intValue] ? NSOrderedDescending : NSOrderedAscending;
+		}];
+		
+		int laterBadge = badge;
+		if ([laterBadges count] > 0) {
+			for (id laterTime in laterBadges) {
+				NSNumber *time = (NSNumber *)laterTime;
+				UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+				NSLog(@"SET LOCAL: %d", [time intValue]);
+				NSDate *fireDate = [[NSDate alloc] initWithTimeIntervalSince1970:[time intValue]];
+				localNotif.fireDate = fireDate;
+				localNotif.timeZone = [NSTimeZone defaultTimeZone];
+				localNotif.applicationIconBadgeNumber = ++laterBadge;
+				[[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+				[fireDate release];
+				[localNotif release];
+			}
+		}
+		
+		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:badge];
+	}
+}
+
 #pragma mark --
 #pragma mark XMLRPC delegated methods
 
@@ -366,6 +410,7 @@
 			}
 				
 			myStats = [[NSMutableArray alloc] initWithArray:[response object]];
+			[self preprocessEntries];
 			[self.tableView reloadData];
 		}
 	} else if (request == logOutRequest) {

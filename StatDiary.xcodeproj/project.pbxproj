@@ -98,6 +98,7 @@
 		4738B52713AB2B0800BD5B67 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		4738B52913AB2B1E00BD5B67 /* RegistrationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationView.xib; sourceTree = "<group>"; };
 		474006E113CF9A4300ABDDC8 /* bgr_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgr_login.png; sourceTree = "<group>"; };
+		4757A1261438703800E49445 /* StatDiary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = StatDiary.entitlements; sourceTree = "<group>"; };
 		47807F0713A4F112004078EB /* IndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorViewController.h; sourceTree = "<group>"; };
 		47807F0813A4F112004078EB /* IndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndicatorViewController.m; sourceTree = "<group>"; };
 		47807F0A13A4F121004078EB /* IndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndicatorView.xib; sourceTree = "<group>"; };
@@ -188,6 +189,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				4757A1261438703800E49445 /* StatDiary.entitlements */,
 				47A8C09014312051001F588E /* Default.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -386,6 +388,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = StatDiary.entitlements;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -402,6 +405,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = StatDiary.entitlements;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = StatDiary_Prefix.pch;
@@ -417,13 +421,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Peter Arato";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Peter Arato (P8R953S5HA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Peter Arato (P8R953S5HA)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/Users/itarato/Downloads/CHECKOUT/xmlrpc/XMLRPC/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9EE2DAA7-5891-4C16-AFDA-C33170263957";
+				PROVISIONING_PROFILE = "8A94569C-6A8C-47A6-A70C-3A2925DE3FB2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8A94569C-6A8C-47A6-A70C-3A2925DE3FB2";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -432,14 +438,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Peter Arato";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Peter Arato (P8R953S5HA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Peter Arato (P8R953S5HA)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/Users/itarato/Downloads/CHECKOUT/xmlrpc/XMLRPC/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9EE2DAA7-5891-4C16-AFDA-C33170263957";
+				PROVISIONING_PROFILE = "8A94569C-6A8C-47A6-A70C-3A2925DE3FB2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8A94569C-6A8C-47A6-A70C-3A2925DE3FB2";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
