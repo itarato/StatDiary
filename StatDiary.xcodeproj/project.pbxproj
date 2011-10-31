@@ -40,7 +40,6 @@
 		4787ACFA13BF89BC0074CBDA /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787ACF913BF89BC0074CBDA /* WelcomeViewController.m */; };
 		4787F45013A2BDD2002B9636 /* StatDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */; };
 		4787F45313A2BDF9002B9636 /* StatDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4787F45213A2BDF9002B9636 /* StatDetailsView.xib */; };
-		4788E611142F7D4F00060AA9 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4788E610142F7D4F00060AA9 /* LoginView.xib */; };
 		47977D5D14366D5F00F55E1B /* XMLRPCRequestExtended.m in Sources */ = {isa = PBXBuildFile; fileRef = 47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */; };
 		47A8C08F14310B97001F588E /* AccountNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A8C08E14310B97001F588E /* AccountNavigationController.m */; };
 		47B383D013C0FCFD00D34E27 /* CreateStatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B383CF13C0FCFD00D34E27 /* CreateStatViewController.m */; };
@@ -110,7 +109,6 @@
 		4787F44E13A2BDD2002B9636 /* StatDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatDetailsViewController.h; sourceTree = "<group>"; };
 		4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatDetailsViewController.m; sourceTree = "<group>"; };
 		4787F45213A2BDF9002B9636 /* StatDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatDetailsView.xib; sourceTree = "<group>"; };
-		4788E610142F7D4F00060AA9 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginView.xib; path = Classes/LoginView.xib; sourceTree = "<group>"; };
 		47977D5B14366D5F00F55E1B /* XMLRPCRequestExtended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLRPCRequestExtended.h; sourceTree = "<group>"; };
 		47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLRPCRequestExtended.m; sourceTree = "<group>"; };
 		47A8C08D14310B97001F588E /* AccountNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountNavigationController.h; path = ../AccountNavigationController.h; sourceTree = "<group>"; };
@@ -228,7 +226,6 @@
 				47807F0E13A4F1BB004078EB /* IndicatorBgr.png */,
 				8D1107310486CEB800E47090 /* StatDiary-Info.plist */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
-				4788E610142F7D4F00060AA9 /* LoginView.xib */,
 				4733D1F1139D466B006941EC /* WelcomeView.xib */,
 				4787F45213A2BDF9002B9636 /* StatDetailsView.xib */,
 				47807F0A13A4F121004078EB /* IndicatorView.xib */,
@@ -345,7 +342,6 @@
 				47C8D3BD13D0CE2800F22557 /* Icon.png in Resources */,
 				47C8D3BE13D0CE2800F22557 /* Icon@2x.png in Resources */,
 				47C8D3BF13D0CE2800F22557 /* iTunesArtwork.png in Resources */,
-				4788E611142F7D4F00060AA9 /* LoginView.xib in Resources */,
 				47833E49145F11AE003C5E37 /* Default.png in Resources */,
 				47833E4D145F1201003C5E37 /* bgr_welcome.png in Resources */,
 				47833E4F145F181D003C5E37 /* gray_button.png in Resources */,
