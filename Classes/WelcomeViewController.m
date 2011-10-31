@@ -7,7 +7,6 @@
 //
 
 #import "WelcomeViewController.h"
-#import "LoginViewController.h"
 #import "RegistrationViewController.h"
 #import "IndicatorViewController.h"
 #import <XMLRPC/XMLRPC.h>
@@ -26,22 +25,29 @@
 @implementation WelcomeViewController
 
 
-@synthesize loginViewController;
 @synthesize registrationViewController;
 @synthesize connectionRequest;
 @synthesize infoRequest;
 @synthesize networkIndicator;
 @synthesize statListController;
+@synthesize usernameCell;
+@synthesize passwordCell;
+@synthesize loginRequest;
+@synthesize userNameField;
+@synthesize passwordField;
+@synthesize loginButton;
 
 
 - (void)dealloc
 {
 	[connectionRequest release];
-	[loginViewController release];
 	[networkIndicator release];
 	[registrationViewController release];
 	[statListController release];
 	[infoRequest release];
+	[usernameCell release];
+	[passwordCell release];
+	[loginRequest release];
     [super dealloc];
 }
 
@@ -51,6 +57,7 @@
     if (self) {
 		connectionRequest = [[XMLRPCRequestExtended alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
 		infoRequest       = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
+		loginRequest      = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
 		
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRegistrationIsComplete:) name:@"registrationIsComplete" object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectWithDelay) name:@"connectWithDelay" object:nil];
@@ -88,6 +95,10 @@
 	[self.view addSubview:networkIndicator.view];
 	networkIndicator.view.center = CGPointMake(self.view.center.x, 160.0f);
 	
+	UIImage *buttonBgr = [UIImage imageNamed:@"gray_button.png"];
+	UIImage *buttonBgrStretched = [buttonBgr stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+	[loginButton setBackgroundImage:buttonBgrStretched forState:UIControlStateNormal];
+	
 	[self connectWithDelay];
     [super viewDidLoad];
 }
@@ -115,7 +126,7 @@
 
 - (void)pressLoginButton:(id)sender {
 	if ([[Globals sharedInstance] isConnected]) {
-		[self openLoginView];
+		[self login];
 	} else {
 		connectionRequest.successCallback = @selector(pressLoginButton:);
 		[self connect];
@@ -154,12 +165,25 @@
 }
 
 
-- (void)openLoginView {
-	if (loginViewController == nil) {
-		loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
-	}
+- (void) loadStatList {
+	NSLog(@"Load stat list");
 	
-	[self.navigationController pushViewController:loginViewController animated:YES];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"onSuccessLogin" object:nil];
+	[self dismissModalViewControllerAnimated:YES];
+}
+
+
+- (void)login {
+	networkIndicator.view.hidden = NO;
+	Globals *global = [Globals sharedInstance];
+	[loginRequest setMethod:@"user.login" withParameters:[NSArray arrayWithObjects:global.sessionID, userNameField.text, passwordField.text, nil]];
+	XMLRPCConnectionManager *connectionManager = [XMLRPCConnectionManager sharedManager];
+	[connectionManager spawnConnectionWithXMLRPCRequest:loginRequest delegate:self];
+	
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setObject:userNameField.text forKey:LOGGED_IN_USERNAME];
+	[defaults setObject:passwordField.text forKey:LOGGED_IN_PASSWORD];
+	[defaults synchronize];
 }
 
 
@@ -204,6 +228,10 @@
 	
 	if (request == connectionRequest) {
 		connectionRequest.successCallback = NULL;
+	} else if (request == loginRequest) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection error" message:@"App cannot reach the service. Press 'Reconnect' for another try." delegate:self cancelButtonTitle:@"Reconnect" otherButtonTitles:nil];
+		[alert show];
+		[alert release];
 	}
 }
 
@@ -239,15 +267,57 @@
 				NSString *username = [defaults stringForKey:LOGGED_IN_USERNAME];
 				NSString *password = [defaults stringForKey:LOGGED_IN_PASSWORD];
 				if (username != nil && password != nil) {
-					loginViewController.userNameField.text = username;
-					loginViewController.passwordField.text = password;
+					self.userNameField.text = username;
+					self.passwordField.text = password;
 				}
 			}
 		}
 		connectionRequest.successCallback = NULL;
 	} else if (request == infoRequest) {
 		// Do nothing - do not care.
+	} else if (request == loginRequest) {
+		if ([response isFault]) {
+			NSLog(@"Login request fail");
+			NSNumber *faultCode = [[response object] valueForKey:@"faultCode"];
+			if ([faultCode intValue] == 406) {
+				// Already logged in.
+				NSLog(@"Already logged in");
+				[self.navigationController dismissModalViewControllerAnimated:YES];
+			} else {
+				// Wrong account details.
+				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login error" 
+																message:@"Please, check your name and password" 
+															   delegate:nil 
+													  cancelButtonTitle:@"Ok" 
+													  otherButtonTitles:nil];
+				[alert show];
+				[alert release];
+			}
+		} else {
+			NSLog(@"Login request success");
+			[self loadStatList];
+		}
 	}
+}
+
+
+#pragma mark UITableView delegates
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return 2;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (indexPath.row == 0) {
+		return usernameCell;
+	} else {
+		return passwordCell;
+	}	
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return 36;
 }
 
 

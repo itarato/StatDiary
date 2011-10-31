@@ -12,7 +12,6 @@
 #import "StatDetailsViewController.h"
 #import "IndicatorViewController.h"
 #import "WelcomeViewController.h"
-#import "LoginViewController.h"
 #import "AccountNavigationController.h"
 
 
@@ -400,7 +399,6 @@
 	  
 	if (request == myListRequest) {
 		if ([response isFault]) { // Fault response -> Exception
-			[LoginViewController popUpLoginOn:self];
 		} else {
 			NSLog(@"List request success");
 				

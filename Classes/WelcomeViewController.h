@@ -10,31 +10,47 @@
 #import <XMLRPC/XMLRPCRequest.h>
 #import <XMLRPC/XMLRPCConnectionDelegate.h>
 #import "XMLRPCRequestExtended.h"
-#import "LoginViewController.h"
 #import "RegistrationViewController.h"
 #import "IndicatorViewController.h"
+
+
+#define LOGGED_IN_USERNAME @"keepMeLoggedInUserName"
+#define LOGGED_IN_PASSWORD @"keepMeLoggedInPassword"
 
 
 @class StatListController;
 
 
-@interface WelcomeViewController : UIViewController <XMLRPCConnectionDelegate> {
-	LoginViewController *loginViewController;
+@interface WelcomeViewController : UIViewController <XMLRPCConnectionDelegate, UITableViewDataSource, UITableViewDelegate> {
 	RegistrationViewController *registrationViewController;
 	StatListController *statListController;
 	
 	XMLRPCRequestExtended *connectionRequest;
 	XMLRPCRequest *infoRequest;
+	XMLRPCRequest *loginRequest;
 	IndicatorViewController *networkIndicator;
+	
+	UITableViewCell *usernameCell;
+	UITableViewCell *passwordCell;
+	
+	UITextField *userNameField;
+	UITextField *passwordField;
+	
+	UIButton *loginButton;
 }
 
 
-@property (nonatomic, retain) LoginViewController *loginViewController;
 @property (nonatomic, retain) RegistrationViewController *registrationViewController;
 @property (nonatomic, retain) StatListController *statListController;
 @property (nonatomic, retain) XMLRPCRequestExtended *connectionRequest;
 @property (nonatomic, retain) IndicatorViewController *networkIndicator;
 @property (nonatomic, retain) XMLRPCRequest *infoRequest;
+@property (nonatomic, retain) IBOutlet UITableViewCell *usernameCell;
+@property (nonatomic, retain) IBOutlet UITableViewCell *passwordCell;
+@property (nonatomic, retain) XMLRPCRequest *loginRequest;
+@property (nonatomic, retain) IBOutlet UITextField *userNameField;
+@property (nonatomic, retain) IBOutlet UITextField *passwordField;
+@property (nonatomic, retain) IBOutlet UIButton *loginButton;
 
 
 - (void)onRegistrationIsComplete:(NSNotification *)notification;
@@ -42,7 +58,8 @@
 - (IBAction)pressRegisterButton:(id)sender;
 - (void)connect;
 - (void)connectWithDelay;
-- (void)openLoginView;
+- (void)loadStatList;
+- (void)login;
 
 
 @end

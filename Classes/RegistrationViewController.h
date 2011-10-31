@@ -11,7 +11,7 @@
 #import "IndicatorViewController.h"
 
 
-@interface RegistrationViewController : UITableViewController <XMLRPCConnectionDelegate, UITextFieldDelegate> {
+@interface RegistrationViewController : UIViewController <XMLRPCConnectionDelegate, UITextFieldDelegate> {
 	IBOutlet UITextField *userNameField;
 	IBOutlet UITextField *passwordField;
 	IBOutlet UITextField *passwordRetypeField;

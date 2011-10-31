@@ -54,7 +54,7 @@
     [self.view addSubview:networkIndicator.view];
     networkIndicator.view.center = CGPointMake(self.view.center.x, 140.0f);
     networkIndicator.view.hidden = YES;
-    
+	
     [super viewDidLoad];
 }
 
@@ -190,6 +190,11 @@
 	}
 }
         
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return 36;
+}
+
 
 #pragma mark UITextField delegate
 

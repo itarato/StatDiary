@@ -9,7 +9,6 @@
 #import "CreateStatViewController.h"
 #import "XMLRPC/XMLRPC.h"
 #import "Globals.h"
-#import "LoginViewController.h"
 
 
 @implementation CreateStatViewController
@@ -110,7 +109,7 @@
 	
 	if ([response isFault]) {
 		NSLog(@"Create request fail");
-		[LoginViewController popUpLoginOn:self];
+		// @TODO - fix missing login popup
 	} else {
 		NSLog(@"Create request success");
 		titleField.text = @"";

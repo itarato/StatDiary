@@ -8,8 +8,6 @@
 
 #import "StatNavigationController.h"
 #import "StatListController.h"
-#import "LoginViewController.h"
-
 
 @implementation StatNavigationController
 
