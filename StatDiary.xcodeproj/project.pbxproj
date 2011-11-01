@@ -36,11 +36,13 @@
 		47807FAA13A50588004078EB /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 47807FA913A50588004078EB /* whiteButton.png */; };
 		47833E49145F11AE003C5E37 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 47A8C09014312051001F588E /* Default.png */; };
 		47833E4D145F1201003C5E37 /* bgr_welcome.png in Resources */ = {isa = PBXBuildFile; fileRef = 47833E4C145F1201003C5E37 /* bgr_welcome.png */; };
-		47833E4F145F181D003C5E37 /* gray_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 47833E4E145F181D003C5E37 /* gray_button.png */; };
 		4787ACFA13BF89BC0074CBDA /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787ACF913BF89BC0074CBDA /* WelcomeViewController.m */; };
 		4787F45013A2BDD2002B9636 /* StatDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */; };
 		4787F45313A2BDF9002B9636 /* StatDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4787F45213A2BDF9002B9636 /* StatDetailsView.xib */; };
 		47977D5D14366D5F00F55E1B /* XMLRPCRequestExtended.m in Sources */ = {isa = PBXBuildFile; fileRef = 47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */; };
+		47A2196B145FFDA200F31F91 /* gray_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 47A2196A145FFDA200F31F91 /* gray_button.png */; };
+		47A2196D1460032100F31F91 /* StatListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A2196C1460032100F31F91 /* StatListView.xib */; };
+		47A2197114600FC400F31F91 /* bgr_list.png in Resources */ = {isa = PBXBuildFile; fileRef = 47A2197014600FC400F31F91 /* bgr_list.png */; };
 		47A8C08F14310B97001F588E /* AccountNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A8C08E14310B97001F588E /* AccountNavigationController.m */; };
 		47B383D013C0FCFD00D34E27 /* CreateStatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B383CF13C0FCFD00D34E27 /* CreateStatViewController.m */; };
 		47B383D213C0FD1800D34E27 /* CreateStatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B383D113C0FD1800D34E27 /* CreateStatView.xib */; };
@@ -103,7 +105,6 @@
 		47807FA913A50588004078EB /* whiteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteButton.png; sourceTree = "<group>"; };
 		47833E4A145F11B2003C5E37 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		47833E4C145F1201003C5E37 /* bgr_welcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgr_welcome.png; sourceTree = "<group>"; };
-		47833E4E145F181D003C5E37 /* gray_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray_button.png; sourceTree = "<group>"; };
 		4787ACF813BF89BC0074CBDA /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		4787ACF913BF89BC0074CBDA /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		4787F44E13A2BDD2002B9636 /* StatDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatDetailsViewController.h; sourceTree = "<group>"; };
@@ -111,6 +112,9 @@
 		4787F45213A2BDF9002B9636 /* StatDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatDetailsView.xib; sourceTree = "<group>"; };
 		47977D5B14366D5F00F55E1B /* XMLRPCRequestExtended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLRPCRequestExtended.h; sourceTree = "<group>"; };
 		47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLRPCRequestExtended.m; sourceTree = "<group>"; };
+		47A2196A145FFDA200F31F91 /* gray_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gray_button.png; sourceTree = "<group>"; };
+		47A2196C1460032100F31F91 /* StatListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatListView.xib; sourceTree = "<group>"; };
+		47A2197014600FC400F31F91 /* bgr_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgr_list.png; sourceTree = "<group>"; };
 		47A8C08D14310B97001F588E /* AccountNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountNavigationController.h; path = ../AccountNavigationController.h; sourceTree = "<group>"; };
 		47A8C08E14310B97001F588E /* AccountNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountNavigationController.m; path = ../AccountNavigationController.m; sourceTree = "<group>"; };
 		47A8C09014312051001F588E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -210,7 +214,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				47833E4E145F181D003C5E37 /* gray_button.png */,
+				47A2197014600FC400F31F91 /* bgr_list.png */,
+				47A2196A145FFDA200F31F91 /* gray_button.png */,
 				47833E4C145F1201003C5E37 /* bgr_welcome.png */,
 				47C8D3B213D0CE2800F22557 /* Icon-72.png */,
 				47C8D3B313D0CE2800F22557 /* Icon-Small-50.png */,
@@ -231,6 +236,7 @@
 				47807F0A13A4F121004078EB /* IndicatorView.xib */,
 				4738B52913AB2B1E00BD5B67 /* RegistrationView.xib */,
 				47B383D113C0FD1800D34E27 /* CreateStatView.xib */,
+				47A2196C1460032100F31F91 /* StatListView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -344,7 +350,9 @@
 				47C8D3BF13D0CE2800F22557 /* iTunesArtwork.png in Resources */,
 				47833E49145F11AE003C5E37 /* Default.png in Resources */,
 				47833E4D145F1201003C5E37 /* bgr_welcome.png in Resources */,
-				47833E4F145F181D003C5E37 /* gray_button.png in Resources */,
+				47A2196B145FFDA200F31F91 /* gray_button.png in Resources */,
+				47A2196D1460032100F31F91 /* StatListView.xib in Resources */,
+				47A2197114600FC400F31F91 /* bgr_list.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

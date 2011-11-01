@@ -55,6 +55,10 @@
     networkIndicator.view.center = CGPointMake(self.view.center.x, 140.0f);
     networkIndicator.view.hidden = YES;
 	
+	UIBarButtonItem *regButton = [[UIBarButtonItem alloc] initWithTitle:@"Register" style:UIBarButtonItemStyleDone target:self action:@selector(registerUser)];
+	self.navigationItem.rightBarButtonItem = regButton;
+	[regButton release];
+	
     [super viewDidLoad];
 }
 

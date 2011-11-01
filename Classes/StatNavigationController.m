@@ -35,12 +35,15 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	accountNavigationController = [[AccountNavigationController alloc] init];
-	statListController = [[StatListController alloc] initWithStyle:UITableViewStyleGrouped];
+	statListController = [[StatListController alloc] initWithNibName:@"StatListView" bundle:nil];
 	
 	[self pushViewController:statListController animated:NO];
     
-    self.navigationBar.tintColor = [UIColor darkGrayColor];
-    self.toolbar.tintColor = [UIColor colorWithRed:0.9f green:0.6f blue:0.2f alpha:1.0f];
+	self.navigationBar.tintColor = [UIColor darkGrayColor];
+	self.toolbar.tintColor = [UIColor darkGrayColor];
+	
+	UIImageView *bgrView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bgr_list.png"]];
+	[self.view insertSubview:bgrView atIndex:0];
 	
     [super viewDidLoad];
 }

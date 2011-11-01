@@ -55,8 +55,8 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    UIImage *buttonBgr = [UIImage imageNamed:@"whiteButton.png"];
-    UIImage *buttonBgrStretched = [buttonBgr stretchableImageWithLeftCapWidth:12 topCapHeight:0];
+    UIImage *buttonBgr = [UIImage imageNamed:@"gray_button.png"];
+    UIImage *buttonBgrStretched = [buttonBgr stretchableImageWithLeftCapWidth:6 topCapHeight:0];
     [createButton setBackgroundImage:buttonBgrStretched forState:UIControlStateNormal];
     
     networkIndicator = [[IndicatorViewController alloc] init];

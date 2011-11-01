@@ -14,7 +14,7 @@
 #import "IndicatorViewController.h"
 
 
-@interface StatListController : UITableViewController <XMLRPCConnectionDelegate> {
+@interface StatListController : UIViewController <XMLRPCConnectionDelegate, UITableViewDataSource, UITableViewDelegate> {
 	NSMutableArray *myStats;
 	StatDetailsViewController *statDetailsViewController;
 	XMLRPCRequest *myListRequest;
@@ -22,6 +22,7 @@
     XMLRPCRequest *deleteRequest;
 	IndicatorViewController *networkIndicator;
     CreateStatViewController *createStatViewController;
+	UITableView *listTable;
 }
 
 
@@ -32,6 +33,7 @@
 @property (nonatomic, retain) XMLRPCRequest *deleteRequest;
 @property (nonatomic, retain) IndicatorViewController *networkIndicator;
 @property (nonatomic, retain) CreateStatViewController *createStatViewController;
+@property (nonatomic, retain) IBOutlet UITableView *listTable;
 
 
 - (void)reloadStatData;

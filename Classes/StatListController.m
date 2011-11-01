@@ -25,6 +25,7 @@
 @synthesize networkIndicator;
 @synthesize createStatViewController;
 @synthesize deleteRequest;
+@synthesize listTable;
 
 
 - (void)dealloc {
@@ -43,24 +44,23 @@
 #pragma mark Initialization
 
 
-- (id)initWithStyle:(UITableViewStyle)style {
-	// Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-	self = [super initWithStyle:style];
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if (self) {
 		NSLog(@"StatListController init");
 		
 		myStats = nil;
 		statDetailsViewController = [[StatDetailsViewController alloc] initWithNibName:@"StatDetailsView" bundle:nil];
 		createStatViewController  = [[CreateStatViewController alloc] initWithNibName:@"CreateStatView" bundle:nil];
-
+		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSuccessLogin:) name:@"onSuccessLogin" object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRefreshRequest:) name:@"refreshStatList" object:nil];
-    		
+		
 		self.title = @"Stat list";
 	}
+	
 	return self;
 }
-
 
 
 #pragma mark -
@@ -409,7 +409,7 @@
 				
 			myStats = [[NSMutableArray alloc] initWithArray:[response object]];
 			[self preprocessEntries];
-			[self.tableView reloadData];
+			[self.listTable reloadData];
 		}
 	} else if (request == logOutRequest) {
 		NSLog(@"Logout request success (or not)");
