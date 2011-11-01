@@ -187,6 +187,9 @@
 }
 
 
+- (void)onPressDoneKey:(id)sender {}
+
+
 // Send device info to the server.
 - (void)sendDeviceInfo {
 	if ([[Globals sharedInstance] deviceToken] != nil) {

@@ -20,18 +20,11 @@
 @synthesize datePicker;
 @synthesize commentArea;
 @synthesize networkIndicator;
+@synthesize entryCell;
+@synthesize commentCell;
+@synthesize submitButton;
+@synthesize commentLabel;
 
-
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
 
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
@@ -42,18 +35,14 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	commentArea.delegate = self;
-	//[self.navigationController setToolbarHidden:YES animated:YES];
-	
-	UIBarButtonItem *saveButton = [[UIBarButtonItem alloc]
-								   initWithTitle:@"Submit" style:UIBarButtonItemStyleDone target:self action:@selector(pressSubmitButton)];
-	self.navigationItem.rightBarButtonItem = saveButton;
-	[saveButton release];
-	
 	networkIndicator = [[IndicatorViewController alloc] init];
 	[self.view addSubview:networkIndicator.view];
 	networkIndicator.view.center = CGPointMake(self.view.center.x, 160.0f);
 	networkIndicator.view.hidden = YES;
+	
+	UIImage *bgr = [UIImage imageNamed:@"gray_button.png"];
+	UIImage *bgrStretched = [bgr stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+	[submitButton setBackgroundImage:bgrStretched forState:UIControlStateNormal];
 	
 	NSDate *now = [NSDate new];
 	[datePicker setDate:now];
@@ -99,7 +88,7 @@
 #pragma mark Action handler
 
 
-- (void)pressSubmitButton {
+- (void)pressSubmitButton:(id)sender {
 	if ([entryField.text length] == 0) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"Missing data entry" delegate:nil cancelButtonTitle:@"Correct" otherButtonTitles:nil];
 		[alert show];
@@ -184,5 +173,49 @@
 	return YES;
 }
 
+
+#pragma mark -
+#pragma mark UITextField delegates
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+	return YES;
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+	commentLabel.alpha = 0.0f;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+	if (commentArea.text.length == 0) {
+		commentLabel.alpha = 1.0f;
+	}
+}
+
+
+#pragma mark -
+#pragma mark UITableView delegates
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+	return 1;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return 2;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (indexPath.row == 0) {
+		return entryCell;
+	} else {
+		return commentCell;
+	}
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return indexPath.row == 0 ? 52 : 82;
+}
 
 @end

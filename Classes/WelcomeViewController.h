@@ -60,6 +60,7 @@
 - (void)connectWithDelay;
 - (void)loadStatList;
 - (void)login;
+- (IBAction)onPressDoneKey:(id)sender;
 
 
 @end
