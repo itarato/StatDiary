@@ -18,6 +18,7 @@
 
 - (void)dealloc {
 	[statListController release];
+	[accountNavigationController release];
     [super dealloc];
 }
 
@@ -44,6 +45,7 @@
 	
 	UIImageView *bgrView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bgr_list.png"]];
 	[self.view insertSubview:bgrView atIndex:0];
+	[bgrView release];
 	
     [super viewDidLoad];
 }

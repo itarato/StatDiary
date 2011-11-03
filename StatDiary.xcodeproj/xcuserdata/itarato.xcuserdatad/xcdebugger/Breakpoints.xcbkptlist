@@ -47,11 +47,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/RegistrationViewController.m"
-         timestampString = "341835535.245563"
+         timestampString = "342029283.580614"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "157"
-         endingLineNumber = "157"
+         startingLineNumber = "146"
+         endingLineNumber = "146"
          landmarkName = "@implementation RegistrationViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -61,11 +61,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/RegistrationViewController.m"
-         timestampString = "338670227.33301"
+         timestampString = "341912303.574383"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "13"
-         endingLineNumber = "13">
+         startingLineNumber = "14"
+         endingLineNumber = "14">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -73,11 +73,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/StatListController.m"
-         timestampString = "341773508.109537"
+         timestampString = "342029283.580614"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "134"
-         endingLineNumber = "134"
+         startingLineNumber = "139"
+         endingLineNumber = "139"
          landmarkName = "-numberOfSectionsInTableView:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -87,11 +87,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Classes/StatListController.m"
-         timestampString = "341773508.109537"
+         timestampString = "342029283.580614"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "133"
-         endingLineNumber = "133"
+         startingLineNumber = "138"
+         endingLineNumber = "138"
          landmarkName = "-numberOfSectionsInTableView:"
          landmarkType = "5">
       </FileBreakpoint>

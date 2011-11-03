@@ -16,6 +16,14 @@
 @synthesize deviceToken;
 
 
+- (void)dealloc {
+	[sessionID release];
+	[uid release];
+	[deviceToken release];
+	[super dealloc];
+}
+
+
 + (Globals *)sharedInstance {
 	static Globals *instance = nil;
 	

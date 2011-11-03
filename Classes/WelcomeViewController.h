@@ -14,10 +14,6 @@
 #import "IndicatorViewController.h"
 
 
-#define LOGGED_IN_USERNAME @"keepMeLoggedInUserName"
-#define LOGGED_IN_PASSWORD @"keepMeLoggedInPassword"
-
-
 @class StatListController;
 
 

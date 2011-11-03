@@ -16,6 +16,16 @@
 @synthesize createButton;
 @synthesize titleField;
 
+
+- (void)dealloc
+{
+    [createButton release];
+    [titleField release];
+    [networkIndicator release];
+    [super dealloc];
+}
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -26,13 +36,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [createButton release];
-    [titleField release];
-    [networkIndicator release];
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -41,6 +44,7 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
+
 
 #pragma mark - View lifecycle
 

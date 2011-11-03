@@ -15,6 +15,9 @@
 #import "AccountNavigationController.h"
 
 
+#define STAT_OLD_FLAG @"old"
+
+
 @implementation StatListController
 
 
@@ -36,6 +39,8 @@
 	[deleteRequest release];
 	[networkIndicator release];
 	[createStatViewController release];
+	[deleteRequest release];
+	[listTable release];
 	[super dealloc];
 }
 
@@ -137,7 +142,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   // Return the number of rows in the section.
-  return 1;
+  return (myStats == nil || [myStats count] == 0) ? 1 : 2;
 }
 
 
@@ -145,20 +150,45 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 	static NSString *CellIdentifier = @"Cell";
-  
+	static NSString *ChartCellIdentifier = @"ChartCell";
+	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	}
   
 	if (myStats != nil && [myStats count] > 0) {
+		if (indexPath.row == 0) {
 		// Configure the cell...
-		cell.textLabel.text = [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"title"];
-		cell.detailTextLabel.text = [NSString stringWithFormat:
-									 @"%@ entry, latest %@", 
-									 [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"count"],
-									 [StatListController elapsedTimeFromTimestamp:[[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"latest"]]];
+			cell.textLabel.text = [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"title"];
+			cell.detailTextLabel.text = [NSString stringWithFormat:
+										 @"%@ entry, latest %@", 
+										 [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"count"],
+										 [StatListController elapsedTimeFromTimestamp:[[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"latest"]]];
+			if ([(NSString *)[[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:STAT_OLD_FLAG] isEqualToString:STAT_OLD_FLAG]) {
+				cell.imageView.image = [UIImage imageNamed:@"122-stats-missing.png"];
+			} else {
+				cell.imageView.image = [UIImage imageNamed:@"122-stats.png"];
+			}
+		} else { // Second row.
+			UITableViewCell *chartCell = [tableView dequeueReusableCellWithIdentifier:ChartCellIdentifier];
+			if (chartCell == nil) {
+				chartCell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ChartCellIdentifier] autorelease];
+			}
+			
+			NSString *path = [[NSString alloc] initWithFormat:@"%@node/%d/chart", STATDIARY_XMLRPC_BASEPATH, [(NSNumber *)[[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"nid"] intValue]];
+			NSURL *url = [NSURL URLWithString:path];
+			[path release];
+			NSData *data = [NSData dataWithContentsOfURL:url];
+			UIImage *img = [[UIImage alloc] initWithData:data];
+			chartCell.imageView.image = img;
+			chartCell.selectionStyle = UITableViewCellSelectionStyleNone;
+			[img release];
+			return chartCell;
+		}
+
 	} else {
 		cell.textLabel.text = @"Create your first stats";
 		cell.detailTextLabel.text = @"";
@@ -267,7 +297,10 @@
 - (void)reloadStatData {
 	networkIndicator.view.hidden = NO;
 	Globals *globals = [Globals sharedInstance];
-	[myListRequest setMethod:@"mystat.myList" withParameter:globals.sessionID];
+	NSArray *params = [[NSArray alloc] initWithObjects:globals.sessionID, @"", globals.deviceToken, nil];
+	NSLog(@"ARRAY: %@", params);
+	[myListRequest setMethod:@"mystat.myList" withParameters:params];
+	[params release];
 	XMLRPCConnectionManager *connectionManager = [XMLRPCConnectionManager sharedManager];
 	[connectionManager spawnConnectionWithXMLRPCRequest:myListRequest delegate:self];
 }
@@ -341,6 +374,7 @@
 			NSNumber *latest = [stat valueForKey:@"latest"];
 			if ([latest doubleValue] + [interval doubleValue] <= now_sec) {
 				badge++;
+				[stat setValue:STAT_OLD_FLAG forKey:STAT_OLD_FLAG];
 			} else {
 				[laterBadges addObject:[NSNumber numberWithDouble:[latest doubleValue] + [interval doubleValue]]];
 			}
@@ -356,7 +390,6 @@
 			for (id laterTime in laterBadges) {
 				NSNumber *time = (NSNumber *)laterTime;
 				UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-				NSLog(@"SET LOCAL: %d", [time intValue]);
 				NSDate *fireDate = [[NSDate alloc] initWithTimeIntervalSince1970:[time intValue]];
 				localNotif.fireDate = fireDate;
 				localNotif.timeZone = [NSTimeZone defaultTimeZone];
@@ -368,6 +401,7 @@
 		}
 		
 		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:badge];
+		[laterBadges release];
 	}
 }
 

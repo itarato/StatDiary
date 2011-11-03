@@ -48,6 +48,9 @@
 	[usernameCell release];
 	[passwordCell release];
 	[loginRequest release];
+	[userNameField release];
+	[passwordField release];
+	[loginButton release];
     [super dealloc];
 }
 
@@ -193,12 +196,6 @@
 // Send device info to the server.
 - (void)sendDeviceInfo {
 	if ([[Globals sharedInstance] deviceToken] != nil) {
-		NSLog(@"Params: S: %@ 1: %@ 2: %@ 3: %@ 4: %@", [[Globals sharedInstance] sessionID], 
-			  [[Globals sharedInstance] deviceToken],
-			  [[UIDevice currentDevice] uniqueIdentifier],
-			  @"com.itarato.StatDiary",
-			  @"1.1");
-		
 		NSArray *params = [[NSArray alloc] initWithObjects:
 						   [[Globals sharedInstance] sessionID], 
 						   [[Globals sharedInstance] deviceToken],

@@ -9,6 +9,7 @@
 #import "RegistrationViewController.h"
 #import <XMLRPC/XMLRPC.h>
 #import "Globals.h"
+#import "Defines.h"
 
 
 @implementation RegistrationViewController
@@ -27,6 +28,10 @@
     [passwordRetypeField release];
     [emailField release];
     [networkIndicator release];
+	[userNameCell release];
+	[emailCell release];
+	[passwordCell release];
+	[passwordRetypeCell release];
     [super dealloc];
 }
 
@@ -117,7 +122,13 @@
         
         NSString *responseMessage = (NSString *)[response object];
         if ([responseMessage isEqualToString:@"ok"]) {
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"registrationIsComplete" object:response];
+			// Save reg details.
+			NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+			[defaults setObject:userNameField.text forKey:LOGGED_IN_USERNAME];
+			[defaults setObject:passwordField.text forKey:LOGGED_IN_PASSWORD];
+			[defaults synchronize];
+			
+			[[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:nil];
 			[self.navigationController dismissModalViewControllerAnimated:YES];
         } else {
             NSLog(@"Register error: %@", responseMessage);
@@ -131,28 +142,6 @@
 
 
 #pragma mark Custom function
-
-//- (void)onEnterTextField:(id)sender {
-//    if (((UITextField *)sender).center.y > 150.0f) {
-//        [self swipeViewTo:CGPointMake(self.view.center.x, defaultCenter.y - ((UITextField *)sender).center.y + 120.0f)];
-//    } else {
-//        [self swipeViewTo:defaultCenter];
-//    }
-//}
-
-
-//- (void)onPressExitOnTextField:(id)sender {
-//    [self swipeViewTo:defaultCenter];
-//}
-        
-
-//- (void)swipeViewTo:(CGPoint)toPoint {
-//    [UIView beginAnimations:@"swipe" context:nil];
-//    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-//    [UIView setAnimationDuration:0.3f];
-//    self.view.center = toPoint;
-//    [UIView commitAnimations];
-//}
 
 
 - (void)registerUser {

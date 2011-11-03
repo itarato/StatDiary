@@ -26,6 +26,20 @@
 @synthesize commentLabel;
 
 
+- (void)dealloc {
+    [nid release];
+    [entryField release];
+    [datePicker release];
+    [commentArea release];
+    [networkIndicator release];
+	[entryCell release];
+	[commentCell release];
+	[submitButton release];
+	[commentLabel release];
+    [super dealloc];
+}
+
+
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
@@ -74,16 +88,6 @@
 }
 
 
-- (void)dealloc {
-    [nid release];
-    [entryField release];
-    [datePicker release];
-    [commentArea release];
-    [networkIndicator release];
-    [super dealloc];
-}
-
-
 #pragma mark --
 #pragma mark Action handler
 
@@ -96,13 +100,18 @@
 		return;
 	}
 	
-	Globals *global = [Globals sharedInstance];
+	NSError *error = NULL;
+	NSRegularExpression *notNumber = [[NSRegularExpression alloc] initWithPattern:@"[^0-9.,\\-]" options:NSRegularExpressionCaseInsensitive error:&error];
+	if ([notNumber numberOfMatchesInString:entryField.text options:0 range:NSMakeRange(0, [entryField.text length])] > 0) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"Number field can contain only valid numeric value." delegate:nil cancelButtonTitle:@"Correct" otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+		[notNumber release];
+		return;
+	}
+	[notNumber release];
 	
-	NSLog(@"Session: %@", global.sessionID);
-	NSLog(@"Nid: %@", nid);
-	NSLog(@"Entry: %@", entryField.text);
-	NSLog(@"Date: %0.2f", [datePicker.date timeIntervalSince1970]);
-	NSLog(@"Comment: %@", commentArea.text);
+	Globals *global = [Globals sharedInstance];
 	
 	networkIndicator.view.hidden = NO;
 	XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];

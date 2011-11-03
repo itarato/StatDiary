@@ -58,6 +58,7 @@
 	
 	UIImageView *bgrView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bgr_welcome.png"]];
 	[self.view insertSubview:bgrView atIndex:0];
+	[bgrView release];
 	
     [super viewDidLoad];
 }
