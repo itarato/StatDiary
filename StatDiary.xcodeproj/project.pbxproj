@@ -33,6 +33,7 @@
 		4733D26B139D7363006941EC /* XMLRPCResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4733D262139D7363006941EC /* XMLRPCResponse.m */; };
 		4738B52813AB2B0800BD5B67 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4738B52713AB2B0800BD5B67 /* RegistrationViewController.m */; };
 		4738B52A13AB2B1E00BD5B67 /* RegistrationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4738B52913AB2B1E00BD5B67 /* RegistrationView.xib */; };
+		474D1BB714634FB2007F7875 /* AsynchronImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 474D1BB614634FB2007F7875 /* AsynchronImageLoader.m */; };
 		47807F0913A4F112004078EB /* IndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47807F0813A4F112004078EB /* IndicatorViewController.m */; };
 		47807F0B13A4F121004078EB /* IndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47807F0A13A4F121004078EB /* IndicatorView.xib */; };
 		47807F0F13A4F1BB004078EB /* IndicatorBgr.png in Resources */ = {isa = PBXBuildFile; fileRef = 47807F0E13A4F1BB004078EB /* IndicatorBgr.png */; };
@@ -100,6 +101,8 @@
 		4738B52613AB2B0800BD5B67 /* RegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationViewController.h; sourceTree = "<group>"; };
 		4738B52713AB2B0800BD5B67 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		4738B52913AB2B1E00BD5B67 /* RegistrationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationView.xib; sourceTree = "<group>"; };
+		474D1BB514634FB2007F7875 /* AsynchronImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsynchronImageLoader.h; sourceTree = "<group>"; };
+		474D1BB614634FB2007F7875 /* AsynchronImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsynchronImageLoader.m; sourceTree = "<group>"; };
 		4757A1261438703800E49445 /* StatDiary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = StatDiary.entitlements; sourceTree = "<group>"; };
 		47807F0713A4F112004078EB /* IndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorViewController.h; sourceTree = "<group>"; };
 		47807F0813A4F112004078EB /* IndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndicatorViewController.m; sourceTree = "<group>"; };
@@ -174,6 +177,8 @@
 				47B383CF13C0FCFD00D34E27 /* CreateStatViewController.m */,
 				47977D5B14366D5F00F55E1B /* XMLRPCRequestExtended.h */,
 				47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */,
+				474D1BB514634FB2007F7875 /* AsynchronImageLoader.h */,
+				474D1BB614634FB2007F7875 /* AsynchronImageLoader.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -382,6 +387,7 @@
 				47B383D013C0FCFD00D34E27 /* CreateStatViewController.m in Sources */,
 				47A8C08F14310B97001F588E /* AccountNavigationController.m in Sources */,
 				47977D5D14366D5F00F55E1B /* XMLRPCRequestExtended.m in Sources */,
+				474D1BB714634FB2007F7875 /* AsynchronImageLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

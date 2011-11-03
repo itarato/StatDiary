@@ -13,6 +13,7 @@
 #import "IndicatorViewController.h"
 #import "WelcomeViewController.h"
 #import "AccountNavigationController.h"
+#import "AsynchronImageLoader.h"
 
 
 #define STAT_OLD_FLAG @"old"
@@ -179,13 +180,11 @@
 			}
 			
 			NSString *path = [[NSString alloc] initWithFormat:@"%@node/%d/chart", STATDIARY_XMLRPC_BASEPATH, [(NSNumber *)[[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"nid"] intValue]];
-			NSURL *url = [NSURL URLWithString:path];
+			AsynchronImageLoader *asyncLoader = [[[AsynchronImageLoader alloc] initWithCell:chartCell withPath:path] autorelease];
 			[path release];
-			NSData *data = [NSData dataWithContentsOfURL:url];
-			UIImage *img = [[UIImage alloc] initWithData:data];
-			chartCell.imageView.image = img;
+			[asyncLoader loadImage];
+
 			chartCell.selectionStyle = UITableViewCellSelectionStyleNone;
-			[img release];
 			return chartCell;
 		}
 
