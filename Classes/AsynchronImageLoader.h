@@ -24,7 +24,7 @@
 	
 @property (nonatomic, retain) NSString *path;
 @property (nonatomic, retain) NSURLConnection *connection;
-@property (nonatomic, retain) NSMutableData *data;
+//@property (nonatomic, retain) NSMutableData *data;
 @property (nonatomic, retain) UITableViewCell *cell;
 
 

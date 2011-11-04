@@ -12,14 +12,14 @@
 
 @synthesize path;
 @synthesize connection;
-@synthesize data;
+//@synthesize data;
 @synthesize cell;
 
 
 - (void)dealloc {
 	[path release];
 	[connection release];
-	[data release];
+//	[data release];
 	[cell release];
 	[super dealloc];
 }
@@ -42,16 +42,16 @@
 
 
 - (void)connection:(NSURLConnection *)theConnection didReceiveData:(NSData *)incrementalData {
-	if (self.data == nil) {
-		self.data = [[NSMutableData alloc] initWithCapacity:2048];
+	if (data == nil) {
+		data = [[NSMutableData alloc] initWithCapacity:2048];
 	}
-    [self.data appendData:incrementalData];
+    [data appendData:incrementalData];
 }
 
 
 - (void)connectionDidFinishLoading:(NSURLConnection*)theConnection {
-	UIImage *img = [[UIImage alloc] initWithData:self.data];
-	[self.data release];
+	UIImage *img = [[UIImage alloc] initWithData:data];
+	[data release];
 	self.cell.imageView.image = img;
 	[self.cell setNeedsLayout];
 	[img release];
