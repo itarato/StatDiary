@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <XMLRPC/XMLRPCRequest.h>
-#import <XMLRPC/XMLRPCConnectionDelegate.h>
-#import "XMLRPCRequestExtended.h"
-#import "RegistrationViewController.h"
-#import "IndicatorViewController.h"
+//#import <XMLRPC/XMLRPCConnectionDelegate.h>
 
-
+@class XMLRPCRequestExtended, IndicatorViewController, RegistrationViewController;
+//@class XMLRPCRequest;
 @class StatListController;
 
 

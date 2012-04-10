@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <XMLRPC/XMLRPCConnectionDelegate.h>
+//#import <XMLRPC/XMLRPCConnectionDelegate.h>
 
 @class IndicatorViewController;
 

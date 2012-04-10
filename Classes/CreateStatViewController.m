@@ -7,8 +7,9 @@
 //
 
 #import "CreateStatViewController.h"
-#import "XMLRPC/XMLRPC.h"
+//#import <XMLRPC/XMLRPC.h>
 #import "Globals.h"
+#import "IndicatorViewController.h"
 
 
 @implementation CreateStatViewController
@@ -60,7 +61,7 @@
 - (void)viewDidLoad
 {
     UIImage *buttonBgr = [UIImage imageNamed:@"gray_button.png"];
-    UIImage *buttonBgrStretched = [buttonBgr stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+    UIImage *buttonBgrStretched = [buttonBgr stretchableImageWithLeftCapWidth:12 topCapHeight:12];
     [createButton setBackgroundImage:buttonBgrStretched forState:UIControlStateNormal];
     
     networkIndicator = [[IndicatorViewController alloc] init];
@@ -126,7 +127,7 @@
 
 - (void)onPressCreateButton:(id)sender {
     if ([titleField.text length] == 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title error" message:@"Title field is empty." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Title error" message:@"Title field is empty" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
         [alert show];
         [alert release];
         return;

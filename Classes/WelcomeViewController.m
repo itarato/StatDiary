@@ -9,11 +9,10 @@
 #import "WelcomeViewController.h"
 #import "RegistrationViewController.h"
 #import "IndicatorViewController.h"
-#import <XMLRPC/XMLRPC.h>
+//#import <XMLRPC/XMLRPC.h>
 #import "Globals.h"
 #import "StatListController.h"
 #import "XMLRPCRequestExtended.h"
-
 
 @interface WelcomeViewController () 
 
@@ -99,7 +98,7 @@
 	networkIndicator.view.center = CGPointMake(self.view.center.x, 160.0f);
 	
 	UIImage *buttonBgr = [UIImage imageNamed:@"gray_button.png"];
-	UIImage *buttonBgrStretched = [buttonBgr stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+	UIImage *buttonBgrStretched = [buttonBgr stretchableImageWithLeftCapWidth:12 topCapHeight:12];
 	[loginButton setBackgroundImage:buttonBgrStretched forState:UIControlStateNormal];
 	
 	[self connectWithDelay];
@@ -157,9 +156,9 @@
 	NSLog(@"Connect to Drupal");
 	
 	networkIndicator.view.hidden = NO;
-	[connectionRequest setMethod:@"system.connect"];
+	[self.connectionRequest setMethod:@"system.connect"];
 	XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
-	[connManager spawnConnectionWithXMLRPCRequest:connectionRequest delegate:self];
+	[connManager spawnConnectionWithXMLRPCRequest:self.connectionRequest delegate:self];
 }
 
 
@@ -199,7 +198,7 @@
 		NSArray *params = [[NSArray alloc] initWithObjects:
 						   [[Globals sharedInstance] sessionID], 
 						   [[Globals sharedInstance] deviceToken],
-						   [[UIDevice currentDevice] uniqueIdentifier],
+						   @"",
 						   @"com.itarato.StatDiary",
 						   @"1.1",
 						   nil];

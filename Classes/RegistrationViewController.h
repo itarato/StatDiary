@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <XMLRPC/XMLRPCConnectionDelegate.h>
-#import "IndicatorViewController.h"
+//#import <XMLRPC/XMLRPCConnectionDelegate.h>
 
+@class IndicatorViewController;
 
 @interface RegistrationViewController : UIViewController <XMLRPCConnectionDelegate, UITextFieldDelegate> {
 	IBOutlet UITextField *userNameField;

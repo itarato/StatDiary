@@ -7,7 +7,7 @@
 //
 
 #import "StatDetailsViewController.h"
-#import <XMLRPC/XMLRPC.h>
+//#import <XMLRPC/XMLRPC.h>
 #import "Globals.h"
 #import "IndicatorViewController.h"
 
@@ -55,7 +55,7 @@
 	networkIndicator.view.hidden = YES;
 	
 	UIImage *bgr = [UIImage imageNamed:@"gray_button.png"];
-	UIImage *bgrStretched = [bgr stretchableImageWithLeftCapWidth:6 topCapHeight:0];
+	UIImage *bgrStretched = [bgr stretchableImageWithLeftCapWidth:12 topCapHeight:12];
 	[submitButton setBackgroundImage:bgrStretched forState:UIControlStateNormal];
 	
 	NSDate *now = [NSDate new];
@@ -103,7 +103,7 @@
 	NSError *error = NULL;
 	NSRegularExpression *notNumber = [[NSRegularExpression alloc] initWithPattern:@"[^0-9.,\\-]" options:NSRegularExpressionCaseInsensitive error:&error];
 	if ([notNumber numberOfMatchesInString:entryField.text options:0 range:NSMakeRange(0, [entryField.text length])] > 0) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"Number field can contain only valid numeric value." delegate:nil cancelButtonTitle:@"Correct" otherButtonTitles:nil];
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"Number field can contain only valid numeric value" delegate:nil cancelButtonTitle:@"Correct" otherButtonTitles:nil];
 		[alert show];
 		[alert release];
 		[notNumber release];

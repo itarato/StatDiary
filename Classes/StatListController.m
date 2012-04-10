@@ -14,7 +14,8 @@
 #import "WelcomeViewController.h"
 #import "AccountNavigationController.h"
 #import "AsynchronImageLoader.h"
-
+#import "StatCardViewController.h"
+#import "CreateStatViewController.h"
 
 #define STAT_OLD_FLAG @"old"
 
@@ -29,7 +30,11 @@
 @synthesize networkIndicator;
 @synthesize createStatViewController;
 @synthesize deleteRequest;
-@synthesize listTable;
+@synthesize scrollView;
+@synthesize pageControl;
+@synthesize cards;
+@synthesize deleteConfirmAlert;
+@synthesize lastSelectedCard;
 
 
 - (void)dealloc {
@@ -41,7 +46,11 @@
 	[networkIndicator release];
 	[createStatViewController release];
 	[deleteRequest release];
-	[listTable release];
+	[scrollView release];
+	[pageControl release];
+	[cards release];
+	[deleteConfirmAlert release];
+    [lastSelectedCard release];
 	[super dealloc];
 }
 
@@ -54,6 +63,8 @@
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if (self) {
 		NSLog(@"StatListController init");
+		
+		self.cards = [[NSMutableArray alloc] init];
 		
 		myStats = nil;
 		statDetailsViewController = [[StatDetailsViewController alloc] initWithNibName:@"StatDetailsView" bundle:nil];
@@ -134,58 +145,64 @@
 #pragma mark -
 #pragma mark Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	// Return the number of sections.
-	NSInteger count = (myStats == nil || [myStats count] == 0) ? 1 : [myStats count];
-	return count;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//	// Return the number of sections.
+//	NSInteger count = (myStats == nil || [myStats count] == 0) ? 1 : [myStats count];
+//	return count;
+//}
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  // Return the number of rows in the section.
-  return (myStats == nil || [myStats count] == 0) ? 1 : 2;
-}
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//	// Return the number of rows in the section.
+//
+//	if (myStats == nil || [myStats count] == 0) {
+//		return 1;
+//	}
+//	
+//	return [(NSArray *)[[myStats objectAtIndex:section] valueForKey:@"info"] count] + 1;
+//}
 
 
 // Customize the appearance of table view cells.
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 	static NSString *CellIdentifier = @"Cell";
-	static NSString *ChartCellIdentifier = @"ChartCell";
+	static NSString *InfoCellIdentifier = @"entryCell";
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
 		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	}
+	
+	EntryInfoCell *infoCell = [tableView dequeueReusableCellWithIdentifier:InfoCellIdentifier];
+	if (infoCell == nil) {
+		NSArray *nibObjects = [[NSBundle mainBundle] loadNibNamed:@"EntryInfoCellView" owner:nil options:nil];
+		for (id item in nibObjects) {
+			if ([item isKindOfClass:[EntryInfoCell class]]) {
+				infoCell = (EntryInfoCell *)item;
+				infoCell.selectionStyle = UITableViewCellSelectionStyleNone;
+				break;
+			}
+		}
 	}
   
 	if (myStats != nil && [myStats count] > 0) {
 		if (indexPath.row == 0) {
 		// Configure the cell...
 			cell.textLabel.text = [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"title"];
-			cell.detailTextLabel.text = [NSString stringWithFormat:
-										 @"%@ entry, latest %@", 
-										 [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"count"],
-										 [StatListController elapsedTimeFromTimestamp:[[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"latest"]]];
+
 			if ([(NSString *)[[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:STAT_OLD_FLAG] isEqualToString:STAT_OLD_FLAG]) {
 				cell.imageView.image = [UIImage imageNamed:@"122-stats-missing.png"];
 			} else {
 				cell.imageView.image = [UIImage imageNamed:@"122-stats.png"];
 			}
 		} else { // Second row.
-			UITableViewCell *chartCell = [tableView dequeueReusableCellWithIdentifier:ChartCellIdentifier];
-			if (chartCell == nil) {
-				chartCell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ChartCellIdentifier] autorelease];
-			}
-			
-			NSString *path = [[NSString alloc] initWithFormat:@"%@node/%d/chart", STATDIARY_XMLRPC_BASEPATH, [(NSNumber *)[[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"nid"] intValue]];
-			AsynchronImageLoader *asyncLoader = [[[AsynchronImageLoader alloc] initWithCell:chartCell withPath:path] autorelease];
-			[path release];
-			[asyncLoader loadImage];
-
-			chartCell.selectionStyle = UITableViewCellSelectionStyleNone;
-			return chartCell;
+			infoCell.titleLabel.text = [[(NSArray *)[[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"info"] objectAtIndex:indexPath.row - 1] valueForKey:@"title"];
+			infoCell.valueLabel.text = [[(NSArray *)[[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"info"] objectAtIndex:indexPath.row - 1] valueForKey:@"value"];
+			return infoCell;
 		}
 
 	} else {
@@ -195,83 +212,53 @@
 	
 	return cell;
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
 */
 
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-	if (myStats != nil && [myStats count] > 0) {
-		statDetailsViewController.nid = [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"nid"];
-		statDetailsViewController.title = [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"title"];
-		[self.navigationController pushViewController:statDetailsViewController animated:YES];
-	} else {
-		[self.navigationController pushViewController:createStatViewController animated:YES];
-	}
-}
+//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+//    // Make only the first row deletable.
+//    return indexPath.row == 0;
+//}
+//
+//
+//- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+//	if (myStats != nil && [myStats count] > 0) {
+//		statDetailsViewController.nid = [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"nid"];
+//		statDetailsViewController.title = [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"title"];
+//		[self.navigationController pushViewController:statDetailsViewController animated:YES];
+//	} else {
+//		[self.navigationController pushViewController:createStatViewController animated:YES];
+//	}
+//}
 
 
 #pragma mark -
 #pragma mark Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[self tableView:tableView accessoryButtonTappedForRowWithIndexPath:indexPath];
-}
-
-
-- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return @"Delete";
-}
-
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    networkIndicator.view.hidden = NO;
-    deleteRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
-    Globals *global = [Globals sharedInstance];
-    [deleteRequest setMethod:@"node.delete" withParameters:[NSArray arrayWithObjects:
-                                                            global.sessionID, 
-                                                            [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"nid"],
-                                                            nil]];
-    XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
-    [connManager spawnConnectionWithXMLRPCRequest:deleteRequest delegate:self];
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//	[self tableView:tableView accessoryButtonTappedForRowWithIndexPath:indexPath];
+//}
+//
+//
+//- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return @"Delete";
+//}
+//
+//
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    networkIndicator.view.hidden = NO;
+//    deleteRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
+//    Globals *global = [Globals sharedInstance];
+//    [deleteRequest setMethod:@"node.delete" withParameters:[NSArray arrayWithObjects:
+//                                                            global.sessionID, 
+//                                                            [[myStats objectAtIndex:[indexPath indexAtPosition:0]] valueForKey:@"nid"],
+//                                                            nil]];
+//    XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
+//    [connManager spawnConnectionWithXMLRPCRequest:deleteRequest delegate:self];
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//	return indexPath.row == 0 ? 44.0f : 30.0f;
+//}
 
 
 #pragma mark -
@@ -356,6 +343,7 @@
 
 - (void)onRefreshRequest:(NSNotification *)notification {
     [self reloadStatData];
+	NSLog(@"Refresh.");
 }
 
 
@@ -404,6 +392,41 @@
 	}
 }
 
+- (void)rebuildCards {
+	// Remove old ones.
+	for (id card in self.cards) {
+		StatCardViewController *cardCtrl = (StatCardViewController *)card;
+		[[cardCtrl view] setHidden:YES];
+		[[cardCtrl view] removeFromSuperview];
+		[cardCtrl release];
+		cardCtrl = nil;
+	}
+	
+	[cards removeAllObjects];
+	
+	if (myStats == nil || [myStats count] == 0) {
+		// @TODO Handle no stat state.
+	}
+	else {
+		int idx = 0;
+		for (id stat in myStats) {
+			StatCardViewController *card = [[StatCardViewController alloc] initWithNibName:@"StatCardView" bundle:nil andStatData:stat];
+			card.delegate = self;
+			[[card view] setCenter:CGPointMake(160.0f + 320.0f * idx, 165.0f)];
+			[self.scrollView addSubview:[card view]];
+			[self.cards addObject:card];
+			idx++;
+		}
+		self.pageControl.numberOfPages = [myStats count];
+		self.scrollView.contentSize = CGSizeMake(320.0f * [myStats count], 330.0f);
+	}
+}
+
+- (void)onPagerChanged:(id)sender {
+	[self.scrollView setContentOffset:CGPointMake(self.pageControl.currentPage * 320.0f, 0.0f) animated:YES];
+}
+
+
 #pragma mark --
 #pragma mark XMLRPC delegated methods
 
@@ -441,8 +464,12 @@
 			}
 				
 			myStats = [[NSMutableArray alloc] initWithArray:[response object]];
+			
+			// @TODO Check if this call is really necessary.
 			[self preprocessEntries];
-			[self.listTable reloadData];
+			
+			// @TODO reload data items (cards)
+			[self rebuildCards];
 		}
 	} else if (request == logOutRequest) {
 		NSLog(@"Logout request success (or not)");
@@ -459,6 +486,46 @@
 	}
   
 	NSLog(@"Response: %@", [response object]);
+}
+
+
+#pragma mark Scroll delegates
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+	self.pageControl.currentPage = floor((self.scrollView.contentOffset.x + 160.0f) / 320.0f);
+}
+
+
+#pragma mark StatCard delegtes
+
+- (void)statCardReceivedUpdateRequest:(StatCardViewController *)card {
+	statDetailsViewController.nid = [[card statData] valueForKey:@"nid"];
+	statDetailsViewController.title = [[card statData] valueForKey:@"title"];
+	[self.navigationController pushViewController:statDetailsViewController animated:YES];
+}
+
+- (void)statCardReceivedDeleteRequest:(StatCardViewController *)card {
+    lastSelectedCard = card;
+	if (deleteConfirmAlert == nil) {
+		deleteConfirmAlert = [[UIAlertView alloc] initWithTitle:@"Confirm delete action" message:@"Are you sure you want to delete this stat?" delegate:self cancelButtonTitle:@"Delete" otherButtonTitles:@"Cancel", nil];
+	}
+	[deleteConfirmAlert show];
+}
+
+#pragma mark Alert delegates
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (alertView == deleteConfirmAlert && buttonIndex == 0) {
+        networkIndicator.view.hidden = NO;
+        deleteRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
+        Globals *global = [Globals sharedInstance];
+        [deleteRequest setMethod:@"node.delete" withParameters:[NSArray arrayWithObjects:
+                                                                global.sessionID, 
+                                                                [self.lastSelectedCard.statData valueForKey:@"nid"],
+                                                                nil]];
+        XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
+        [connManager spawnConnectionWithXMLRPCRequest:deleteRequest delegate:self];
+	}
 }
 
 @end

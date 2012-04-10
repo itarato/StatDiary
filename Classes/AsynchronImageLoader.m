@@ -12,14 +12,12 @@
 
 @synthesize path;
 @synthesize connection;
-//@synthesize data;
 @synthesize cell;
 
 
 - (void)dealloc {
 	[path release];
 	[connection release];
-//	[data release];
 	[cell release];
 	[super dealloc];
 }

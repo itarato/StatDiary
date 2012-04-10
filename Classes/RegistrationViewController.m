@@ -7,9 +7,10 @@
 //
 
 #import "RegistrationViewController.h"
-#import <XMLRPC/XMLRPC.h>
+//#import <XMLRPC/XMLRPC.h>
 #import "Globals.h"
 #import "Defines.h"
+#import "IndicatorViewController.h"
 
 
 @implementation RegistrationViewController
@@ -145,6 +146,13 @@
 
 
 - (void)registerUser {
+	if (![passwordField.text isEqualToString:passwordRetypeField.text]) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"Passwords don't match" delegate:nil cancelButtonTitle:@"Correct" otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+		return;
+	}
+	
     XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
     Globals *globals = [Globals sharedInstance];
     [request setMethod:@"mystat.userRegister" withParameters:[NSArray arrayWithObjects:

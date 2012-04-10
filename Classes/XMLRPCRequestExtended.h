@@ -6,7 +6,7 @@
 //  Copyright (c) 2011 Pronovix. All rights reserved.
 //
 
-#import <XMLRPC/XMLRPCRequest.h>
+//#import <XMLRPC/XMLRPCRequest.h>
 
 @interface XMLRPCRequestExtended : XMLRPCRequest {
 	SEL successCallback;

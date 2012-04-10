@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <XMLRPC/XMLRPCConnectionDelegate.h>
-#import "CreateStatViewController.h"
-#import <XMLRPC/XMLRPCRequest.h>
-#import "StatDetailsViewController.h"
-#import "IndicatorViewController.h"
+//#import <XMLRPC/XMLRPCConnectionDelegate.h>
+#import "StatCardDelegate.h"
 
+@class StatDetailsViewController, IndicatorViewController, StatCardViewController, CreateStatViewController;
+//@class XMLRPCRequest;
 
-@interface StatListController : UIViewController <XMLRPCConnectionDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface StatListController : UIViewController <XMLRPCConnectionDelegate, UIScrollViewDelegate, StatCardDelegate, UIAlertViewDelegate> {
 	NSMutableArray *myStats;
 	StatDetailsViewController *statDetailsViewController;
 	XMLRPCRequest *myListRequest;
@@ -22,7 +21,13 @@
     XMLRPCRequest *deleteRequest;
 	IndicatorViewController *networkIndicator;
     CreateStatViewController *createStatViewController;
-	UITableView *listTable;
+	NSMutableArray *cards;
+	UIAlertView *deleteConfirmAlert;
+
+	IBOutlet UIScrollView *scrollView;
+	IBOutlet UIPageControl *pageControl;
+    
+    StatCardViewController *lastSelectedCard;
 }
 
 
@@ -33,7 +38,11 @@
 @property (nonatomic, retain) XMLRPCRequest *deleteRequest;
 @property (nonatomic, retain) IndicatorViewController *networkIndicator;
 @property (nonatomic, retain) CreateStatViewController *createStatViewController;
-@property (nonatomic, retain) IBOutlet UITableView *listTable;
+@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, retain) IBOutlet UIPageControl *pageControl;
+@property (nonatomic, retain) NSMutableArray *cards;
+@property (nonatomic, retain) UIAlertView *deleteConfirmAlert;
+@property (nonatomic, retain) StatCardViewController *lastSelectedCard;
 
 
 - (void)reloadStatData;
@@ -42,7 +51,9 @@
 - (void)onPressAddStatButton;
 - (void)onRefreshRequest:(NSNotification *)notification;
 - (void)preprocessEntries;
-
+- (void)rebuildCards;
+- (IBAction)onPagerChanged:(id)sender;
+//- (void)deleteStat;
 
 + (NSString *)elapsedTimeFromTimestamp:(NSNumber *)timestamp;
 
