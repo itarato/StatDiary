@@ -14,6 +14,7 @@
 	IBOutlet UITableView *infoTable;
 	NSDictionary *statData;
 	id <StatCardDelegate> delegate;
+    IBOutlet UIButton *updateButton;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andStatData:(NSDictionary *)statDataDictionary;
@@ -25,6 +26,7 @@
 @property (nonatomic, retain) IBOutlet UITableView *infoTable;
 @property (nonatomic, retain) NSDictionary *statData;
 @property (nonatomic, assign) id <StatCardDelegate> delegate;
+@property (nonatomic, retain) IBOutlet UIButton *updateButton;
 
 @end
 

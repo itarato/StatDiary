@@ -54,7 +54,7 @@
 	networkIndicator.view.center = CGPointMake(self.view.center.x, 160.0f);
 	networkIndicator.view.hidden = YES;
 	
-	UIImage *bgr = [UIImage imageNamed:@"gray_button.png"];
+	UIImage *bgr = [UIImage imageNamed:@"button.png"];
 	UIImage *bgrStretched = [bgr stretchableImageWithLeftCapWidth:12 topCapHeight:12];
 	[submitButton setBackgroundImage:bgrStretched forState:UIControlStateNormal];
 	

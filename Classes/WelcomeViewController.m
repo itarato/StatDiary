@@ -97,8 +97,8 @@
 	[self.view addSubview:networkIndicator.view];
 	networkIndicator.view.center = CGPointMake(self.view.center.x, 160.0f);
 	
-	UIImage *buttonBgr = [UIImage imageNamed:@"gray_button.png"];
-	UIImage *buttonBgrStretched = [buttonBgr stretchableImageWithLeftCapWidth:12 topCapHeight:12];
+	UIImage *buttonBgr = [UIImage imageNamed:@"button_blue.png"];
+	UIImage *buttonBgrStretched = [buttonBgr stretchableImageWithLeftCapWidth:12.0f topCapHeight:12.0f];
 	[loginButton setBackgroundImage:buttonBgrStretched forState:UIControlStateNormal];
 	
 	[self connectWithDelay];

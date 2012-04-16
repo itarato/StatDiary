@@ -12,8 +12,8 @@
 //#define LIVE_ENV
 
 #ifdef DEV_ENV
-#define STATDIARY_XMLRPC_GATEWAY @"http://192.168.1.100/statdiary/services/xmlrpc"
-#define STATDIARY_XMLRPC_BASEPATH @"http://192.168.1.100/statdiary/"
+#define STATDIARY_XMLRPC_GATEWAY @"http://192.168.1.26/statdiary/services/xmlrpc"
+#define STATDIARY_XMLRPC_BASEPATH @"http://192.168.1.26/statdiary/"
 #endif
 
 #ifdef LIVE_ENV

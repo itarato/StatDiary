@@ -15,11 +15,13 @@
 @synthesize titleLabel;
 @synthesize statData;
 @synthesize delegate;
+@synthesize updateButton;
 
 - (void)dealloc {
 	[infoTable release];
 	[titleLabel release];
 	[statData release];
+    [updateButton release];
 	[super dealloc];
 }
 
@@ -54,6 +56,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIImage *updateBgr = [UIImage imageNamed:@"button_green.png"];
+    UIImage *updateBgrStretched = [updateBgr stretchableImageWithLeftCapWidth:12.0f topCapHeight:12.0f];
+    [self.updateButton setBackgroundImage:updateBgrStretched forState:UIControlStateNormal];
 	
 	self.titleLabel.text = [statData valueForKey:@"title"];
 }

@@ -337,7 +337,28 @@
 
 
 - (void)onPressAddStatButton {
-	[self.navigationController pushViewController:createStatViewController animated:YES];
+    static BOOL visible = NO;
+    static CGFloat scrollerY;
+    
+    if (visible) {
+        [UIView animateWithDuration:0.3f animations:^{
+            [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, self.view.center.y - 200.0f)];  
+            [self.scrollView setCenter:CGPointMake(self.view.center.x, scrollerY)];            
+        } completion:^(BOOL finished) {
+            visible = NO;
+            [[createStatViewController view] removeFromSuperview];
+        }];
+    } else {
+        visible = YES;
+        scrollerY = self.scrollView.center.y;
+        [self.view addSubview:[createStatViewController view]];
+        [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, -200.0f)];
+        
+        [UIView animateWithDuration:0.3f animations:^{
+            [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, self.view.center.y + 50.0f)];  
+            [self.scrollView setCenter:CGPointMake(self.view.center.x, 600.0f)];
+        }];
+    }
 }
 
 
@@ -406,6 +427,8 @@
 	
 	if (myStats == nil || [myStats count] == 0) {
 		// @TODO Handle no stat state.
+        self.pageControl.numberOfPages = 0;
+        self.scrollView.contentSize = CGSizeMake(0.0f, 0.0f);
 	}
 	else {
 		int idx = 0;
