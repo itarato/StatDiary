@@ -58,10 +58,6 @@
 	UIImage *bgrStretched = [bgr stretchableImageWithLeftCapWidth:12 topCapHeight:12];
 	[submitButton setBackgroundImage:bgrStretched forState:UIControlStateNormal];
 	
-	NSDate *now = [NSDate new];
-	[datePicker setDate:now];
-	[now release];
-	
     [super viewDidLoad];
 }
 
@@ -87,10 +83,29 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    if (datePicker != nil) {
+        [datePicker removeFromSuperview];
+        [datePicker release];
+    }
+    
+    datePicker = [[UIDatePicker alloc] init];
+    datePicker.minuteInterval = 5;
+    [self.view addSubview:datePicker];
+    datePicker.center = CGPointMake(self.view.center.x, self.view.frame.size.height - (datePicker.frame.size.height * 0.5f) + 44.0f);
+    
+	NSDate *now = [NSDate new];
+	[datePicker setDate:now];
+	[now release];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    // Shut down the keyboard.
+    [self.view endEditing:YES];
+}
 
 #pragma mark --
 #pragma mark Action handler
-
 
 - (void)pressSubmitButton:(id)sender {
 	if ([entryField.text length] == 0) {
@@ -162,9 +177,6 @@
 		
 		[entryField setText:@""];
 		[commentArea setText:@""];
-		NSDate *now = [NSDate new];
-		[datePicker setDate:now];
-		[now release];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:response];
 		[self.navigationController popViewControllerAnimated:YES];
 	}

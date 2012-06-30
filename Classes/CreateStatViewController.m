@@ -16,13 +16,15 @@
 
 @synthesize createButton;
 @synthesize titleField;
-
+@synthesize closeResponder;
+@synthesize closeObject;
 
 - (void)dealloc
 {
     [createButton release];
     [titleField release];
     [networkIndicator release];
+    [closeObject release];
     [super dealloc];
 }
 
@@ -119,7 +121,11 @@
 		NSLog(@"Create request success");
 		titleField.text = @"";
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:nil];
-		[self.navigationController popViewControllerAnimated:YES];
+        if (self.closeResponder != nil) {
+            if ([closeObject respondsToSelector:closeResponder]) {
+                [closeObject performSelector:closeResponder];
+            }
+        }
 	}
 }
 
@@ -145,6 +151,12 @@
 
 
 - (void)onPressDoneKey:(id)sender {}
+
+- (void)onPressCancel:(id)sender {
+    if ([closeObject respondsToSelector:closeResponder]) {
+        [closeObject performSelector:closeResponder];
+    }
+}
 
 
 @end

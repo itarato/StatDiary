@@ -57,7 +57,19 @@
 {
     [super viewDidLoad];
     
-    UIImage *updateBgr = [UIImage imageNamed:@"button_green.png"];
+    NSDate *now = [[NSDate alloc] init];
+    double now_sec = [now timeIntervalSince1970];
+    [now release];
+    
+    NSNumber *interval = [[self.statData valueForKey:@"config"] valueForKey:@"interval"];
+    NSNumber *latest = [self.statData valueForKey:@"latest"];
+    UIImage *updateBgr;
+    if ([latest doubleValue] + [interval doubleValue] <= now_sec) {
+        updateBgr = [UIImage imageNamed:@"button_red.png"];
+    }
+    else {
+        updateBgr = [UIImage imageNamed:@"button_green.png"];
+    }
     UIImage *updateBgrStretched = [updateBgr stretchableImageWithLeftCapWidth:12.0f topCapHeight:12.0f];
     [self.updateButton setBackgroundImage:updateBgrStretched forState:UIControlStateNormal];
 	

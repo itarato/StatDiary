@@ -22,6 +22,8 @@
 
 @implementation StatListController
 
+static BOOL creationViewVisible = NO;
+static CGFloat scrollViewScrollerY;
 
 @synthesize myStats;
 @synthesize statDetailsViewController;
@@ -64,11 +66,15 @@
 	if (self) {
 		NSLog(@"StatListController init");
 		
-		self.cards = [[NSMutableArray alloc] init];
+        NSMutableArray *_cards = [[NSMutableArray alloc] init];
+		self.cards = _cards;
+        [_cards release];
 		
 		myStats = nil;
 		statDetailsViewController = [[StatDetailsViewController alloc] initWithNibName:@"StatDetailsView" bundle:nil];
 		createStatViewController  = [[CreateStatViewController alloc] initWithNibName:@"CreateStatView" bundle:nil];
+        createStatViewController.closeResponder = @selector(removeCreationView);
+        createStatViewController.closeObject = self;
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSuccessLogin:) name:@"onSuccessLogin" object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRefreshRequest:) name:@"refreshStatList" object:nil];
@@ -337,27 +343,10 @@
 
 
 - (void)onPressAddStatButton {
-    static BOOL visible = NO;
-    static CGFloat scrollerY;
-    
-    if (visible) {
-        [UIView animateWithDuration:0.3f animations:^{
-            [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, self.view.center.y - 200.0f)];  
-            [self.scrollView setCenter:CGPointMake(self.view.center.x, scrollerY)];            
-        } completion:^(BOOL finished) {
-            visible = NO;
-            [[createStatViewController view] removeFromSuperview];
-        }];
+    if (creationViewVisible) {
+        [self removeCreationView];
     } else {
-        visible = YES;
-        scrollerY = self.scrollView.center.y;
-        [self.view addSubview:[createStatViewController view]];
-        [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, -200.0f)];
-        
-        [UIView animateWithDuration:0.3f animations:^{
-            [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, self.view.center.y + 50.0f)];  
-            [self.scrollView setCenter:CGPointMake(self.view.center.x, 600.0f)];
-        }];
+        [self openCreationView];
     }
 }
 
@@ -429,6 +418,7 @@
 		// @TODO Handle no stat state.
         self.pageControl.numberOfPages = 0;
         self.scrollView.contentSize = CGSizeMake(0.0f, 0.0f);
+        [self openCreationView];
 	}
 	else {
 		int idx = 0;
@@ -447,6 +437,28 @@
 
 - (void)onPagerChanged:(id)sender {
 	[self.scrollView setContentOffset:CGPointMake(self.pageControl.currentPage * 320.0f, 0.0f) animated:YES];
+}
+
+- (void)openCreationView {
+    creationViewVisible = YES;
+    scrollViewScrollerY = self.scrollView.center.y;
+    [self.view addSubview:[createStatViewController view]];
+    [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, -200.0f)];
+    
+    [UIView animateWithDuration:0.3f animations:^{
+        [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, self.view.center.y + 50.0f)];  
+        [self.scrollView setCenter:CGPointMake(self.view.center.x, 600.0f)];
+    }];
+}
+
+- (void)removeCreationView {
+    [UIView animateWithDuration:0.3f animations:^{
+        [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, self.view.center.y - 200.0f)];  
+        [self.scrollView setCenter:CGPointMake(self.view.center.x, scrollViewScrollerY)];            
+    } completion:^(BOOL finished) {
+        creationViewVisible = NO;
+        [[createStatViewController view] removeFromSuperview];
+    }];
 }
 
 

@@ -267,7 +267,7 @@
 				NSString *password = [defaults stringForKey:LOGGED_IN_PASSWORD];
 				if (username != nil && password != nil) {
 					self.userNameField.text = username;
-					self.passwordField.text = password;
+//					self.passwordField.text = password;
 				}
 			}
 		}

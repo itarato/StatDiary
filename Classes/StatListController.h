@@ -53,7 +53,8 @@
 - (void)preprocessEntries;
 - (void)rebuildCards;
 - (IBAction)onPagerChanged:(id)sender;
-//- (void)deleteStat;
+- (void)removeCreationView;
+- (void)openCreationView;
 
 + (NSString *)elapsedTimeFromTimestamp:(NSNumber *)timestamp;
 

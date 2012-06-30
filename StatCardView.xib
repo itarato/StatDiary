@@ -87,12 +87,8 @@
 							<bytes key="NSWhite">MQA</bytes>
 						</object>
 						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4xOTYwNzg0MzE0IDAuMzA5ODAzOTIxNiAwLjUyMTU2ODYyNzUAA</bytes>
-						</object>
-						<object class="NSColor" key="IBUINormalTitleShadowColor">
 							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MC41AA</bytes>
+							<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
 						</object>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">2</int>
@@ -107,7 +103,7 @@
 					<object class="IBUIButton" id="81875135">
 						<reference key="NSNextResponder" ref="658642734"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{114, 238}, {151, 37}}</string>
+						<string key="NSFrame">{{93, 237}, {172, 37}}</string>
 						<reference key="NSSuperview" ref="658642734"/>
 						<reference key="NSWindow"/>
 						<bool key="IBUIOpaque">NO</bool>
