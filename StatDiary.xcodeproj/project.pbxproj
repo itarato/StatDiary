@@ -48,6 +48,7 @@
 		4791D22C153C7E0C000EB205 /* button_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 4791D22A153C7E0C000EB205 /* button_blue.png */; };
 		4791D22D153C7E0C000EB205 /* button_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4791D22B153C7E0C000EB205 /* button_blue@2x.png */; };
 		47977D5D14366D5F00F55E1B /* XMLRPCRequestExtended.m in Sources */ = {isa = PBXBuildFile; fileRef = 47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */; };
+		479BE421159F90FC0050CF22 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 479BE420159F90FC0050CF22 /* libCorePlot-CocoaTouch.a */; };
 		47A2196D1460032100F31F91 /* StatListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A2196C1460032100F31F91 /* StatListView.xib */; };
 		47A8C08F14310B97001F588E /* AccountNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A8C08E14310B97001F588E /* AccountNavigationController.m */; };
 		47AAA96314D21A9B00AA870E /* EntryInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47AAA96214D21A9B00AA870E /* EntryInfoCell.xib */; };
@@ -66,7 +67,25 @@
 		47E39FF6153A46F800EAC885 /* card_table_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 47E39FF5153A46F800EAC885 /* card_table_shadow.png */; };
 		47E39FF8153A47B500EAC885 /* card_table_shadow_rotated.png in Resources */ = {isa = PBXBuildFile; fileRef = 47E39FF7153A47B500EAC885 /* card_table_shadow_rotated.png */; };
 		47E39FFA153A4C1600EAC885 /* card_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 47E39FF9153A4C1500EAC885 /* card_delete.png */; };
+		47E565B7159F86DD0024C8BE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47E565B6159F86DD0024C8BE /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		479BE41E159F90E60050CF22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 479BE415159F90E60050CF22 /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
+		47CB6BF215A0736800105DCD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 479BE415159F90E60050CF22 /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BC9B83460FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -124,6 +143,8 @@
 		4791D22B153C7E0C000EB205 /* button_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_blue@2x.png"; sourceTree = "<group>"; };
 		47977D5B14366D5F00F55E1B /* XMLRPCRequestExtended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLRPCRequestExtended.h; sourceTree = "<group>"; };
 		47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLRPCRequestExtended.m; sourceTree = "<group>"; };
+		479BE415159F90E60050CF22 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../../../Downloads/CorePlot_1.0/Source/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
+		479BE420159F90FC0050CF22 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libCorePlot-CocoaTouch.a"; path = "../../../Downloads/CorePlot_1.0/Binaries/iOS/libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		47A2196C1460032100F31F91 /* StatListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatListView.xib; sourceTree = "<group>"; };
 		47A8C08D14310B97001F588E /* AccountNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountNavigationController.h; path = ../AccountNavigationController.h; sourceTree = "<group>"; };
 		47A8C08E14310B97001F588E /* AccountNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountNavigationController.m; path = ../AccountNavigationController.m; sourceTree = "<group>"; };
@@ -150,6 +171,7 @@
 		47E39FF5153A46F800EAC885 /* card_table_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_table_shadow.png; sourceTree = "<group>"; };
 		47E39FF7153A47B500EAC885 /* card_table_shadow_rotated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_table_shadow_rotated.png; sourceTree = "<group>"; };
 		47E39FF9153A4C1500EAC885 /* card_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_delete.png; sourceTree = "<group>"; };
+		47E565B6159F86DD0024C8BE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* StatDiary-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "StatDiary-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,7 +180,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47E565B7159F86DD0024C8BE /* QuartzCore.framework in Frameworks */,
 				47C2809415333EE0001160F3 /* libXMLRPC.a in Frameworks */,
+				479BE421159F90FC0050CF22 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -172,10 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				47A8C08D14310B97001F588E /* AccountNavigationController.h */,
-				47BEADB31533810D00F2C34D /* NSData+Base64.h */,
-				47BEADB41533810D00F2C34D /* NSData+Base64.m */,
-				47BEADB51533810D00F2C34D /* NSStringAdditions.h */,
-				47BEADB61533810D00F2C34D /* NSStringAdditions.m */,
 				47A8C08E14310B97001F588E /* AccountNavigationController.m */,
 				474D1BB514634FB2007F7875 /* AsynchronImageLoader.h */,
 				474D1BB614634FB2007F7875 /* AsynchronImageLoader.m */,
@@ -190,6 +210,10 @@
 				47B9465D13A16BA2001326FC /* Globals.m */,
 				47807F0713A4F112004078EB /* IndicatorViewController.h */,
 				47807F0813A4F112004078EB /* IndicatorViewController.m */,
+				47BEADB31533810D00F2C34D /* NSData+Base64.h */,
+				47BEADB41533810D00F2C34D /* NSData+Base64.m */,
+				47BEADB51533810D00F2C34D /* NSStringAdditions.h */,
+				47BEADB61533810D00F2C34D /* NSStringAdditions.m */,
 				4738B52613AB2B0800BD5B67 /* RegistrationViewController.h */,
 				4738B52713AB2B0800BD5B67 /* RegistrationViewController.m */,
 				477A20DC14D5BAA100E7658F /* StatCardDelegate.h */,
@@ -201,14 +225,14 @@
 				1D3623250D0F684500981E51 /* StatDiaryAppDelegate.m */,
 				4732D622139F43AD00CADBB3 /* StatListController.h */,
 				4732D623139F43AD00CADBB3 /* StatListController.m */,
+				47E39FF2153A36A400EAC885 /* StatListView.h */,
+				47E39FF3153A36A400EAC885 /* StatListView.m */,
 				4732D61F139F407000CADBB3 /* StatNavigationController.h */,
 				4732D620139F407000CADBB3 /* StatNavigationController.m */,
 				4787ACF813BF89BC0074CBDA /* WelcomeViewController.h */,
 				4787ACF913BF89BC0074CBDA /* WelcomeViewController.m */,
 				47977D5B14366D5F00F55E1B /* XMLRPCRequestExtended.h */,
 				47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */,
-				47E39FF2153A36A400EAC885 /* StatListView.h */,
-				47E39FF3153A36A400EAC885 /* StatListView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -224,6 +248,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				47E565B6159F86DD0024C8BE /* QuartzCore.framework */,
 				473B0A79153B1E93009267FD /* Default@2x.png */,
 				473B0A71153B1A5D009267FD /* Default.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -268,7 +293,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				479BE415159F90E60050CF22 /* CorePlot-CocoaTouch.xcodeproj */,
 				47C2809315333EE0001160F3 /* libXMLRPC.a */,
+				479BE420159F90FC0050CF22 /* libCorePlot-CocoaTouch.a */,
 				47BEADB11533808500F2C34D /* XMLRPC.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -307,6 +334,14 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		479BE416159F90E60050CF22 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				479BE41F159F90E60050CF22 /* libCorePlot-CocoaTouch.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -314,13 +349,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "StatDiary" */;
 			buildPhases = (
-				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				1D60588D0D05DD3D006BFB54 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				47CB6BF315A0736800105DCD /* PBXTargetDependency */,
 			);
 			name = StatDiary;
 			productName = StatDiary;
@@ -348,12 +384,28 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 479BE416159F90E60050CF22 /* Products */;
+					ProjectRef = 479BE415159F90E60050CF22 /* CorePlot-CocoaTouch.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* StatDiary */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		479BE41F159F90E60050CF22 /* libCorePlot-CocoaTouch.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libCorePlot-CocoaTouch.a";
+			remoteRef = 479BE41E159F90E60050CF22 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D60588D0D05DD3D006BFB54 /* Resources */ = {
@@ -430,6 +482,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		47CB6BF315A0736800105DCD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CorePlot-CocoaTouch";
+			targetProxy = 47CB6BF215A0736800105DCD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -448,7 +508,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = StatDiary_Prefix.pch;
-				HEADER_SEARCH_PATHS = "/Users/itarato/CHECKOUT/xmlrpc/**";
+				HEADER_SEARCH_PATHS = (
+					"/Users/itarato/CHECKOUT/xmlrpc/**",
+					"/Users/itarato/Downloads/CorePlot_1.0/Source/framework/**",
+				);
 				INFOPLIST_FILE = "StatDiary-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -456,6 +519,11 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/XMLRPC-dosyvjqjqnizslcjiiaqtdzswwbs/Build/Products/Development-universal\"",
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/XMLRPC-dosyvjqjqnizslcjiiaqtdzswwbs/Build/Products/Development-iphonesimulator\"",
+					"\"$(SRCROOT)/../../../Downloads/CorePlot_1.0/Binaries/iOS\"",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"/Users/itarato/Downloads/CorePlot_1.0/Binaries/iOS/libCorePlot-CocoaTouch.a",
 				);
 				PRODUCT_NAME = StatDiary;
 				PROVISIONING_PROFILE = "";
@@ -478,7 +546,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = StatDiary_Prefix.pch;
-				HEADER_SEARCH_PATHS = "/Users/itarato/CHECKOUT/xmlrpc/**";
+				HEADER_SEARCH_PATHS = (
+					"/Users/itarato/CHECKOUT/xmlrpc/**",
+					"/Users/itarato/Downloads/CorePlot_1.0/Source/framework/**",
+				);
 				INFOPLIST_FILE = "StatDiary-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -486,6 +557,11 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/XMLRPC-dosyvjqjqnizslcjiiaqtdzswwbs/Build/Products/Development-universal\"",
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/XMLRPC-dosyvjqjqnizslcjiiaqtdzswwbs/Build/Products/Development-iphonesimulator\"",
+					"\"$(SRCROOT)/../../../Downloads/CorePlot_1.0/Binaries/iOS\"",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"/Users/itarato/Downloads/CorePlot_1.0/Binaries/iOS/libCorePlot-CocoaTouch.a",
 				);
 				PRODUCT_NAME = StatDiary;
 				PROVISIONING_PROFILE = "";
