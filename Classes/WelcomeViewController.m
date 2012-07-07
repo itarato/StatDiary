@@ -170,7 +170,7 @@
 - (void) loadStatList {
 	NSLog(@"Load stat list");
 	
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"onSuccessLogin" object:nil];
+//	[[NSNotificationCenter defaultCenter] postNotificationName:@"onSuccessLogin" object:nil];
 	[self dismissModalViewControllerAnimated:YES];
 }
 
@@ -294,6 +294,7 @@
 			}
 		} else {
 			NSLog(@"Login request success");
+            NSLog(@"Success login response: %@", [response body]);
 			[self loadStatList];
 		}
 	}

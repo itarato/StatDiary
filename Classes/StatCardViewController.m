@@ -8,6 +8,7 @@
 
 #import "StatCardViewController.h"
 #import "EntryInfoCell.h"
+#import "StatGraphHostingView.h"
 
 @implementation StatCardViewController
 
@@ -16,12 +17,14 @@
 @synthesize statData;
 @synthesize delegate;
 @synthesize updateButton;
+@synthesize graphHostView;
 
 - (void)dealloc {
 	[infoTable release];
 	[titleLabel release];
 	[statData release];
     [updateButton release];
+    [graphHostView release];
 	[super dealloc];
 }
 
@@ -53,7 +56,7 @@
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
+- (void)viewDidLoad 
 {
     [super viewDidLoad];
     
@@ -74,6 +77,9 @@
     [self.updateButton setBackgroundImage:updateBgrStretched forState:UIControlStateNormal];
 	
 	self.titleLabel.text = [statData valueForKey:@"title"];
+    
+    // Initialize graph.
+    [self.graphHostView setData:self->statData];
 }
 
 
@@ -129,6 +135,22 @@
 	if ([self.delegate respondsToSelector:@selector(statCardReceivedDeleteRequest:)]) {
 		[self.delegate statCardReceivedDeleteRequest:self];
 	}
+}
+
+- (IBAction)onPressInfoButton:(id)sender {
+    if ([self.graphHostView isHidden]) {
+        [self.graphHostView setHidden:NO];
+        [UIView animateWithDuration:0.3f animations:^{
+            [self.graphHostView setAlpha:1.0f];
+        }];
+    }
+    else {
+        [UIView animateWithDuration:0.3f animations:^{
+            [self.graphHostView setAlpha:0.0f];
+        } completion:^(BOOL finished) {
+            [self.graphHostView setHidden:YES];
+        }];
+    }
 }
 
 @end
