@@ -62,15 +62,15 @@
     yAxis.minorTickLineStyle = axisLineStyle;
     [axisLineStyle release];
     
-    NSNumber *dataType = (NSNumber *)[self->statData objectForKey:@"data_type"];
+    NSString *dataType = (NSString *)[self->statData objectForKey:@"data_type"];
     CPTPlot *dataPlot;
-    if ([dataType isEqualToNumber:[NSNumber numberWithInt:1]]) {
+    if ([dataType isEqualToString:@"spline"]) {
         dataPlot = [self getScatterPlotWithFrame:graph.frame andMinValue:CPTDecimalFromFloat([min floatValue])withLine:YES withFill:NO];
     }
-    else if ([dataType isEqualToNumber:[NSNumber numberWithInt:2]]) {
+    else if ([dataType isEqualToString:@"column"]) {
         dataPlot = [self getBarPlotWithFrame:graph.frame];
     }
-    else if ([dataType isEqualToNumber:[NSNumber numberWithInt:3]]) {
+    else if ([dataType isEqualToString:@"scatter"]) {
         dataPlot = [self getScatterPlotWithFrame:graph.frame andMinValue:CPTDecimalFromFloat([min floatValue])withLine:NO withFill:NO];
     }
     else {

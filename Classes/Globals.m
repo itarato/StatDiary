@@ -11,13 +11,11 @@
 
 @implementation Globals
 
-@synthesize sessionID;
 @synthesize uid;
 @synthesize deviceToken;
 
 
 - (void)dealloc {
-	[sessionID release];
 	[uid release];
 	[deviceToken release];
 	[super dealloc];

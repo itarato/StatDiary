@@ -142,8 +142,7 @@
     networkIndicator.view.hidden = NO;
     
     XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
-    Globals *global = [Globals sharedInstance];
-    [request setMethod:@"mystat.addStat" withParameters:[NSArray arrayWithObjects: global.sessionID, titleField.text, nil]];
+    [request setMethod:@"mystat.addStat" withParameters:[NSArray arrayWithObjects: titleField.text, nil]];
     XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
     [connManager spawnConnectionWithXMLRPCRequest:request delegate:self];
     [request release];

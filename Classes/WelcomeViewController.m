@@ -170,15 +170,14 @@
 - (void) loadStatList {
 	NSLog(@"Load stat list");
 	
-//	[[NSNotificationCenter defaultCenter] postNotificationName:@"onSuccessLogin" object:nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"onSuccessLogin" object:nil];
 	[self dismissModalViewControllerAnimated:YES];
 }
 
 
 - (void)login {
 	networkIndicator.view.hidden = NO;
-	Globals *global = [Globals sharedInstance];
-	[loginRequest setMethod:@"user.login" withParameters:[NSArray arrayWithObjects:global.sessionID, userNameField.text, passwordField.text, nil]];
+	[loginRequest setMethod:@"user.login" withParameters:[NSArray arrayWithObjects:userNameField.text, passwordField.text, nil]];
 	XMLRPCConnectionManager *connectionManager = [XMLRPCConnectionManager sharedManager];
 	[connectionManager spawnConnectionWithXMLRPCRequest:loginRequest delegate:self];
 	
@@ -196,7 +195,6 @@
 - (void)sendDeviceInfo {
 	if ([[Globals sharedInstance] deviceToken] != nil) {
 		NSArray *params = [[NSArray alloc] initWithObjects:
-						   [[Globals sharedInstance] sessionID], 
 						   [[Globals sharedInstance] deviceToken],
 						   @"",
 						   @"com.itarato.StatDiary",
@@ -249,7 +247,6 @@
 			
 			Globals *globals = [Globals sharedInstance];
 			globals.uid = [[[response object] valueForKey:@"user"] valueForKey:@"uid"];
-			globals.sessionID = [[response object] valueForKey:@"sessid"];
 			
 			[self sendDeviceInfo];
 			

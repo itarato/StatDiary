@@ -140,7 +140,7 @@ static CGFloat scrollViewScrollerY;
 - (void)reloadStatData {
 	networkIndicator.view.hidden = NO;
 	Globals *globals = [Globals sharedInstance];
-	NSArray *params = [[NSArray alloc] initWithObjects:globals.sessionID, @"", globals.deviceToken, nil];
+	NSArray *params = [[NSArray alloc] initWithObjects:@"", globals.deviceToken, nil];
 	NSLog(@"ARRAY: %@", params);
 	[myListRequest setMethod:@"mystat.myList" withParameters:params];
 	[params release];
@@ -156,8 +156,7 @@ static CGFloat scrollViewScrollerY;
 
 - (void)logout {
 	networkIndicator.view.hidden = NO;
-	Globals *global = [Globals sharedInstance];
-	[logOutRequest setMethod:@"user.logout" withParameter:global.sessionID];
+    [logOutRequest setMethod:@"user.logout"];
 	XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];
 	[connManager spawnConnectionWithXMLRPCRequest:logOutRequest delegate:self];
 }
@@ -342,7 +341,7 @@ static CGFloat scrollViewScrollerY;
 	if (request == myListRequest) {
 		if ([response isFault]) { // Fault response -> Exception
 		} else {
-			NSLog(@"List request success");
+			NSLog(@"List request success: %@", [response object]);
 				
 			if (myStats != nil) {
 				[myStats release];
@@ -404,9 +403,7 @@ static CGFloat scrollViewScrollerY;
 	if (alertView == deleteConfirmAlert && buttonIndex == 0) {
         networkIndicator.view.hidden = NO;
         deleteRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
-        Globals *global = [Globals sharedInstance];
         [deleteRequest setMethod:@"node.delete" withParameters:[NSArray arrayWithObjects:
-                                                                global.sessionID, 
                                                                 [self.lastSelectedCard.statData valueForKey:@"nid"],
                                                                 nil]];
         XMLRPCConnectionManager *connManager = [XMLRPCConnectionManager sharedManager];

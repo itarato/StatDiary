@@ -125,12 +125,9 @@
 	}
 	[notNumber release];
 	
-	Globals *global = [Globals sharedInstance];
-	
 	networkIndicator.view.hidden = NO;
 	XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
 	[request setMethod:@"mystat.submitData" withParameters:[NSArray arrayWithObjects:
-															global.sessionID,
 															nid,
 															entryField.text,
 															[NSNumber numberWithDouble:[datePicker.date timeIntervalSince1970]],

@@ -154,9 +154,7 @@
 	}
 	
     XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
-    Globals *globals = [Globals sharedInstance];
     [request setMethod:@"mystat.userRegister" withParameters:[NSArray arrayWithObjects:
-                                                              globals.sessionID, 
                                                               userNameField.text,
                                                               emailField.text,
                                                               passwordField.text,
