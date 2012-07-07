@@ -13,6 +13,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		4726AE6A15A4D3800045358C /* StatGraphHostingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4726AE6915A4D3800045358C /* StatGraphHostingView.m */; };
 		4732D621139F407000CADBB3 /* StatNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4732D620139F407000CADBB3 /* StatNavigationController.m */; };
 		4732D624139F43AD00CADBB3 /* StatListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4732D623139F43AD00CADBB3 /* StatListController.m */; };
 		4733D1F2139D466B006941EC /* WelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4733D1F1139D466B006941EC /* WelcomeView.xib */; };
@@ -97,6 +98,8 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* StatDiary_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatDiary_Prefix.pch; sourceTree = "<group>"; };
+		4726AE6815A4D3800045358C /* StatGraphHostingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatGraphHostingView.h; sourceTree = "<group>"; };
+		4726AE6915A4D3800045358C /* StatGraphHostingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatGraphHostingView.m; sourceTree = "<group>"; };
 		4732D61F139F407000CADBB3 /* StatNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatNavigationController.h; sourceTree = "<group>"; };
 		4732D620139F407000CADBB3 /* StatNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatNavigationController.m; sourceTree = "<group>"; };
 		4732D622139F43AD00CADBB3 /* StatListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatListController.h; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 				4787ACF913BF89BC0074CBDA /* WelcomeViewController.m */,
 				47977D5B14366D5F00F55E1B /* XMLRPCRequestExtended.h */,
 				47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */,
+				4726AE6815A4D3800045358C /* StatGraphHostingView.h */,
+				4726AE6915A4D3800045358C /* StatGraphHostingView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -248,9 +253,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				47E565B6159F86DD0024C8BE /* QuartzCore.framework */,
-				473B0A79153B1E93009267FD /* Default@2x.png */,
-				473B0A71153B1A5D009267FD /* Default.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -296,6 +298,7 @@
 				479BE415159F90E60050CF22 /* CorePlot-CocoaTouch.xcodeproj */,
 				47C2809315333EE0001160F3 /* libXMLRPC.a */,
 				479BE420159F90FC0050CF22 /* libCorePlot-CocoaTouch.a */,
+				47E565B6159F86DD0024C8BE /* QuartzCore.framework */,
 				47BEADB11533808500F2C34D /* XMLRPC.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -307,6 +310,8 @@
 		4755E052159EEAE600A85925 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				473B0A79153B1E93009267FD /* Default@2x.png */,
+				473B0A71153B1A5D009267FD /* Default.png */,
 				476B169F154F36D5005E6E4C /* button_red@2x.png */,
 				47807F0E13A4F1BB004078EB /* IndicatorBgr.png */,
 				47E39FE4153A12EE00EAC885 /* IndicatorBgr@2x.png */,
@@ -477,6 +482,7 @@
 				47BEADB71533810E00F2C34D /* NSData+Base64.m in Sources */,
 				47BEADB81533810E00F2C34D /* NSStringAdditions.m in Sources */,
 				47E39FF4153A36A400EAC885 /* StatListView.m in Sources */,
+				4726AE6A15A4D3800045358C /* StatGraphHostingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

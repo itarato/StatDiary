@@ -8,16 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "StatCardDelegate.h"
-#import "CorePlot-CocoaTouch.h"
 
-@class CPTXYGraph;
-@class CPTGraphHostingView;
+@class StatGraphHostingView;
 
-@interface StatCardViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CPTPlotDataSource> {
+@interface StatCardViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
 	IBOutlet UILabel *titleLabel;
 	IBOutlet UITableView *infoTable;
     IBOutlet UIButton *updateButton;
-    IBOutlet CPTGraphHostingView *graphHostView;
+    IBOutlet StatGraphHostingView *graphHostView;
     
 	NSDictionary *statData;
     
@@ -33,7 +31,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
 @property (nonatomic, retain) IBOutlet UITableView *infoTable;
 @property (nonatomic, retain) IBOutlet UIButton *updateButton;
-@property (nonatomic, retain) IBOutlet CPTGraphHostingView *graphHostView;
+@property (nonatomic, retain) IBOutlet StatGraphHostingView *graphHostView;
 @property (nonatomic, retain) NSDictionary *statData;
 @property (nonatomic, assign) id <StatCardDelegate> delegate;
 

@@ -44,7 +44,7 @@
 						<string key="NSFrame">{{20, 11}, {240, 30}}</string>
 						<reference key="NSSuperview" ref="658642734"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="188748243"/>
+						<reference key="NSNextKeyView" ref="1070341182"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -106,6 +106,7 @@
 						<string key="NSFrame">{{93, 237}, {172, 37}}</string>
 						<reference key="NSSuperview" ref="658642734"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -135,7 +136,7 @@
 						<string key="NSFrame">{{0, 49}, {276, 176}}</string>
 						<reference key="NSSuperview" ref="658642734"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="336235379"/>
+						<reference key="NSNextKeyView" ref="935212305"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC45NjkzODY4ODg2IDAuOTY5Mzg2ODg4NiAwLjk2OTM4Njg4ODYAA</bytes>
@@ -156,14 +157,11 @@
 						<string key="NSFrame">{{0, 49}, {276, 176}}</string>
 						<reference key="NSSuperview" ref="658642734"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="935212305"/>
+						<reference key="NSNextKeyView" ref="188748243"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
-							<object class="NSColorSpace" key="NSCustomColorSpace">
-								<int key="NSID">2</int>
-							</object>
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC45NjkzODY4ODg2IDAuOTY5Mzg2ODg4NiAwLjk2OTM4Njg4ODYAA</bytes>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
@@ -205,6 +203,7 @@
 						<string key="NSFrame">{{243, 16}, {18, 19}}</string>
 						<reference key="NSSuperview" ref="658642734"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="336235379"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -351,8 +350,8 @@
 							<reference ref="134919312"/>
 							<reference ref="686761597"/>
 							<reference ref="81875135"/>
-							<reference ref="336235379"/>
 							<reference ref="1070341182"/>
+							<reference ref="336235379"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -384,16 +383,17 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">7</int>
 						<reference key="object" ref="188748243"/>
-						<reference key="parent" ref="658642734"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">22</int>
-						<reference key="object" ref="336235379"/>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="658642734"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">24</int>
 						<reference key="object" ref="1070341182"/>
+						<reference key="parent" ref="658642734"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">22</int>
+						<reference key="object" ref="336235379"/>
 						<reference key="parent" ref="658642734"/>
 					</object>
 				</array>
@@ -405,7 +405,7 @@
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="16.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="22.CustomClassName">CPTGraphHostingView</string>
+				<string key="22.CustomClassName">StatGraphHostingView</string>
 				<string key="22.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="24.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="3.CustomClassName">StatListView</string>
@@ -454,7 +454,7 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="graphHostView">CPTGraphHostingView</string>
+						<string key="graphHostView">StatGraphHostingView</string>
 						<string key="infoTable">UITableView</string>
 						<string key="titleLabel">UILabel</string>
 						<string key="updateButton">UIButton</string>
@@ -462,7 +462,7 @@
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="graphHostView">
 							<string key="name">graphHostView</string>
-							<string key="candidateClassName">CPTGraphHostingView</string>
+							<string key="candidateClassName">StatGraphHostingView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="infoTable">
 							<string key="name">infoTable</string>
@@ -480,6 +480,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/StatCardViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">StatGraphHostingView</string>
+					<string key="superclassName">CPTGraphHostingView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/StatGraphHostingView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
