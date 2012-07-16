@@ -62,7 +62,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    UIImage *buttonBgr = [UIImage imageNamed:@"button.png"];
+    UIImage *buttonBgr = [UIImage imageNamed:@"button_blue.png"];
     UIImage *buttonBgrStretched = [buttonBgr stretchableImageWithLeftCapWidth:12 topCapHeight:12];
     [createButton setBackgroundImage:buttonBgrStretched forState:UIControlStateNormal];
     

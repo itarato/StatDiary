@@ -217,7 +217,7 @@ static CGFloat scrollViewScrollerY;
 		int badge = 0;
 		NSMutableArray *laterBadges = [[NSMutableArray alloc] init];
 		for (id stat in myStats) {
-			NSNumber *interval = [[stat valueForKey:@"config"] valueForKey:@"interval"];
+			NSNumber *interval = [stat valueForKey:@"update_interval"];
 			NSNumber *latest = [stat valueForKey:@"latest"];
 			if ([latest doubleValue] + [interval doubleValue] <= now_sec) {
 				badge++;
@@ -275,7 +275,7 @@ static CGFloat scrollViewScrollerY;
 		for (id stat in myStats) {
 			StatCardViewController *card = [[StatCardViewController alloc] initWithNibName:@"StatCardView" bundle:nil andStatData:stat];
 			card.delegate = self;
-			[[card view] setCenter:CGPointMake(160.0f + 320.0f * idx, 165.0f)];
+			[[card view] setCenter:CGPointMake(160.0f + 320.0f * idx, 186.0f)];
 			[self.scrollView addSubview:[card view]];
 			[self.cards addObject:card];
 			idx++;

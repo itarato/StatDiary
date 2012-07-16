@@ -60,10 +60,6 @@
 						<bool key="IBUIAlwaysBounceVertical">YES</bool>
 						<int key="IBUIStyle">1</int>
 						<int key="IBUISeparatorStyle">2</int>
-						<object class="NSColor" key="IBUISeparatorColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4wMDAzMzQ3NTQxMzYgMC4zMDAyNDEzMzUxIDAuNTQ4OTEzMDQzNQA</bytes>
-						</object>
 						<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
 						<bool key="IBUIAllowsSelection">NO</bool>
 						<float key="IBUIRowHeight">44</float>
@@ -76,22 +72,24 @@
 						<string key="NSFrame">{{10, 155}, {300, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<string key="IBUITitleShadowOffset">{0, 1}</string>
 						<string key="IBUINormalTitle">Submit</string>
-						<object class="NSColor" key="IBUIHighlightedTitleColor" id="222365156">
+						<object class="NSColor" key="IBUIHighlightedTitleColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
 						</object>
 						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MC4xNDkxOTM1NDg0AA</bytes>
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MSAxIDEAA</bytes>
 						</object>
-						<reference key="IBUINormalTitleShadowColor" ref="222365156"/>
+						<object class="NSColor" key="IBUINormalTitleShadowColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xNTY5Njc0NzQ1IDAuMTU2OTY3NDc0NSAwLjE1Njk2NzQ3NDUAA</bytes>
+						</object>
 						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">gray_button.png</string>

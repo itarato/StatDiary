@@ -42,10 +42,14 @@
     
 	self.navigationBar.tintColor = [UIColor colorWithRed:0.0f green:0.6f blue:1.0f alpha:1.0f];
 	self.toolbar.tintColor = [UIColor colorWithRed:0.0f green:0.6f blue:1.0f alpha:1.0f];
+    
+    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar_bgr.png"] forBarMetrics:UIBarMetricsDefault];
+    [self.toolbar setBackgroundImage:[UIImage imageNamed:@"navbar_bgr.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
 	
-	UIImageView *bgrView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bgr_second.png"]];
-	[self.view insertSubview:bgrView atIndex:0];
-	[bgrView release];
+//	UIImageView *bgrView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bgr_second.png"]];
+//	[self.view insertSubview:bgrView atIndex:0];
+//	[bgrView release];
+    [self.view setBackgroundColor:[UIColor underPageBackgroundColor]];
 	
     [super viewDidLoad];
 }

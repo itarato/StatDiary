@@ -64,7 +64,7 @@
     double now_sec = [now timeIntervalSince1970];
     [now release];
     
-    NSNumber *interval = [[self.statData valueForKey:@"config"] valueForKey:@"interval"];
+    NSNumber *interval = [self.statData valueForKey:@"update_interval"];
     NSNumber *latest = [self.statData valueForKey:@"latest"];
     UIImage *updateBgr;
     if ([latest doubleValue] + [interval doubleValue] <= now_sec) {

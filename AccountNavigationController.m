@@ -54,6 +54,7 @@
 	welcomeViewController = [[WelcomeViewController alloc] initWithNibName:@"WelcomeView" bundle:nil];
 	[self pushViewController:welcomeViewController animated:NO];
 	self.navigationBar.tintColor = [UIColor colorWithRed:0.0f green:0.6f blue:1.0f alpha:1.0f];
+    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar_bgr.png"] forBarMetrics:UIBarMetricsDefault];
 	
 	UIImageView *bgrView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bgr_welcome.png"]];
 	[self.view insertSubview:bgrView atIndex:0];
