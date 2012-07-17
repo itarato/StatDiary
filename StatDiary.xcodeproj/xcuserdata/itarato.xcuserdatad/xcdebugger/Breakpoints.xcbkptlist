@@ -17,7 +17,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/StatListController.m"
@@ -34,16 +34,16 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/WelcomeViewController.m"
-         timestampString = "363368196.368457"
+         timestampString = "364257307.466984"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "240"
-         endingLineNumber = "240"
+         startingLineNumber = "253"
+         endingLineNumber = "253"
          landmarkName = "-request:didReceiveResponse:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/Globals.m"
@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/WelcomeViewController.m"
-         timestampString = "363372557.632977"
+         timestampString = "364257307.466984"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "298"
-         endingLineNumber = "298"
+         startingLineNumber = "318"
+         endingLineNumber = "318"
          landmarkName = "-request:didReceiveResponse:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/WelcomeViewController.m"
-         timestampString = "363372561.466394"
+         timestampString = "364257307.466984"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "171"
-         endingLineNumber = "171"
+         startingLineNumber = "172"
+         endingLineNumber = "172"
          landmarkName = "-loadStatList"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,12 +86,38 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/WelcomeViewController.m"
-         timestampString = "363372623.532479"
+         timestampString = "364257307.466984"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "183"
-         endingLineNumber = "183"
+         startingLineNumber = "184"
+         endingLineNumber = "184"
          landmarkName = "-login"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/WelcomeViewController.m"
+         timestampString = "364257307.466984"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "289"
+         endingLineNumber = "289"
+         landmarkName = "-request:didReceiveResponse:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/WelcomeViewController.m"
+         timestampString = "364257307.466984"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "303"
+         endingLineNumber = "303"
+         landmarkName = "-request:didReceiveResponse:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

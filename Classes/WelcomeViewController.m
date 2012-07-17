@@ -17,6 +17,7 @@
 @interface WelcomeViewController () 
 
 - (void)sendDeviceInfo;
+- (void)loginErrorAlert;
 
 @end
 
@@ -207,6 +208,16 @@
 	}
 }
 
+- (void)loginErrorAlert {
+    // Wrong account details.
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login error" 
+                                                    message:@"Please, check your name and password" 
+                                                   delegate:nil 
+                                          cancelButtonTitle:@"Ok" 
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+}
 
 #pragma mark XMLRPC delegates
 
@@ -221,15 +232,17 @@
 - (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
 	NSLog(@"Request error in WelcomeVC");
 	networkIndicator.view.hidden = YES;
-	[Globals alertNetworkError];
 	
 	if (request == connectionRequest) {
 		connectionRequest.successCallback = NULL;
-	} else if (request == loginRequest) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection error" message:@"App cannot reach the service. Press 'Reconnect' for another try." delegate:self cancelButtonTitle:@"Reconnect" otherButtonTitles:nil];
-		[alert show];
-		[alert release];
+        [Globals alertNetworkError];
+	} 
+    else if (request == loginRequest) {
+        [self loginErrorAlert];
 	}
+    else {
+        [Globals alertNetworkError];
+    }
 }
 
 - (void)request:(XMLRPCRequest *)request didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {}
@@ -264,14 +277,15 @@
 				NSString *password = [defaults stringForKey:LOGGED_IN_PASSWORD];
 				if (username != nil && password != nil) {
 					self.userNameField.text = username;
-//					self.passwordField.text = password;
 				}
 			}
 		}
 		connectionRequest.successCallback = NULL;
-	} else if (request == infoRequest) {
+	} 
+    else if (request == infoRequest) {
 		// Do nothing - do not care.
-	} else if (request == loginRequest) {
+	} 
+    else if (request == loginRequest) {
 		if ([response isFault]) {
 			NSLog(@"Login request fail");
 			NSNumber *faultCode = [[response object] valueForKey:@"faultCode"];
@@ -279,20 +293,26 @@
 				// Already logged in.
 				NSLog(@"Already logged in");
 				[self.navigationController dismissModalViewControllerAnimated:YES];
-			} else {
+			} 
+            else {
 				// Wrong account details.
-				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login error" 
-																message:@"Please, check your name and password" 
-															   delegate:nil 
-													  cancelButtonTitle:@"Ok" 
-													  otherButtonTitles:nil];
-				[alert show];
-				[alert release];
+				[self loginErrorAlert];
 			}
-		} else {
+		} 
+        else {
 			NSLog(@"Login request success");
-            NSLog(@"Success login response: %@", [response body]);
-			[self loadStatList];
+            NSLog(@"Success login response: %@", [response object]);
+            
+            if (
+                ![response respondsToSelector:@selector(objectForKey:)] || 
+                [[response object] objectForKey:@"user"] == nil || 
+                [[[response object] objectForKey:@"user"] objectForKey:@"uid"] == nil
+                ) {
+                [self connect];
+            }
+            else {
+                [self loadStatList];
+            }
 		}
 	}
 }
