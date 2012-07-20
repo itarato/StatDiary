@@ -46,14 +46,6 @@
     return self;
 }
 
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     networkIndicator = [[IndicatorViewController alloc] init];
@@ -67,15 +59,6 @@
 	
     [super viewDidLoad];
 }
-
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -128,8 +111,8 @@
 			[defaults setObject:userNameField.text forKey:LOGGED_IN_USERNAME];
 			[defaults setObject:passwordField.text forKey:LOGGED_IN_PASSWORD];
 			[defaults synchronize];
-			
-			[[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:nil];
+
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:nil];
 			[self.navigationController dismissModalViewControllerAnimated:YES];
         } else {
             NSLog(@"Register error: %@", responseMessage);
