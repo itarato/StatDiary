@@ -7,7 +7,6 @@
 //
 
 #import "RegistrationViewController.h"
-//#import <XMLRPC/XMLRPC.h>
 #import "Globals.h"
 #import "Defines.h"
 #import "IndicatorViewController.h"
@@ -87,7 +86,10 @@
 
 
 - (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
+    STAT_REQUEST_LOG_EROR(request, error, __FUNCTION__);
+    
     [Globals alertNetworkError];
+    
     networkIndicator.view.hidden = YES;
 }
 
@@ -97,13 +99,14 @@
 
 
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
+    STAT_REQUEST_LOG(request, response, __FUNCTION__);
+    
     networkIndicator.view.hidden = YES;
+    
     if ([response isFault]) {
-        NSLog(@"Register request error");
         [Globals alertNetworkError];
-    } else {
-        NSLog(@"Register request success");
-        
+    } 
+    else {
         NSString *responseMessage = (NSString *)[response object];
         if ([responseMessage isEqualToString:@"ok"]) {
 			// Save reg details.
@@ -114,14 +117,13 @@
 
             [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:nil];
 			[self.navigationController dismissModalViewControllerAnimated:YES];
-        } else {
-            NSLog(@"Register error: %@", responseMessage);
+        } 
+        else {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Registration error" message:responseMessage delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
             [alert show];
             [alert release];
         }
     }
-    NSLog(@"Register response: %@", [response object]);
 }
 
 

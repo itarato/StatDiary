@@ -45,10 +45,7 @@
     
     [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar_bgr.png"] forBarMetrics:UIBarMetricsDefault];
     [self.toolbar setBackgroundImage:[UIImage imageNamed:@"navbar_bgr.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-	
-//	UIImageView *bgrView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bgr_second.png"]];
-//	[self.view insertSubview:bgrView atIndex:0];
-//	[bgrView release];
+
     [self.view setBackgroundColor:[UIColor underPageBackgroundColor]];
 	
     [super viewDidLoad];
@@ -72,7 +69,6 @@
 #pragma mark UINavigationVC delegates
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-	NSLog(@"Nav view show");
 	[self setToolbarHidden:(viewController != statListController) animated:YES];
 }
 

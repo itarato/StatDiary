@@ -64,8 +64,6 @@ static CGFloat scrollViewScrollerY;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if (self) {
-		NSLog(@"StatListController init");
-		
         NSMutableArray *_cards = [[NSMutableArray alloc] init];
 		self.cards = _cards;
         [_cards release];
@@ -91,7 +89,6 @@ static CGFloat scrollViewScrollerY;
 
 
 - (void)viewDidLoad {
-	NSLog(@"StatListController view did load");    
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"showLogin" object:nil];
 	
 	UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
@@ -141,7 +138,7 @@ static CGFloat scrollViewScrollerY;
 	networkIndicator.view.hidden = NO;
 	Globals *globals = [Globals sharedInstance];
 	NSArray *params = [[NSArray alloc] initWithObjects:@"", globals.deviceToken, nil];
-	NSLog(@"ARRAY: %@", params);
+	STATLOG(@"Data received: %@\nFrom: %s\n", params, __FUNCTION__);
 	[myListRequest setMethod:@"mystat.myList" withParameters:params];
 	[params release];
 	XMLRPCConnectionManager *connectionManager = [XMLRPCConnectionManager sharedManager];
@@ -203,7 +200,6 @@ static CGFloat scrollViewScrollerY;
 
 - (void)onRefreshRequest:(NSNotification *)notification {
     [self reloadStatData];
-	NSLog(@"Refresh.");
 }
 
 
@@ -325,8 +321,10 @@ static CGFloat scrollViewScrollerY;
 
 
 - (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
-	NSLog(@"StatListController request error");
+	STAT_REQUEST_LOG_EROR(request, error, __FUNCTION__);
+    
 	[Globals alertNetworkError];
+    
 	networkIndicator.view.hidden = YES;
 }
 
@@ -336,13 +334,14 @@ static CGFloat scrollViewScrollerY;
 
 
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
+    STAT_REQUEST_LOG(request, response, __FUNCTION__);
+    
 	networkIndicator.view.hidden = YES;
 	  
 	if (request == myListRequest) {
-		if ([response isFault]) { // Fault response -> Exception
-		} else {
-			NSLog(@"List request success: %@", [response object]);
-				
+		if ([response isFault]) { // Fault response -> Exception.
+		} 
+        else {
 			if (myStats != nil) {
 				[myStats release];
 				myStats = nil;
@@ -356,21 +355,19 @@ static CGFloat scrollViewScrollerY;
 			// @TODO reload data items (cards)
 			[self rebuildCards];
 		}
-	} else if (request == logOutRequest) {
-		NSLog(@"Logout request success (or not)");
-		
+	} 
+    else if (request == logOutRequest) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"showLogin" object:nil];
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"connectWithDelay" object:nil];
-	} else if (request == deleteRequest) {
+	} 
+    else if (request == deleteRequest) {
 		if ([response isFault]) { // Fault response -> Exception
 			[[NSNotificationCenter defaultCenter] postNotificationName:@"showLogin" object:nil];
-		} else {
-			NSLog(@"Delete request success");
+		} 
+        else {
 			[self reloadStatData];
 		}
 	}
-  
-	NSLog(@"Response: %@", [response object]);
 }
 
 

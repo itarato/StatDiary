@@ -111,14 +111,13 @@
 
 
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
+    STAT_REQUEST_LOG(request, response, __FUNCTION__);
+    
 	networkIndicator.view.hidden = YES;
-	NSLog(@"Response: %@", [response object]);
 	
 	if ([response isFault]) {
-		NSLog(@"Create request fail");
 		// @TODO - fix missing login popup
 	} else {
-		NSLog(@"Create request success");
 		titleField.text = @"";
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:nil];
         if (self.closeResponder != nil) {

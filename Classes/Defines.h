@@ -7,19 +7,24 @@
  *
  */
 
+// Production killswitch.
+#define IS_LIVE 1
 
-#define DEV_ENV
-//#define LIVE_ENV
-
-#ifdef DEV_ENV
-#define STATDIARY_XMLRPC_GATEWAY @"http://192.168.3.216/sd7/services/xmlrpc"
-#define STATDIARY_XMLRPC_BASEPATH @"http://192.168.3.216/sd7/"
+#if IS_LIVE
+    // Live production settings.
+    #define STATDIARY_XMLRPC_BASEPATH @"http://178.79.184.166/sd7/"
+    #define STATLOG(...)
+    #define STAT_REQUEST_LOG(req, resp, func)
+    #define STAT_REQUEST_LOG_EROR(req, err, func)
+#else
+    // Development settings.
+    #define STATDIARY_XMLRPC_BASEPATH @"http://192.168.3.216/sd7/"
+    #define STATLOG(...) NSLog(__VA_ARGS__)
+    #define STAT_REQUEST_LOG(req, resp, func) NSLog(@"\nRequest: %@\nResponse: %@\nIs failed: %@\nFrom: %s\n", [req method], [resp object], ([resp isFault] ? @"yes" : @"no"), func)
+    #define STAT_REQUEST_LOG_EROR(req, err, func) NSLog(@"\nRequest error!\nRequest: %@\nError: %@\nFrom: %s\n", [req method], err, func)
 #endif
 
-#ifdef LIVE_ENV
-#define STATDIARY_XMLRPC_GATEWAY @"http://statdiary.info/services/xmlrpc"
-#define STATDIARY_XMLRPC_BASEPATH @"http://statdiary.info/"
-#endif
+#define STATDIARY_XMLRPC_GATEWAY STATDIARY_XMLRPC_BASEPATH "/services/xmlrpc"
 
 // Dictionary keys for account details.
 #define LOGGED_IN_USERNAME @"keepMeLoggedInUserName"

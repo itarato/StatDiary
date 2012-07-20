@@ -60,7 +60,6 @@
 		47BEADB81533810E00F2C34D /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BEADB61533810D00F2C34D /* NSStringAdditions.m */; };
 		47C2809415333EE0001160F3 /* libXMLRPC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C2809315333EE0001160F3 /* libXMLRPC.a */; };
 		47C2809515333F93001160F3 /* libXMLRPC.a in Resources */ = {isa = PBXBuildFile; fileRef = 47C2809315333EE0001160F3 /* libXMLRPC.a */; };
-		47D5892C14DDDFD4001F64FF /* DrupalConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D5892B14DDDFD4001F64FF /* DrupalConnector.m */; };
 		47E39FE5153A12EE00EAC885 /* IndicatorBgr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47E39FE4153A12EE00EAC885 /* IndicatorBgr@2x.png */; };
 		47E39FF4153A36A400EAC885 /* StatListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E39FF3153A36A400EAC885 /* StatListView.m */; };
 		47E39FF6153A46F800EAC885 /* card_table_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 47E39FF5153A46F800EAC885 /* card_table_shadow.png */; };
@@ -162,8 +161,6 @@
 		47BEADB51533810D00F2C34D /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		47BEADB61533810D00F2C34D /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
 		47C2809315333EE0001160F3 /* libXMLRPC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXMLRPC.a; path = "../../../Library/Developer/Xcode/DerivedData/XMLRPC-dosyvjqjqnizslcjiiaqtdzswwbs/Build/Products/Development-iphonesimulator/libXMLRPC.a"; sourceTree = "<group>"; };
-		47D5892A14DDDFD4001F64FF /* DrupalConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrupalConnector.h; sourceTree = "<group>"; };
-		47D5892B14DDDFD4001F64FF /* DrupalConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrupalConnector.m; sourceTree = "<group>"; };
 		47E39FE4153A12EE00EAC885 /* IndicatorBgr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndicatorBgr@2x.png"; sourceTree = "<group>"; };
 		47E39FF2153A36A400EAC885 /* StatListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatListView.h; sourceTree = "<group>"; };
 		47E39FF3153A36A400EAC885 /* StatListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatListView.m; sourceTree = "<group>"; };
@@ -201,8 +198,6 @@
 				47B383CE13C0FCFD00D34E27 /* CreateStatViewController.h */,
 				47B383CF13C0FCFD00D34E27 /* CreateStatViewController.m */,
 				47B9461213A1455C001326FC /* Defines.h */,
-				47D5892A14DDDFD4001F64FF /* DrupalConnector.h */,
-				47D5892B14DDDFD4001F64FF /* DrupalConnector.m */,
 				47AAA96414D21BCA00AA870E /* EntryInfoCell.h */,
 				47AAA96514D21BCA00AA870E /* EntryInfoCell.m */,
 				47B9465C13A16BA2001326FC /* Globals.h */,
@@ -470,7 +465,6 @@
 				474D1BB714634FB2007F7875 /* AsynchronImageLoader.m in Sources */,
 				474FF14D14D0B05700781A91 /* StatCardViewController.m in Sources */,
 				47AAA96614D21BCA00AA870E /* EntryInfoCell.m in Sources */,
-				47D5892C14DDDFD4001F64FF /* DrupalConnector.m in Sources */,
 				47BEADB71533810E00F2C34D /* NSData+Base64.m in Sources */,
 				47BEADB81533810E00F2C34D /* NSStringAdditions.m in Sources */,
 				47E39FF4153A36A400EAC885 /* StatListView.m in Sources */,

@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/WelcomeViewController.m"
-         timestampString = "364257307.466984"
+         timestampString = "364519327.779909"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "253"
-         endingLineNumber = "253"
+         startingLineNumber = "256"
+         endingLineNumber = "256"
          landmarkName = "-request:didReceiveResponse:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/WelcomeViewController.m"
-         timestampString = "364257307.466984"
+         timestampString = "364519327.779909"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "318"
-         endingLineNumber = "318"
+         startingLineNumber = "317"
+         endingLineNumber = "317"
          landmarkName = "-request:didReceiveResponse:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -99,25 +99,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/WelcomeViewController.m"
-         timestampString = "364257307.466984"
+         timestampString = "364519327.779909"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "289"
-         endingLineNumber = "289"
+         startingLineNumber = "292"
+         endingLineNumber = "292"
          landmarkName = "-request:didReceiveResponse:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Classes/WelcomeViewController.m"
-         timestampString = "364257307.466984"
+         filePath = "Classes/StatDiaryAppDelegate.m"
+         timestampString = "364506763.768258"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "303"
-         endingLineNumber = "303"
-         landmarkName = "-request:didReceiveResponse:"
+         startingLineNumber = "38"
+         endingLineNumber = "38"
+         landmarkName = "-application:didFinishLaunchingWithOptions:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

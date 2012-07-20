@@ -154,7 +154,10 @@
 
 
 - (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
+    STAT_REQUEST_LOG_EROR(request, error, __FUNCTION__);
+    
 	networkIndicator.view.hidden = YES;
+    
 	[Globals alertNetworkError];
 }
 
@@ -164,13 +167,14 @@
 
 
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
+    STAT_REQUEST_LOG(request, response, __FUNCTION__);
+    
 	networkIndicator.view.hidden = YES;
+    
 	if ([response isFault]) {
-		NSLog(@"Save request fail");
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"showLogin" object:nil];
-	} else {
-		NSLog(@"Save request success");
-		
+	} 
+    else {
 		[entryField setText:@""];
 		[commentArea setText:@""];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:response];

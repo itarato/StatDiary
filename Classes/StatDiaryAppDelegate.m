@@ -6,6 +6,10 @@
 //  Copyright 2011 Pronovix. All rights reserved.
 //
 
+#ifdef __APPLE__
+#include "TargetConditionals.h"
+#endif
+
 #import "StatDiaryAppDelegate.h"
 #import "StatNavigationController.h"
 #import "Globals.h"
@@ -27,17 +31,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
-	
-	NSLog(@"App init");
+    STATLOG(@"App init from %s", __FUNCTION__);
 	
 	[self.window makeKeyAndVisible];
 	
 	statNavigationController = [[StatNavigationController alloc] init];
 	[self.window addSubview:statNavigationController.view];
 	
+    // No notifications for simulator.
+#if !(TARGET_IPHONE_SIMULATOR)
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
 	 (UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
-	
+#endif
+    
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
 	return YES;
@@ -95,7 +101,7 @@
 #pragma mark Remote notifications
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-	NSLog(@"Registered remote push notifications to %@", deviceToken);
+	STATLOG(@"Registered remote push notifications to %@", deviceToken);
 	NSString *deviceTokenString = [[NSString alloc] initWithFormat:@"%@", deviceToken];
 	[[Globals sharedInstance] setDeviceToken:deviceTokenString];
 	[deviceTokenString release];
@@ -103,12 +109,12 @@
 
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-	NSLog(@"Fail to register push notifications: %@", error);
+	STATLOG(@"Fail to register push notifications: %@ %s", error, __FUNCTION__);
 }
 
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-	NSLog(@"Silent push notification");
+    // Got notification when the app was open -> silent notification.
 }
 
 @end

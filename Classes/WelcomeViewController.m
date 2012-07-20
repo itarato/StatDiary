@@ -154,7 +154,7 @@
 #pragma mark Custom actions
 
 - (void)connect {
-	NSLog(@"Connect to Drupal");
+	STATLOG(@"Connect to Drupal");
 	
 	networkIndicator.view.hidden = NO;
 	[self.connectionRequest setMethod:@"system.connect"];
@@ -169,7 +169,7 @@
 
 
 - (void) loadStatList {
-	NSLog(@"Load stat list");
+	STATLOG(@"Load stat list");
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"onSuccessLogin" object:nil];
 	[self dismissModalViewControllerAnimated:YES];
@@ -226,11 +226,13 @@
 }
 
 
-- (void)request:(XMLRPCRequest *)request didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {}
+- (void)request:(XMLRPCRequest *)request didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+}
 
 
 - (void)request:(XMLRPCRequest *)request didFailWithError:(NSError *)error {
-	NSLog(@"Request error in WelcomeVC");
+	STAT_REQUEST_LOG_EROR(request, error, __FUNCTION__);
+    
 	networkIndicator.view.hidden = YES;
 	
 	if (request == connectionRequest) {
@@ -248,30 +250,31 @@
 - (void)request:(XMLRPCRequest *)request didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {}
 
 - (void)request:(XMLRPCRequest *)request didReceiveResponse:(XMLRPCResponse *)response {
-	NSLog(@"Connect request: %@", [response object]);
+    STAT_REQUEST_LOG(request, response, __FUNCTION__);
+    
 	networkIndicator.view.hidden = YES;
 	
 	if (request == connectionRequest) {
 		if ([response isFault]) {
-			NSLog(@"Connection request fail");
 			[Globals alertNetworkError];
-		} else {
-			NSLog(@"Connection request success");
-			
+		} 
+        else {
 			Globals *globals = [Globals sharedInstance];
 			globals.uid = [[[response object] valueForKey:@"user"] valueForKey:@"uid"];
 			
 			[self sendDeviceInfo];
 			
 			if ([globals.uid intValue] > 0) {
-			// User is already logged in.
+                // User is already logged in.
 				[self dismissModalViewControllerAnimated:YES];
 				[[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:nil];
-			} else if (connectionRequest.successCallback != NULL) {
-			// There is a callback.
+			} 
+            else if (connectionRequest.successCallback != NULL) {
+                // There is a callback.
 				[self performSelector:connectionRequest.successCallback withObject:nil];
-			} else {
-			// Fill the login form is possible.
+			} 
+            else {
+                // Fill the login form is possible.
 				NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 				NSString *username = [defaults stringForKey:LOGGED_IN_USERNAME];
 				NSString *password = [defaults stringForKey:LOGGED_IN_PASSWORD];
@@ -287,11 +290,9 @@
 	} 
     else if (request == loginRequest) {
 		if ([response isFault]) {
-			NSLog(@"Login request fail");
 			NSNumber *faultCode = [[response object] valueForKey:@"faultCode"];
 			if ([faultCode intValue] == 406) {
 				// Already logged in.
-				NSLog(@"Already logged in");
 				[self.navigationController dismissModalViewControllerAnimated:YES];
 			} 
             else {
@@ -300,9 +301,7 @@
 			}
 		} 
         else {
-			NSLog(@"Login request success");
-            NSLog(@"Success login response: %@", [response object]);
-            
+            // Successful login.
             if (
                 ![response respondsToSelector:@selector(objectForKey:)] || 
                 [[response object] objectForKey:@"user"] == nil || 
