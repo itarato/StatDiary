@@ -8,7 +8,7 @@
  */
 
 // Production killswitch.
-#define IS_LIVE 1
+#define IS_LIVE 0
 
 #if IS_LIVE
     // Live production settings.
