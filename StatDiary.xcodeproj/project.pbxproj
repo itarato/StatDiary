@@ -47,19 +47,18 @@
 		4787F45013A2BDD2002B9636 /* StatDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */; };
 		4787F45313A2BDF9002B9636 /* StatDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4787F45213A2BDF9002B9636 /* StatDetailsView.xib */; };
 		47977D5D14366D5F00F55E1B /* XMLRPCRequestExtended.m in Sources */ = {isa = PBXBuildFile; fileRef = 47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */; };
-		479BE421159F90FC0050CF22 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 479BE420159F90FC0050CF22 /* libCorePlot-CocoaTouch.a */; };
+		479AEC1116BE9DCD009A8C2F /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 479AEC1016BE9DCD009A8C2F /* libCorePlot-CocoaTouch.a */; };
 		47A2196D1460032100F31F91 /* StatListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A2196C1460032100F31F91 /* StatListView.xib */; };
+		47A4466616BEA06A006B1192 /* libXMLRPC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A4466516BEA06A006B1192 /* libXMLRPC.a */; };
 		47A8C08F14310B97001F588E /* AccountNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A8C08E14310B97001F588E /* AccountNavigationController.m */; };
 		47AAA96314D21A9B00AA870E /* EntryInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47AAA96214D21A9B00AA870E /* EntryInfoCell.xib */; };
 		47AAA96614D21BCA00AA870E /* EntryInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AAA96514D21BCA00AA870E /* EntryInfoCell.m */; };
+		47ABA57C1676300F0013231D /* XMLRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47ABA57B1676300F0013231D /* XMLRPC.framework */; };
 		47B383D013C0FCFD00D34E27 /* CreateStatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B383CF13C0FCFD00D34E27 /* CreateStatViewController.m */; };
 		47B383D213C0FD1800D34E27 /* CreateStatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B383D113C0FD1800D34E27 /* CreateStatView.xib */; };
 		47B9465E13A16BA2001326FC /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B9465D13A16BA2001326FC /* Globals.m */; };
-		47BEADB21533808500F2C34D /* XMLRPC.framework in Resources */ = {isa = PBXBuildFile; fileRef = 47BEADB11533808500F2C34D /* XMLRPC.framework */; };
-		47BEADB71533810E00F2C34D /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BEADB41533810D00F2C34D /* NSData+Base64.m */; };
 		47BEADB81533810E00F2C34D /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BEADB61533810D00F2C34D /* NSStringAdditions.m */; };
-		47C2809415333EE0001160F3 /* libXMLRPC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47C2809315333EE0001160F3 /* libXMLRPC.a */; };
-		47C2809515333F93001160F3 /* libXMLRPC.a in Resources */ = {isa = PBXBuildFile; fileRef = 47C2809315333EE0001160F3 /* libXMLRPC.a */; };
+		47DB257916BE65C800C77B02 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47DB257816BE65C800C77B02 /* Default-568h@2x.png */; };
 		47E39FE5153A12EE00EAC885 /* IndicatorBgr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47E39FE4153A12EE00EAC885 /* IndicatorBgr@2x.png */; };
 		47E39FF4153A36A400EAC885 /* StatListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E39FF3153A36A400EAC885 /* StatListView.m */; };
 		47E39FF6153A46F800EAC885 /* card_table_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 47E39FF5153A46F800EAC885 /* card_table_shadow.png */; };
@@ -69,18 +68,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		479BE41E159F90E60050CF22 /* PBXContainerItemProxy */ = {
+		479AEC0D16BE9D85009A8C2F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 479BE415159F90E60050CF22 /* CorePlot-CocoaTouch.xcodeproj */;
+			containerPortal = 479AEC0716BE9D84009A8C2F /* CorePlot-CocoaTouch.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA;
-			remoteInfo = "CorePlot-CocoaTouch";
-		};
-		47CB6BF215A0736800105DCD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 479BE415159F90E60050CF22 /* CorePlot-CocoaTouch.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BC9B83460FB8A0A40035D8DA;
 			remoteInfo = "CorePlot-CocoaTouch";
 		};
 /* End PBXContainerItemProxy section */
@@ -141,26 +133,27 @@
 		4787F45213A2BDF9002B9636 /* StatDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatDetailsView.xib; sourceTree = "<group>"; };
 		47977D5B14366D5F00F55E1B /* XMLRPCRequestExtended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLRPCRequestExtended.h; sourceTree = "<group>"; };
 		47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLRPCRequestExtended.m; sourceTree = "<group>"; };
-		479BE415159F90E60050CF22 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../../../Downloads/CorePlot_1.0/Source/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
-		479BE420159F90FC0050CF22 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libCorePlot-CocoaTouch.a"; path = "../../../Downloads/CorePlot_1.0/Binaries/iOS/libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
+		479AEC0716BE9D84009A8C2F /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../../../Downloads/CorePlot_1.1/Source/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
+		479AEC1016BE9DCD009A8C2F /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		47A2196C1460032100F31F91 /* StatListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatListView.xib; sourceTree = "<group>"; };
+		47A4466516BEA06A006B1192 /* libXMLRPC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libXMLRPC.a; sourceTree = "<group>"; };
 		47A8C08D14310B97001F588E /* AccountNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountNavigationController.h; path = ../AccountNavigationController.h; sourceTree = "<group>"; };
 		47A8C08E14310B97001F588E /* AccountNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountNavigationController.m; path = ../AccountNavigationController.m; sourceTree = "<group>"; };
 		47AAA96214D21A9B00AA870E /* EntryInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntryInfoCell.xib; sourceTree = "<group>"; };
 		47AAA96414D21BCA00AA870E /* EntryInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryInfoCell.h; sourceTree = "<group>"; };
 		47AAA96514D21BCA00AA870E /* EntryInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryInfoCell.m; sourceTree = "<group>"; };
+		47ABA57B1676300F0013231D /* XMLRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XMLRPC.framework; sourceTree = "<group>"; };
 		47B383CE13C0FCFD00D34E27 /* CreateStatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateStatViewController.h; sourceTree = "<group>"; };
 		47B383CF13C0FCFD00D34E27 /* CreateStatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStatViewController.m; sourceTree = "<group>"; };
 		47B383D113C0FD1800D34E27 /* CreateStatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateStatView.xib; sourceTree = "<group>"; };
 		47B9461213A1455C001326FC /* Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		47B9465C13A16BA2001326FC /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
 		47B9465D13A16BA2001326FC /* Globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Globals.m; sourceTree = "<group>"; };
-		47BEADB11533808500F2C34D /* XMLRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMLRPC.framework; path = "../../../Library/Developer/Xcode/DerivedData/XMLRPC-dosyvjqjqnizslcjiiaqtdzswwbs/Build/Products/Development/XMLRPC.framework"; sourceTree = "<group>"; };
 		47BEADB31533810D00F2C34D /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		47BEADB41533810D00F2C34D /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		47BEADB51533810D00F2C34D /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		47BEADB61533810D00F2C34D /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
-		47C2809315333EE0001160F3 /* libXMLRPC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXMLRPC.a; path = "../../../Library/Developer/Xcode/DerivedData/XMLRPC-dosyvjqjqnizslcjiiaqtdzswwbs/Build/Products/Development-iphonesimulator/libXMLRPC.a"; sourceTree = "<group>"; };
+		47DB257816BE65C800C77B02 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		47E39FE4153A12EE00EAC885 /* IndicatorBgr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndicatorBgr@2x.png"; sourceTree = "<group>"; };
 		47E39FF2153A36A400EAC885 /* StatListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatListView.h; sourceTree = "<group>"; };
 		47E39FF3153A36A400EAC885 /* StatListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatListView.m; sourceTree = "<group>"; };
@@ -177,11 +170,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				47E565B7159F86DD0024C8BE /* QuartzCore.framework in Frameworks */,
-				47C2809415333EE0001160F3 /* libXMLRPC.a in Frameworks */,
-				479BE421159F90FC0050CF22 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				47ABA57C1676300F0013231D /* XMLRPC.framework in Frameworks */,
+				479AEC1116BE9DCD009A8C2F /* libCorePlot-CocoaTouch.a in Frameworks */,
+				47A4466616BEA06A006B1192 /* libXMLRPC.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +238,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				47DB257816BE65C800C77B02 /* Default-568h@2x.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -286,11 +281,11 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				479BE415159F90E60050CF22 /* CorePlot-CocoaTouch.xcodeproj */,
-				47C2809315333EE0001160F3 /* libXMLRPC.a */,
-				479BE420159F90FC0050CF22 /* libCorePlot-CocoaTouch.a */,
+				479AEC1016BE9DCD009A8C2F /* libCorePlot-CocoaTouch.a */,
+				479AEC0716BE9D84009A8C2F /* CorePlot-CocoaTouch.xcodeproj */,
+				47A4466516BEA06A006B1192 /* libXMLRPC.a */,
 				47E565B6159F86DD0024C8BE /* QuartzCore.framework */,
-				47BEADB11533808500F2C34D /* XMLRPC.framework */,
+				47ABA57B1676300F0013231D /* XMLRPC.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -328,10 +323,10 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		479BE416159F90E60050CF22 /* Products */ = {
+		479AEC0816BE9D84009A8C2F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				479BE41F159F90E60050CF22 /* libCorePlot-CocoaTouch.a */,
+				479AEC0E16BE9D85009A8C2F /* libCorePlot-CocoaTouch.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -344,13 +339,12 @@
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "StatDiary" */;
 			buildPhases = (
 				1D60588E0D05DD3D006BFB54 /* Sources */,
-				1D60588F0D05DD3D006BFB54 /* Frameworks */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				47CB6BF315A0736800105DCD /* PBXTargetDependency */,
 			);
 			name = StatDiary;
 			productName = StatDiary;
@@ -380,8 +374,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 479BE416159F90E60050CF22 /* Products */;
-					ProjectRef = 479BE415159F90E60050CF22 /* CorePlot-CocoaTouch.xcodeproj */;
+					ProductGroup = 479AEC0816BE9D84009A8C2F /* Products */;
+					ProjectRef = 479AEC0716BE9D84009A8C2F /* CorePlot-CocoaTouch.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -392,11 +386,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		479BE41F159F90E60050CF22 /* libCorePlot-CocoaTouch.a */ = {
+		479AEC0E16BE9D85009A8C2F /* libCorePlot-CocoaTouch.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libCorePlot-CocoaTouch.a";
-			remoteRef = 479BE41E159F90E60050CF22 /* PBXContainerItemProxy */;
+			remoteRef = 479AEC0D16BE9D85009A8C2F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -406,7 +400,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47C2809515333F93001160F3 /* libXMLRPC.a in Resources */,
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				4733D1F2139D466B006941EC /* WelcomeView.xib in Resources */,
 				4787F45313A2BDF9002B9636 /* StatDetailsView.xib in Resources */,
@@ -417,7 +410,6 @@
 				47A2196D1460032100F31F91 /* StatListView.xib in Resources */,
 				474FF14F14D0B0AC00781A91 /* StatCardView.xib in Resources */,
 				47AAA96314D21A9B00AA870E /* EntryInfoCell.xib in Resources */,
-				47BEADB21533808500F2C34D /* XMLRPC.framework in Resources */,
 				47E39FE5153A12EE00EAC885 /* IndicatorBgr@2x.png in Resources */,
 				47E39FF6153A46F800EAC885 /* card_table_shadow.png in Resources */,
 				47E39FF8153A47B500EAC885 /* card_table_shadow_rotated.png in Resources */,
@@ -440,6 +432,7 @@
 				47457D9015B4B98600265A6F /* button_red.png in Resources */,
 				47457D9115B4B98600265A6F /* button_red@2x.png in Resources */,
 				47457D9215B4B98600265A6F /* navbar_bgr.png in Resources */,
+				47DB257916BE65C800C77B02 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,7 +458,6 @@
 				474D1BB714634FB2007F7875 /* AsynchronImageLoader.m in Sources */,
 				474FF14D14D0B05700781A91 /* StatCardViewController.m in Sources */,
 				47AAA96614D21BCA00AA870E /* EntryInfoCell.m in Sources */,
-				47BEADB71533810E00F2C34D /* NSData+Base64.m in Sources */,
 				47BEADB81533810E00F2C34D /* NSStringAdditions.m in Sources */,
 				47E39FF4153A36A400EAC885 /* StatListView.m in Sources */,
 				4726AE6A15A4D3800045358C /* StatGraphHostingView.m in Sources */,
@@ -473,14 +465,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		47CB6BF315A0736800105DCD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "CorePlot-CocoaTouch";
-			targetProxy = 47CB6BF215A0736800105DCD /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -492,9 +476,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"/Users/itarato/Library/Developer/Xcode/DerivedData/XMLRPC-dosyvjqjqnizslcjiiaqtdzswwbs/Build/Products/Development/XMLRPC.framework",
+					"/Users/itarato/Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development/XMLRPC.framework",
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/XMLRPC-dosyvjqjqnizslcjiiaqtdzswwbs/Build/Products/Development\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -502,24 +486,25 @@
 				GCC_PREFIX_HEADER = StatDiary_Prefix.pch;
 				HEADER_SEARCH_PATHS = (
 					"/Users/itarato/CHECKOUT/xmlrpc/**",
-					"/Users/itarato/Downloads/CorePlot_1.0/Source/framework/**",
+					"/Users/itarato/Downloads/CorePlot_1.1/Source/framework/**",
 				);
 				INFOPLIST_FILE = "StatDiary-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
-					"/Users/itarato/Library/Developer/Xcode/DerivedData/XMLRPC-dosyvjqjqnizslcjiiaqtdzswwbs/Build/Products/Development/XMLRPC.framework",
+					"/Users/itarato/Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development/XMLRPC.framework",
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/XMLRPC-dosyvjqjqnizslcjiiaqtdzswwbs/Build/Products/Development-universal\"",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/XMLRPC-dosyvjqjqnizslcjiiaqtdzswwbs/Build/Products/Development-iphonesimulator\"",
-					"\"$(SRCROOT)/../../../Downloads/CorePlot_1.0/Binaries/iOS\"",
+					"\"$(SRCROOT)/../../../Downloads/CorePlot_1.1/Binaries/iOS\"",
+					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = (
-					"-force_load",
-					"/Users/itarato/Downloads/CorePlot_1.0/Binaries/iOS/libCorePlot-CocoaTouch.a",
+					"-ObjC",
+					"-all_load",
 				);
 				PRODUCT_NAME = StatDiary;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
 			};
 			name = Debug;
 		};
@@ -532,32 +517,33 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"/Users/itarato/Library/Developer/Xcode/DerivedData/XMLRPC-dosyvjqjqnizslcjiiaqtdzswwbs/Build/Products/Development/XMLRPC.framework",
+					"/Users/itarato/Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development/XMLRPC.framework",
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/XMLRPC-dosyvjqjqnizslcjiiaqtdzswwbs/Build/Products/Development\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = StatDiary_Prefix.pch;
 				HEADER_SEARCH_PATHS = (
 					"/Users/itarato/CHECKOUT/xmlrpc/**",
-					"/Users/itarato/Downloads/CorePlot_1.0/Source/framework/**",
+					"/Users/itarato/Downloads/CorePlot_1.1/Source/framework/**",
 				);
 				INFOPLIST_FILE = "StatDiary-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
-					"/Users/itarato/Library/Developer/Xcode/DerivedData/XMLRPC-dosyvjqjqnizslcjiiaqtdzswwbs/Build/Products/Development/XMLRPC.framework",
+					"/Users/itarato/Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development/XMLRPC.framework",
 					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/XMLRPC-dosyvjqjqnizslcjiiaqtdzswwbs/Build/Products/Development-universal\"",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/XMLRPC-dosyvjqjqnizslcjiiaqtdzswwbs/Build/Products/Development-iphonesimulator\"",
-					"\"$(SRCROOT)/../../../Downloads/CorePlot_1.0/Binaries/iOS\"",
+					"\"$(SRCROOT)/../../../Downloads/CorePlot_1.1/Binaries/iOS\"",
+					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = (
-					"-force_load",
-					"/Users/itarato/Downloads/CorePlot_1.0/Binaries/iOS/libCorePlot-CocoaTouch.a",
+					"-ObjC",
+					"-all_load",
 				);
 				PRODUCT_NAME = StatDiary;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -566,16 +552,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Peter Arato (P8R953S5HA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "/Users/itarato/CHECKOUT/xmlrpc/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PROVISIONING_PROFILE = "";
+				HEADER_SEARCH_PATHS = "/Users/itarato/Checkout/xmlrpc/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PROVISIONING_PROFILE = "B8EEA880-E53C-453A-A508-C4B7D9C3BCCB";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
 			};
 			name = Debug;
 		};
@@ -583,17 +570,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Peter Arato (P8R953S5HA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "/Users/itarato/CHECKOUT/xmlrpc/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				HEADER_SEARCH_PATHS = "/Users/itarato/Checkout/xmlrpc/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "B8EEA880-E53C-453A-A508-C4B7D9C3BCCB";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
 			};
 			name = Release;
 		};

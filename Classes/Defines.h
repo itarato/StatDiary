@@ -8,20 +8,27 @@
  */
 
 // Production killswitch.
-#define IS_LIVE 0
+#define IS_LIVE 1
+#define IS_LOG 0
 
 #if IS_LIVE
     // Live production settings.
     #define STATDIARY_XMLRPC_BASEPATH @"http://178.79.184.166/sd7/"
-    #define STATLOG(...)
-    #define STAT_REQUEST_LOG(req, resp, func)
-    #define STAT_REQUEST_LOG_EROR(req, err, func)
 #else
     // Development settings.
     #define STATDIARY_XMLRPC_BASEPATH @"http://192.168.3.216/sd7/"
+#endif
+
+#if IS_LOG
+    // Logging.
     #define STATLOG(...) NSLog(__VA_ARGS__)
     #define STAT_REQUEST_LOG(req, resp, func) NSLog(@"\nRequest: %@\nResponse: %@\nIs failed: %@\nFrom: %s\n", [req method], [resp object], ([resp isFault] ? @"yes" : @"no"), func)
     #define STAT_REQUEST_LOG_EROR(req, err, func) NSLog(@"\nRequest error!\nRequest: %@\nError: %@\nFrom: %s\n", [req method], err, func)
+#else
+    // Not to log.
+    #define STATLOG(...)
+    #define STAT_REQUEST_LOG(req, resp, func)
+    #define STAT_REQUEST_LOG_EROR(req, err, func)
 #endif
 
 #define STATDIARY_XMLRPC_GATEWAY STATDIARY_XMLRPC_BASEPATH "/services/xmlrpc"
