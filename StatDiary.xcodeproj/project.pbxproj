@@ -40,6 +40,8 @@
 		476B1696154F0F96005E6E4C /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 476B1691154F0F96005E6E4C /* iTunesArtwork.png */; };
 		476B1699154F1022005E6E4C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 476B1697154F1021005E6E4C /* Icon.png */; };
 		476B169A154F1022005E6E4C /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 476B1698154F1022005E6E4C /* Icon@2x.png */; };
+		477B29F816F60D5A00EF74D1 /* XMLRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 477B29F716F60D5A00EF74D1 /* XMLRPC.framework */; };
+		477B29FA16F60DB000EF74D1 /* libXMLRPC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 477B29F916F60DB000EF74D1 /* libXMLRPC.a */; };
 		47807F0913A4F112004078EB /* IndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47807F0813A4F112004078EB /* IndicatorViewController.m */; };
 		47807F0B13A4F121004078EB /* IndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47807F0A13A4F121004078EB /* IndicatorView.xib */; };
 		47807F0F13A4F1BB004078EB /* IndicatorBgr.png in Resources */ = {isa = PBXBuildFile; fileRef = 47807F0E13A4F1BB004078EB /* IndicatorBgr.png */; };
@@ -49,16 +51,13 @@
 		47977D5D14366D5F00F55E1B /* XMLRPCRequestExtended.m in Sources */ = {isa = PBXBuildFile; fileRef = 47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */; };
 		479AEC1116BE9DCD009A8C2F /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 479AEC1016BE9DCD009A8C2F /* libCorePlot-CocoaTouch.a */; };
 		47A2196D1460032100F31F91 /* StatListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A2196C1460032100F31F91 /* StatListView.xib */; };
-		47A4466616BEA06A006B1192 /* libXMLRPC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A4466516BEA06A006B1192 /* libXMLRPC.a */; };
 		47A8C08F14310B97001F588E /* AccountNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A8C08E14310B97001F588E /* AccountNavigationController.m */; };
 		47AAA96314D21A9B00AA870E /* EntryInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47AAA96214D21A9B00AA870E /* EntryInfoCell.xib */; };
 		47AAA96614D21BCA00AA870E /* EntryInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AAA96514D21BCA00AA870E /* EntryInfoCell.m */; };
-		47ABA57C1676300F0013231D /* XMLRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47ABA57B1676300F0013231D /* XMLRPC.framework */; };
 		47B383D013C0FCFD00D34E27 /* CreateStatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B383CF13C0FCFD00D34E27 /* CreateStatViewController.m */; };
 		47B383D213C0FD1800D34E27 /* CreateStatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47B383D113C0FD1800D34E27 /* CreateStatView.xib */; };
 		47B9465E13A16BA2001326FC /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B9465D13A16BA2001326FC /* Globals.m */; };
 		47BEADB81533810E00F2C34D /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BEADB61533810D00F2C34D /* NSStringAdditions.m */; };
-		47DB257916BE65C800C77B02 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47DB257816BE65C800C77B02 /* Default-568h@2x.png */; };
 		47E39FE5153A12EE00EAC885 /* IndicatorBgr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47E39FE4153A12EE00EAC885 /* IndicatorBgr@2x.png */; };
 		47E39FF4153A36A400EAC885 /* StatListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E39FF3153A36A400EAC885 /* StatListView.m */; };
 		47E39FF6153A46F800EAC885 /* card_table_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 47E39FF5153A46F800EAC885 /* card_table_shadow.png */; };
@@ -122,6 +121,8 @@
 		476B1697154F1021005E6E4C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		476B1698154F1022005E6E4C /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		477A20DC14D5BAA100E7658F /* StatCardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatCardDelegate.h; sourceTree = "<group>"; };
+		477B29F716F60D5A00EF74D1 /* XMLRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMLRPC.framework; path = "../../../Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development/XMLRPC.framework"; sourceTree = "<group>"; };
+		477B29F916F60DB000EF74D1 /* libXMLRPC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXMLRPC.a; path = "../../../Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development-universal/libXMLRPC.a"; sourceTree = "<group>"; };
 		47807F0713A4F112004078EB /* IndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorViewController.h; sourceTree = "<group>"; };
 		47807F0813A4F112004078EB /* IndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndicatorViewController.m; sourceTree = "<group>"; };
 		47807F0A13A4F121004078EB /* IndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndicatorView.xib; sourceTree = "<group>"; };
@@ -136,13 +137,11 @@
 		479AEC0716BE9D84009A8C2F /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../../../Downloads/CorePlot_1.1/Source/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 		479AEC1016BE9DCD009A8C2F /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		47A2196C1460032100F31F91 /* StatListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatListView.xib; sourceTree = "<group>"; };
-		47A4466516BEA06A006B1192 /* libXMLRPC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libXMLRPC.a; sourceTree = "<group>"; };
 		47A8C08D14310B97001F588E /* AccountNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountNavigationController.h; path = ../AccountNavigationController.h; sourceTree = "<group>"; };
 		47A8C08E14310B97001F588E /* AccountNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountNavigationController.m; path = ../AccountNavigationController.m; sourceTree = "<group>"; };
 		47AAA96214D21A9B00AA870E /* EntryInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntryInfoCell.xib; sourceTree = "<group>"; };
 		47AAA96414D21BCA00AA870E /* EntryInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryInfoCell.h; sourceTree = "<group>"; };
 		47AAA96514D21BCA00AA870E /* EntryInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryInfoCell.m; sourceTree = "<group>"; };
-		47ABA57B1676300F0013231D /* XMLRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XMLRPC.framework; sourceTree = "<group>"; };
 		47B383CE13C0FCFD00D34E27 /* CreateStatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateStatViewController.h; sourceTree = "<group>"; };
 		47B383CF13C0FCFD00D34E27 /* CreateStatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateStatViewController.m; sourceTree = "<group>"; };
 		47B383D113C0FD1800D34E27 /* CreateStatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateStatView.xib; sourceTree = "<group>"; };
@@ -173,9 +172,9 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
-				47ABA57C1676300F0013231D /* XMLRPC.framework in Frameworks */,
 				479AEC1116BE9DCD009A8C2F /* libCorePlot-CocoaTouch.a in Frameworks */,
-				47A4466616BEA06A006B1192 /* libXMLRPC.a in Frameworks */,
+				477B29F816F60D5A00EF74D1 /* XMLRPC.framework in Frameworks */,
+				477B29FA16F60DB000EF74D1 /* libXMLRPC.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,11 +280,11 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				477B29F916F60DB000EF74D1 /* libXMLRPC.a */,
+				477B29F716F60D5A00EF74D1 /* XMLRPC.framework */,
 				479AEC1016BE9DCD009A8C2F /* libCorePlot-CocoaTouch.a */,
 				479AEC0716BE9D84009A8C2F /* CorePlot-CocoaTouch.xcodeproj */,
-				47A4466516BEA06A006B1192 /* libXMLRPC.a */,
 				47E565B6159F86DD0024C8BE /* QuartzCore.framework */,
-				47ABA57B1676300F0013231D /* XMLRPC.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -432,7 +431,6 @@
 				47457D9015B4B98600265A6F /* button_red.png in Resources */,
 				47457D9115B4B98600265A6F /* button_red@2x.png in Resources */,
 				47457D9215B4B98600265A6F /* navbar_bgr.png in Resources */,
-				47DB257916BE65C800C77B02 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +477,7 @@
 					"/Users/itarato/Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development/XMLRPC.framework",
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -489,13 +488,15 @@
 					"/Users/itarato/Downloads/CorePlot_1.1/Source/framework/**",
 				);
 				INFOPLIST_FILE = "StatDiary-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"/Users/itarato/Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development/XMLRPC.framework",
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Downloads/CorePlot_1.1/Binaries/iOS\"",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development-universal\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -505,6 +506,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -520,6 +522,7 @@
 					"/Users/itarato/Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development/XMLRPC.framework",
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = StatDiary_Prefix.pch;
@@ -528,13 +531,15 @@
 					"/Users/itarato/Downloads/CorePlot_1.1/Source/framework/**",
 				);
 				INFOPLIST_FILE = "StatDiary-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"/Users/itarato/Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development/XMLRPC.framework",
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Downloads/CorePlot_1.1/Binaries/iOS\"",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development-universal\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -544,6 +549,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -552,14 +558,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Peter Arato (P8R953S5HA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Peter Arato";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/Users/itarato/Checkout/xmlrpc/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PROVISIONING_PROFILE = "B8EEA880-E53C-453A-A508-C4B7D9C3BCCB";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PROVISIONING_PROFILE = "E87BA88D-CC10-44CE-8376-4C26F4E482BC";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
@@ -570,15 +576,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Peter Arato (P8R953S5HA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Peter Arato";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/Users/itarato/Checkout/xmlrpc/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "B8EEA880-E53C-453A-A508-C4B7D9C3BCCB";
+				PROVISIONING_PROFILE = "E87BA88D-CC10-44CE-8376-4C26F4E482BC";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;

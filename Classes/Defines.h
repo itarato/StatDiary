@@ -13,10 +13,10 @@
 
 #if IS_LIVE
     // Live production settings.
-    #define STATDIARY_XMLRPC_BASEPATH @"http://178.79.184.166/sd7/"
+    #define STATDIARY_XMLRPC_BASEPATH @"http://statdiary.info/"
 #else
     // Development settings.
-    #define STATDIARY_XMLRPC_BASEPATH @"http://192.168.3.216/sd7/"
+    #define STATDIARY_XMLRPC_BASEPATH @"http://192.168.0.14/sd7/"
 #endif
 
 #if IS_LOG
