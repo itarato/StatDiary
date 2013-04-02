@@ -21,8 +21,9 @@
 		4738B52A13AB2B1E00BD5B67 /* RegistrationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4738B52913AB2B1E00BD5B67 /* RegistrationView.xib */; };
 		473B0A72153B1A5D009267FD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 473B0A71153B1A5D009267FD /* Default.png */; };
 		473B0A76153B1A71009267FD /* bgr_welcome.png in Resources */ = {isa = PBXBuildFile; fileRef = 473B0A74153B1A71009267FD /* bgr_welcome.png */; };
-		473B0A78153B1E88009267FD /* bgr_welcome@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 473B0A77153B1E88009267FD /* bgr_welcome@2x.png */; };
 		473B0A7A153B1E93009267FD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 473B0A79153B1E93009267FD /* Default@2x.png */; };
+		47444D591709A73A00F7ED60 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47444D571709A73A00F7ED60 /* Default-568h@2x.png */; };
+		47444D5E1709B02C00F7ED60 /* bgr_welcome@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47444D5D1709B02C00F7ED60 /* bgr_welcome@2x.png */; };
 		47457D8C15B4B98600265A6F /* button_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 47457D8515B4B98600265A6F /* button_blue.png */; };
 		47457D8D15B4B98600265A6F /* button_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47457D8615B4B98600265A6F /* button_blue@2x.png */; };
 		47457D8E15B4B98600265A6F /* button_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 47457D8715B4B98600265A6F /* button_green.png */; };
@@ -98,8 +99,9 @@
 		4738B52913AB2B1E00BD5B67 /* RegistrationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationView.xib; sourceTree = "<group>"; };
 		473B0A71153B1A5D009267FD /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		473B0A74153B1A71009267FD /* bgr_welcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgr_welcome.png; sourceTree = "<group>"; };
-		473B0A77153B1E88009267FD /* bgr_welcome@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgr_welcome@2x.png"; sourceTree = "<group>"; };
 		473B0A79153B1E93009267FD /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		47444D571709A73A00F7ED60 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		47444D5D1709B02C00F7ED60 /* bgr_welcome@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgr_welcome@2x.png"; sourceTree = "<group>"; };
 		47457D8515B4B98600265A6F /* button_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_blue.png; sourceTree = "<group>"; };
 		47457D8615B4B98600265A6F /* button_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_blue@2x.png"; sourceTree = "<group>"; };
 		47457D8715B4B98600265A6F /* button_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_green.png; sourceTree = "<group>"; };
@@ -152,7 +154,6 @@
 		47BEADB41533810D00F2C34D /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		47BEADB51533810D00F2C34D /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		47BEADB61533810D00F2C34D /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
-		47DB257816BE65C800C77B02 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		47E39FE4153A12EE00EAC885 /* IndicatorBgr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IndicatorBgr@2x.png"; sourceTree = "<group>"; };
 		47E39FF2153A36A400EAC885 /* StatListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatListView.h; sourceTree = "<group>"; };
 		47E39FF3153A36A400EAC885 /* StatListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatListView.m; sourceTree = "<group>"; };
@@ -237,7 +238,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				47DB257816BE65C800C77B02 /* Default-568h@2x.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -295,18 +295,18 @@
 		4755E052159EEAE600A85925 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				47444D5D1709B02C00F7ED60 /* bgr_welcome@2x.png */,
+				473B0A74153B1A71009267FD /* bgr_welcome.png */,
 				47457D8515B4B98600265A6F /* button_blue.png */,
 				47457D8615B4B98600265A6F /* button_blue@2x.png */,
 				47457D8715B4B98600265A6F /* button_green.png */,
 				47457D8815B4B98600265A6F /* button_green@2x.png */,
 				47457D8915B4B98600265A6F /* button_red.png */,
 				47457D8A15B4B98600265A6F /* button_red@2x.png */,
-				47457D8B15B4B98600265A6F /* navbar_bgr.png */,
-				473B0A74153B1A71009267FD /* bgr_welcome.png */,
-				473B0A77153B1E88009267FD /* bgr_welcome@2x.png */,
 				47E39FF9153A4C1500EAC885 /* card_delete.png */,
 				47E39FF5153A46F800EAC885 /* card_table_shadow.png */,
 				47E39FF7153A47B500EAC885 /* card_table_shadow_rotated.png */,
+				47444D571709A73A00F7ED60 /* Default-568h@2x.png */,
 				473B0A71153B1A5D009267FD /* Default.png */,
 				473B0A79153B1E93009267FD /* Default@2x.png */,
 				476B168D154F0F95005E6E4C /* Icon-72.png */,
@@ -318,6 +318,7 @@
 				47807F0E13A4F1BB004078EB /* IndicatorBgr.png */,
 				47E39FE4153A12EE00EAC885 /* IndicatorBgr@2x.png */,
 				476B1691154F0F96005E6E4C /* iTunesArtwork.png */,
+				47457D8B15B4B98600265A6F /* navbar_bgr.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -415,7 +416,6 @@
 				47E39FFA153A4C1600EAC885 /* card_delete.png in Resources */,
 				473B0A72153B1A5D009267FD /* Default.png in Resources */,
 				473B0A76153B1A71009267FD /* bgr_welcome.png in Resources */,
-				473B0A78153B1E88009267FD /* bgr_welcome@2x.png in Resources */,
 				473B0A7A153B1E93009267FD /* Default@2x.png in Resources */,
 				476B1692154F0F96005E6E4C /* Icon-72.png in Resources */,
 				476B1693154F0F96005E6E4C /* Icon-Small-50.png in Resources */,
@@ -431,6 +431,8 @@
 				47457D9015B4B98600265A6F /* button_red.png in Resources */,
 				47457D9115B4B98600265A6F /* button_red@2x.png in Resources */,
 				47457D9215B4B98600265A6F /* navbar_bgr.png in Resources */,
+				47444D591709A73A00F7ED60 /* Default-568h@2x.png in Resources */,
+				47444D5E1709B02C00F7ED60 /* bgr_welcome@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,7 +490,7 @@
 					"/Users/itarato/Downloads/CorePlot_1.1/Source/framework/**",
 				);
 				INFOPLIST_FILE = "StatDiary-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"/Users/itarato/Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development/XMLRPC.framework",
 					"$(inherited)",
@@ -531,7 +533,7 @@
 					"/Users/itarato/Downloads/CorePlot_1.1/Source/framework/**",
 				);
 				INFOPLIST_FILE = "StatDiary-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"/Users/itarato/Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development/XMLRPC.framework",
 					"$(inherited)",
@@ -564,7 +566,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/Users/itarato/Checkout/xmlrpc/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PROVISIONING_PROFILE = "E87BA88D-CC10-44CE-8376-4C26F4E482BC";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -582,7 +584,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/Users/itarato/Checkout/xmlrpc/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "E87BA88D-CC10-44CE-8376-4C26F4E482BC";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

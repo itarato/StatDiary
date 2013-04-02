@@ -271,7 +271,12 @@ static CGFloat scrollViewScrollerY;
 		for (id stat in myStats) {
 			StatCardViewController *card = [[StatCardViewController alloc] initWithNibName:@"StatCardView" bundle:nil andStatData:stat];
 			card.delegate = self;
-			[[card view] setCenter:CGPointMake(160.0f + 320.0f * idx, 186.0f)];
+//			[[card view] setCenter:CGPointMake(160.0f + 320.0f * idx, 186.0f)];
+            CGRect frame = CGRectMake(self.view.frame.size.width * idx,
+                                      0.0f,
+                                      self.view.frame.size.width,
+                                      self.view.frame.size.height - 36.0f);
+            [[card view] setFrame:frame];
 			[self.scrollView addSubview:[card view]];
 			[self.cards addObject:card];
 			idx++;
@@ -292,15 +297,17 @@ static CGFloat scrollViewScrollerY;
     [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, -200.0f)];
     
     [UIView animateWithDuration:0.3f animations:^{
-        [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, self.view.center.y + 50.0f)];  
-        [self.scrollView setCenter:CGPointMake(self.view.center.x, 600.0f)];
+        [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, self.view.center.y + 50.0f)];
+//        [self.scrollView setCenter:CGPointMake(self.view.center.x, 1600.0f)];
+        [self.scrollView setAlpha:0.0f];
     }];
 }
 
 - (void)removeCreationView {
     [UIView animateWithDuration:0.3f animations:^{
         [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, self.view.center.y - 200.0f)];  
-        [self.scrollView setCenter:CGPointMake(self.view.center.x, scrollViewScrollerY)];            
+//        [self.scrollView setCenter:CGPointMake(self.view.center.x, scrollViewScrollerY)];
+        [self.scrollView setAlpha:1.0f];
     } completion:^(BOOL finished) {
         creationViewVisible = NO;
         [[createStatViewController view] removeFromSuperview];

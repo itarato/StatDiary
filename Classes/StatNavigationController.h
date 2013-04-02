@@ -16,12 +16,9 @@
 	AccountNavigationController *accountNavigationController;
 }
 
-
 @property (nonatomic, retain) StatListController *statListController;
 @property (nonatomic, retain) AccountNavigationController *accountNavigationController;
 
-
 - (void)showLogin;
-
 
 @end
