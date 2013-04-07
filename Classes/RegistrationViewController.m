@@ -116,7 +116,7 @@
 			[defaults synchronize];
 
             [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:nil];
-			[self.navigationController dismissModalViewControllerAnimated:YES];
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
         } 
         else {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Registration error" message:responseMessage delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil];

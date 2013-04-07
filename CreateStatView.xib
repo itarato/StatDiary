@@ -108,10 +108,8 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">button_blue.png</string>
 						</object>
-						<object class="IBUIFontDescription" key="IBUIFontDescription">
-							<string key="name">Helvetica-Bold</string>
-							<string key="family">Helvetica</string>
-							<int key="traits">2</int>
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="108802574">
+							<int key="type">2</int>
 							<double key="pointSize">15</double>
 						</object>
 						<object class="NSFont" key="IBUIFont" id="519200656">
@@ -140,10 +138,7 @@
 							<bytes key="NSRGB">MCAwIDAAA</bytes>
 							<string key="IBUIColorCocoaTouchKeyPath">darkTextColor</string>
 						</object>
-						<object class="IBUIFontDescription" key="IBUIFontDescription">
-							<int key="type">2</int>
-							<double key="pointSize">15</double>
-						</object>
+						<reference key="IBUIFontDescription" ref="108802574"/>
 						<reference key="IBUIFont" ref="519200656"/>
 					</object>
 				</object>

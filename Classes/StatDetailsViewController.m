@@ -91,7 +91,7 @@
     datePicker = [[UIDatePicker alloc] init];
     datePicker.minuteInterval = 5;
     [self.view addSubview:datePicker];
-    datePicker.center = CGPointMake(self.view.center.x, self.view.frame.size.height - (datePicker.frame.size.height * 0.5f) + 44.0f);
+    datePicker.center = CGPointMake(self.view.center.x, self.view.frame.size.height - (datePicker.frame.size.height * 0.5f));
     
 	NSDate *now = [NSDate new];
 	[datePicker setDate:now];

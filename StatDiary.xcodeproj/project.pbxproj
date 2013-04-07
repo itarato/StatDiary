@@ -41,6 +41,9 @@
 		476B1696154F0F96005E6E4C /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 476B1691154F0F96005E6E4C /* iTunesArtwork.png */; };
 		476B1699154F1022005E6E4C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 476B1697154F1021005E6E4C /* Icon.png */; };
 		476B169A154F1022005E6E4C /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 476B1698154F1022005E6E4C /* Icon@2x.png */; };
+		47731EE81711B25700DA1EDC /* UIButton+UIButtonExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 47731EE71711B25700DA1EDC /* UIButton+UIButtonExtras.m */; };
+		47731EF01711BA8C00DA1EDC /* mini_panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 47731EEE1711BA8C00DA1EDC /* mini_panel.png */; };
+		47731EF11711BA8C00DA1EDC /* mini_panel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47731EEF1711BA8C00DA1EDC /* mini_panel@2x.png */; };
 		477B29F816F60D5A00EF74D1 /* XMLRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 477B29F716F60D5A00EF74D1 /* XMLRPC.framework */; };
 		477B29FA16F60DB000EF74D1 /* libXMLRPC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 477B29F916F60DB000EF74D1 /* libXMLRPC.a */; };
 		47807F0913A4F112004078EB /* IndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47807F0813A4F112004078EB /* IndicatorViewController.m */; };
@@ -122,6 +125,10 @@
 		476B1691154F0F96005E6E4C /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		476B1697154F1021005E6E4C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		476B1698154F1022005E6E4C /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		47731EE61711B25700DA1EDC /* UIButton+UIButtonExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+UIButtonExtras.h"; sourceTree = "<group>"; };
+		47731EE71711B25700DA1EDC /* UIButton+UIButtonExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+UIButtonExtras.m"; sourceTree = "<group>"; };
+		47731EEE1711BA8C00DA1EDC /* mini_panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mini_panel.png; sourceTree = "<group>"; };
+		47731EEF1711BA8C00DA1EDC /* mini_panel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mini_panel@2x.png"; sourceTree = "<group>"; };
 		477A20DC14D5BAA100E7658F /* StatCardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatCardDelegate.h; sourceTree = "<group>"; };
 		477B29F716F60D5A00EF74D1 /* XMLRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMLRPC.framework; path = "../../../Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development/XMLRPC.framework"; sourceTree = "<group>"; };
 		477B29F916F60DB000EF74D1 /* libXMLRPC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXMLRPC.a; path = "../../../Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development-universal/libXMLRPC.a"; sourceTree = "<group>"; };
@@ -223,6 +230,8 @@
 				47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */,
 				4726AE6815A4D3800045358C /* StatGraphHostingView.h */,
 				4726AE6915A4D3800045358C /* StatGraphHostingView.m */,
+				47731EE61711B25700DA1EDC /* UIButton+UIButtonExtras.h */,
+				47731EE71711B25700DA1EDC /* UIButton+UIButtonExtras.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -295,6 +304,8 @@
 		4755E052159EEAE600A85925 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				47731EEE1711BA8C00DA1EDC /* mini_panel.png */,
+				47731EEF1711BA8C00DA1EDC /* mini_panel@2x.png */,
 				47444D5D1709B02C00F7ED60 /* bgr_welcome@2x.png */,
 				473B0A74153B1A71009267FD /* bgr_welcome.png */,
 				47457D8515B4B98600265A6F /* button_blue.png */,
@@ -433,6 +444,8 @@
 				47457D9215B4B98600265A6F /* navbar_bgr.png in Resources */,
 				47444D591709A73A00F7ED60 /* Default-568h@2x.png in Resources */,
 				47444D5E1709B02C00F7ED60 /* bgr_welcome@2x.png in Resources */,
+				47731EF01711BA8C00DA1EDC /* mini_panel.png in Resources */,
+				47731EF11711BA8C00DA1EDC /* mini_panel@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +474,7 @@
 				47BEADB81533810E00F2C34D /* NSStringAdditions.m in Sources */,
 				47E39FF4153A36A400EAC885 /* StatListView.m in Sources */,
 				4726AE6A15A4D3800045358C /* StatGraphHostingView.m in Sources */,
+				47731EE81711B25700DA1EDC /* UIButton+UIButtonExtras.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,7 @@
 #import "AsynchronImageLoader.h"
 #import "StatCardViewController.h"
 #import "CreateStatViewController.h"
+#import "UIButton+UIButtonExtras.h"
 
 #define STAT_OLD_FLAG @"old"
 
@@ -37,7 +38,8 @@ static CGFloat scrollViewScrollerY;
 @synthesize cards;
 @synthesize deleteConfirmAlert;
 @synthesize lastSelectedCard;
-
+@synthesize logoutButton;
+@synthesize createButton;
 
 - (void)dealloc {
 	[myStats release];
@@ -91,19 +93,6 @@ static CGFloat scrollViewScrollerY;
 - (void)viewDidLoad {
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"showLogin" object:nil];
 	
-	UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-	UIBarButtonItem *logOutBarItem = [[UIBarButtonItem alloc] initWithTitle:@"Log out" style:UIBarButtonItemStyleBordered target:self action:@selector(logout)];
-	UIBarButtonItem *refreshBarItem = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStyleBordered target:self action:@selector(reloadStatData)];
-	NSArray *items = [NSArray arrayWithObjects:space, logOutBarItem, space, refreshBarItem, space, nil];
-	self.toolbarItems = items;
-	[space release];
-	[logOutBarItem release];
-	[refreshBarItem release];
-    
-	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onPressAddStatButton)];
-	self.navigationItem.rightBarButtonItem = addButton;
-	[addButton release];
-	
 	myListRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
 	logOutRequest = [[XMLRPCRequest alloc] initWithURL:[NSURL URLWithString:STATDIARY_XMLRPC_GATEWAY]];
 	
@@ -111,6 +100,15 @@ static CGFloat scrollViewScrollerY;
 	[self.view addSubview:networkIndicator.view];
 	networkIndicator.view.center = CGPointMake(self.view.center.x, 160.0f);
 	networkIndicator.view.hidden = YES;
+    
+    UIBarButtonItem *openMiniPanelButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mini_panel.png"] style:UIBarButtonItemStylePlain target:self action:@selector(onPressOpenConfigButton:)];
+	self.navigationItem.rightBarButtonItem = openMiniPanelButton;
+	[openMiniPanelButton release];
+    
+    [self.logoutButton setStretchedBackground:@"button_red.png"];
+    [self.createButton setStretchedBackground:@"button_green.png"];
+    
+    [self toggleMiniControllerPanel:NO];
 	
 	[super viewDidLoad];
 }
@@ -187,16 +185,6 @@ static CGFloat scrollViewScrollerY;
 		return [NSString stringWithFormat:@"%0.0f days %@", floor(secs / 86400.0f), text];
 	}
 }
-
-
-- (void)onPressAddStatButton {
-    if (creationViewVisible) {
-        [self removeCreationView];
-    } else {
-        [self openCreationView];
-    }
-}
-
 
 - (void)onRefreshRequest:(NSNotification *)notification {
     [self reloadStatData];
@@ -319,6 +307,62 @@ static CGFloat scrollViewScrollerY;
     }];
 }
 
+- (void)onPressOpenConfigButton:(id)sender {
+    [self toggleMiniControllerPanel: YES];
+}
+
+- (void)toggleMiniControllerPanel:(BOOL)withAnimation {
+    CGRect panelFrame;
+    CGRect listFrame;
+    if (self.miniControlPanelView.frame.origin.y < 0) {
+        NSLog(@"Up");
+        panelFrame = CGRectMake(0.0f,
+                                0.0f,
+                                self.miniControlPanelView.frame.size.width,
+                                self.miniControlPanelView.frame.size.height);
+        listFrame = CGRectMake(0.0f,
+                               self.miniControlPanelView.frame.size.height,
+                               self.view.frame.size.width,
+                               self.view.frame.size.height - self.miniControlPanelView.frame.size.height - 36.0f);
+    }
+    else {
+        NSLog(@"Down");
+        panelFrame = CGRectMake(0.0f,
+                                -self.miniControlPanelView.frame.size.height,
+                                self.miniControlPanelView.frame.size.width,
+                                self.miniControlPanelView.frame.size.height);
+        listFrame = CGRectMake(0.0f,
+                               0.0f,
+                               self.view.frame.size.width,
+                               self.view.frame.size.height - 36.0f);
+    }
+    
+    void (^resize)(void) = ^{
+        self.miniControlPanelView.frame = panelFrame;
+        self.scrollView.frame = listFrame;
+    };
+    
+    if (withAnimation) {
+        [UIView animateWithDuration:0.3f animations:resize];
+    }
+    else {
+        resize();
+    }
+}
+
+- (void)onPressCreateButton:(id)sender {
+    [self toggleMiniControllerPanel:YES];
+    if (creationViewVisible) {
+        [self removeCreationView];
+    } else {
+        [self openCreationView];
+    }
+}
+
+- (void)onPressLogoutButton:(id)sender {
+    [self toggleMiniControllerPanel:YES];
+    [self logout];
+}
 
 #pragma mark --
 #pragma mark XMLRPC delegated methods

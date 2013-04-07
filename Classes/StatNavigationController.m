@@ -69,13 +69,11 @@
 #pragma mark UINavigationVC delegates
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-	[self setToolbarHidden:(viewController != statListController) animated:YES];
 }
 
 
 - (void)showLogin {
-	[self presentModalViewController:accountNavigationController animated:YES];
+    [self presentViewController:accountNavigationController animated:YES completion:nil];
 }
-
 
 @end

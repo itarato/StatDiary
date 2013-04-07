@@ -172,7 +172,7 @@
 	STATLOG(@"Load stat list");
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"onSuccessLogin" object:nil];
-	[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -266,7 +266,7 @@
 			
 			if ([globals.uid intValue] > 0) {
                 // User is already logged in.
-				[self dismissModalViewControllerAnimated:YES];
+                [self dismissViewControllerAnimated:YES completion:nil];
 				[[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:nil];
 			} 
             else if (connectionRequest.successCallback != NULL) {
@@ -293,7 +293,7 @@
 			NSNumber *faultCode = [[response object] valueForKey:@"faultCode"];
 			if ([faultCode intValue] == 406) {
 				// Already logged in.
-				[self.navigationController dismissModalViewControllerAnimated:YES];
+                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 			} 
             else {
 				// Wrong account details.
