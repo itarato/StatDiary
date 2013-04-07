@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/StatListController.m"
-         timestampString = "386617089.369936"
+         timestampString = "386716248.440159"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "348"
-         endingLineNumber = "348"
+         startingLineNumber = "353"
+         endingLineNumber = "353"
          landmarkName = "-request:didReceiveResponse:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -138,11 +138,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/StatListController.m"
-         timestampString = "386616799.881707"
+         timestampString = "386716248.440159"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "294"
-         endingLineNumber = "294"
+         startingLineNumber = "301"
+         endingLineNumber = "301"
          landmarkName = "-openCreationView"
          landmarkType = "5">
       </FileBreakpoint>
@@ -151,11 +151,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/StatListController.m"
-         timestampString = "386618877.000082"
+         timestampString = "386716248.440159"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "300"
-         endingLineNumber = "300"
+         startingLineNumber = "307"
+         endingLineNumber = "307"
          landmarkName = "-openCreationView"
          landmarkType = "5">
       </FileBreakpoint>

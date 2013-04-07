@@ -177,8 +177,8 @@
     else {
 		[entryField setText:@""];
 		[commentArea setText:@""];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:response];
 		[self.navigationController popViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:response];
 	}
 }
 

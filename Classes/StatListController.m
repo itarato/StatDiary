@@ -249,6 +249,7 @@ static CGFloat scrollViewScrollerY;
 }
 
 - (void)rebuildCards {
+    NSLog(@"Size: %@", NSStringFromCGRect(self.scrollView.frame));
 	// Remove old ones.
 	for (id card in self.cards) {
 		StatCardViewController *cardCtrl = (StatCardViewController *)card;
@@ -271,7 +272,6 @@ static CGFloat scrollViewScrollerY;
 		for (id stat in myStats) {
 			StatCardViewController *card = [[StatCardViewController alloc] initWithNibName:@"StatCardView" bundle:nil andStatData:stat];
 			card.delegate = self;
-//			[[card view] setCenter:CGPointMake(160.0f + 320.0f * idx, 186.0f)];
             CGRect frame = CGRectMake(self.view.frame.size.width * idx,
                                       0.0f,
                                       self.view.frame.size.width,
@@ -284,6 +284,13 @@ static CGFloat scrollViewScrollerY;
 		self.pageControl.numberOfPages = [myStats count];
 		self.scrollView.contentSize = CGSizeMake(320.0f * [myStats count], 330.0f);
 	}
+    
+    CGRect r = self.view.frame;
+    [UIView animateWithDuration:0.4 animations:^{
+        [self.scrollView setFrame:r];
+    } completion:^(BOOL finished) {
+        [self.scrollView setFrame:self.view.frame];
+    }];
 }
 
 - (void)onPagerChanged:(id)sender {
@@ -298,15 +305,13 @@ static CGFloat scrollViewScrollerY;
     
     [UIView animateWithDuration:0.3f animations:^{
         [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, self.view.center.y + 50.0f)];
-//        [self.scrollView setCenter:CGPointMake(self.view.center.x, 1600.0f)];
         [self.scrollView setAlpha:0.0f];
     }];
 }
 
 - (void)removeCreationView {
     [UIView animateWithDuration:0.3f animations:^{
-        [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, self.view.center.y - 200.0f)];  
-//        [self.scrollView setCenter:CGPointMake(self.view.center.x, scrollViewScrollerY)];
+        [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, self.view.center.y - 200.0f)];
         [self.scrollView setAlpha:1.0f];
     } completion:^(BOOL finished) {
         creationViewVisible = NO;

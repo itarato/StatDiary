@@ -9,14 +9,14 @@
 
 // Production killswitch.
 #define IS_LIVE 0
-#define IS_LOG 1
+#define IS_LOG 0
 
 #if IS_LIVE
     // Live production settings.
     #define STATDIARY_XMLRPC_BASEPATH @"http://statdiary.info/"
 #else
     // Development settings.
-    #define STATDIARY_XMLRPC_BASEPATH @"http://localhost/sd7/"
+    #define STATDIARY_XMLRPC_BASEPATH @"http://192.168.0.14/sd7/"
 #endif
 
 #if IS_LOG

@@ -30,10 +30,11 @@
     CPTTheme *graphTheme = [CPTTheme themeNamed:kCPTPlainWhiteTheme];
     [graph applyTheme:graphTheme];
     graph.frame = self.frame;
-    graph.paddingBottom = -1.0f;
-    graph.paddingLeft = -1.0f;
-    graph.paddingRight = -1.0f;
-    graph.paddingTop = -1.0f;
+    graph.paddingBottom = 0.0f;
+    graph.paddingLeft = 0.0f;
+    graph.paddingRight = 0.0f;
+    graph.paddingTop = 0.0f;
+    graph.plotAreaFrame.borderLineStyle = nil;
     [self setHostedGraph:graph];
     [graph release];
     
