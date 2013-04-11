@@ -16,15 +16,12 @@
 
 @synthesize createButton;
 @synthesize titleField;
-@synthesize closeResponder;
-@synthesize closeObject;
 
 - (void)dealloc
 {
     [createButton release];
     [titleField release];
     [networkIndicator release];
-    [closeObject release];
     [super dealloc];
 }
 
@@ -120,11 +117,7 @@
 	} else {
 		titleField.text = @"";
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"refreshStatList" object:nil];
-        if (self.closeResponder != nil) {
-            if ([closeObject respondsToSelector:closeResponder]) {
-                [closeObject performSelector:closeResponder];
-            }
-        }
+        [self.navigationController popViewControllerAnimated:YES];
 	}
 }
 
@@ -149,12 +142,5 @@
 
 
 - (void)onPressDoneKey:(id)sender {}
-
-- (void)onPressCancel:(id)sender {
-    if ([closeObject respondsToSelector:closeResponder]) {
-        [closeObject performSelector:closeResponder];
-    }
-}
-
 
 @end

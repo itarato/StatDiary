@@ -13,6 +13,9 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		4708CC541715FB6900ABD341 /* refresh_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4708CC521715FB6900ABD341 /* refresh_icon.png */; };
+		4708CC551715FB6900ABD341 /* refresh_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4708CC531715FB6900ABD341 /* refresh_icon@2x.png */; };
+		471199351714C1ED000E5B34 /* Toggler.m in Sources */ = {isa = PBXBuildFile; fileRef = 471199341714C1ED000E5B34 /* Toggler.m */; };
 		4726AE6A15A4D3800045358C /* StatGraphHostingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4726AE6915A4D3800045358C /* StatGraphHostingView.m */; };
 		4732D621139F407000CADBB3 /* StatNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4732D620139F407000CADBB3 /* StatNavigationController.m */; };
 		4732D624139F43AD00CADBB3 /* StatListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4732D623139F43AD00CADBB3 /* StatListController.m */; };
@@ -44,6 +47,8 @@
 		47731EE81711B25700DA1EDC /* UIButton+UIButtonExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 47731EE71711B25700DA1EDC /* UIButton+UIButtonExtras.m */; };
 		47731EF01711BA8C00DA1EDC /* mini_panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 47731EEE1711BA8C00DA1EDC /* mini_panel.png */; };
 		47731EF11711BA8C00DA1EDC /* mini_panel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47731EEF1711BA8C00DA1EDC /* mini_panel@2x.png */; };
+		47731EF317122AE300DA1EDC /* MiniControlPanelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47731EF217122AE300DA1EDC /* MiniControlPanelView.xib */; };
+		47731EF617122BE700DA1EDC /* MiniControlPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47731EF517122BE700DA1EDC /* MiniControlPanelViewController.m */; };
 		477B29F816F60D5A00EF74D1 /* XMLRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 477B29F716F60D5A00EF74D1 /* XMLRPC.framework */; };
 		477B29FA16F60DB000EF74D1 /* libXMLRPC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 477B29F916F60DB000EF74D1 /* libXMLRPC.a */; };
 		47807F0913A4F112004078EB /* IndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47807F0813A4F112004078EB /* IndicatorViewController.m */; };
@@ -90,6 +95,10 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* StatDiary_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatDiary_Prefix.pch; sourceTree = "<group>"; };
+		4708CC521715FB6900ABD341 /* refresh_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh_icon.png; sourceTree = "<group>"; };
+		4708CC531715FB6900ABD341 /* refresh_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh_icon@2x.png"; sourceTree = "<group>"; };
+		471199331714C1ED000E5B34 /* Toggler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toggler.h; sourceTree = "<group>"; };
+		471199341714C1ED000E5B34 /* Toggler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toggler.m; sourceTree = "<group>"; };
 		4726AE6815A4D3800045358C /* StatGraphHostingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatGraphHostingView.h; sourceTree = "<group>"; };
 		4726AE6915A4D3800045358C /* StatGraphHostingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatGraphHostingView.m; sourceTree = "<group>"; };
 		4732D61F139F407000CADBB3 /* StatNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatNavigationController.h; sourceTree = "<group>"; };
@@ -129,6 +138,9 @@
 		47731EE71711B25700DA1EDC /* UIButton+UIButtonExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+UIButtonExtras.m"; sourceTree = "<group>"; };
 		47731EEE1711BA8C00DA1EDC /* mini_panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mini_panel.png; sourceTree = "<group>"; };
 		47731EEF1711BA8C00DA1EDC /* mini_panel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mini_panel@2x.png"; sourceTree = "<group>"; };
+		47731EF217122AE300DA1EDC /* MiniControlPanelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MiniControlPanelView.xib; sourceTree = "<group>"; };
+		47731EF417122BE700DA1EDC /* MiniControlPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniControlPanelViewController.h; sourceTree = "<group>"; };
+		47731EF517122BE700DA1EDC /* MiniControlPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniControlPanelViewController.m; sourceTree = "<group>"; };
 		477A20DC14D5BAA100E7658F /* StatCardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatCardDelegate.h; sourceTree = "<group>"; };
 		477B29F716F60D5A00EF74D1 /* XMLRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMLRPC.framework; path = "../../../Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development/XMLRPC.framework"; sourceTree = "<group>"; };
 		477B29F916F60DB000EF74D1 /* libXMLRPC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libXMLRPC.a; path = "../../../Library/Developer/Xcode/DerivedData/XMLRPC-hjpfzwnhfwjloucodkxxqatdpnat/Build/Products/Development-universal/libXMLRPC.a"; sourceTree = "<group>"; };
@@ -146,6 +158,7 @@
 		479AEC0716BE9D84009A8C2F /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../../../Downloads/CorePlot_1.1/Source/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 		479AEC1016BE9DCD009A8C2F /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		47A2196C1460032100F31F91 /* StatListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatListView.xib; sourceTree = "<group>"; };
+		47A459FD17148BD500ADDCFE /* MiniPanelDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniPanelDelegate.h; sourceTree = "<group>"; };
 		47A8C08D14310B97001F588E /* AccountNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountNavigationController.h; path = ../AccountNavigationController.h; sourceTree = "<group>"; };
 		47A8C08E14310B97001F588E /* AccountNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountNavigationController.m; path = ../AccountNavigationController.m; sourceTree = "<group>"; };
 		47AAA96214D21A9B00AA870E /* EntryInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntryInfoCell.xib; sourceTree = "<group>"; };
@@ -192,10 +205,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				47AC02A91714B1ED008DB665 /* Universal */,
+				47A459FC17148B9F00ADDCFE /* Delegate */,
 				47A8C08D14310B97001F588E /* AccountNavigationController.h */,
 				47A8C08E14310B97001F588E /* AccountNavigationController.m */,
-				474D1BB514634FB2007F7875 /* AsynchronImageLoader.h */,
-				474D1BB614634FB2007F7875 /* AsynchronImageLoader.m */,
 				47B383CE13C0FCFD00D34E27 /* CreateStatViewController.h */,
 				47B383CF13C0FCFD00D34E27 /* CreateStatViewController.m */,
 				47B9461213A1455C001326FC /* Defines.h */,
@@ -205,19 +218,14 @@
 				47B9465D13A16BA2001326FC /* Globals.m */,
 				47807F0713A4F112004078EB /* IndicatorViewController.h */,
 				47807F0813A4F112004078EB /* IndicatorViewController.m */,
-				47BEADB31533810D00F2C34D /* NSData+Base64.h */,
-				47BEADB41533810D00F2C34D /* NSData+Base64.m */,
-				47BEADB51533810D00F2C34D /* NSStringAdditions.h */,
-				47BEADB61533810D00F2C34D /* NSStringAdditions.m */,
 				4738B52613AB2B0800BD5B67 /* RegistrationViewController.h */,
 				4738B52713AB2B0800BD5B67 /* RegistrationViewController.m */,
-				477A20DC14D5BAA100E7658F /* StatCardDelegate.h */,
 				474FF14B14D0B05700781A91 /* StatCardViewController.h */,
 				474FF14C14D0B05700781A91 /* StatCardViewController.m */,
 				4787F44E13A2BDD2002B9636 /* StatDetailsViewController.h */,
 				4787F44F13A2BDD2002B9636 /* StatDetailsViewController.m */,
-				1D3623240D0F684500981E51 /* StatDiaryAppDelegate.h */,
-				1D3623250D0F684500981E51 /* StatDiaryAppDelegate.m */,
+				4726AE6815A4D3800045358C /* StatGraphHostingView.h */,
+				4726AE6915A4D3800045358C /* StatGraphHostingView.m */,
 				4732D622139F43AD00CADBB3 /* StatListController.h */,
 				4732D623139F43AD00CADBB3 /* StatListController.m */,
 				47E39FF2153A36A400EAC885 /* StatListView.h */,
@@ -226,12 +234,8 @@
 				4732D620139F407000CADBB3 /* StatNavigationController.m */,
 				4787ACF813BF89BC0074CBDA /* WelcomeViewController.h */,
 				4787ACF913BF89BC0074CBDA /* WelcomeViewController.m */,
-				47977D5B14366D5F00F55E1B /* XMLRPCRequestExtended.h */,
-				47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */,
-				4726AE6815A4D3800045358C /* StatGraphHostingView.h */,
-				4726AE6915A4D3800045358C /* StatGraphHostingView.m */,
-				47731EE61711B25700DA1EDC /* UIButton+UIButtonExtras.h */,
-				47731EE71711B25700DA1EDC /* UIButton+UIButtonExtras.m */,
+				47731EF417122BE700DA1EDC /* MiniControlPanelViewController.h */,
+				47731EF517122BE700DA1EDC /* MiniControlPanelViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -282,6 +286,7 @@
 				8D1107310486CEB800E47090 /* StatDiary-Info.plist */,
 				47A2196C1460032100F31F91 /* StatListView.xib */,
 				4733D1F1139D466B006941EC /* WelcomeView.xib */,
+				47731EF217122AE300DA1EDC /* MiniControlPanelView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -304,6 +309,8 @@
 		4755E052159EEAE600A85925 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4708CC521715FB6900ABD341 /* refresh_icon.png */,
+				4708CC531715FB6900ABD341 /* refresh_icon@2x.png */,
 				47731EEE1711BA8C00DA1EDC /* mini_panel.png */,
 				47731EEF1711BA8C00DA1EDC /* mini_panel@2x.png */,
 				47444D5D1709B02C00F7ED60 /* bgr_welcome@2x.png */,
@@ -340,6 +347,36 @@
 				479AEC0E16BE9D85009A8C2F /* libCorePlot-CocoaTouch.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		47A459FC17148B9F00ADDCFE /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				477A20DC14D5BAA100E7658F /* StatCardDelegate.h */,
+				1D3623240D0F684500981E51 /* StatDiaryAppDelegate.h */,
+				1D3623250D0F684500981E51 /* StatDiaryAppDelegate.m */,
+				47A459FD17148BD500ADDCFE /* MiniPanelDelegate.h */,
+			);
+			name = Delegate;
+			sourceTree = "<group>";
+		};
+		47AC02A91714B1ED008DB665 /* Universal */ = {
+			isa = PBXGroup;
+			children = (
+				474D1BB514634FB2007F7875 /* AsynchronImageLoader.h */,
+				474D1BB614634FB2007F7875 /* AsynchronImageLoader.m */,
+				47BEADB31533810D00F2C34D /* NSData+Base64.h */,
+				47BEADB41533810D00F2C34D /* NSData+Base64.m */,
+				47BEADB51533810D00F2C34D /* NSStringAdditions.h */,
+				47BEADB61533810D00F2C34D /* NSStringAdditions.m */,
+				47977D5B14366D5F00F55E1B /* XMLRPCRequestExtended.h */,
+				47977D5C14366D5F00F55E1B /* XMLRPCRequestExtended.m */,
+				47731EE61711B25700DA1EDC /* UIButton+UIButtonExtras.h */,
+				47731EE71711B25700DA1EDC /* UIButton+UIButtonExtras.m */,
+				471199331714C1ED000E5B34 /* Toggler.h */,
+				471199341714C1ED000E5B34 /* Toggler.m */,
+			);
+			name = Universal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -446,6 +483,9 @@
 				47444D5E1709B02C00F7ED60 /* bgr_welcome@2x.png in Resources */,
 				47731EF01711BA8C00DA1EDC /* mini_panel.png in Resources */,
 				47731EF11711BA8C00DA1EDC /* mini_panel@2x.png in Resources */,
+				47731EF317122AE300DA1EDC /* MiniControlPanelView.xib in Resources */,
+				4708CC541715FB6900ABD341 /* refresh_icon.png in Resources */,
+				4708CC551715FB6900ABD341 /* refresh_icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +515,8 @@
 				47E39FF4153A36A400EAC885 /* StatListView.m in Sources */,
 				4726AE6A15A4D3800045358C /* StatGraphHostingView.m in Sources */,
 				47731EE81711B25700DA1EDC /* UIButton+UIButtonExtras.m in Sources */,
+				47731EF617122BE700DA1EDC /* MiniControlPanelViewController.m in Sources */,
+				471199351714C1ED000E5B34 /* Toggler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

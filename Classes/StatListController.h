@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "StatCardDelegate.h"
+#import "MiniPanelDelegate.h"
 
-@class StatDetailsViewController, IndicatorViewController, StatCardViewController, CreateStatViewController;
+@class StatDetailsViewController, IndicatorViewController, StatCardViewController, CreateStatViewController, MiniControlPanelViewController;
 
-@interface StatListController : UIViewController <XMLRPCConnectionDelegate, UIScrollViewDelegate, StatCardDelegate, UIAlertViewDelegate> {
+@interface StatListController : UIViewController <XMLRPCConnectionDelegate, UIScrollViewDelegate, StatCardDelegate, UIAlertViewDelegate, MiniPanelDelegate> {
 	NSMutableArray *myStats;
 	StatDetailsViewController *statDetailsViewController;
 	XMLRPCRequest *myListRequest;
@@ -40,9 +41,7 @@
 @property (nonatomic, retain) NSMutableArray *cards;
 @property (nonatomic, retain) UIAlertView *deleteConfirmAlert;
 @property (nonatomic, retain) StatCardViewController *lastSelectedCard;
-@property (nonatomic, retain) IBOutlet UIView *miniControlPanelView;
-@property (nonatomic, retain) IBOutlet UIButton *logoutButton;
-@property (nonatomic, retain) IBOutlet UIButton *createButton;
+@property (nonatomic, retain) MiniControlPanelViewController *miniControlPanel;
 
 - (void)reloadStatData;
 - (void)onSuccessLogin:(NSNotification *)notification;
@@ -54,8 +53,6 @@
 - (void)removeCreationView;
 - (void)openCreationView;
 - (void)onPressOpenConfigButton:(id)sender;
-- (IBAction)onPressLogoutButton:(id)sender;
-- (IBAction)onPressCreateButton:(id)sender;
 
 + (NSString *)elapsedTimeFromTimestamp:(NSNumber *)timestamp;
 

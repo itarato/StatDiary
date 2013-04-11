@@ -14,7 +14,6 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<string>IBNSLayoutConstraint</string>
 			<string>IBProxyObject</string>
-			<string>IBUIImageView</string>
 			<string>IBUITableView</string>
 			<string>IBUITableViewCell</string>
 			<string>IBUITextField</string>
@@ -160,7 +159,7 @@
 				<real value="37" key="IBUIRowHeight"/>
 			</object>
 			<object class="IBUITableViewCell" id="1053157524">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -174,6 +173,7 @@
 								<int key="NSvFlags">256</int>
 								<string key="NSFrame">{{20, 0}, {280, 36}}</string>
 								<reference key="NSSuperview" ref="41760159"/>
+								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -199,6 +199,7 @@
 						</object>
 						<string key="NSFrameSize">{320, 36}</string>
 						<reference key="NSSuperview" ref="1053157524"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="166592954"/>
 						<reference key="IBUIBackgroundColor" ref="459472490"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -209,13 +210,15 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 37}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="41760159"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<reference key="IBUIContentView" ref="41760159"/>
 				<real value="37" key="IBUIRowHeight"/>
 			</object>
 			<object class="IBUITableViewCell" id="998174573">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -229,6 +232,7 @@
 								<int key="NSvFlags">256</int>
 								<string key="NSFrame">{{20, 0}, {280, 36}}</string>
 								<reference key="NSSuperview" ref="272556220"/>
+								<reference key="NSWindow"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -254,6 +258,7 @@
 						</object>
 						<string key="NSFrameSize">{320, 36}</string>
 						<reference key="NSSuperview" ref="998174573"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="97616637"/>
 						<reference key="IBUIBackgroundColor" ref="459472490"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -264,26 +269,19 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 37}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="272556220"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<reference key="IBUIContentView" ref="272556220"/>
 				<real value="37" key="IBUIRowHeight"/>
 			</object>
-			<object class="IBUIImageView" id="668534910">
-				<nil key="NSNextResponder"/>
-				<int key="NSvFlags">292</int>
-				<string key="NSFrameSize">{320, 376}</string>
-				<bool key="IBUIUserInteractionEnabled">NO</bool>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-				<object class="NSCustomResource" key="IBUIImage">
-					<string key="NSClassName">NSImage</string>
-					<string key="NSResourceName">bgr_welcome.png</string>
-				</object>
-			</object>
 			<object class="IBUITableView" id="189549262">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<string key="NSFrameSize">{320, 460}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -916,11 +914,6 @@
 						<reference key="parent" ref="998174573"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">51</int>
-						<reference key="object" ref="668534910"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">52</int>
 						<reference key="object" ref="189549262"/>
 						<reference key="parent" ref="0"/>
@@ -1131,7 +1124,6 @@
 					<string>37.IBViewMetadataConstraints</string>
 					<string>5.IBPluginDependency</string>
 					<string>5.IBViewMetadataTranslatesAutoresizingMaskIntoConstraints</string>
-					<string>51.IBPluginDependency</string>
 					<string>52.IBPluginDependency</string>
 					<string>53.IBPluginDependency</string>
 					<string>53.IBViewMetadataConstraints</string>
@@ -1205,7 +1197,6 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<boolean value="NO"/>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSArray">
@@ -1364,10 +1355,6 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">bgr_welcome.png</string>
-			<string key="NS.object.0">{320, 480}</string>
-		</object>
 		<bool key="IBDocument.UseAutolayout">YES</bool>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>

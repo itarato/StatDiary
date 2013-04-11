@@ -17,14 +17,12 @@
 #import "StatCardViewController.h"
 #import "CreateStatViewController.h"
 #import "UIButton+UIButtonExtras.h"
+#import "MiniControlPanelViewController.h"
+#import "Toggler.h"
 
 #define STAT_OLD_FLAG @"old"
 
-
 @implementation StatListController
-
-static BOOL creationViewVisible = NO;
-static CGFloat scrollViewScrollerY;
 
 @synthesize myStats;
 @synthesize statDetailsViewController;
@@ -38,8 +36,6 @@ static CGFloat scrollViewScrollerY;
 @synthesize cards;
 @synthesize deleteConfirmAlert;
 @synthesize lastSelectedCard;
-@synthesize logoutButton;
-@synthesize createButton;
 
 - (void)dealloc {
 	[myStats release];
@@ -58,10 +54,8 @@ static CGFloat scrollViewScrollerY;
 	[super dealloc];
 }
 
-
 #pragma mark -
 #pragma mark Initialization
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -72,9 +66,6 @@ static CGFloat scrollViewScrollerY;
 		
 		myStats = nil;
 		statDetailsViewController = [[StatDetailsViewController alloc] initWithNibName:@"StatDetailsView" bundle:nil];
-		createStatViewController  = [[CreateStatViewController alloc] initWithNibName:@"CreateStatView" bundle:nil];
-        createStatViewController.closeResponder = @selector(removeCreationView);
-        createStatViewController.closeObject = self;
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSuccessLogin:) name:@"onSuccessLogin" object:nil];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onRefreshRequest:) name:@"refreshStatList" object:nil];
@@ -85,10 +76,8 @@ static CGFloat scrollViewScrollerY;
 	return self;
 }
 
-
 #pragma mark -
 #pragma mark View lifecycle
-
 
 - (void)viewDidLoad {
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"showLogin" object:nil];
@@ -105,10 +94,12 @@ static CGFloat scrollViewScrollerY;
 	self.navigationItem.rightBarButtonItem = openMiniPanelButton;
 	[openMiniPanelButton release];
     
-    [self.logoutButton setStretchedBackground:@"button_red.png"];
-    [self.createButton setStretchedBackground:@"button_green.png"];
+    UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"refresh_icon.png"] style:UIBarButtonItemStylePlain target:self action:@selector(reloadStatData)];
+    self.navigationItem.leftBarButtonItem = refreshButton;
+    [refreshButton release];
     
-    [self toggleMiniControllerPanel:NO];
+    [createStatViewController.view setHidden:YES];
+    [self.view addSubview:createStatViewController.view];
 	
 	[super viewDidLoad];
 }
@@ -127,7 +118,6 @@ static CGFloat scrollViewScrollerY;
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
 }
-
 
 #pragma mark --
 #pragma mark Custom actions
@@ -237,7 +227,6 @@ static CGFloat scrollViewScrollerY;
 }
 
 - (void)rebuildCards {
-    NSLog(@"Size: %@", NSStringFromCGRect(self.scrollView.frame));
 	// Remove old ones.
 	for (id card in self.cards) {
 		StatCardViewController *cardCtrl = (StatCardViewController *)card;
@@ -286,25 +275,31 @@ static CGFloat scrollViewScrollerY;
 }
 
 - (void)openCreationView {
-    creationViewVisible = YES;
-    scrollViewScrollerY = self.scrollView.center.y;
-    [self.view addSubview:[createStatViewController view]];
-    [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, -200.0f)];
+    if (self.createStatViewController == nil) {
+		self.createStatViewController  = [[CreateStatViewController alloc] initWithNibName:@"CreateStatView" bundle:nil];
+    }
     
-    [UIView animateWithDuration:0.3f animations:^{
-        [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, self.view.center.y + 50.0f)];
-        [self.scrollView setAlpha:0.0f];
-    }];
+    [self.navigationController pushViewController:self.createStatViewController animated:YES];
+//    creationViewVisible = YES;
+//    scrollViewScrollerY = self.scrollView.center.y;
+//    [self.view addSubview:[createStatViewController view]];
+//    [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, -200.0f)];
+//    
+//    [UIView animateWithDuration:0.3f animations:^{
+//        [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, self.view.center.y + 50.0f)];
+//        [self.scrollView setAlpha:0.0f];
+//    }];
 }
 
 - (void)removeCreationView {
-    [UIView animateWithDuration:0.3f animations:^{
-        [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, self.view.center.y - 200.0f)];
-        [self.scrollView setAlpha:1.0f];
-    } completion:^(BOOL finished) {
-        creationViewVisible = NO;
-        [[createStatViewController view] removeFromSuperview];
-    }];
+    [[Toggler mainToggler] toggle:self.scrollView withView:self.createStatViewController.view withCompletion:nil];
+//    [UIView animateWithDuration:0.3f animations:^{
+//        [[createStatViewController view] setCenter:CGPointMake(self.view.center.x, self.view.center.y - 200.0f)];
+//        [self.scrollView setAlpha:1.0f];
+//    } completion:^(BOOL finished) {
+//        creationViewVisible = NO;
+//        [[createStatViewController view] removeFromSuperview];
+//    }];
 }
 
 - (void)onPressOpenConfigButton:(id)sender {
@@ -312,56 +307,14 @@ static CGFloat scrollViewScrollerY;
 }
 
 - (void)toggleMiniControllerPanel:(BOOL)withAnimation {
-    CGRect panelFrame;
-    CGRect listFrame;
-    if (self.miniControlPanelView.frame.origin.y < 0) {
-        NSLog(@"Up");
-        panelFrame = CGRectMake(0.0f,
-                                0.0f,
-                                self.miniControlPanelView.frame.size.width,
-                                self.miniControlPanelView.frame.size.height);
-        listFrame = CGRectMake(0.0f,
-                               self.miniControlPanelView.frame.size.height,
-                               self.view.frame.size.width,
-                               self.view.frame.size.height - self.miniControlPanelView.frame.size.height - 36.0f);
+    if (self.miniControlPanel == nil) {
+        self.miniControlPanel = [[MiniControlPanelViewController alloc] initWithNibName:@"MiniControlPanelView" bundle:nil];
+        self.miniControlPanel.delegate = self;
+        [self.view addSubview:self.miniControlPanel.view];
+        [self.miniControlPanel.view setHidden:YES];
     }
-    else {
-        NSLog(@"Down");
-        panelFrame = CGRectMake(0.0f,
-                                -self.miniControlPanelView.frame.size.height,
-                                self.miniControlPanelView.frame.size.width,
-                                self.miniControlPanelView.frame.size.height);
-        listFrame = CGRectMake(0.0f,
-                               0.0f,
-                               self.view.frame.size.width,
-                               self.view.frame.size.height - 36.0f);
-    }
-    
-    void (^resize)(void) = ^{
-        self.miniControlPanelView.frame = panelFrame;
-        self.scrollView.frame = listFrame;
-    };
-    
-    if (withAnimation) {
-        [UIView animateWithDuration:0.3f animations:resize];
-    }
-    else {
-        resize();
-    }
-}
 
-- (void)onPressCreateButton:(id)sender {
-    [self toggleMiniControllerPanel:YES];
-    if (creationViewVisible) {
-        [self removeCreationView];
-    } else {
-        [self openCreationView];
-    }
-}
-
-- (void)onPressLogoutButton:(id)sender {
-    [self toggleMiniControllerPanel:YES];
-    [self logout];
+    [[Toggler mainToggler] toggle:self.scrollView withView:self.miniControlPanel.view withCompletion:nil];
 }
 
 #pragma mark --
@@ -464,5 +417,17 @@ static CGFloat scrollViewScrollerY;
 	}
 }
 
-@end
+#pragma mark - MiniPanelDelegate
 
+
+- (void)miniPanelCallsCreate {
+    [self toggleMiniControllerPanel:YES];
+    [self openCreationView];
+}
+
+- (void)miniPanelCallsLogout {
+    [self toggleMiniControllerPanel:YES];
+    [self logout];
+}
+
+@end
